@@ -1,0 +1,14 @@
+<header class="main container">
+
+  <% if logged_in? %>
+    <p>
+      <%= link_to "Logout", logout_path %> 
+        | <%= link_to "Editar perfil", edit_user_path(current_user) %>
+      
+      <% if current_user.have_role?(:admin) %>
+        | Ui, é administrador...
+      <% end %>
+    </p>
+  <% end %>
+
+</header>

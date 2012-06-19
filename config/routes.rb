@@ -1,4 +1,19 @@
 Gvar::Application.routes.draw do
+  
+  root :to => "dashboard#index"
+
+  controller :sessions do
+    get  "/login", :action => :new, :as => :login
+    post "/login", :action => :create, :as => false
+    get  "/logout", :action => :destroy, :as => :logout    
+  end
+
+  controller :dashboard do
+    get  "/dashboard", :action => :index, :as => :dashboard
+  end
+
+  resources :users
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
