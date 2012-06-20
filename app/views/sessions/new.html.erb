@@ -14,13 +14,13 @@
             <span>Login</span>
           </li>
           <li class="warning">
-            <%= flash[:alert] %>
+            <%= flash[:notice] %>
           </li>
           <li>
-            <%= text_field_tag :login, 'Nome', :class => 'inputLogin' %>
+            <%= text_field_tag :login, 'Login', :class => 'inputLogin' %>
           </li>
           <li>
-            <%= password_field_tag :password, 'Senha', :class => 'inputLogin' %>
+            <%= password_field_tag :password, '', :class => 'inputLogin' %>
           </li>
           <li id="btLogin">
             <%= image_submit_tag('bt-entrar.gif') %>

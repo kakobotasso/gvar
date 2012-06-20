@@ -1,1 +1,21 @@
-<h1>Dashboard</h1>
+<!-- TITLE -->
+<% content_for :title do %> Bem vindo ao Sistema Grupo Vida, Amor e Riso! <% end %>
+<!-- / TITLE -->
+
+<!-- CONTENT -->
+<div id="geralLogin">
+	<div id="centralizaLogin" class="opcoes">
+		<div id="logoLogin"><%= image_tag 'logo-login.png', :alt => 'Grupo Vida, Amor e Riso' %></div>
+
+
+		<div id="opcoesLogin">
+			<ul>
+				<li> <%= link_to image_tag('box-cursos.jpg', :alt => 'Cursos') %> <li>
+				<li> <%= link_to image_tag('box-servicos.jpg', :alt => 'Servicos') %> <li>
+				<li> <%= link_to image_tag('box-assessoria.jpg', :alt => 'Assessoria') %> <li>
+				<li> <%= link_to image_tag('box-financeiro.jpg', :alt => 'Financeiro') %> <li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- / CONTENT -->

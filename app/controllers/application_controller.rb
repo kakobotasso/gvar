@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   def require_logged_user
     return if logged_in?
 
-    redirect_to login_path #, :alert => "É necessario estar logado para acessar"
+    redirect_to login_path, :notice => "É necessario estar logado para acessar"
   end
 
 end
