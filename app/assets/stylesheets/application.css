@@ -11,3 +11,85 @@
  *= require_self
  *= require_tree .
  */
+*{
+	border:0px;
+	margin:0px;
+	padding:0px;
+	outline:none;
+}
+ul, ul li{ list-style-type:none; }
+
+#geralLogin{
+	float:left;
+	width:100%;
+	height:680px;
+	position:relative;
+	background:#dedede url('bg.jpg') no-repeat center 0px;
+}
+
+#geralLogin #centralizaLogin{
+	width:364px;
+	margin:0 auto;
+}
+
+#geralLogin #centralizaLogin #logoLogin{
+	float:left;
+	position:relative;
+	left:50%;
+	display:inline;
+	margin-left:-68px;
+	padding:79px 0px 20px 0px;
+}
+
+#geralLogin #centralizaLogin #boxLogin{
+	float:left;
+	width:314px;
+	height:234px;	
+	background: url('box-login.png') no-repeat 0px 0px;
+	padding:60px 0px 0px 50px;
+}
+
+#geralLogin #centralizaLogin #boxLogin ul{
+	width:100%;
+	float:left;
+}
+#geralLogin #centralizaLogin #boxLogin ul li{
+	width:258px;
+	float:left;
+	padding:0px 0px 5px 0px;
+}
+#geralLogin #centralizaLogin #boxLogin ul li input.inputLogin{
+	float:left;
+	width:230px;
+	padding:10px 10px 10px 18px;
+	border:1px solid #ccc;
+}
+#geralLogin #centralizaLogin #boxLogin ul li#btLogin input{
+	float:right;
+	text-indent:-5000px;
+	width:82px;
+	height:30px;
+	background:url('bt-entrar.gif') no-repeat 0px 0px;
+}
+
+#geralLogin #centralizaLogin #boxLogin ul li#btLogin a{ float:right; }
+
+/* MENU OPCOES */
+#geralLogin #centralizaLogin.opcoes{ width:642px; }
+
+#opcoesLogin{
+	float:left;
+	padding:10px 0px 0px 0px;
+}
+
+#opcoesLogin ul{ float:left; }
+
+#opcoesLogin ul li{
+	float:left;
+	padding:0px 5px;
+}
+.warning  {
+	color: red;
+	font-size: 9px;
+	text-align:center;
+}

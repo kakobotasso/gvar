@@ -1,15 +1,33 @@
-<%= form_tag login_path do %>
-  <p>
-    <%= label_tag :login %>
-    <%= text_field_tag :login %>
-  </p>
+<!-- TITLE -->
+<% content_for :title do %> Login Sistema GVAR! <% end %>
+<!-- / TITLE -->
 
-  <p>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </p>
+<!-- CONTENT -->
+<div id="geralLogin">
+  <div id="centralizaLogin">
+    <div id="logoLogin"><%= image_tag 'logo-login.png', :alt => 'Grupo Vida, Amor e Riso' %></div>
 
-  <p>
-    <%= submit_tag "Logar" %>
-  </p>
-<% end %>
+    <div id="boxLogin">
+      <%= form_tag login_path do %>
+        <ul>
+          <li>
+            <span>Login</span>
+          </li>
+          <li class="warning">
+            <%= flash[:alert] %>
+          </li>
+          <li>
+            <%= text_field_tag :login, 'Nome', :class => 'inputLogin' %>
+          </li>
+          <li>
+            <%= password_field_tag :password, 'Senha', :class => 'inputLogin' %>
+          </li>
+          <li id="btLogin">
+            <%= image_submit_tag('bt-entrar.gif') %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+<!-- / CONTENT -->
