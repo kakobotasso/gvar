@@ -5,7 +5,7 @@ class AdminController < ApplicationController
   def authorize_user
     valid = authenticate_with_http_basic do |user, password|
       user = Authenticator.authenticate(user, password)
-      user && user.have_role? :admin
+      user && user.have_role?(:admin)
     end
 
     request_http_basic_authentication unless valid
