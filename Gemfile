@@ -14,10 +14,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development, :test do
-  gem "rspec-rails", "~> 2.10.1"
-  gem "capybara", "~> 1.1.2"
-end
+#group :development, :test do
+#  gem "rspec-rails", "~> 2.10.1"
+#  gem "capybara", "~> 1.1.2"
+#end
 
 group :development do
   gem "pry", :require => false
