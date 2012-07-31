@@ -1,5 +1,13 @@
 Gvar::Application.routes.draw do
   
+  get "financeiro/index"
+
+  get "assessoria/index"
+
+  get "servicos/index"
+
+  get "cursos/index"
+
   root :to => "dashboard#index"
 
   controller :sessions do
