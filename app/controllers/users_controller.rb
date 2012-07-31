@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_filter :require_logged_user && :require_role_for_user
   helper_method :roles
-  
+
   # GET /users
   # GET /users.json
   def index

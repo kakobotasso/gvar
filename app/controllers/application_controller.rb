@@ -22,4 +22,10 @@ class ApplicationController < ActionController::Base
     redirect_to login_path, :notice => "É necessario estar logado para acessar"
   end
 
+  def require_role_for_user
+    return if current_user.have_role? controller_name.to_sym
+    return if current_user.have_role? :admin
+
+    redirect_to dashboard_path, :notice => "Você não tem acesso a esse modulo."
+  end
 end
