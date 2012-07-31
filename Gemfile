@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.7'
 gem 'jquery-rails'
 gem 'mysql2'
-# gem 'webbynode', "~> 1.0.5.2"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -14,10 +13,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-#group :development, :test do
-#  gem "rspec-rails", "~> 2.10.1"
-#  gem "capybara", "~> 1.1.2"
-#end
+group :development, :test do
+ gem "rspec-rails"
+ gem "capybara"
+end
 
 group :development do
   gem "pry", :require => false
