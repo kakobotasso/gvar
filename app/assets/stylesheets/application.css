@@ -17,6 +17,11 @@
 	padding:0px;
 	outline:none;
 }
+
+body{
+	background:#dedede;
+}
+
 ul, ul li{ list-style-type:none; }
 
 #geralLogin{
@@ -92,4 +97,25 @@ ul, ul li{ list-style-type:none; }
 	color: red;
 	font-size: 9px;
 	text-align:center;
+}
+
+#preHeader{
+	float:left;
+	width:100%;
+	background:#ccc;
+}
+
+#preHeader #header{
+	float: left;
+	position: relative;
+	left: 60%;
+	width: 300px;
+	padding:10px 0px;
+	background:#ccc;
+}
+
+#preHeader #header a{
+	float:left;
+display:inline;
+margin:0px 10px;
 }

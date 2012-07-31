@@ -1,14 +1,17 @@
-<header class="main container">
+<div id="preHeader">
+	<div id="header" class="main container">
 
-  <% if logged_in? %>
-    <p>
-      <%= link_to "Logout", logout_path %> 
-        | <%= link_to "Editar perfil", edit_user_path(current_user) %>
-      
-      <% if current_user.have_role?(:admin) %>
-        | Ui, é administrador...
-      <% end %>
-    </p>
-  <% end %>
+	  <% if logged_in? %>
+	    <p>
+		 <%= link_to "Logout", logout_path %> 
+		  
+		 <%= link_to "Editar perfil", edit_user_path(current_user) %>
+		 
+		 <% if current_user.have_role?(:admin) %>
+		 	<span>Ui, é administrador...</span>
+		 <% end %>
+	    </p>
+	  <% end %>
 
-</header>
+	</div>
+</div>
