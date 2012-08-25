@@ -1,6 +1,12 @@
 Gvar::Application.routes.draw do
-  
-  get "financeiro/index"
+
+# VARIAVEL QUE ARMAZENA O CAMINHO PARA FUTURAS MUDANÇAS
+URL_FINANCEIRO = "/financeiro"
+
+  controller :financeiro do
+    get "#{URL_FINANCEIRO}", :action => :index, :as => :financeiro_index
+    get "#{URL_FINANCEIRO}/novo-pagamento", :action => :novo_pagamento, :as => :novo_pagamento
+  end
 
   get "assessoria/index"
 

@@ -3,4 +3,9 @@ class FinanceiroController < ApplicationController
 
   def index
   end
+
+  def novo_pagamento
+  	@release = Release.new
+  end
+
 end

@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731205051) do
+ActiveRecord::Schema.define(:version => 20120825194314) do
+
+  create_table "instalments", :force => true do |t|
+    t.integer  "release_id"
+    t.integer  "number"
+    t.string   "name"
+    t.datetime "expiration_date"
+    t.integer  "status"
+    t.decimal  "price"
+    t.integer  "payment"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "releases", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.integer  "category_id"
+    t.decimal  "total_price"
+    t.integer  "number_instalments"
+    t.boolean  "first_paid"
+    t.boolean  "fixed_payment"
+    t.text     "description"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string "name"
