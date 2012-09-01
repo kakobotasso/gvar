@@ -1,8 +1,56 @@
 <h1>Financeiro</h1>
 <p>Pagamento</p>
 
-<%= form_for(@release) do |f| %>
-	<%= f.text_field :name %>
+<%= form_for(@release) do |r| %>
+	<%= r.label :code %>
+	<%= r.text_field :code %><br />
+
+	<%= r.label :name %>
+	<%= r.text_field :name %><br />
+	
+	<%= r.label :category_id %>
+	<%= r.text_field :category_id %><br />
+	
+	<%= r.label :total_price %>
+	<%= r.text_field :total_price %><br />
+	
+	<%= r.label :number_instalments %>
+	<%= r.text_field :number_instalments %><br />
+	
+	<%= r.label :first_paid %>
+	<%= r.check_box :first_paid %><br />
+	
+	<%= r.label :fixed_payment %>
+	<%= r.check_box :fixed_payment %><br />
+	
+	<%= r.label :description %>
+	<%= r.text_area :description %><br />
+
+	<!-- Testes para gerar duas parcelas fixas, trocar por ajax + partials -->
+	<% # (1..number_instalments).each  ...  %>
+	<%  (1..2).each do |number_instalment| %>
+		<%= r.fields_for :instalments do |i| %>
+		    <%= i.hidden_field :number, :value => number_instalment %><br />
+
+		    <%= i.label :name %>
+		    <%= i.text_field :name %><br />
+
+		    <%= i.label :expiration_date %>
+		    <%= i.text_field :expiration_date %><br />
+
+		    <%= i.label :status %>
+		    <%= i.text_field :status %><br />
+
+		    <%= i.label :price %>
+		    <%= i.text_field :price %><br />
+
+		    <%= i.label :payment %>
+		    <%= i.text_field :payment %><br />
+	    <% end %>
+	<%  end %>
+
+	<%= r.submit 'Salvar Pagamento' %>
+
 <% end %>
 
 <%= link_to "Voltar", financeiro_index_path %>

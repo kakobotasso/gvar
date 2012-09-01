@@ -6,6 +6,7 @@ class FinanceiroController < ApplicationController
 
   def novo_pagamento
   	@release = Release.new
+  	@release.instalments.build
   end
 
 end

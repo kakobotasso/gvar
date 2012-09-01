@@ -1,7 +1,9 @@
 Gvar::Application.routes.draw do
 
-# VARIAVEL QUE ARMAZENA O CAMINHO PARA FUTURAS MUDANÇAS
-URL_FINANCEIRO = "/financeiro"
+  root :to => "dashboard#index"
+
+  # VARIAVEL QUE ARMAZENA O CAMINHO PARA FUTURAS MUDANÇAS
+  URL_FINANCEIRO = "/financeiro"
 
   controller :financeiro do
     get "#{URL_FINANCEIRO}", :action => :index, :as => :financeiro_index
@@ -9,12 +11,8 @@ URL_FINANCEIRO = "/financeiro"
   end
 
   get "assessoria/index"
-
   get "servicos/index"
-
   get "cursos/index"
-
-  root :to => "dashboard#index"
 
   controller :sessions do
     get  "/login", :action => :new, :as => :login
@@ -24,6 +22,12 @@ URL_FINANCEIRO = "/financeiro"
 
   controller :dashboard do
     get  "/dashboard", :action => :index, :as => :dashboard
+  end
+
+  controller :release do
+    post   "/release", :action => :create, :as => :releases
+    put    "/release", :action => :update
+    delete "/release", :action => :destroy
   end
 
   resources :users

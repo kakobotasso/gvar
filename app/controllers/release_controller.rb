@@ -1,49 +1,10 @@
 class ReleaseController < ApplicationController
-  before_filter :require_logged_Release && :require_role_for_Release
-  helper_method :roles
-
-  # GET /Releases
-  # GET /Releases.json
-  def index
-    @releases = Release.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @releases }
-    end
-  end
-
-  # GET /Releases/1
-  # GET /Releases/1.json
-  def show
-    @release = Release.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @release }
-    end
-  end
-
-  # GET /Releases/new
-  # GET /Releases/new.json
-  def new
-    @release = Release.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @release }
-    end
-  end
-
-  # GET /Releases/1/edit
-  def edit
-    @release = Release.find(params[:id])
-  end
-
+  # before_filter :require_logged_release && :require_role_for_release
+  
   # POST /Releases
   # POST /Releases.json
   def create
-    @release = Release.new(params[:Release])
+    @release = Release.new(params[:release])
 
     respond_to do |format|
       if @release.save
@@ -62,7 +23,7 @@ class ReleaseController < ApplicationController
     @release = Release.find(params[:id])
 
     respond_to do |format|
-      if @release.update_attributes(params[:Release])
+      if @release.update_attributes(params[:release])
         format.html { redirect_to @release, notice: 'Release was successfully updated.' }
         format.json { head :no_content }
       else
@@ -84,8 +45,4 @@ class ReleaseController < ApplicationController
     end
   end
 
-  private
-  def roles
-    @roles ||= Role.scoped
-  end
 end
