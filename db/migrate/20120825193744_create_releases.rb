@@ -1,16 +1,20 @@
 class CreateReleases < ActiveRecord::Migration
-  def change
+  def up
     create_table :releases do |t|
-      t.string :code
-      t.string :name
-      t.integer :category_id
-      t.decimal :total_price
-      t.integer :number_instalments
-      t.boolean :first_paid
-      t.boolean :fixed_payment
-      t.text :description
+      t.string  :code               # Codigo no formato XYYYYNNNNN
+      t.string  :name               # Nome do lancamento
+      t.integer :category_id        # Categoria do lancamento
+      t.decimal :total_amount       # Total do lancamento
+      t.integer :number_instalments # Numero de parcelas
+      t.boolean :first_paid         # Primeira paga?   
+      t.boolean :fixed_payment      # Parcela fixa?
+      t.text    :description        # Descricao do lancamento
 
       t.timestamps
     end
+  end
+
+  def down
+    drop_table :releases
   end
 end
