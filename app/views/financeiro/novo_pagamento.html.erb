@@ -11,8 +11,8 @@
 	<%= r.label :category_id %>
 	<%= r.text_field :category_id %><br />
 	
-	<%= r.label :total_price %>
-	<%= r.text_field :total_price %><br />
+	<%= r.label :total_amount %>
+	<%= r.text_field :total_amount %><br />
 	
 	<%= r.label :number_instalments %>
 	<%= r.text_field :number_instalments %><br />
@@ -31,18 +31,14 @@
 	<%  (1..2).each do |number_instalment| %>
 		<%= r.fields_for :instalments do |i| %>
 		    <%= i.hidden_field :number, :value => number_instalment %><br />
-
-		    <%= i.label :name %>
-		    <%= i.text_field :name %><br />
-
 		    <%= i.label :expiration_date %>
 		    <%= i.text_field :expiration_date %><br />
 
 		    <%= i.label :status %>
 		    <%= i.text_field :status %><br />
 
-		    <%= i.label :price %>
-		    <%= i.text_field :price %><br />
+		    <%= i.label :amount %>
+		    <%= i.text_field :amount %><br />
 
 		    <%= i.label :payment %>
 		    <%= i.text_field :payment %><br />

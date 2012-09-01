@@ -1,5 +1,5 @@
 class Release < ActiveRecord::Base
-  attr_accessible :category_id, :code, :description, :first_paid, :fixed_payment, :name, :number_instalments, :total_price, :instalments_attributes
+  attr_accessible :category_id, :code, :description, :first_paid, :fixed_payment, :name, :number_instalments, :total_amount, :instalments_attributes
 
   has_many :instalments
 

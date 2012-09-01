@@ -16,10 +16,11 @@ ActiveRecord::Schema.define(:version => 20120825194314) do
   create_table "instalments", :force => true do |t|
     t.integer  "release_id"
     t.integer  "number"
-    t.string   "name"
     t.datetime "expiration_date"
+    t.datetime "payment_at"
+    t.decimal  "amount"
+    t.decimal  "amount_paid"
     t.integer  "status"
-    t.decimal  "price"
     t.integer  "payment"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
@@ -29,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20120825194314) do
     t.string   "code"
     t.string   "name"
     t.integer  "category_id"
-    t.decimal  "total_price"
+    t.decimal  "total_amount"
     t.integer  "number_instalments"
     t.boolean  "first_paid"
     t.boolean  "fixed_payment"

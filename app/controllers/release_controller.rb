@@ -8,10 +8,10 @@ class ReleaseController < ApplicationController
 
     respond_to do |format|
       if @release.save
-        format.html { redirect_to @release, notice: 'Release was successfully created.' }
+        format.html { redirect_to financeiro_index_path, notice: 'Lancamento cadastrado com sucesso.' }
         format.json { render json: @release, status: :created, location: @release }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to novo_pagamento_path }
         format.json { render json: @release.errors, status: :unprocessable_entity }
       end
     end
