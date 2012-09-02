@@ -33,16 +33,4 @@ class ReleaseController < ApplicationController
     end
   end
 
-  # DELETE /Releases/1
-  # DELETE /Releases/1.json
-  def destroy
-    @release = Release.find(params[:id])
-    @release.destroy
-
-    respond_to do |format|
-      format.html { redirect_to Releases_url }
-      format.json { head :no_content }
-    end
-  end
-
 end
