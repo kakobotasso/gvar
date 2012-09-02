@@ -5,8 +5,12 @@ class FinanceiroController < ApplicationController
   end
 
   def novo_pagamento
-  	@release = Release.new
+  	@release  = Release.new
   	@release.instalments.build
+  	
+  	@status     = Status::FINANCIAL
+  	@payments   = Payment::OPTIONS
+  	@categories = Category::OPTIONS
   end
 
 end
