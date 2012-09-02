@@ -2,50 +2,91 @@
 <p>Pagamento</p>
 
 <%= form_for(@release) do |r| %>
-	<%= r.label :code %>
-	<%= r.text_field :code %><br />
+  <%= r.label :code %>
+  <%= r.text_field :code %><br />
 
-	<%= r.label :name %>
-	<%= r.text_field :name %><br />
-	
-	<%= r.label :category_id %>
-	<%= r.text_field :category_id %><br />
-	
-	<%= r.label :total_amount %>
-	<%= r.text_field :total_amount %><br />
-	
-	<%= r.label :number_instalments %>
-	<%= r.text_field :number_instalments %><br />
-	
-	<%= r.label :first_paid %>
-	<%= r.check_box :first_paid %><br />
-	
-	<%= r.label :fixed_payment %>
-	<%= r.check_box :fixed_payment %><br />
-	
-	<%= r.label :description %>
-	<%= r.text_area :description %><br />
+  <%= r.label :name %>
+  <%= r.text_field :name %><br />
+  
+  <%= r.label :category_id %>
+  <%= select_tag :category_id, options_for_select(@categories) %><br />
+  
+  <%= r.label :total_amount %>
+  <%= r.text_field :total_amount %><br />
+  
+  <%= r.label :number_instalments %>
+  <%= r.text_field :number_instalments %><br />
+  
+  <%= r.label :first_paid %>
+  <%= r.check_box :first_paid %><br />
+  
+  <%= r.label :fixed_payment %>
+  <%= r.check_box :fixed_payment %><br />
+  
+  <!--
+  Ver como é gerado esse HTML e alterar na parcela..
 
-	<!-- Testes para gerar duas parcelas fixas, trocar por ajax + partials -->
-	<% # (1..number_instalments).each  ...  %>
-	<%  (1..2).each do |number_instalment| %>
-		<%= r.fields_for :instalments do |i| %>
-		    <%= i.hidden_field :number, :value => number_instalment %><br />
-		    <%= i.label :expiration_date %>
-		    <%= i.text_field :expiration_date %><br />
+  <input id="release_number_instalments" name="release[number_instalments]" size="30" type="text">
+  <input id="release_instalments_attributes_0_amount" name="release[instalments_attributes][0][amount]" size="30" type="text">
 
-		    <%= i.label :status %>
-		    <%= i.text_field :status %><br />
+  <select id="status_id" name="status_id"><option value="0">Pendente</option>
+  
+   Testes para gerar duas parcelas fixas, trocar por ajax + partials -->
+  <% number_instalments = 3 %>
+  <% # (1..number_instalments).each  ...  %>
+  <table border="1">
+    <tr>
+      <th>No</th>
+      <th>Valor Parcela</th>
+      <th>Data de Vencimento</th>
+      <th>Data de  Pagamento</th>
+      <th>Valor Pago</th>
+      <th>Forma de Pagamento</th>
+      <th>Status</th>
+    </tr>
+  
+  <% (1..number_instalments).each do |number_instalment| %>
+    <tr>
+      <%= r.fields_for :instalments do |i| %>
+        <td>
+          <%= i.hidden_field :number, :value => number_instalment %>
+          <%= "#{number_instalment}/#{number_instalment}" %>
+        </td>
+        <td>
+          <%= i.label :amount %>
+          <%= i.text_field :amount %>
+        </td>
+        <td>
+          <%= i.label :expiration_date %>
+          <%= i.text_field :expiration_date %>
+        </td>
+        <td>
+          <%= i.label :paid_at %>
+          <%= i.text_field :paid_at %>
+        </td>
 
-		    <%= i.label :amount %>
-		    <%= i.text_field :amount %><br />
+        <td>
+          <%= i.label :amount_paid %>
+          <%= i.text_field :amount_paid %>
+        </td>
+        <td>
+          <%= i.label :status %>
+          <%= select_tag :status_id, options_for_select(@status) %>
+        </td>
+        <td>
+          <%= i.label :payment %>
+          <%= select_tag :payment_id, options_for_select(@payments) %>
+        </td>
+      <% end %>
+    </tr>
+  <%  end %>
 
-		    <%= i.label :payment %>
-		    <%= i.text_field :payment %><br />
-	    <% end %>
-	<%  end %>
+  </table>
 
-	<%= r.submit 'Salvar Pagamento' %>
+  <%= r.label :description %>
+  <%= r.text_area :description %><br />
+
+  <%= r.submit 'Salvar Pagamento' %>
 
 <% end %>
 
