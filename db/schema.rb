@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(:version => 20120825194314) do
     t.integer  "release_id"
     t.integer  "number"
     t.datetime "expiration_date"
-    t.datetime "payment_at"
+    t.datetime "paid_at"
     t.decimal  "amount"
     t.decimal  "amount_paid"
-    t.integer  "status"
-    t.integer  "payment"
+    t.integer  "status_id"
+    t.integer  "payment_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
