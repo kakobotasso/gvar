@@ -1,17 +1,44 @@
-<div id="preHeader">
-	<div id="header" class="main container">
-
-	  <% if logged_in? %>
-	    <p>
-		 <%= link_to "Logout", logout_path %> 
-		  
-		 <%= link_to "Editar perfil", edit_user_path(current_user) %>
-		 
-		 <% if current_user.have_role?(:admin) %>
-		 	<span>Ui, é administrador...</span>
-		 <% end %>
-	    </p>
-	  <% end %>
-
-	</div>
-</div>
+<% if logged_in? %>
+<div id="headerInternas">
+            <div class="wrapperInternas">
+                <div id="logoInternas">
+                    <%= link_to image_tag("logo-internas.gif", :alt => ""), '/' %>
+                </div>
+                
+                <div id="menuInternas">
+                    <ul>
+                        <li><%= link_to "", "/", :id => "home", :title => "Pagina inicial"%></li>
+                        <li><%= link_to "", cursos_index_path, :id => "cursos", :title => "Cursos"%></li>
+                        <li><%= link_to "", servicos_index_path, :id => "servicos", :title => "Servicos"%></li>
+                        <li><%= link_to "", assessoria_index_path, :id => "assessoria", :title => "Assessoria"%></li>
+                        <li><%= link_to "", financeiro_index_path, :id => "financeiro", :title => "Financeiro"%></li>
+                    </ul>
+                </div>
+                
+                <div id="guardaNomeUsuario">
+                    <p>
+                        <span>Nome do usuario</span>
+                        <span class="soPadding"></span>
+                        <span><%= link_to image_tag("icone-configuracoes.png", :alt => ""), 'javascript:void(0);', :id => "btConfig" %></span>
+                    </p>
+                    <div id="escondido">
+                        <ul>
+                            <% if current_user.have_role?(:admin) %>
+                                <li><%= link_to "Controle de Usuarios", users_path %></li>
+                            <% end %>
+                            <li><%= link_to "Editar perfil", edit_user_path(current_user) %></li>
+                            <li><%= link_to "Sair", logout_path %></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="guardaMenuCategoria">
+                <p>
+                    <%= link_to "Item 01", "javascript:void(0);" %> |
+                    <%= link_to "Item 02", "javascript:void(0);" %> | 
+                    <%= link_to "Item 03", "javascript:void(0);" %>
+                </p>
+            </div>
+        </div>
+<% end %>

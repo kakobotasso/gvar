@@ -14,17 +14,41 @@
 //= require jquery_ujs
 //= require_tree .
 $(function(){
-	$("input").resetDefaultValue();
+    var url;
+    $(".clear").resetDefaultValue();
+        
+    $("#btConfig").click(function(){
+        if( !$(this).hasClass("aberto") ){
+            $(this).addClass("aberto");
+            $("#escondido").slideDown(500);
+        }else{
+            $(this).removeClass("aberto");
+            $("#escondido").slideUp(500);
+        }
+    });
+    
+    try{
+        url = location.pathname.split('/')[1];
+        $("#menuInternas ul li").each(function(){
+            if( url == $(this).find('a').attr('id') ){
+                $(this).find('a').addClass('marcado');
+            }
+        });
+    }catch(err){}
 });
 
 jQuery.fn.resetDefaultValue = function() {
-	function _clearDefaultValue() {
-		var _$ = $(this);
-		if ( _$.val() == this.defaultValue ) { _$.val(''); }
-	};
-	function _resetDefaultValue() {
-		var _$ = $(this);
-		if ( _$.val() == '' ) { _$.val(this.defaultValue); }
-	};
-	return this.click(_clearDefaultValue).focus(_clearDefaultValue).blur(_resetDefaultValue);
+    function _clearDefaultValue() {
+        var _$ = $(this);
+        if ( _$.val() == this.defaultValue ) {
+            _$.val('');
+        }
+    };
+    function _resetDefaultValue() {
+        var _$ = $(this);
+        if ( _$.val() == '' ) {
+            _$.val(this.defaultValue);
+        }
+    };
+    return this.click(_clearDefaultValue).focus(_clearDefaultValue).blur(_resetDefaultValue);
 }

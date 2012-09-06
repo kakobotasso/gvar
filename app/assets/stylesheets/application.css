@@ -15,7 +15,8 @@
 	border:0px;
 	margin:0px;
 	padding:0px;
-	outline:none;
+	outline:0;
+        font-family:Arial;
 }
 
 body{
@@ -24,12 +25,15 @@ body{
 
 ul, ul li{ list-style-type:none; }
 
+iframe{
+    display:none!important;
+}
+
 #geralLogin{
 	float:left;
 	width:100%;
-	height:680px;
-	position:relative;
-	background:#dedede url('bg.jpg') no-repeat center 0px;
+	/*position:relative;*/
+	background:#dedede;
 }
 
 #geralLogin #centralizaLogin{
@@ -82,15 +86,19 @@ ul, ul li{ list-style-type:none; }
 /* MENU OPCOES */
 #geralLogin #centralizaLogin.opcoes{ width:642px; }
 
-#opcoesLogin{
+#contentInternas .wrapperInternas #opcoesLogin{
 	float:left;
 	padding:10px 0px 0px 0px;
 }
 
-#opcoesLogin ul{ float:left; }
+#contentInternas .wrapperInternas #opcoesLogin ul{
+    float:left;
+    width:640px;
+}
 
-#opcoesLogin ul li{
+#contentInternas .wrapperInternas #opcoesLogin ul li{
 	float:left;
+        width:150px;
 	padding:0px 5px;
 }
 .warning  {
@@ -118,4 +126,269 @@ ul, ul li{ list-style-type:none; }
 	float:left;
 display:inline;
 margin:0px 10px;
+}
+
+#bodyInternas{
+    background-image:url('bg-topo.gif');
+    background-repeat:repeat-x;
+}
+
+.wrapperInternas{
+    width:950px;
+    margin:0 auto;
+}
+
+#headerInternas{
+    float:left;
+    width:100%;
+    height:105px;
+}
+
+#headerInternas #logoInternas{
+    float:left;
+    padding:15px 0px 0px 25px;
+}
+
+#headerInternas #menuInternas{
+    float:left;
+    background:url("bg-menu-topo.gif") no-repeat 0px 0px;
+    width:200px;
+    height:31px;
+    display:inline;
+    margin:23px 0px 0px 38px;
+}
+
+#headerInternas #menuInternas ul{
+    float:left;
+    padding:2px 0px 0px 10px; 
+}
+
+#headerInternas #menuInternas ul li{
+    float:left;
+    padding:0px 2px 0px 0px;
+}
+
+#headerInternas #menuInternas ul li a{
+    float:left;
+    width:34px;
+    height:27px;
+    text-align:center;
+}
+
+#headerInternas #menuInternas ul li a#home{ background:url("bt_home_cinza.png") no-repeat center center; }
+#headerInternas #menuInternas ul li a#home.marcado,
+#headerInternas #menuInternas ul li a#home:hover{ background:#aaaaab url("bt_home_branco.png") no-repeat center center; }
+
+#headerInternas #menuInternas ul li a#cursos{ background:url("bt_cursos_cinza.png") no-repeat center center; }
+#headerInternas #menuInternas ul li a#cursos.marcado,
+#headerInternas #menuInternas ul li a#cursos:hover{ background:#00689b url("bt_cursos_branco.png") no-repeat center center; }
+
+#headerInternas #menuInternas ul li a#servicos{ background:url("bt_servicos_cinza.png") no-repeat center center; }
+#headerInternas #menuInternas ul li a#servicos.marcado,
+#headerInternas #menuInternas ul li a#servicos:hover{ background:#9c0003 url("bt_servicos_branco.png") no-repeat center center; }
+
+#headerInternas #menuInternas ul li a#assessoria{ background:url("bt_assessoria_cinza.png") no-repeat center center; }
+#headerInternas #menuInternas ul li a#assessoria.marcado,
+#headerInternas #menuInternas ul li a#assessoria:hover{ background:#ff3b01 url("bt_assessoria_branco.png") no-repeat center center; }
+
+#headerInternas #menuInternas ul li a#financeiro{ background:url("bt_financeiro_cinza.png") no-repeat center center; }
+#headerInternas #menuInternas ul li a#financeiro.marcado,
+#headerInternas #menuInternas ul li a#financeiro:hover{ background:#007200 url("bt_financeiro_branco.png") no-repeat center center; }
+
+#headerInternas #guardaCampoBusca{
+    float:left;
+    padding:23px 0px 0px 16px;
+}
+
+#headerInternas #guardaCampoBusca input#btPesquisar{
+    float:left;
+    width:66px;
+    height:27px;
+    background:#2394cc;
+    border:1px solid #dadada;
+    color:#fff;
+    display:inline;
+    margin:0px 4px 0px 4px;
+    font-size:11px;
+}
+
+#headerInternas #guardaCampoBusca input#inputBuscas{
+    float:left;
+    border:1px solid #dadada;
+    width:273px;
+    background:#fff;
+    padding:5px 5px 5px 5px;
+    color:#aaaaab;
+    font-size:13px;
+}
+
+#headerInternas #guardaNomeUsuario{
+    float:right;
+    position:relative;
+    padding:25px 0px 0px 0px;
+}
+
+#headerInternas #guardaNomeUsuario #escondido{
+    float:left;
+    position:absolute;
+    top:40px;
+    left:38px;
+    background:#8cb1c3;
+    border:1px solid #004263;
+    display:none;
+}
+
+#headerInternas #guardaNomeUsuario #escondido ul{
+    float:left;
+    width:170px;
+}
+
+#headerInternas #guardaNomeUsuario #escondido ul li{
+    float:left;
+}
+
+#headerInternas #guardaNomeUsuario #escondido ul li a{
+    float:left;
+    width:150px;
+    padding:5px 10px;
+    color:#eee;
+    text-decoration:none;
+    font-size:12px;
+}
+
+#headerInternas #guardaNomeUsuario #escondido ul li a:hover{
+    background:#bbe7fd;
+    color:#000;
+}
+
+#headerInternas #guardaNomeUsuario p{
+    float:right;
+    font-size:12px;
+}
+
+#headerInternas #guardaNomeUsuario p span{
+    float:left;
+}
+
+#headerInternas #guardaNomeUsuario p span,
+#headerInternas #guardaNomeUsuario p span a{
+    color:#000;
+    text-decoration:none;
+}
+
+#headerInternas #guardaNomeUsuario p span a#btConfig{
+    position:relative;
+    top:-4px;
+}
+
+#headerInternas #guardaNomeUsuario p span.soPadding{
+    width:1px;
+    background:#000;
+    display:inline;
+    margin:0px 5px;
+    padding:8px 0px;
+}
+
+#headerInternas #guardaMenuCategoria{
+    float:left;
+    width:100%;
+    text-align:center;
+    padding:13px 0px 0px 0px;
+}
+
+#headerInternas #guardaMenuCategoria p a,
+#headerInternas #guardaMenuCategoria p{
+    color:#000;
+    text-decoration:none;
+    font-size:16px;
+}
+
+/*
+    CONTENT
+*/
+#contentInternas{
+    float:left;
+    width:100%;
+    padding:20px 0px 0px 0px;
+}
+
+#contentInternas h1{
+    float:left;
+    width:100%;
+    padding:0px 0px 20px 0px;
+}
+
+#contentInternas ul{
+    float:left;
+    width:520px;
+}
+
+#contentInternas ul li{
+    float:left;
+    width:100%;
+    padding:0px 0px 20px 0px;
+}
+
+#contentInternas ul li .input{
+    float:left;
+    border:1px solid #ccc;
+    padding:5px 10px;
+}
+
+#contentInternas ul li .inputPeq{ width:150px; }
+#contentInternas ul li .inputMedio{ width:250px; }
+#contentInternas ul li .inputGde{ width:500px; }
+
+#contentInternas ul li #guardaCheckbox{
+    float:left;
+    width:100%;
+}
+
+#contentInternas ul li #guardaCheckbox label{
+    float:left;
+    width:100%;
+    display:inline;
+    margin:0px 0px 2px 0px;
+}
+
+#contentInternas ul li #guardaCheckbox label span{
+    text-transform: capitalize;
+}
+
+#contentInternas a.btEnviarForm,
+#contentInternas .btEnviarForm input,
+#contentInternas a#btEnviarForm,
+#contentInternas #btEnviarForm input{
+    float:left;
+    padding:4px 10px;
+    background:#24c803;
+    border:1px solid #1a9203;
+    color:#fff;
+    text-decoration:none;
+}
+
+#contentInternas .btVoltarForm,
+#contentInternas #btVoltarForm{
+    float:left;
+    padding:4px 10px;
+    background:#8cb1c3;
+    border:1px solid #0a5d87;
+    display:inline;
+    margin:0px 5px;
+    text-decoration:none;
+    font-size:13px;
+    color:#000;
+}
+
+#contentInternas .btVoltarExcluirForm,
+#contentInternas #btVoltarExcluirForm{
+    float:left;
+    padding:4px 10px;
+    background:#f30808;
+    border:1px solid #a50808;
+    display:inline;
+    margin:0px 5px;
+    text-decoration:none;
+    font-size:13px;
+    color:#fff;
 }

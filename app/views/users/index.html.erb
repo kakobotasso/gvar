@@ -1,11 +1,14 @@
-<h1>Listing users</h1>
+<!-- TITLE -->
+<% content_for :title do %> Usuarios - Sistema Grupo Vida, Amor e Riso! <% end %>
+<!-- / TITLE -->
+
+<h1>Usuarios</h1>
 
 <table>
   <tr>
-    <th>Login</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th></th>
+    <th>Usuario</th>
+    <th>Nome</th>
+    <th>E-mail</th>
     <th></th>
     <th></th>
   </tr>
@@ -15,13 +18,12 @@
     <td><%= user.login %></td>
     <td><%= user.name %></td>
     <td><%= user.email %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Editar', edit_user_path(user), class: "btVoltarForm" %></td>
+    <td><%= link_to 'Deletar', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btVoltarExcluirForm" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to '+ Novo usuario', new_user_path, class: "btEnviarForm" %>
