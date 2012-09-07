@@ -394,9 +394,30 @@ margin:0px 10px;
     padding:5px 10px;
 }
 
+#contentInternas ul li .select{
+    float:left;
+    border:1px solid #ccc;
+    padding:5px 5px;
+}
+
+#contentInternas ul li .textarea{
+    float:left;
+    border:1px solid #ccc;
+    height:100px;
+    padding:5px 5px;
+}
+
 #contentInternas ul li .inputPeq{ width:150px; }
 #contentInternas ul li .inputMedio{ width:250px; }
 #contentInternas ul li .inputGde{ width:500px; }
+
+#contentInternas ul li .selectPeq{ width:160px; }
+#contentInternas ul li .selectMedio{ width:260px; }
+#contentInternas ul li .selectGde{ width:510px; }
+
+#contentInternas ul li .textareaPeq{ width:150px; }
+#contentInternas ul li .textareaMedio{ width:250px; }
+#contentInternas ul li .textareaGde{ width:500px; }
 
 #contentInternas ul li #guardaCheckbox{
     float:left;
@@ -461,6 +482,10 @@ margin:0px 10px;
     display:none;
 }
 
+#contentInternas #guardaResultadoPesquisa.parcelas{
+    display:block;
+}
+
 #contentInternas #guardaResultadoPesquisa h2{
     float:left;
     padding:0px 0px 10px 0px;
@@ -492,6 +517,4 @@ margin:0px 10px;
     padding-left:50px;
 }
 
-#contentInternas .escondidoPesquisaAvancada{
-    display:none;
-}
+#contentInternas .escondidoPesquisaAvancada{ display:none; }
