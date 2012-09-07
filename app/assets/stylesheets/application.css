@@ -458,6 +458,7 @@ margin:0px 10px;
 #contentInternas #guardaResultadoPesquisa{
     float:left;
     width:100%;
+    display:none;
 }
 
 #contentInternas #guardaResultadoPesquisa h2{
@@ -489,4 +490,8 @@ margin:0px 10px;
 
 #contentInternas #guardaResultadoPesquisa table span.centralizaBts{
     padding-left:50px;
+}
+
+#contentInternas .escondidoPesquisaAvancada{
+    display:none;
 }

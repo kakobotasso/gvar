@@ -17,6 +17,7 @@ $(function(){
     var url;
     $(".clear").resetDefaultValue();
         
+    /* BOX OPCOES USUARIO */
     $("#btConfig").click(function(){
         if( !$(this).hasClass("aberto") ){
             $(this).addClass("aberto");
@@ -26,7 +27,9 @@ $(function(){
             $("#escondido").slideUp(500);
         }
     });
+    /* / BOX OPCOES USUARIO */
     
+    /* MARCANDO O MENU CONFORME A URL */
     try{
         url = location.pathname.split('/')[1];
         $("#menuInternas ul li").each(function(){
@@ -35,8 +38,29 @@ $(function(){
             }
         });
     }catch(err){}
+    /* / MARCANDO O MENU CONFORME A URL */
+
+    /* PESQUISA AVANCADA */
+    $("#btPesquisaAvancada").click(function(){
+        if( !$(this).hasClass('pesqAvanc') ){
+            $(".escondidoPesquisaAvancada").slideDown(500);
+            $(this).html("Pesquisa normal").css("paddingLeft","14px").addClass('pesqAvanc');
+        }else{
+            $(".escondidoPesquisaAvancada").slideUp(500);
+            $(this).html("Pesquisa avancada").css("paddingLeft","0px").removeClass('pesqAvanc');
+        }
+    });
+    /* / PESQUISA AVANCADA */
+
+    /* REALIZA A PESQUISA */
+    $("#btRealizarPesquisa").click(function(){
+        $("#guardaResultadoPesquisa").slideDown(500);
+        return false;
+    });
+    /* / REALIZA A PESQUISA */
 });
 
+/* PLUGIN resetDefaultValue */
 jQuery.fn.resetDefaultValue = function() {
     function _clearDefaultValue() {
         var _$ = $(this);
@@ -52,3 +76,4 @@ jQuery.fn.resetDefaultValue = function() {
     };
     return this.click(_clearDefaultValue).focus(_clearDefaultValue).blur(_resetDefaultValue);
 }
+/* / PLUGIN resetDefaultValue */

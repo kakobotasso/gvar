@@ -7,10 +7,24 @@
 <div id="guardaPesquisa">
   <%= form_for(@user = '') do |f| %>
     <ul>
-      <li class="noPaddingHomes"> <%= f.text_field :login, :class => "inputGde input" %> </li>
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoNome">Nome</label>
+        <%= f.text_field :login, :class => "inputGde input", :id => 'campoNome' %>
+      </li>
+      
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoNome">Login</label>
+        <%= f.text_field :login, :class => "inputGde input", :id => 'campoNome' %>
+      </li>
+
+      <li class="noPaddingHomes">
+        <label for="campoNome" class="escondidoPesquisaAvancada">E-mail</label>
+        <%= f.text_field :login, :class => "inputGde input", :id => 'campoNome' %>
+      </li>
+
       <li class="liPesquisaAvancada">
-        <%= link_to 'Pesquisa avancada', 'javascript:void(0);', :class => 'pesquisaAvancada' %>
-        <%= f.submit 'Pesquisar', :class => 'btEditarForm' %>
+        <%= link_to 'Pesquisa avancada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
+        <%= f.submit 'Pesquisar', :class => 'btEditarForm', :id => 'btRealizarPesquisa' %>
       </li>
     </ul>
   <% end %>
@@ -24,15 +38,7 @@
   <% @users.each do |user| %>
     <p>
       <span><%= user.name %></span> 
-      <%= link_to 'Visualizar', user, :class => 'btVoltarForm' %>
-    </p>
-    <p>
-      <span><%= user.name %></span> 
-      <%= link_to 'Visualizar', user, :class => 'btVoltarForm' %>
-    </p>
-    <p>
-      <span><%= user.name %></span> 
-      <%= link_to 'Visualizar', user, :class => 'btVoltarForm' %>
+      <%= link_to 'Visualizar', edit_user_path(user), :class => 'btVoltarForm' %>
     </p>
   <% end %>
 </div>
