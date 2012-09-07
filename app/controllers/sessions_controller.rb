@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      redirect_to dashboard_path, :notice => "Logado com sucesso"
+      redirect_to dashboard_path#, :notice => "Logado com sucesso"
     else
       flash.now[:notice] = "Usuário ou Senha incorretos, tente novamente."
       render :new

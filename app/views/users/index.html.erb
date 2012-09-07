@@ -4,26 +4,61 @@
 
 <h1>Usuarios</h1>
 
-<table>
-  <tr>
-    <th>Usuario</th>
-    <th>Nome</th>
-    <th>E-mail</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.login %></td>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-    <td><%= link_to 'Editar', edit_user_path(user), class: "btVoltarForm" %></td>
-    <td><%= link_to 'Deletar', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btVoltarExcluirForm" %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<div id="guardaPesquisa">
+  <%= form_for(@user = '') do |f| %>
+    <ul>
+      <li class="noPaddingHomes"> <%= f.text_field :login, :class => "inputGde input" %> </li>
+      <li class="liPesquisaAvancada">
+        <%= link_to 'Pesquisa avancada', 'javascript:void(0);', :class => 'pesquisaAvancada' %>
+        <%= f.submit 'Pesquisar', :class => 'btEditarForm' %>
+      </li>
+    </ul>
+  <% end %>
 
 <%= link_to '+ Novo usuario', new_user_path, class: "btEnviarForm" %>
+
+</div>
+
+<div id="guardaAtividadesRecentes">
+  <h2>Ultimos usuarios</h2>
+  <% @users.each do |user| %>
+    <p>
+      <span><%= user.name %></span> 
+      <%= link_to 'Visualizar', user, :class => 'btVoltarForm' %>
+    </p>
+    <p>
+      <span><%= user.name %></span> 
+      <%= link_to 'Visualizar', user, :class => 'btVoltarForm' %>
+    </p>
+    <p>
+      <span><%= user.name %></span> 
+      <%= link_to 'Visualizar', user, :class => 'btVoltarForm' %>
+    </p>
+  <% end %>
+</div>
+
+<div id="guardaResultadoPesquisa">
+  <h2>Resultado da pesquisa</h2>
+
+  <table cellspadding="0" cellspacing="0" width="100%">
+    <tr border="0">
+      <th width="20%"><span>Usuario</span></th>
+      <th width="20%"><span>Nome</span></th>
+      <th width="20%"><span>E-mail</span></th>
+      <th width="20%"></th>
+      <th width="20%"></th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td width="20%"><span><%= user.login %></span></td>
+        <td width="20%"><span><%= user.name %></span></td>
+        <td width="20%"><span><%= user.email %></span></td>
+        <!-- <td>< link_to 'Show', user %></td> -->
+        <td width="20%"><span class="centralizaBts"><%= link_to 'Editar', edit_user_path(user), class: "btEditarForm" %></span></td>
+        <td width="20%"><span class="centralizaBts"><%= link_to 'Deletar', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btVoltarExcluirForm" %></span></td>
+      </tr>
+    <% end %>
+  </table>
+
+</div>
