@@ -1,5 +1,6 @@
 class ServicosController < ApplicationController
-  before_filter :require_logged_user && :require_role_for_user
+  require_logged_user
+  require_role_for_servico
 
   def index
   end

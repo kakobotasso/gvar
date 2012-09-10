@@ -1,5 +1,6 @@
 class AssessoriaController < ApplicationController
-  before_filter :require_logged_user && :require_role_for_user
+  require_logged_user
+  require_role_for_assessoria
 
   def index
     # require 'pry'; binding.pry

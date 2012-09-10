@@ -1,6 +1,6 @@
 class CursosController < ApplicationController
-  before_filter :require_logged_user && :require_role_for_user
-
+  require_logged_user
+  require_role_for_curso
   def index
   end
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_logged_user && :require_role_for_user
+  require_logged_user
   helper_method :roles
 
   # GET /users

@@ -17,7 +17,7 @@
                 
                 <div id="guardaNomeUsuario">
                     <p>
-                        <span>Nome do usuario</span>
+                        <span><%= current_user.name %></span>
                         <span class="soPadding"></span>
                         <span><%= link_to image_tag("icone-configuracoes.png", :alt => ""), 'javascript:void(0);', :id => "btConfig" %></span>
                     </p>

@@ -22,10 +22,46 @@ class ApplicationController < ActionController::Base
     redirect_to login_path, :notice => "É necessario estar logado para acessar"
   end
 
-  def require_role_for_user
-    return if current_user.have_role? controller_name.to_sym
-    return if current_user.have_role? :admin
 
+# depois tentar tirar essas duplicacoes 
+# gerando dinamicamente os metodos
+  def self.require_role_for_assessoria
+    return if current_user.have_role?(:assessoria)
+    return if current_user.have_role?(:admin)
+
+    redirect_to_dashboard
+  end
+
+  def self.require_role_for_servico
+    return if current_user.have_role?(:servico)
+    return if current_user.have_role?(:admin)
+
+    redirect_to_dashboard
+  end
+
+  def self.require_role_for_pagamento
+    return if current_user.have_role?(:pagamento)
+    return if current_user.have_role?(:admin)
+
+    redirect_to_dashboard
+  end
+
+  def self.require_role_for_recebimento
+    return if current_user.have_role?(:recebimento)
+    return if current_user.have_role?(:admin)
+
+    redirect_to_dashboard
+  end
+
+  def self.require_role_for_curso
+    return if current_user.have_role?(:curso)
+    return if current_user.have_role?(:admin)
+
+    redirect_to_dashboard
+  end
+
+  def redirect_to_dashboard
     redirect_to dashboard_path, :notice => "Você não tem acesso a esse modulo."
   end
+
 end
