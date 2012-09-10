@@ -23,9 +23,13 @@ class ApplicationController < ActionController::Base
   end
 
 
-# depois tentar tirar essas duplicacoes 
+# depois tentar tirar essas duplicacoes
 # gerando dinamicamente os metodos
   def self.require_role_for_assessoria
+    before_filter :require_role_for_assessoria
+  end
+
+  def require_role_for_assessoria
     return if current_user.have_role?(:assessoria)
     return if current_user.have_role?(:admin)
 
@@ -33,6 +37,10 @@ class ApplicationController < ActionController::Base
   end
 
   def self.require_role_for_servico
+    before_filter :require_role_for_servico
+  end
+
+  def require_role_for_servico
     return if current_user.have_role?(:servico)
     return if current_user.have_role?(:admin)
 
@@ -40,6 +48,10 @@ class ApplicationController < ActionController::Base
   end
 
   def self.require_role_for_pagamento
+    before_filter :require_role_for_pagamento
+  end
+
+  def require_role_for_pagamento
     return if current_user.have_role?(:pagamento)
     return if current_user.have_role?(:admin)
 
@@ -47,6 +59,10 @@ class ApplicationController < ActionController::Base
   end
 
   def self.require_role_for_recebimento
+    before_filter :require_role_for_recebimento
+  end
+
+  def require_role_for_recebimento
     return if current_user.have_role?(:recebimento)
     return if current_user.have_role?(:admin)
 
@@ -54,6 +70,10 @@ class ApplicationController < ActionController::Base
   end
 
   def self.require_role_for_curso
+    before_filter :require_role_for_curso
+  end
+
+  def require_role_for_curso
     return if current_user.have_role?(:curso)
     return if current_user.have_role?(:admin)
 
