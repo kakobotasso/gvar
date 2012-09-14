@@ -22,7 +22,7 @@
 
     <li>
         <label>
-            <span>Nome:</span><br/>
+            <span>Categoria:</span><br/>
             <%= select_tag :category_id, options_for_select(@categories), :class => 'select selectMedio' %>
         </label>
     </li>
@@ -30,14 +30,14 @@
     <li>
         <label>
             <span>Valor total:</span><br/>
-            <%= r.text_field :total_amount, :class => "inputMedio input" %>
+            <%= r.text_field :total_amount, :class => "inputMedio input", :id => "valorTotal", :value => "R$ " %>
         </label>
     </li>
 
     <li>
         <label>
             <span>Numero de parcelas:</span><br/>
-            <%= r.text_field :number_instalments, :class => "inputMedio input" %>
+            <%= r.text_field :number_instalments, :class => "inputMedio input", :id => "numberParcelas" %>
         </label>
     </li>
 
@@ -64,9 +64,9 @@
   <select id="status_id" name="status_id"><option value="0">Pendente</option>
   
    Testes para gerar duas parcelas fixas, trocar por ajax + partials -->
-  <% number_instalments = 3 %>
+  <% number_instalments = 0 %>
   <% # (1..number_instalments).each  ...  %>
-  <table cellspadding="0" cellspacing="0" width="100%">
+  <table cellspadding="0" cellspacing="0" width="100%" id="guardaParcelasGeradas">
     <tr>
       <th width="14%"><span>No</span></th>
       <th width="14%"><span>Valor Parcela</span></th>
@@ -129,3 +129,68 @@
     </li>
 </ul>
 <% end %>
+
+<script type="text/javascript">
+function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;   
+    if((tecla>47 && tecla<58)) return true;
+    else{
+      if (tecla==8 || tecla==0) return true;
+  else  return false;
+    }
+}
+//numberParcelas
+
+  $(function(){
+    var _tr = "";
+
+    var formasPagamento = '';
+    formasPagamento += '<select class="select" id="payment_id" name="payment_id"><option value="0">Dinheiro</option>';
+    formasPagamento += '  <option value="1">Cheque</option>';
+    formasPagamento += '  <option value="2">Cheque-pre</option>';
+    formasPagamento += '  <option value="3">Cartão Debito</option>';
+    formasPagamento += '  <option value="4">Cartão Credito</option>';
+    formasPagamento += '</select>';
+
+    var status = '';
+    status += '<select class="select" id="status_id" name="status_id"><option value="0">Pendente</option>';
+    status += '  <option value="1">Quitado</option>';
+    status += '  <option value="2">Cancelado</option>';
+    status += '  <option value="3">Recebido</option>';
+    status += '</select>';
+
+
+    $("#numberParcelas, #valorTotal").keypress(SomenteNumero);
+    $(".soNumeros").keypress(SomenteNumero);
+
+    $("#numberParcelas").blur(function(){
+      _tr = ' ';
+      var valor = parseFloat($("#valorTotal").val().replace("R$ ",""));
+      if( $(this).val() != "0" && $(this).val() != "" ){
+        var parcelas = parseInt($(this).val());
+        for( var i = 0; i < parcelas; i++ ){
+
+            _tr += '<tr class="generated">';
+            _tr += '  <td width="14%"> <span>'+(i+1)+'/'+parcelas+'</span> <input id="release_instalments_attributes_'+i+'_number" name="release[instalments_attributes]['+i+'][number]" type="hidden" value="'+(i+1)+'"> </td>';
+            
+            _tr += '  <td width="14%"> <span><input class="inputPeq input soNumeros" id="release_instalments_attributes_'+i+'_amount" name="release[instalments_attributes]['+i+'][amount]" size="30" type="text" value="R$ '+(parseFloat(valor/parcelas))+'"></span> </td>';
+
+            _tr += '  <td width="14%"> <span><input class="inputPeq input" id="release_instalments_attributes_'+i+'_expiration_date" name="release[instalments_attributes]['+i+'][expiration_date]" size="30" type="text"></span> </td>';
+
+            _tr += '  <td width="14%"> <span><input class="inputPeq input" id="release_instalments_attributes_'+i+'_paid_at" name="release[instalments_attributes]['+i+'][paid_at]" size="30" type="text"></span> </td>';
+            
+            _tr += '  <td width="14%"> <span><input class="inputPeq input soNumeros" id="release_instalments_attributes_'+i+'_amount_paid" name="release[instalments_attributes]['+i+'][amount_paid]" size="30" type="text"></span> </td>';
+            
+            _tr += '  <td width="14%"> <span>'+formasPagamento+'</span> </td>';
+            
+            _tr += '  <td width="14%"> <span>'+status+'</span> </td>';
+            _tr += '</tr>';
+        }
+        $("#guardaParcelasGeradas tr.generated").remove();
+        $("#guardaParcelasGeradas").append(_tr);
+        $("#guardaParcelasGeradas").slideDown(500);
+      }
+    });
+
+  });
+</script>
