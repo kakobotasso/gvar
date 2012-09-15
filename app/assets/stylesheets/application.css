@@ -128,6 +128,7 @@ iframe{
 }
 
 
+#dashboard #geralLogin,
 #bodyInternas #geralLogin{
     border-radius:20px;
     box-shadow:2px 0px 28px #999;
@@ -183,6 +184,23 @@ iframe{
 }
 
 #geralLogin #centralizaLogin #boxLogin ul li#btLogin a{ float:right; }
+
+#geralLogin #centralizaLogin #boxLogin ul li a#lembraSenha{
+    float:left;
+    display:inline-block;
+    margin:10px 0px 0px 80px;
+    color:#666;
+    font-size:12px;
+}
+
+#geralLogin #centralizaLogin #boxLogin ul li #textoSenha{
+    float:left;
+    width:260px;
+    line-height:110%;
+    text-align:center;
+    font-size:13px;
+    padding:10px 0px 10px 0px;
+}
 
 /* MENU OPCOES */
 #geralLogin #centralizaLogin.opcoes{ width:642px; }

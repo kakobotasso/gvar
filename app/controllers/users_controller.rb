@@ -84,6 +84,10 @@ class UsersController < ApplicationController
     end
   end
 
+  #Alterar senha
+  def alterar_senha
+  end
+
   private
   def roles
     @roles ||= Role.scoped

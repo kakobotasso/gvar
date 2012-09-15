@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield :title %></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="dashboard">
+
+<% if logged_in? %>
+<div id="headerInternas">
+            <div class="wrapperInternas">
+                <div id="guardaNomeUsuario">
+                    <p>
+                        <span><%= current_user.name %></span>
+                        <span class="soPadding"></span>
+                        <span><%= link_to image_tag("icone-configuracoes.png", :alt => ""), 'javascript:void(0);', :id => "btConfig" %></span>
+                    </p>
+                    <div id="escondido">
+                        <ul>
+                            <% if current_user.have_role?(:admin) %>
+                                <li><%= link_to "Controle de Usuarios", users_path %></li>
+                            <% end %>
+                            <li><%= link_to "Editar perfil", edit_user_path(current_user) %></li>
+                            <li><%= link_to "Alterar senha", "/alterar-senha" %></li>
+                            <li><%= link_to "Sair", logout_path %></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+<% end %>
+
+
+        <!-- CONTENT -->
+        <div id="contentInternas">
+            <div class="wrapperInternas">
+                <%= yield %>
+            </div>
+        </div>
+        <!-- / CONTENT -->
+
+</body>
+</html>

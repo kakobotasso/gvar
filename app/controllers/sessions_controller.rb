@@ -23,4 +23,13 @@ class SessionsController < ApplicationController
     reset_session
     redirect_to root_path
   end
+
+  def lembrar_senha
+    # Mensagem erro: E-mail não cadastrado. Por favor informar um e-mail válido
+    #flash[:notice] = "E-mail não cadastrado. Por favor informar um e-mail válido"
+
+    # Mensagem sucesso: Sua nova senha foi enviada para o seu e-mail com sucesso
+    #flash[:notice] = "Sua nova senha foi enviada para o seu e-mail com sucesso"
+  end
+
 end
