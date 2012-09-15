@@ -1,3 +1,4 @@
+# -*- encoding:utf-8 -*-
 class UsersController < ApplicationController
   require_logged_user
   helper_method :roles
@@ -47,7 +48,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to users_path, notice: 'Os dados do usuário foram salvos com sucesso!' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }

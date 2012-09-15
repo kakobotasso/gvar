@@ -14,30 +14,15 @@
 <ul>
     <li>
         <label>
-            <span>Login:</span><br/>
-            <%= f.text_field :login, :class => "inputMedio input" %>
-        </label>
-    </li>
-<!-- decidir o q fazer com isso -->
-    <li>
-        <label>
-            <span>Password:</span><br/>
-            <%= f.password_field :password, :class => "inputMedio input" %>
-        </label>
-    </li>
-<!-- -->
-
-    <li>
-        <label>
             <span>Nome:</span><br/>
-            <%= f.text_field :name, :class => "inputMedio input" %>
+            <%= f.text_field :name, :class => "inputMedio input", :id => "campoNome"%>
         </label>
     </li>
 
     <li>
         <label>
             <span>E-mail:</span><br/>
-            <%= f.text_field :email, :class => "inputMedio input" %>
+            <%= f.text_field :email, :class => "inputMedio input", :id => "campoEmail" %>
         </label>
     </li>
 
@@ -47,7 +32,7 @@
             <% if current_user.have_role? :admin %>
                 <% roles.each do |role|%>
                     <label>
-                    <%= check_box_tag "user[role_ids][]",role.id, @user.have_role?(role.name) %>
+                    <%= check_box_tag "user[role_ids][]",role.id, @user.have_role?(role.name), :class => "campoAcesso" %>
                     <span><%= role.name %><span>
                     </label>
                 <% end %>
@@ -55,9 +40,85 @@
         </div>
     </li>
 
+    <li>
+        <label>
+            <span>Usuario:</span><br/>
+            <%= f.text_field :login, :class => "inputMedio input", :id => "campoUsuario" %>
+        </label>
+    </li>
+    
+    <!-- DECIDIR O QUE FAZER COM ISSO -->
+    <li>
+        <label>
+            <span>Senha:</span><br/>
+            <%= f.password_field :password, :class => "inputMedio input", :id => "campoSenha" %>
+        </label>
+    </li>
+    <!-- / DECIDIR O QUE FAZER COM ISSO -->
+
+    <li>
+        <label>
+            <span>Repetir senha:</span><br/>
+            <input type="password" name="" class="inputMedio input" id="campoRepetirSenha" />
+        </label>
+    </li>
+
     <li id="btEnviarForm">
         <%= f.submit %>
-        <%= link_to 'Voltar', dashboard_path, :id => "btVoltarForm" %>
+        <%= link_to 'Voltar', users_path, :id => "btVoltarForm" %>
     </li>
 </ul>
+
+<script type="text/javascript">
+    $(function(){
+        var regex = /^[a-z0-9_\+-]+(\.[a-z0-9_\+-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*\.([a-z]{2,4})$/;
+        var acesso = false;
+
+        $("#guardaCheckbox .campoAcesso").click(function(){
+            if( !$(this).hasClass("clicou") )
+                $(this).addClass("clicou");
+            else
+                $(this).removeClass("clicou");
+        });
+
+        $("#btEnviarForm input").click(function(){
+
+            $(".campoAcesso").each(function(){
+                if( $(this).hasClass("clicou") )
+                    acesso = true;
+            });
+
+            // VALIDA NOME
+            if( $("#campoNome").val().length > 3 ){
+                // VALIDA EMAIL
+                if( regex.test($("#campoEmail").val()) == true ){
+                    // VALIDA SELECAO DE ACESSOS
+                    if( acesso ){
+                        // VALIDA USUARIO
+                        if( $("#campoUsuario").val().length > 3 ){
+                            // VALIDA SENHAS
+                            if( $("#campoSenha").val() > 5 ){
+                                if( $("#campoSenha").val() == $("#campoRepetirSenha").val() ){
+                                    return true;
+                                }else{
+                                    alert("As senhas devem ser idênticas");
+                                    return false;
+                                }
+                            }else{
+                                alert("Digite uma senha com mais de 5 caracteres");
+                                return false;
+                            }
+                        }
+                    }
+                }else{
+                    alert("E-mail inválido, por favor cadastrar um e-mail válido");
+                    return false;
+                }
+            }
+            alert("Por favor, preencha os campos obrigatórios.")
+            return false;
+        });
+    });
+</script>
+
 <% end %>

@@ -62,7 +62,7 @@
         <td width="20%"><span><%= user.email %></span></td>
         <!-- <td>< link_to 'Show', user %></td> -->
         <td width="20%"><span class="centralizaBts"><%= link_to 'Editar', edit_user_path(user), class: "btEditarForm" %></span></td>
-        <td width="20%"><span class="centralizaBts"><%= link_to 'Deletar', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btVoltarExcluirForm" %></span></td>
+        <td width="20%"><span class="centralizaBts"><%= link_to 'Deletar', user, method: :delete, data: { confirm: 'Deseja realmente exlcuir este usuario do sistema?' }, class: "btVoltarExcluirForm" %></span></td>
       </tr>
     <% end %>
   </table>
