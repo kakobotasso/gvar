@@ -20,7 +20,7 @@
 }
 
 body{
-	background:#dedede;
+	background:#fff;
 }
 
 ul, ul li{ list-style-type:none; }
@@ -33,7 +33,7 @@ iframe{
 	float:left;
 	width:100%;
 	/*position:relative;*/
-	background:#dedede;
+	background:#fff;
 }
 
 /* PADROES */
@@ -43,36 +43,64 @@ iframe{
 #contentInternas #btEnviarForm input{
     float:left;
     padding:4px 10px;
-    background:#24c803;
-    border:1px solid #1a9203;
-    color:#fff;
+    /*background:#24c803;
+    border:1px solid #1a9203;*/
     text-decoration:none;
+    color:#000;
+    border:1px solid #000;
+    background: #a3a3a3; /* Old browsers */
+    background: -moz-linear-gradient(top, #a3a3a3 0%, #d1d1d1 50%, #a3a3a3 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a3a3a3), color-stop(50%,#d1d1d1), color-stop(100%,#a3a3a3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3a3a3', endColorstr='#a3a3a3',GradientType=0 ); /* IE6-9 */
 }
 
 #contentInternas .btVoltarForm,
 #contentInternas #btVoltarForm{
     float:left;
     padding:4px 10px;
-    background:#ffd801;
-    border:1px solid #b39800;
+    /*background:#ffd801;
+    border:1px solid #b39800;*/
     display:inline;
     margin:0px 5px;
     text-decoration:none;
     font-size:13px;
     color:#000;
+    border:1px solid #000;
+    background: #a3a3a3; /* Old browsers */
+    background: -moz-linear-gradient(top, #a3a3a3 0%, #d1d1d1 50%, #a3a3a3 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a3a3a3), color-stop(50%,#d1d1d1), color-stop(100%,#a3a3a3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3a3a3', endColorstr='#a3a3a3',GradientType=0 ); /* IE6-9 */
 }
 
 #contentInternas .btVoltarExcluirForm,
 #contentInternas #btVoltarExcluirForm{
     float:left;
     padding:4px 10px;
-    background:#f30808;
-    border:1px solid #a50808;
+    /*background:#f30808;
+    border:1px solid #a50808;*/
     display:inline;
     margin:0px 5px;
     text-decoration:none;
     font-size:13px;
-    color:#fff;
+    /*color:#fff;*/
+    color:#000;
+    border:1px solid #000;
+    background: #a3a3a3; /* Old browsers */
+    background: -moz-linear-gradient(top, #a3a3a3 0%, #d1d1d1 50%, #a3a3a3 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a3a3a3), color-stop(50%,#d1d1d1), color-stop(100%,#a3a3a3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3a3a3', endColorstr='#a3a3a3',GradientType=0 ); /* IE6-9 */
 }
 
 
@@ -80,14 +108,33 @@ iframe{
 #contentInternas #btEditarForm{
     float:left;
     padding:4px 10px;
-    background:#150278;
-    border:1px solid #0e0345;
+    /*background:#150278;
+    border:1px solid #0e0345;*/
     display:inline;
     margin:0px 5px;
     text-decoration:none;
     font-size:13px;
-    color:#fff;
+    /*color:#fff;*/
+    color:#000;
+    border:1px solid #000;
+    background: #a3a3a3; /* Old browsers */
+    background: -moz-linear-gradient(top, #a3a3a3 0%, #d1d1d1 50%, #a3a3a3 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a3a3a3), color-stop(50%,#d1d1d1), color-stop(100%,#a3a3a3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3a3a3', endColorstr='#a3a3a3',GradientType=0 ); /* IE6-9 */
 }
+
+
+#bodyInternas #geralLogin{
+    border-radius:20px;
+    box-shadow:2px 0px 28px #999;
+    display:inline-block;
+    padding-bottom:50px!important;
+}
+
 /* / PADROES */
 
 #geralLogin #centralizaLogin{
@@ -407,6 +454,7 @@ margin:0px 10px;
     padding:5px 5px;
 }
 
+#contentInternas ul li .inputMenor{ width:100px; }
 #contentInternas ul li .inputPeq{ width:150px; }
 #contentInternas ul li .inputMedio{ width:250px; }
 #contentInternas ul li .inputGde{ width:500px; }
@@ -494,23 +542,23 @@ margin:0px 10px;
 #contentInternas #guardaResultadoPesquisa table{
     float:left;
     width:100%;
-    border:1px solid #008d9e;
+    border:1px solid #E0EEE0;
 }
 
 #contentInternas #guardaResultadoPesquisa table th{
-    background:#00cde5;
+    background:#E0EEE0;
     padding:5px 0px;
 }
 
 #contentInternas #guardaResultadoPesquisa table tr td{
     text-align:left;
     padding:5px 0px;
-    border-top:1px solid #008d9e;
+    border-top:1px solid #E0EEE0;
 }
 
 #contentInternas #guardaResultadoPesquisa table span{
     float:left;
-    padding:3px 0px 3px 5px;
+    padding:3px 15px 4px 15px;
 }
 
 #contentInternas #guardaResultadoPesquisa table span.centralizaBts{

@@ -160,35 +160,39 @@ function SomenteNumero(e){
     status += '</select>';
 
 
-    $("#numberParcelas, #valorTotal").keypress(SomenteNumero);
-    $(".soNumeros").keypress(SomenteNumero);
+    $("#numberParcelas").keypress(SomenteNumero);
+    //$(".soNumeros").keypress(SomenteNumero);
 
     $("#numberParcelas").blur(function(){
       _tr = ' ';
-      var valor = parseFloat($("#valorTotal").val().replace("R$ ",""));
+      var valor = parseFloat($("#valorTotal").val().replace("R$ ","").replace(",","."));
       if( $(this).val() != "0" && $(this).val() != "" ){
-        var parcelas = parseInt($(this).val());
-        for( var i = 0; i < parcelas; i++ ){
+        if( $("#valorTotal").val().length < 5 ){
+          alert("Digite um valor válido");
+        }else{
+          var parcelas = parseInt($(this).val());
+          for( var i = 0; i < parcelas; i++ ){
 
-            _tr += '<tr class="generated">';
-            _tr += '  <td width="14%"> <span>'+(i+1)+'/'+parcelas+'</span> <input id="release_instalments_attributes_'+i+'_number" name="release[instalments_attributes]['+i+'][number]" type="hidden" value="'+(i+1)+'"> </td>';
-            
-            _tr += '  <td width="14%"> <span><input class="inputPeq input soNumeros" id="release_instalments_attributes_'+i+'_amount" name="release[instalments_attributes]['+i+'][amount]" size="30" type="text" value="R$ '+(parseFloat(valor/parcelas))+'"></span> </td>';
+              _tr += '<tr class="generated">';
+              _tr += '  <td width="14%"> <span>'+(i+1)+'/'+parcelas+'</span> <input id="release_instalments_attributes_'+i+'_number" name="release[instalments_attributes]['+i+'][number]" type="hidden" value="'+(i+1)+'"> </td>';
+              
+              _tr += '  <td width="14%"> <span><input class="inputMenor input soNumeros" id="release_instalments_attributes_'+i+'_amount" name="release[instalments_attributes]['+i+'][amount]" size="30" type="text" value="R$ '+(parseFloat(valor/parcelas))+'"></span> </td>';
 
-            _tr += '  <td width="14%"> <span><input class="inputPeq input" id="release_instalments_attributes_'+i+'_expiration_date" name="release[instalments_attributes]['+i+'][expiration_date]" size="30" type="text"></span> </td>';
+              _tr += '  <td width="14%"> <span><input class="inputMenor input" id="release_instalments_attributes_'+i+'_expiration_date" name="release[instalments_attributes]['+i+'][expiration_date]" size="30" type="text"></span> </td>';
 
-            _tr += '  <td width="14%"> <span><input class="inputPeq input" id="release_instalments_attributes_'+i+'_paid_at" name="release[instalments_attributes]['+i+'][paid_at]" size="30" type="text"></span> </td>';
-            
-            _tr += '  <td width="14%"> <span><input class="inputPeq input soNumeros" id="release_instalments_attributes_'+i+'_amount_paid" name="release[instalments_attributes]['+i+'][amount_paid]" size="30" type="text"></span> </td>';
-            
-            _tr += '  <td width="14%"> <span>'+formasPagamento+'</span> </td>';
-            
-            _tr += '  <td width="14%"> <span>'+status+'</span> </td>';
-            _tr += '</tr>';
+              _tr += '  <td width="14%"> <span><input class="inputMenor input" id="release_instalments_attributes_'+i+'_paid_at" name="release[instalments_attributes]['+i+'][paid_at]" size="30" type="text"></span> </td>';
+              
+              _tr += '  <td width="14%"> <span><input class="inputMenor input soNumeros" id="release_instalments_attributes_'+i+'_amount_paid" name="release[instalments_attributes]['+i+'][amount_paid]" size="30" type="text"></span> </td>';
+              
+              _tr += '  <td width="14%"> <span>'+formasPagamento+'</span> </td>';
+              
+              _tr += '  <td width="14%"> <span>'+status+'</span> </td>';
+              _tr += '</tr>';
+          }
+          $("#guardaParcelasGeradas tr.generated").remove();
+          $("#guardaParcelasGeradas").append(_tr);
+          $("#guardaParcelasGeradas").slideDown(500);
         }
-        $("#guardaParcelasGeradas tr.generated").remove();
-        $("#guardaParcelasGeradas").append(_tr);
-        $("#guardaParcelasGeradas").slideDown(500);
       }
     });
 
