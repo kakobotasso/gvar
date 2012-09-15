@@ -538,7 +538,10 @@ margin:0px 10px;
     font-size:14px;
 }
 
-#contentInternas #guardaAtividadesRecentes p span{ float:left; }
+#contentInternas #guardaAtividadesRecentes p span{
+    float:left;
+    padding-right:10px;
+}
 
 #contentInternas #guardaAtividadesRecentes p a{ float:right; }
 
