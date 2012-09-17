@@ -40,25 +40,29 @@
 
   <table cellspadding="0" cellspacing="0" width="100%">
     <tr border="0">
-      <th width="20%"><span>Usuario</span></th>
-      <th width="20%"><span>Nome</span></th>
-      <th width="20%"><span>E-mail</span></th>
-      <th width="20%"></th>
-      <th width="20%"></th>
+      <th width="14%"><span>Codigo</span></th>
+      <th width="14%"><span>No</span></th>
+      <th width="14%"><span>Nome</span></th>
+      <th width="14%"><span>Data Vencimento</span></th>
+      <th width="14%"><span>Status</span></th>
+      <th width="14%"><span>Valor Parcela</span></th>
+      <th width="14%"></th>
     </tr>
 
-    <!-- < @release.each do |user| %>
+    <% @release.each do |rel| %>
       <tr>
-        <td width="20%"><span>< user.login %></span></td>
-        <td width="20%"><span>< user.name %></span></td>
-        <td width="20%"><span>< user.email %></span></td>
-        <!-- <td>< link_to 'Show', user %></td>
-        <td width="20%"><span class="centralizaBts">< link_to 'Editar', edit_user_path(user), class: "btEditarForm" %></span></td>
-        <td width="20%"><span class="centralizaBts">< link_to 'Deletar', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btVoltarExcluirForm" %></span></td>
+        <td width="14%"><span><%= rel.code %></span></td>
+        <td width="14%"><span>< rel.number %></span></td>
+        <td width="14%"><span><%= rel.name %></span></td>
+        <td width="14%"><span>< rel.email %></span></td>
+        <td width="14%"><span>< rel.email %></span></td>
+        <td width="14%"><span>< rel.email %></span></td>
+        <td width="14%"><span><%= link_to "Pagar", "javascript:void(0);", :class => "btVoltarForm" %></span></td>
       </tr>
-    < end %> -->
+    <% end %>
   </table>
 
 </div>
+
 
 
