@@ -14,7 +14,7 @@
             <span>Login</span>
           </li>
           <li class="warning">
-            <%= flash[:notice] %>
+            <%= "<script>alert('#{flash[:notice]}');</script>".html_safe if flash[:notice] %>
           </li>
           <li>
             <%= text_field_tag :login, 'Login', :class => 'inputLogin clear' %>

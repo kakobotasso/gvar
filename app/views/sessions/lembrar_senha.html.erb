@@ -1,0 +1,32 @@
+<!-- TITLE -->
+<% content_for :title do %> Lembrar senha - Sistema GVAR! <% end %>
+<!-- / TITLE -->
+
+<!-- CONTENT -->
+<div id="geralLogin">
+  <div id="centralizaLogin">
+    <div id="logoLogin"><%= image_tag 'logo-login.png', :alt => 'Grupo Vida, Amor e Riso' %></div>
+
+    <div id="boxLogin">
+      <%= form_tag new_password_path do %>
+        <ul>
+          <li>
+            <h2>Lembrar senha</h2>
+            <span id="textoSenha">Para redefinir sua senha, é necessário informar o e-mail para identificação de sua conta e neste e-mail será enviado sua nova senha</span>
+          </li>
+          <li class="warning">
+            <%= flash[:notice] %>
+          </li>
+          <li>
+            <%= text_field_tag :email, '', :class => 'inputLogin clear' %>
+          </li>
+          
+          <li id="btLogin">
+            <%= image_submit_tag('bt-enviar.gif') %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
+<!-- / CONTENT -->

@@ -25,11 +25,25 @@ class SessionsController < ApplicationController
   end
 
   def lembrar_senha
-    # Mensagem erro: E-mail não cadastrado. Por favor informar um e-mail válido
-    #flash[:notice] = "E-mail não cadastrado. Por favor informar um e-mail válido"
+  end
 
-    # Mensagem sucesso: Sua nova senha foi enviada para o seu e-mail com sucesso
-    #flash[:notice] = "Sua nova senha foi enviada para o seu e-mail com sucesso"
+  def new_password
+    user = User.find_by_email(params[:email])
+    if user
+      # Troca a senha
+      letras        = [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten; # Todas as letras maiusculas e minusculas
+      nova_senha    = (0...4).map{ letras[rand(letras.length)] }.join; # Escolhe 6 letras
+      nova_senha    = "#{nova_senha}#{rand(10)}#{rand(10)}"            # Acrescenta 2 numeros
+      user.password = nova_senha                                       # Define a nova senha do usuario
+      user.save
+
+      # Envia por email
+
+      # Redireciona para o login
+      redirect_to login_path, :notice => "Sua nova senha foi enviada para o seu e-mail com sucesso"
+    else
+      redirect_to lembrar_senha_path, :notice => "E-mail não cadastrado. Por favor informar um e-mail válido"
+    end
   end
 
 end

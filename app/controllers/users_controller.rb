@@ -85,8 +85,21 @@ class UsersController < ApplicationController
     end
   end
 
-  #Alterar senha
+  # Alterar senha
   def alterar_senha
+  end
+
+  def update_password
+    temp = Authenticator.authenticate(params[:login], params[:password])
+
+    if temp
+      temp.password = params[:new_password]
+      temp.save
+
+      redirect_to dashboard_path, :notice => "Senha atualizada com sucesso"
+    else
+      redirect_to alterar_senha_path, :notice => "#{params[:login]} #{params[:password]} #{params[:new_password]}"
+    end
   end
 
   private

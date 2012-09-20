@@ -5,25 +5,26 @@
 <h1>Usuarios</h1>
 
 <div id="guardaPesquisa">
-  <%= form_for(@user = '') do |f| %>
+  <%= form_tag update_password_path do %>
+  <%= hidden_field_tag :login, current_user.login %>
     <ul>
       <li>
         <label for="campoSenhaAtual">Senha Atual</label>
-        <%= f.text_field :login, :class => "inputGde input", :id => 'campoSenhaAtual' %>
+        <%= password_field_tag :password, '' %>
       </li>
       
       <li>
         <label for="campoNovaSenha">Nova senha</label>
-        <%= f.text_field :login, :class => "inputGde input", :id => 'campoNovaSenha' %>
+        <%= password_field_tag :new_password, '' %>
       </li>
 
       <li>
         <label for="campoRepetirSenha">Repetir senha</label>
-        <%= f.text_field :login, :class => "inputGde input", :id => 'campoRepetirSenha' %>
+        <%= password_field_tag :confirm_new_password %>
       </li>
 
       <li>
-        <%= f.submit 'Salvar', :class => 'btEditarForm', :id => 'btRealizarPesquisa' %>
+        <%= submit_tag 'Salvar' %>
       </li>
     </ul>
 <% end %>

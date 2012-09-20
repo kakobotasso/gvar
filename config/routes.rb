@@ -1,7 +1,6 @@
 Gvar::Application.routes.draw do
 
   root :to => "dashboard#index"
-  get "/lembrar-senha", :controller => :sessions, :action => :lembrar_senha
 
   # VARIAVEL QUE ARMAZENA O CAMINHO PARA FUTURAS MUDANÇAS
   URL_FINANCEIRO = "/financeiro"
@@ -18,8 +17,11 @@ Gvar::Application.routes.draw do
   controller :sessions do
     get  "/login", :action => :new, :as => :login
     post "/login", :action => :create, :as => false
-    get  "/logout", :action => :destroy, :as => :logout    
+    get  "/logout", :action => :destroy, :as => :logout
+    post "/new_password", :action => :new_password, :as => :new_password
+    get  "/lembrar-senha", :action => :lembrar_senha, :as => :lembrar_senha
   end
+
 
   controller :dashboard do
     get  "/dashboard", :action => :index, :as => :dashboard
@@ -32,7 +34,8 @@ Gvar::Application.routes.draw do
   end
 
   resources :users
-  get  "/alterar-senha", :controller => :users, :action => :alterar_senha, :as => :alterar_senha
+  get  "/alterar-senha",   :controller => :users, :action => :alterar_senha, :as => :alterar_senha
+  post "/update-password", :controller => :users, :action => :update_password, :as => :update_password
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
