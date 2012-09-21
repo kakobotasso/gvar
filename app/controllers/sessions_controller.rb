@@ -38,6 +38,7 @@ class SessionsController < ApplicationController
       user.save
 
       # Envia por email
+      ChangePasswordMailer.new_password_mail(user,nova_senha).deliver
 
       # Redireciona para o login
       redirect_to login_path, :notice => "Sua nova senha foi enviada para o seu e-mail com sucesso"
