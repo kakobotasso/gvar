@@ -48,20 +48,22 @@
     </li>
     
     <!-- DECIDIR O QUE FAZER COM ISSO -->
-    <li>
-        <label>
-            <span>Senha:</span><br/>
-            <%= f.password_field :password, :class => "inputMedio input", :id => "campoSenha" %>
-        </label>
-    </li>
-    <!-- / DECIDIR O QUE FAZER COM ISSO -->
+    <% if @user.new_record? %>
+        <li>
+            <label>
+                <span>Senha:</span><br/>
+                <%= f.password_field :password, :class => "inputMedio input", :id => "campoSenha" %>
+            </label>
+        </li>
+        <!-- / DECIDIR O QUE FAZER COM ISSO -->
 
-    <li>
-        <label>
-            <span>Repetir senha:</span><br/>
-            <input type="password" name="" class="inputMedio input" id="campoRepetirSenha" />
-        </label>
-    </li>
+        <li>
+            <label>
+                <span>Repetir senha:</span><br/>
+                <input type="password" name="" class="inputMedio input" id="campoRepetirSenha" />
+            </label>
+        </li>
+    <% end %>
 
     <li id="btEnviarForm">
         <%= f.submit %>
@@ -97,7 +99,7 @@
                         // VALIDA USUARIO
                         if( $("#campoUsuario").val().length > 3 ){
                             // VALIDA SENHAS
-                            if( $("#campoSenha").val() > 5 ){
+                            if( $("#campoSenha").val().length > 5 ){
                                 if( $("#campoSenha").val() == $("#campoRepetirSenha").val() ){
                                     return true;
                                 }else{
