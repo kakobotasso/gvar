@@ -80,6 +80,16 @@ class ApplicationController < ActionController::Base
     redirect_to_dashboard
   end
 
+  def self.require_role_for_admin(options = {})
+    before_filter :require_role_for_admin, options
+  end
+
+  def require_role_for_admin
+    return if current_user.have_role?(:admin)
+
+    redirect_to_dashboard
+  end
+
   def redirect_to_dashboard
     redirect_to dashboard_path, :notice => "Você não tem acesso a esse modulo."
   end

@@ -1,6 +1,7 @@
 # -*- encoding:utf-8 -*-
 class UsersController < ApplicationController
   require_logged_user
+  require_role_for_admin :except => [:edit,:alterar_senha,:update_password]
   helper_method :roles
 
   # GET /users
