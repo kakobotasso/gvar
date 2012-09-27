@@ -1,6 +1,6 @@
 Gvar::Application.routes.draw do
 
-  root :to => "dashboard#index"
+  root :to => "sessions#destroy"
 
   # VARIAVEL QUE ARMAZENA O CAMINHO PARA FUTURAS MUDANÇAS
   URL_FINANCEIRO = "/financeiro"
