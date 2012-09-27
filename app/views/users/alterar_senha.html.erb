@@ -2,7 +2,7 @@
 <% content_for :title do %> Alterar senha - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
-<h1>Usuarios</h1>
+<h1>Alterar senha</h1>
 
 <div id="guardaPesquisa">
   <%= form_tag update_password_path do %>
@@ -10,21 +10,21 @@
     <ul>
       <li>
         <label for="campoSenhaAtual">Senha Atual</label>
-        <%= password_field_tag :password, '' %>
+        <%= password_field_tag :password, '', :class => 'input inputGde' %>
       </li>
-      
+
       <li>
         <label for="campoNovaSenha">Nova senha</label>
-        <%= password_field_tag :new_password, '' %>
+        <%= password_field_tag :new_password, '', :class => 'input inputGde' %>
       </li>
 
       <li>
         <label for="campoRepetirSenha">Repetir senha</label>
-        <%= password_field_tag :confirm_new_password %>
+        <%= password_field_tag :new_password_confirmation, '', :class => 'input inputGde' %>
       </li>
 
       <li>
-        <%= submit_tag 'Salvar' %>
+        <%= submit_tag 'Salvar', :class => 'btEditarForm' %>
       </li>
     </ul>
 <% end %>
