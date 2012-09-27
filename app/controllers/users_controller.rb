@@ -93,13 +93,15 @@ class UsersController < ApplicationController
   def update_password
     temp = Authenticator.authenticate(params[:login], params[:password])
 
-    if temp
+    if(params[:new_password] != params[:new_password_confirmation])
+      redirect_to alterar_senha_path, :notice => "Os campos 'Nova Senha' e 'Repetir Senha' devem ser iguais."
+    elsif temp
       temp.password = params[:new_password]
       temp.save
 
       redirect_to dashboard_path, :notice => "Senha atualizada com sucesso"
     else
-      redirect_to alterar_senha_path, :notice => "#{params[:login]} #{params[:password]} #{params[:new_password]}"
+      redirect_to alterar_senha_path, :notice => "Erro ao atualizar senha."
     end
   end
 
