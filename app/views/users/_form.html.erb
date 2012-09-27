@@ -4,123 +4,114 @@
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-<ul>
+  <ul>
     <li>
-        <label>
-            <span>Nome:</span><br/>
-            <%= f.text_field :name, :class => "inputMedio input", :id => "campoNome"%>
-        </label>
+      <label>
+        <span>Nome:</span><br/>
+        <%= f.text_field :name, :class => "inputMedio input", :id => "campoNome"%>
+      </label>
     </li>
 
     <li>
-        <label>
-            <span>E-mail:</span><br/>
-            <%= f.text_field :email, :class => "inputMedio input", :id => "campoEmail" %>
-        </label>
+      <label>
+        <span>E-mail:</span><br/>
+        <%= f.text_field :email, :class => "inputMedio input", :id => "campoEmail" %>
+      </label>
     </li>
 
     <li>
-        <div id="guardaCheckbox">
-            <label>Modulos de acesso:</label>
-            <% if current_user.have_role? :admin %>
-                <% roles.each do |role|%>
-                    <label>
-                    <%= check_box_tag "user[role_ids][]",role.id, @user.have_role?(role.name), :class => "campoAcesso" %>
-                    <span><%= role.name %><span>
-                    </label>
-                <% end %>
+      <div id="guardaCheckbox">
+        <label>Modulos de acesso:</label>
+        <% if current_user.have_role? :admin %>
+          <% roles.each do |role|%>
+            <label>
+              <%= check_box_tag "user[role_ids][]",role.id, @user.have_role?(role.name), :class => "campoAcesso" %>
+              <span><%= role.name %><span>
+                </label>
+              <% end %>
             <% end %>
-        </div>
-    </li>
+          </div>
+        </li>
 
-    <li>
-        <label>
+        <li>
+          <label>
             <span>Usuario:</span><br/>
             <%= f.text_field :login, :class => "inputMedio input", :id => "campoUsuario" %>
-        </label>
-    </li>
-    
-    <!-- DECIDIR O QUE FAZER COM ISSO -->
-    <% if @user.new_record? %>
-        <li>
-            <label>
-                <span>Senha:</span><br/>
-                <%= f.password_field :password, :class => "inputMedio input", :id => "campoSenha" %>
-            </label>
+          </label>
         </li>
-        <!-- / DECIDIR O QUE FAZER COM ISSO -->
 
-        <li>
+        <!-- Bloco somente para novos cadastros -->
+        <% if @user.new_record? %>
+          <li>
             <label>
-                <span>Repetir senha:</span><br/>
-                <input type="password" name="" class="inputMedio input" id="campoRepetirSenha" />
+              <span>Senha:</span><br/>
+              <%= f.password_field :password, :class => "inputMedio input", :id => "campoSenha" %>
             </label>
+          </li>
+
+          <li>
+            <label>
+              <span>Repetir senha:</span><br/>
+              <%= f.password_field :password_confirmation, :class => "inputMedio input", :id => "campoSenhaConfirmacao" %>
+            </label>
+          </li>
+        <% end %>
+        <!-- / Bloco somente para novos cadastros -->
+
+        <li id="btEnviarForm">
+          <%= f.submit %>
+          <%= link_to 'Voltar', users_path, :id => "btVoltarForm" %>
         </li>
-    <% end %>
+      </ul>
+      <script type="text/javascript">
+        $(function(){
+            var regex = /^[a-z0-9_\+-]+(\.[a-z0-9_\+-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*\.([a-z]{2,4})$/;
+            var acesso = false;
 
-    <li id="btEnviarForm">
-        <%= f.submit %>
-        <%= link_to 'Voltar', users_path, :id => "btVoltarForm" %>
-    </li>
-</ul>
+            $("#guardaCheckbox .campoAcesso").click(function(){
+              if( !$(this).hasClass("clicou") )
+              $(this).addClass("clicou");
+              else
+              $(this).removeClass("clicou");
+              });
 
-<script type="text/javascript">
-    $(function(){
-        var regex = /^[a-z0-9_\+-]+(\.[a-z0-9_\+-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*\.([a-z]{2,4})$/;
-        var acesso = false;
+            $("#btEnviarForm input").click(function(){
 
-        $("#guardaCheckbox .campoAcesso").click(function(){
-            if( !$(this).hasClass("clicou") )
-                $(this).addClass("clicou");
-            else
-                $(this).removeClass("clicou");
-        });
-
-        $("#btEnviarForm input").click(function(){
-
-            $(".campoAcesso").each(function(){
+              $(".campoAcesso").each(function(){
                 if( $(this).hasClass("clicou") )
-                    acesso = true;
-            });
+                  acesso = true;
+                });
 
-            // VALIDA NOME
-            if( $("#campoNome").val().length > 3 ){
+              // VALIDA NOME
+              if( $("#campoNome").val().length > 3 ){
                 // VALIDA EMAIL
                 if( regex.test($("#campoEmail").val()) == true ){
-                    // VALIDA SELECAO DE ACESSOS
-                    if( acesso ){
-                        // VALIDA USUARIO
-                        if( $("#campoUsuario").val().length > 3 ){
-                            // VALIDA SENHAS
-                            if( $("#campoSenha").val().length > 5 ){
-                                if( $("#campoSenha").val() == $("#campoRepetirSenha").val() ){
-                                    return true;
-                                }else{
-                                    alert("As senhas devem ser idênticas");
-                                    return false;
-                                }
-                            }else{
-                                alert("Digite uma senha com mais de 5 caracteres");
-                                return false;
-                            }
-                        }
+                  // VALIDA SELECAO DE ACESSOS
+                  if( acesso ){
+                    // VALIDA USUARIO
+                    if( $("#campoUsuario").val().length > 3 ){
+                      // VALIDA SENHAS
+                      if( $("#campoSenha").val().length < 5 ){
+                        alert("Digite uma senha com mais de 5 caracteres");
+                        return false;
+                      }
                     }
+                  }
                 }else{
-                    alert("E-mail inválido, por favor cadastrar um e-mail válido");
-                    return false;
+                  alert("E-mail inválido, por favor cadastrar um e-mail válido");
+                  return false;
                 }
-            }
-            alert("Por favor, preencha os campos obrigatórios.")
-            return false;
+              }
+              alert("Por favor, preencha os campos obrigatórios.")
+              return false;
+            });
         });
-    });
-</script>
-
-<% end %>
+      </script>
+    <% end %>

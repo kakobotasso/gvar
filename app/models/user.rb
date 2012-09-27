@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :login, :role_ids
+  attr_accessible :name, :email, :password, :login, :role_ids, :password_confirmation
   has_and_belongs_to_many :roles
   attr_reader :password
 
   validates_presence_of :name, :login
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-  validates_confirmation_of :password
+  validates_confirmation_of :password, :message => " invalido."
   validates_uniqueness_of :email
   validates_uniqueness_of :login
 
