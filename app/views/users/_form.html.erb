@@ -72,46 +72,48 @@
       </ul>
       <script type="text/javascript">
         $(function(){
-            var regex = /^[a-z0-9_\+-]+(\.[a-z0-9_\+-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*\.([a-z]{2,4})$/;
-            var acesso = false;
+          var regex = /^[a-z0-9_\+-]+(\.[a-z0-9_\+-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*\.([a-z]{2,4})$/;
+          var acesso = false;
 
-            $("#guardaCheckbox .campoAcesso").click(function(){
-              if( !$(this).hasClass("clicou") )
+          $("#guardaCheckbox .campoAcesso").click(function(){
+            if( !$(this).hasClass("clicou") )
               $(this).addClass("clicou");
-              else
+            else
               $(this).removeClass("clicou");
-              });
-
-            $("#btEnviarForm input").click(function(){
-
-              $(".campoAcesso").each(function(){
-                if( $(this).hasClass("clicou") )
-                  acesso = true;
-                });
-
-              // VALIDA NOME
-              if( $("#campoNome").val().length > 3 ){
-                // VALIDA EMAIL
-                if( regex.test($("#campoEmail").val()) == true ){
-                  // VALIDA SELECAO DE ACESSOS
-                  if( acesso ){
-                    // VALIDA USUARIO
-                    if( $("#campoUsuario").val().length > 3 ){
-                      // VALIDA SENHAS
-                      if( $("#campoSenha").val().length < 5 ){
-                        alert("Digite uma senha com mais de 5 caracteres");
-                        return false;
-                      }
-                    }
-                  }
-                }else{
-                  alert("E-mail inválido, por favor cadastrar um e-mail válido");
-                  return false;
-                }
-              }
-              alert("Por favor, preencha os campos obrigatórios.")
-              return false;
             });
+
+          $("#btEnviarForm input").click(function(){
+            $(".campoAcesso").each(function(){
+              if( $(this).hasClass("clicou") ) acesso = true;
+            });
+
+            // VALIDA NOME
+            if( $("#campoNome").val().length < 3 ){
+              alert("Campo 'Nome' é de preenchimento obrigatório ");
+              return false;
+            }
+            // VALIDA EMAIL
+            if( regex.test($("#campoEmail").val()) != true ){
+              alert("E-mail inválido, por favor cadastrar um e-mail válido");
+              return false;
+            }
+            // VALIDA SELECAO DE ACESSOS
+            if( !acesso ){
+              alert("Defina os acessos desse Usuário");
+              return false;
+            }
+
+            // VALIDA USUARIO
+            if( $("#campoUsuario").val().length <= 3 ){
+              alert("Campo 'Usuario' deve conter mais de 3 letras");
+              return false;
+            }
+            // VALIDA SENHAS
+            if( $("#campoSenha").val().length < 5 ){
+              alert("A 'Senha' deve conter mais de 4 caracteres");
+              return false;
+            }
+          });
         });
       </script>
     <% end %>
