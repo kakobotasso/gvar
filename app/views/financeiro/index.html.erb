@@ -7,13 +7,43 @@
 <div id="guardaPesquisa">
   <%= form_for(@releases = '') do |f| %>
     <ul>
-      <li class="noPaddingHomes">
-        <label for="campoNome" class="escondidoPesquisaAvancada">E-mail</label>
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoCodigo">Código</label>
+        <%= f.text_field :login, :class => "inputGde input", :id => 'campoCodigo' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoNome">Nome</label>
         <%= f.text_field :login, :class => "inputGde input", :id => 'campoNome' %>
       </li>
 
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoCategoria">Categoria</label>
+        <%= select_tag :category_id, options_for_select(@categories), :class => 'select selectGde', :id => 'campoCategoria' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada doisInputs">
+        <label for="campoValor">Valor de </label>
+        <%= f.text_field :login, :class => "inputPeq input", :id => 'campoValor' %>
+        <label for="campoAte" class="primeiro"> até </label>
+        <%= f.text_field :login, :class => "inputPeq input", :id => 'campoAte' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoParcela">Parcela nº</label>
+        <%= f.text_field :login, :class => "inputGde input", :id => 'campoParcela' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada">
+        <%= f.check_box :fixed_payment %> <span>Despesa fixa</span>
+      </li>
+
+      <li class="noPaddingHomes hidePA ">
+        <%= f.text_field :login, :class => "inputGde input", :id => 'campoBusca' %>
+      </li>
+
       <li class="liPesquisaAvancada">
-        <%= link_to 'Pesquisa avancada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
+        <%= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
         <%= f.submit 'Pesquisar', :class => 'btEditarForm', :id => 'btRealizarPesquisa' %>
       </li>
     </ul>
@@ -24,7 +54,7 @@
 </div>
 
 <div id="guardaAtividadesRecentes">
-  <h2>Recebimentos mais proximos</h2>
+  <h2>Recebimentos mais próximos</h2>
   <% @release.each do |rel| %>
     <p>
       <span><%= rel.name %></span>
@@ -40,8 +70,8 @@
 
   <table cellspadding="0" cellspacing="0" width="100%">
     <tr border="0">
-      <th width="14%"><span>Codigo</span></th>
-      <th width="14%"><span>No</span></th>
+      <th width="14%"><span>Código</span></th>
+      <th width="14%"><span>Nº</span></th>
       <th width="14%"><span>Nome</span></th>
       <th width="14%"><span>Data Vencimento</span></th>
       <th width="14%"><span>Status</span></th>

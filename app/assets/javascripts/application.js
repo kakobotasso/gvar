@@ -44,9 +44,11 @@ $(function(){
     $("#btPesquisaAvancada").click(function(){
         if( !$(this).hasClass('pesqAvanc') ){
             $(".escondidoPesquisaAvancada").slideDown(500);
+            $(".hidePA").slideUp(500);
             $(this).html("Pesquisa normal").css("paddingLeft","14px").addClass('pesqAvanc');
         }else{
             $(".escondidoPesquisaAvancada").slideUp(500);
+            $(".hidePA").slideDown(500);
             $(this).html("Pesquisa avancada").css("paddingLeft","0px").removeClass('pesqAvanc');
         }
     });

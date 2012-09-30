@@ -4,6 +4,7 @@ class FinanceiroController < ApplicationController
 
   def index
     @release = Release.all
+    @categories = Category::OPTIONS
   end
 
   def novo_pagamento
