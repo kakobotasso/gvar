@@ -28,7 +28,7 @@
 
     <li>
       <div id="guardaCheckbox">
-        <label>Modulos de acesso:</label>
+        <label>Módulos de acesso:</label>
         <% if current_user.have_role? :admin %>
           <% roles.each do |role|%>
             <label>
@@ -42,7 +42,7 @@
 
         <li>
           <label>
-            <span>Usuario:</span><br/>
+            <span>Usuário:</span><br/>
             <%= f.text_field :login, :class => "inputMedio input", :id => "campoUsuario" %>
           </label>
         </li>

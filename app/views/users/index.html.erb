@@ -1,5 +1,5 @@
 <!-- TITLE -->
-<% content_for :title do %> Usuarios - Sistema Grupo Vida, Amor e Riso! <% end %>
+<% content_for :title do %> Usuários - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
 <h1>Usuarios</h1>
@@ -23,18 +23,18 @@
       </li>
 
       <li class="liPesquisaAvancada">
-        <%= link_to 'Pesquisa avancada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
+        <%= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
         <%= f.submit 'Pesquisar', :class => 'btEditarForm', :id => 'btRealizarPesquisa' %>
       </li>
     </ul>
   <% end %>
 
-<%= link_to 'Novo usuario', new_user_path, class: "btEnviarForm" %>
+<%= link_to 'Novo usuário', new_user_path, class: "btEnviarForm" %>
 
 </div>
 
 <div id="guardaAtividadesRecentes">
-  <h2>Ultimos usuarios</h2>
+  <h2>Últimos usuários</h2>
   <% @users.each do |user| %>
     <p>
       <span><%= user.name %></span> 
@@ -48,7 +48,7 @@
 
   <table cellspadding="0" cellspacing="0" width="100%">
     <tr border="0">
-      <th width="20%"><span>Usuario</span></th>
+      <th width="20%"><span>Usuário</span></th>
       <th width="20%"><span>Nome</span></th>
       <th width="20%"><span>E-mail</span></th>
       <th width="20%"></th>

@@ -7,9 +7,9 @@
 
                 <div id="menuInternas">
                     <ul>
-                        <li><%= link_to "", dashboard_path, :id => "home", :title => "Pagina inicial"%></li>
+                        <li><%= link_to "", dashboard_path, :id => "home", :title => "Página inicial"%></li>
                         <li><%= link_to "", cursos_index_path, :id => "cursos", :title => "Cursos"%></li>
-                        <li><%= link_to "", servicos_index_path, :id => "servicos", :title => "Servicos"%></li>
+                        <li><%= link_to "", servicos_index_path, :id => "servicos", :title => "Serviços"%></li>
                         <li><%= link_to "", assessoria_index_path, :id => "assessoria", :title => "Assessoria"%></li>
                         <li><%= link_to "", financeiro_index_path, :id => "financeiro", :title => "Financeiro"%></li>
                     </ul>
@@ -24,7 +24,7 @@
                     <div id="escondido">
                         <ul>
                             <% if current_user.have_role?(:admin) %>
-                                <li><%= link_to "Controle de Usuarios", users_path %></li>
+                                <li><%= link_to "Controle de Usuários", users_path %></li>
                             <% end %>
                             <li><%= link_to "Editar perfil", edit_user_path(current_user) %></li>
                             <li><%= link_to "Alterar senha", alterar_senha_path %></li>
