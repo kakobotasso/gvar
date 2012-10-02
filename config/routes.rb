@@ -12,7 +12,17 @@ Gvar::Application.routes.draw do
 
   get "assessoria/index"
   get "servicos/index"
-  get "cursos/index"
+
+  controller :cursos do
+    get "/cursos", :action => :index, :as => :cursos                   # cursos_path
+    get "/cursos/new", :action => :new, :as => :cursos_novo
+    post "/cursos", :action => :create                                 # cursos_path
+    get "/cursos/:id", :action => :show, :as => :cursos_show
+    get "/cursos/:id/edit", :action => :edit, :as => :cursos_edit
+    put "cursos/:id", :action => :update, :as => :cursos_update
+    #match "/cursos/:id/", :action => :show, :as => :cursos_detalhe
+    #match "/cursos/:id/edit", :action => :edit, :as => :cursos_editar
+  end
 
   controller :sessions do
     get  "/login", :action => :new, :as => :login
@@ -36,6 +46,8 @@ Gvar::Application.routes.draw do
   resources :users
   get  "/alterar-senha",   :controller => :users, :action => :alterar_senha, :as => :alterar_senha
   post "/update-password", :controller => :users, :action => :update_password, :as => :update_password
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -93,4 +105,5 @@ Gvar::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
 end

@@ -1,0 +1,35 @@
+<%= form_for cursos_path, :url => cursos_path do |c| %>
+<ul>
+    <li>
+        <label>
+            <span>Código: </span>
+            <%= @course_code %>
+            <%= hidden_field_tag "course[code]", @course_code %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Nome:</span><br/>
+            <%= c.text_field :name, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Tipo:</span><br/>
+            <%= select_tag :type, options_for_select(@course_category), :class => 'select selectMedio' %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Descrição:</span><br/>
+            <%= c.text_area :descriptiton, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li class="btEnviarForm">
+    	<%= c.submit %>
+    </li>
+<% end %>
