@@ -1,3 +1,10 @@
 <!-- TITLE -->
-<% content_for :title do %> XPTO - Sistema Grupo Vida, Amor e Riso! <% end %>
+<% content_for :title do %> <%= @course.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
+
+<h1>Curso: <%= @course.name %></h1>
+
+<ul>
+	<li><p><strong>Tipo:</strong> <br/> <%= @course.categoria %></p></li>
+	<li><p><strong>Descrição do curso:</strong> <br/> <%= @course.description %></p></li>
+</ul>
