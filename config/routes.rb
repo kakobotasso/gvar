@@ -14,12 +14,12 @@ Gvar::Application.routes.draw do
   get "servicos/index"
 
   controller :cursos do
-    get "/cursos", :action => :index, :as => :cursos                   # cursos_path
-    get "/cursos/new", :action => :new, :as => :cursos_novo
-    post "/cursos", :action => :create                                 # cursos_path
-    get "/cursos/:id", :action => :show, :as => :cursos_show
-    get "/cursos/:id/edit", :action => :edit, :as => :cursos_edit
-    put "cursos/:id", :action => :update, :as => :cursos_update
+    get "/cursos", :action => :index, :as => :courses                   # cursos_path
+    get "/cursos/new", :action => :new, :as => :courses_new
+    post "/cursos", :action => :create, :as => :courses                  # cursos_path
+    get "/cursos/:id", :action => :show, :as => :courses_show
+    get "/cursos/:id/edit", :action => :edit, :as => :courses_edit
+    put "cursos/:id", :action => :update, :as => :courses_update
     #match "/cursos/:id/", :action => :show, :as => :cursos_detalhe
     #match "/cursos/:id/edit", :action => :edit, :as => :cursos_editar
   end

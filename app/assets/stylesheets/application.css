@@ -596,3 +596,15 @@ margin:0px 10px;
 #contentInternas .doisInputs label.primeiro{
     padding-left:5px;
 }
+
+#error_explanation{
+    float:left;
+    background: #FF8C69;
+    border:1px solid #8B0000;
+    display:inline;
+    margin:0px 0px 20px 0px;
+}
+
+#error_explanation ul li{
+    padding-bottom:0px;
+}

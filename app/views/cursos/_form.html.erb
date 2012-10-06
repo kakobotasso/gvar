@@ -1,4 +1,15 @@
-<%= form_for cursos_path, :url => cursos_path do |c| %>
+<%= form_for (@course) do |c| %>
+
+<% if @course.errors.any? %>
+    <div id="error_explanation">
+      <ul class="error">
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <ul>
     <li>
         <label>
@@ -18,18 +29,19 @@
     <li>
         <label>
             <span>Tipo:</span><br/>
-            <%= select_tag :type, options_for_select(@course_category), :class => 'select selectMedio' %>
+            <%= select_tag 'course[course_type]', options_for_select(@course_category), :class => 'select selectMedio' %>
         </label>
     </li>
 
     <li>
         <label>
             <span>Descrição:</span><br/>
-            <%= c.text_area :descriptiton, :class => "inputMedio input" %>
+            <%= c.text_area :description, :class => "inputMedio input" %>
         </label>
     </li>
 
     <li class="btEnviarForm">
     	<%= c.submit %>
+        <%#= link_to "Cancelar", courses_path, :class => "btEnviarForm"  %>
     </li>
 <% end %>
