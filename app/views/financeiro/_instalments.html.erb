@@ -1,0 +1,26 @@
+<div id="_guardaResultadoPesquisa">
+  <h2>Resultado da pesquisa</h2>
+
+  <table cellspadding="0" cellspacing="0" width="100%">
+    <tr border="0">
+      <th width="14%"><span>Código</span></th>
+      <th width="14%"><span>Nº</span></th>
+      <th width="14%"><span>Nome</span></th>
+      <th width="14%"><span>Data Vencimento</span></th>
+      <th width="14%"><span>Status</span></th>
+      <th width="14%"><span>Valor Parcela</span></th>
+      <th width="14%"></th>
+    </tr>
+
+    <% instalments.each do |i| %>
+      <tr>
+        <td width="14%"><span><%= i.code %></span></td>
+        <td width="14%"><span><%= i.number_instalment %></span></td>
+        <td width="14%"><span><%= i.name %></span></td>
+        <td width="14%"><span><%= i.expiration_date_to_s %></span></td>
+        <td width="14%"><span><%= i.status %></span></td>
+        <td width="14%"><span><%= i.amount %></span></td>
+        <td width="14%"><span><%= link_to "Pagar", "javascript:void(0);", :class => "btVoltarForm" %></span></td>
+      </tr>
+    <% end %>
+  </table>

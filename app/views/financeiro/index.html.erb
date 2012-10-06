@@ -5,33 +5,33 @@
 <h1>Financeiro</h1>
 
 <div id="guardaPesquisa">
-  <%= form_for(@releases = '') do |f| %>
+  <%= form_for "filtro",:url => financeiro_index_path, :method => 'GET' do |f| %>
     <ul>
       <li class="escondidoPesquisaAvancada">
         <label for="campoCodigo">Código</label>
-        <%= f.text_field :login, :class => "inputGde input", :id => 'campoCodigo' %>
+        <%= f.text_field :code, :class => "inputGde input", :id => 'campoCodigo' %>
       </li>
 
       <li class="escondidoPesquisaAvancada">
         <label for="campoNome">Nome</label>
-        <%= f.text_field :login, :class => "inputGde input", :id => 'campoNome' %>
+        <%= f.text_field :name, :class => "inputGde input", :id => 'campoNome' %>
       </li>
 
       <li class="escondidoPesquisaAvancada">
         <label for="campoCategoria">Categoria</label>
-        <%= select_tag :category_id, options_for_select(@categories), :class => 'select selectGde', :id => 'campoCategoria' %>
+        <%= select_tag :'filtro[category_id]', options_for_select(@categories), :include_blank => true, :class => 'select selectGde', :id => 'campoCategoria' %>
       </li>
 
       <li class="escondidoPesquisaAvancada doisInputs">
         <label for="campoValor">Valor de </label>
-        <%= f.text_field :login, :class => "inputPeq input", :id => 'campoValor' %>
+        <%= f.text_field :amount_minimun, :class => "inputPeq input", :id => 'campoValor' %>
         <label for="campoAte" class="primeiro"> até </label>
-        <%= f.text_field :login, :class => "inputPeq input", :id => 'campoAte' %>
+        <%= f.text_field :amount_max, :class => "inputPeq input", :id => 'campoAte' %>
       </li>
 
       <li class="escondidoPesquisaAvancada">
         <label for="campoParcela">Parcela nº</label>
-        <%= f.text_field :login, :class => "inputGde input", :id => 'campoParcela' %>
+        <%= f.text_field :number, :class => "inputGde input", :id => 'campoParcela' %>
       </li>
 
       <li class="escondidoPesquisaAvancada">
@@ -39,59 +39,32 @@
       </li>
 
       <li class="noPaddingHomes hidePA ">
-        <%= f.text_field :login, :class => "inputGde input", :id => 'campoBusca' %>
+        <label for="campoBusca">Código</label>
+        <%= f.text_field :code_simple, :class => "inputGde input", :id => 'campoBusca' %>
       </li>
 
       <li class="liPesquisaAvancada">
         <%= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
-        <%= f.submit 'Pesquisar', :class => 'btEditarForm', :id => 'btRealizarPesquisa' %>
+        <%= f.submit 'Pesquisar', :class=> 'btEditarForm' %>
       </li>
     </ul>
   <% end %>
-
 <%= link_to "Novo pagamento", novo_pagamento_path, class: "btEnviarForm" %>
 
 </div>
 
 <div id="guardaAtividadesRecentes">
   <h2>Recebimentos mais próximos</h2>
-  <% @release.each do |rel| %>
+  <% @instalments_recents.each do |i| %>
     <p>
-      <span><%= rel.name %></span>
-      <span><%= rel.total_amount %></span>
-      <span>DT Venc</span>
+      <span><%= i.name %></span>
+      <span><%= i.amount %></span>
+      <span><%= i.expiration_date_to_s %></span>
       <%= link_to 'Visualizar', "javascript:void(0);", :class => 'btVoltarForm' %>
     </p>
   <% end %>
 </div>
-
-<div id="guardaResultadoPesquisa">
-  <h2>Resultado da pesquisa</h2>
-
-  <table cellspadding="0" cellspacing="0" width="100%">
-    <tr border="0">
-      <th width="14%"><span>Código</span></th>
-      <th width="14%"><span>Nº</span></th>
-      <th width="14%"><span>Nome</span></th>
-      <th width="14%"><span>Data Vencimento</span></th>
-      <th width="14%"><span>Status</span></th>
-      <th width="14%"><span>Valor Parcela</span></th>
-      <th width="14%"></th>
-    </tr>
-
-    <% @release.each do |rel| %>
-      <tr>
-        <td width="14%"><span><%= rel.code %></span></td>
-        <td width="14%"><span>< rel.number %></span></td>
-        <td width="14%"><span><%= rel.name %></span></td>
-        <td width="14%"><span>< rel.email %></span></td>
-        <td width="14%"><span>< rel.email %></span></td>
-        <td width="14%"><span>< rel.email %></span></td>
-        <td width="14%"><span><%= link_to "Pagar", "javascript:void(0);", :class => "btVoltarForm" %></span></td>
-      </tr>
-    <% end %>
-  </table>
-
+<%= render @instalment.partial %>
 </div>
 
 
