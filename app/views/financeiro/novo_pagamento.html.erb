@@ -144,22 +144,34 @@ function SomenteNumero(e){
 
   $(function(){
     var _tr = "";
+    function formas_pagamento(id){
+      var formasPagamento = '';
+      formasPagamento += '<select class="select"';
+      formasPagamento += ' id="release_instalments_attributes_'+id+'_payment_id"';
+      formasPagamento += ' name="release[instalments_attributes]['+id+'][payment_id]">';
+      formasPagamento += '  <option value="0">Dinheiro</option>';
+      formasPagamento += '  <option value="1">Cheque</option>';
+      formasPagamento += '  <option value="2">Cheque-pre</option>';
+      formasPagamento += '  <option value="3">Cartão Debito</option>';
+      formasPagamento += '  <option value="4">Cartão Credito</option>';
+      formasPagamento += '</select>';
 
-    var formasPagamento = '';
-    formasPagamento += '<select class="select" id="payment_id" name="payment_id"><option value="0">Dinheiro</option>';
-    formasPagamento += '  <option value="1">Cheque</option>';
-    formasPagamento += '  <option value="2">Cheque-pre</option>';
-    formasPagamento += '  <option value="3">Cartão Debito</option>';
-    formasPagamento += '  <option value="4">Cartão Credito</option>';
-    formasPagamento += '</select>';
+      return formasPagamento;
+    }
 
-    var status = '';
-    status += '<select class="select" id="status_id" name="status_id"><option value="0">Pendente</option>';
-    status += '  <option value="1">Quitado</option>';
-    status += '  <option value="2">Cancelado</option>';
-    status += '  <option value="3">Recebido</option>';
-    status += '</select>';
+    function all_status(id){
+      var  status = '';
+      status += '<select class="select"';
+      status += ' id="release_instalments_attributes_'+id+'_status_id"';
+      status += ' name="release[instalments_attributes]['+id+'][status_id]">';
+      status += '  <option value="0">Pendente</option>';
+      status += '  <option value="1">Quitado</option>';
+      status += '  <option value="2">Cancelado</option>';
+      status += '  <option value="3">Recebido</option>';
+      status += '</select>';
 
+      return status;
+    }
 
     $("#numberParcelas").keypress(SomenteNumero);
     //$(".soNumeros").keypress(SomenteNumero);
@@ -185,9 +197,9 @@ function SomenteNumero(e){
 
               _tr += '  <td width="14%"> <span><input class="inputMenor input soNumeros" id="release_instalments_attributes_'+i+'_amount_paid" name="release[instalments_attributes]['+i+'][amount_paid]" size="30" type="text"></span> </td>';
 
-              _tr += '  <td width="14%"> <span>'+formasPagamento+'</span> </td>';
+              _tr += '  <td width="14%"> <span>'+formas_pagamento(i)+'</span> </td>';
 
-              _tr += '  <td width="14%"> <span>'+status+'</span> </td>';
+              _tr += '  <td width="14%"> <span>'+all_status(i)+'</span> </td>';
               _tr += '</tr>';
           }
           $("#guardaParcelasGeradas tr.generated").remove();
