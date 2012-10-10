@@ -1,0 +1,22 @@
+<%= form_for (@team) do |t| %>
+
+<% if @team.errors.any? %>
+    <div id="error_explanation">
+      <ul class="error">
+      <% @team.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<ul>
+    <li>
+        <label>
+            <span>Código: </span>
+            <%= @team_code %>
+            <%= hidden_field_tag "team[code]", @team_code %>
+        </label>
+    </li>
+</ul>
+<% end %>

@@ -1,0 +1,24 @@
+<!-- TITLE -->
+<% content_for :title do %> <%= @course.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
+<!-- / TITLE -->
+
+<!-- MENU -->
+<% content_for :menu do %> <%= render 'menu' %> <% end %>
+<!-- / MENU -->
+
+<h1>Turma: <%= @team.name %></h1>
+
+<div id="infoTurmasCursos">
+	<ul>
+		<li><p><span>0</span> Turmas</p></li>
+		<li><p><span>0</span> Em Andamento</p></li>
+		<li><p><span>0</span> Concluídas</p></li>
+		<li><p><span>0</span> Canceladas</p></li>
+		<li><p><span>0</span> Interessados</p></li>
+	</ul>
+</div>
+
+<ul>
+	<li><%= link_to "Turma curso", courses_cancel_path, :class => "btEnviarForm" %></li>
+	<li><%= link_to "Voltar", courses_path, :class => "btEnviarForm" %></li>
+</ul>
