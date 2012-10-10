@@ -5,6 +5,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :name
       t.integer :course_type
       t.text :description
+      t.boolean :active, :default => true
 
       t.timestamps
     end

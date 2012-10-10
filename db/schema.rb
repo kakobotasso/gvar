@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(:version => 20120930150115) do
     t.string   "name"
     t.integer  "course_type"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.boolean  "active",      :default => true
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "instalments", :force => true do |t|
