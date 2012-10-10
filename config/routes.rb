@@ -20,6 +20,7 @@ Gvar::Application.routes.draw do
     get "/cursos/:id", :action => :show, :as => :courses_show
     get "/cursos/:id/edit", :action => :edit, :as => :courses_edit
     put "cursos/:id", :action => :update, :as => :courses_update
+    get "cursos/:id/cancel", :action => :cancel, :as => :courses_cancel
     #match "/cursos/:id/", :action => :show, :as => :cursos_detalhe
     #match "/cursos/:id/edit", :action => :edit, :as => :cursos_editar
   end

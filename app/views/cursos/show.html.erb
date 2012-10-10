@@ -8,3 +8,19 @@
 	<li><p><strong>Tipo:</strong> <br/> <%= @course.categoria %></p></li>
 	<li><p><strong>Descrição do curso:</strong> <br/> <%= @course.description %></p></li>
 </ul>
+
+<div id="infoTurmasCursos">
+	<ul>
+		<li><p><span>0</span> Turmas</p></li>
+		<li><p><span>0</span> Em Andamento</p></li>
+		<li><p><span>0</span> Concluídas</p></li>
+		<li><p><span>0</span> Canceladas</p></li>
+		<li><p><span>0</span> Interessados</p></li>
+	</ul>
+</div>
+
+<ul>
+	<li><%= link_to "Criar turma", courses_path, :class => "btEnviarForm" %></li>
+	<li><%= link_to "Cancelar curso", courses_cancel_path, :class => "btEnviarForm" %></li>
+	<li><%= link_to "Voltar", courses_path, :class => "btEnviarForm" %></li>
+</ul>

@@ -48,10 +48,10 @@
 
       <% @course.each do |c| %>
         <tr border="0">
-          <td width="25%"><span><%= c.code %></span></td>
-          <td width="25%"><span><%= c.name %></span></td>
-          <td width="25%"><span><%= c.categoria %></span></td>
-          <td width="25%"><span> NO </span></td>
+            <td width="25%"><span><%= link_to c.code, courses_show_path(c.id) %></span></td>
+            <td width="25%"><span><%= link_to c.name, courses_show_path(c.id) %></span></td>
+            <td width="25%"><span><%= link_to c.categoria, courses_show_path(c.id) %></span></td>
+            <td width="25%"><span> NO </span></td>
         </tr>
       <% end %>
 

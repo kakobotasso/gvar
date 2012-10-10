@@ -3,7 +3,7 @@ class CursosController < ApplicationController
   require_role_for_curso
 
   def index
-    @course = Course.all
+    @course = Course.where(:active => true).order("created_at desc")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -73,6 +73,20 @@ class CursosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def cancel
+    @course = Course.find(params[:id])
+    respond_to do |format|
+      if @course.update_attributes(:active => "false")
+        format.html { redirect_to courses_path, notice: 'Curso cancelado com sucesso' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 end
 
 =begin

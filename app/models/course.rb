@@ -1,6 +1,6 @@
 # *-* encoding: UTF-8 *-*
 class Course < ActiveRecord::Base
-  attr_accessible :code, :description, :name, :course_type
+  attr_accessible :code, :description, :name, :course_type, :active
 
   validates_presence_of :name, :description, :course_type
 
