@@ -582,6 +582,15 @@ margin:0px 10px;
     padding:3px 15px 4px 15px;
 }
 
+#contentInternas #guardaResultadoPesquisa table span a{
+    text-decoration:none;
+    color:#333;
+}
+
+#contentInternas #guardaResultadoPesquisa table span a:hover{
+    text-decoration:underline;
+}
+
 #contentInternas #guardaResultadoPesquisa table span.centralizaBts{
     padding-left:50px;
 }
@@ -595,4 +604,49 @@ margin:0px 10px;
 
 #contentInternas .doisInputs label.primeiro{
     padding-left:5px;
+}
+
+#error_explanation{
+    float:left;
+    background: #FF8C69;
+    border:1px solid #8B0000;
+    display:inline;
+    margin:0px 0px 20px 0px;
+}
+
+#error_explanation ul li{
+    padding-bottom:0px;
+}
+
+#infoTurmasCursos{
+    float:left;
+    border:1px solid #00CED1;
+    background:#E0FFFF;
+    display:inline;
+    margin:0px 0px 20px 0px;
+}
+
+#infoTurmasCursos ul{
+    float:left;
+    width:750px;
+    padding:10px 0px;
+}
+
+#infoTurmasCursos ul li{
+    float:left;
+    width:140px;
+    padding-bottom:0px;
+}
+
+#infoTurmasCursos ul li p{
+    float:left;
+    width:100%;
+    text-align: center;
+    font-size:14px;
+}
+
+
+#infoTurmasCursos ul li p span{
+    font-weight:bold;
+    font-size:18px;
 }

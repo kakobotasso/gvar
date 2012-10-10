@@ -1,0 +1,47 @@
+<%= form_for (@course) do |c| %>
+
+<% if @course.errors.any? %>
+    <div id="error_explanation">
+      <ul class="error">
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<ul>
+    <li>
+        <label>
+            <span>Código: </span>
+            <%= @course_code %>
+            <%= hidden_field_tag "course[code]", @course_code %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Nome:</span><br/>
+            <%= c.text_field :name, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Tipo:</span><br/>
+            <%= select_tag 'course[course_type]', options_for_select(@course_category), :class => 'select selectMedio' %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Descrição:</span><br/>
+            <%= c.text_area :description, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li class="btEnviarForm">
+    	<%= c.submit %>
+        <%#= link_to "Cancelar", courses_path, :class => "btEnviarForm"  %>
+    </li>
+<% end %>
