@@ -459,6 +459,7 @@ margin:0px 10px;
     padding:5px 10px;
 }
 
+#contentInternas ul li.guardaSelect select,
 #contentInternas ul li .select{
     float:left;
     border:1px solid #ccc;
@@ -477,8 +478,13 @@ margin:0px 10px;
 #contentInternas ul li .inputMedio{ width:250px; }
 #contentInternas ul li .inputGde{ width:500px; }
 
+#contentInternas ul li.guardaSelectPeq select,
 #contentInternas ul li .selectPeq{ width:160px; }
+
+#contentInternas ul li.guardaSelectMedio select,
 #contentInternas ul li .selectMedio{ width:260px; }
+
+#contentInternas ul li.guardaSelectGde select,
 #contentInternas ul li .selectGde{ width:510px; }
 
 #contentInternas ul li .textareaPeq{ width:150px; }

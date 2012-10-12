@@ -18,5 +18,60 @@
             <%= hidden_field_tag "team[code]", @team_code %>
         </label>
     </li>
+
+    <li>
+        <label>
+            <span>Nome: </span><br/>
+            <%= t.text_field :name, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li class="guardaSelect guardaSelectMedio">
+        <label>
+            <span>Curso: </span><br/>
+            <%= t.collection_select :course_id, @courses, :id, :name, {:prompt => 'Selecione um curso', :class=>"select selectMedio"} %>
+            <%#= select_tag 'team[course_id]', options_for_select(@courses), :class => 'select selectMedio' %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>Periodo: </span><br/>
+            <%= select_tag 'team[season]', options_for_select(@season), :class => 'select selectMedio', :prompt => 'Selecione um periodo' %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>Limite de inscrições: </span><br/>
+            <%= t.text_field :limit, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>Quantidade de aulas: </span><br/>
+            <%= t.text_field :class_length, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>Carga horaria/aula: </span><br/>
+            <%= t.text_field :workload, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>Observações: </span><br/>
+            <%= t.text_area :note, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li class="btEnviarForm">
+        <%= t.submit %>
+    </li>
+    
 </ul>
 <% end %>

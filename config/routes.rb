@@ -25,6 +25,18 @@ Gvar::Application.routes.draw do
     #match "/cursos/:id/edit", :action => :edit, :as => :cursos_editar
   end
 
+  controller :turmas do
+    get "/turmas", :action => :index, :as => :teams                   # cursos_path
+    get "/turmas/new", :action => :new, :as => :teams_new
+    post "/turmas", :action => :create, :as => :teams                  # cursos_path
+    get "/turmas/:id", :action => :show, :as => :teams_show
+    get "/turmas/:id/edit", :action => :edit, :as => :teams_edit
+    put "/turmas/:id", :action => :update, :as => :teams_update
+    get "/turmas/:id/cancel", :action => :cancel, :as => :teams_cancel
+    #match "/cursos/:id/", :action => :show, :as => :cursos_detalhe
+    #match "/cursos/:id/edit", :action => :edit, :as => :cursos_editar
+  end
+
   controller :sessions do
     get  "/login", :action => :new, :as => :login
     post "/login", :action => :create, :as => false

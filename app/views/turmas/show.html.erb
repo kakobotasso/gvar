@@ -1,12 +1,20 @@
 <!-- TITLE -->
-<% content_for :title do %> <%= @course.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
+<% content_for :title do %> <%= @team.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
 <!-- MENU -->
 <% content_for :menu do %> <%= render 'menu' %> <% end %>
 <!-- / MENU -->
 
-<h1>Turma: <%= @team.name %></h1>
+<h1>Informações da Turma</h1>
+
+<ul>
+	<li><strong><%= @team.name %></strong> <br/> Em andamento - <%= @team.periodo %></li>
+	<li><strong>Codigo: </strong> <%= @team.code %> </li>
+	<li><strong>Curso: </strong> <%= @team.curso %> </li>
+	<li><strong>Data inicio: </strong> 00/00/0000 <br/> <strong>Data termino: </strong> 00/00/0000</li>
+	<li></li>
+</ul>
 
 <div id="infoTurmasCursos">
 	<ul>
@@ -19,6 +27,6 @@
 </div>
 
 <ul>
-	<li><%= link_to "Turma curso", courses_cancel_path, :class => "btEnviarForm" %></li>
-	<li><%= link_to "Voltar", courses_path, :class => "btEnviarForm" %></li>
+	<li><%= link_to "Turma curso", teams_cancel_path, :class => "btEnviarForm" %></li>
+	<li><%= link_to "Voltar", teams_path, :class => "btEnviarForm" %></li>
 </ul>

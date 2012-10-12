@@ -4,6 +4,8 @@ class Course < ActiveRecord::Base
 
   validates_presence_of :name, :description, :course_type
 
+  has_many :teams
+
   def categoria
   	Category::Courses::OPTIONS.rassoc(course_type)[0]
   end

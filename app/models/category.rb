@@ -26,4 +26,12 @@ module Category
       ["Workshop"     , 2]
     ]
   end
+
+  module Seasons
+    OPTIONS = [
+      ["Manha"  , 0],
+      ["Tarde"  , 1],
+      ["Noite"  , 2]
+    ]
+  end
 end
