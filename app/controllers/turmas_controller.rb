@@ -3,7 +3,9 @@ class TurmasController < ApplicationController
   require_role_for_curso
 
   def index
-    @team = Team.all
+    @team = Team.where(:active => true).order("created_at desc")
+    @courses = Course.where(:active => true)
+    @season = Category::Seasons::OPTIONS
 
     respond_to do |format|
       format.html # index.html.erb

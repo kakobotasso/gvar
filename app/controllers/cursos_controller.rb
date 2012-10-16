@@ -4,6 +4,7 @@ class CursosController < ApplicationController
 
   def index
     @course = Course.where(:active => true).order("created_at desc")
+    @team = Team.where(:active => true).order("created_at desc").limit(5)
 
     respond_to do |format|
       format.html # index.html.erb

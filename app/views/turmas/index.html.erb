@@ -1,5 +1,5 @@
 <!-- TITLE -->
-<% content_for :title do %> Cursos - Sistema Grupo Vida, Amor e Riso! <% end %>
+<% content_for :title do %> Turmas - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
 <!-- MENU -->
@@ -11,6 +11,21 @@
 <div id="guardaPesquisa">
   <%= form_for "/cursos" do |f| %>
     <ul>
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoCodigo">Turma:</label>
+        <%= f.text_field :code, :class => "inputGde input", :id => 'campoCodigo' %>
+      </li>
+      
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoCodigo">Período:</label>
+        <%= select_tag 'team[season]', options_for_select(@season), :class => 'select selectGde', :prompt => 'Selecione um periodo' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada guardaSelect guardaSelectGde">
+        <label for="campoCodigo">Curso:</label>
+        <%= f.collection_select :course_id, @courses, :id, :name, {:prompt => 'Selecione um curso', :class=>"select selectGde"} %>
+      </li>
+
       <li class="noPaddingHomes hidePA ">
         <%= f.text_field :login, :class => "inputGde input", :id => 'campoBusca' %>
       </li>
@@ -22,40 +37,50 @@
     </ul>
   <% end %>
 
-<%= link_to "Novo curso", courses_new_path, class: "btEnviarForm" %>
+<%= link_to "Nova turma", teams_new_path, class: "btEnviarForm" %>
 
 </div>
 
 <div id="guardaAtividadesRecentes">
   <h2>Próximas turmas</h2>
-  <%# @courses.each do |rel| %>
-    <p>
-      <span><%#= rel.name %></span>
-      <span><%#= rel.total_amount %></span>
-      <span><%#= %></span>
-      <%#= link_to 'Visualizar', "javascript:void(0);", :class => 'btVoltarForm' %>
-    </p>
-  <%# end %>
+  <% if @team.size > 0 %>
+    <% @team.each do |t|  %>
+      <p>
+        <span><%= t.code %></span>
+        <span><%= t.name %></span>
+        <span><%= t.periodo %></span>
+        <%#= link_to 'Visualizar', "javascript:void(0);", :class => 'btVoltarForm' %>
+      </p>
+    <% end %>
+  <% else %>
+    Nenhuma turma cadastrada
+  <% end %>
 </div>
 
 <div id="guardaResultadoPesquisa">
-  <% if @course.size > 0 %>
+  <% if @team.size > 0 %>
     <h2>Resultado da pesquisa</h2>
 
     <table cellspadding="0" cellspacing="0" width="100%">
       <tr border="0">
-        <th width="25%"><span>Código</span></th>
-        <th width="25%"><span>Nome do curso</span></th>
-        <th width="25%"><span>Tipo</span></th>
-        <th width="25%"><span>Turmas em andamento</span></th>
+        <th width="14%"><span>Código</span></th>
+        <th width="14%"><span>Turma</span></th>
+        <th width="14%"><span>Curso</span></th>
+        <th width="14%"><span>Período</span></th>
+        <th width="14%"><span>Status</span></th>
+        <th width="14%"><span></span></th>
+        <th width="14%"><span></span></th>
       </tr>
 
-      <% @course.each do |c| %>
+      <% @team.each do |t| %>
         <tr border="0">
-            <td width="25%"><span><%= link_to c.code, courses_show_path(c.id) %></span></td>
-            <td width="25%"><span><%= link_to c.name, courses_show_path(c.id) %></span></td>
-            <td width="25%"><span><%= link_to c.categoria, courses_show_path(c.id) %></span></td>
-            <td width="25%"><span> NO </span></td>
+            <td width="14%"><span><%= link_to t.code, courses_show_path(t.id) %></span></td>
+            <td width="14%"><span><%= link_to t.name, courses_show_path(t.id) %></span></td>
+            <td width="14%"><span><%= link_to t.curso, courses_show_path(t.id) %></span></td>
+            <td width="14%"><span><%= link_to t.periodo, courses_show_path(t.id) %></span></td>
+            <td width="14%"><span> Em andamento </span></td>
+            <td width="14%"><span> Botao Presença </span></td>
+            <td width="14%"><span> Botao Planejamento </span></td>
         </tr>
       <% end %>
 

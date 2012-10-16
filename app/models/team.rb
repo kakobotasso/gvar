@@ -3,6 +3,8 @@ class Team < ActiveRecord::Base
 
   belongs_to :course
 
+  validates_presence_of :name, :course_id, :season, :limit, :class_length, :workload
+
   def curso
   	Course.find(course_id).name
   end
@@ -10,4 +12,9 @@ class Team < ActiveRecord::Base
   def periodo
   	Category::Seasons::OPTIONS.rassoc(season)[0]
   end
+
+  def total_carga_horaria
+  	class_length + limit
+  end
+
 end
