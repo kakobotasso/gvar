@@ -14,7 +14,8 @@ class Team < ActiveRecord::Base
   end
 
   def total_carga_horaria
-  	class_length + limit
+    num = workload.split(" ")
+    "#{num[0].to_i * class_length} #{num[1]}"
   end
 
 end

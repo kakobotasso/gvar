@@ -49,7 +49,7 @@
         <span><%= t.code %></span>
         <span><%= t.name %></span>
         <span><%= t.periodo %></span>
-        <%#= link_to 'Visualizar', "javascript:void(0);", :class => 'btVoltarForm' %>
+        <%= link_to 'Abrir', teams_show_path(t.id), :class => 'btVoltarForm' %>
       </p>
     <% end %>
   <% else %>
