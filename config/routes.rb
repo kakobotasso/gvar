@@ -27,12 +27,13 @@ Gvar::Application.routes.draw do
 
   controller :turmas do
     get "/turmas", :action => :index, :as => :teams                   # cursos_path
-    get "/turmas/new", :action => :new, :as => :teams_new
+    get "/turmas/novo", :action => :new, :as => :teams_new
     post "/turmas", :action => :create, :as => :teams                  # cursos_path
     get "/turmas/:id", :action => :show, :as => :teams_show
-    get "/turmas/:id/edit", :action => :edit, :as => :teams_edit
+    get "/turmas/:id/editar", :action => :edit, :as => :teams_edit
     put "/turmas/:id", :action => :update, :as => :teams_update
-    get "/turmas/:id/cancel", :action => :cancel, :as => :teams_cancel
+    get "/turmas/:id/cancelar", :action => :cancel, :as => :teams_cancel
+    get "/turmas/:id/planejamento", :action => :planning, :as => :teams_planning
     #match "/cursos/:id/", :action => :show, :as => :cursos_detalhe
     #match "/cursos/:id/edit", :action => :edit, :as => :cursos_editar
   end

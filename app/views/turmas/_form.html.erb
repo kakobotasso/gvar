@@ -1,4 +1,4 @@
-<%= form_for (@team) do |t| %>
+<%= form_for @team, :url => "/turmas" do |t| %>
 
 <% if @team.errors.any? %>
     <div id="error_explanation">
@@ -37,7 +37,7 @@
     <li>
         <label>
             <span>Periodo: </span><br/>
-            <%= select_tag 'team[season]', options_for_select(@season), :class => 'select selectMedio', :prompt => 'Selecione um periodo' %>
+            <%= select_tag 'team[season]', options_for_select(@season, @team.season), :class => 'select selectMedio', :prompt => 'Selecione um periodo' %>
         </label>
     </li>
     

@@ -74,13 +74,13 @@
 
       <% @team.each do |t| %>
         <tr border="0">
-            <td width="14%"><span><%= link_to t.code, courses_show_path(t.id) %></span></td>
-            <td width="14%"><span><%= link_to t.name, courses_show_path(t.id) %></span></td>
-            <td width="14%"><span><%= link_to t.curso, courses_show_path(t.id) %></span></td>
-            <td width="14%"><span><%= link_to t.periodo, courses_show_path(t.id) %></span></td>
-            <td width="14%"><span> Em andamento </span></td>
-            <td width="14%"><span> Botao Presença </span></td>
-            <td width="14%"><span> Botao Planejamento </span></td>
+            <td width="14%"><span><%= link_to t.code, teams_show_path(t.id) %></span></td>
+            <td width="14%"><span><%= link_to t.name, teams_show_path(t.id) %></span></td>
+            <td width="14%"><span><%= link_to t.curso, teams_show_path(t.id) %></span></td>
+            <td width="14%"><span><%= link_to t.periodo, teams_show_path(t.id) %></span></td>
+            <td width="14%"><span><%= link_to "Em andamento", teams_show_path(t.id) %></span></td>
+            <td width="14%"><span><%= link_to "Presenças", "javascript:void(0);", :class => 'btVoltarForm' %></span></td>
+            <td width="14%"><span><%= link_to "Planejamento", "javascript:void(0);", :class => 'btVoltarForm' %></span></td>
         </tr>
       <% end %>
 

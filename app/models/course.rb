@@ -9,4 +9,8 @@ class Course < ActiveRecord::Base
   def categoria
   	Category::Courses::OPTIONS.rassoc(course_type)[0]
   end
+
+  def periodo
+  	Category::Seasons::OPTIONS.rassoc(season)[0]
+  end
 end

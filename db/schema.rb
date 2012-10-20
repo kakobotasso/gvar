@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20121010193536) do
     t.string   "workload"
     t.text     "note"
     t.boolean  "active",       :default => true
+    t.integer  "status",       :default => 0
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
   end

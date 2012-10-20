@@ -28,14 +28,14 @@
 
 <div id="guardaAtividadesRecentes">
   <h2>Próximas turmas</h2>
-  <%# @courses.each do |rel| %>
+  <% @team.each do |t| %>
     <p>
-      <span><%#= rel.name %></span>
-      <span><%#= rel.total_amount %></span>
-      <span><%#= %></span>
-      <%#= link_to 'Visualizar', "javascript:void(0);", :class => 'btVoltarForm' %>
+      <span><%= t.code %></span>
+      <span><%= t.name %></span>
+      <span><%= t.periodo %></span>
+      <%= link_to 'Visualizar', "javascript:void(0);", :class => 'btVoltarForm' %>
     </p>
-  <%# end %>
+  <% end %>
 </div>
 
 <div id="guardaResultadoPesquisa">

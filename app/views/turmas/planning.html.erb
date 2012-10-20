@@ -1,0 +1,18 @@
+<!-- TITLE -->
+<% content_for :title do %> <%= @team.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
+<!-- / TITLE -->
+
+<!-- MENU -->
+<% content_for :menu do %> <%= render 'menu' %> <% end %>
+<!-- / MENU -->
+
+<h1><%= @team.name %> - Plano de aulas</h1>
+
+<ul>
+	<li>
+		<a href="javascript:void(0);">Adicionar encontro</a>
+	</li>
+	<li class="hidden">
+
+	</li>
+</ul>

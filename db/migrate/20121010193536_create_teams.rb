@@ -9,7 +9,7 @@ class CreateTeams < ActiveRecord::Migration
       t.integer :class_length
       t.string :workload
       t.text :note
-	  t.boolean :active, :default => true
+      t.boolean :active, :default => true
 
       t.timestamps
     end

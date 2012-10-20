@@ -36,6 +36,8 @@ class TurmasController < ApplicationController
 
   def edit
     @team = Team.find(params[:id])
+    @courses = Course.where(:active => true)
+    @season = Category::Seasons::OPTIONS
   end
 
   def create
@@ -76,6 +78,7 @@ class TurmasController < ApplicationController
     end
   end
   
+  # CANCELA A TURMA
   def cancel
     @team = Team.find(params[:id])
     respond_to do |format|
@@ -87,6 +90,11 @@ class TurmasController < ApplicationController
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # PLANEJAMENTO DA TURMA
+  def planning
+    @team = Team.find(params[:id])
   end
   
 end
