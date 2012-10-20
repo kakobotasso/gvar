@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010193536) do
+ActiveRecord::Schema.define(:version => 20121020185544) do
 
   create_table "courses", :force => true do |t|
     t.string   "code"
@@ -56,6 +56,35 @@ ActiveRecord::Schema.define(:version => 20121010193536) do
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
     t.integer "user_id"
+  end
+
+  create_table "students", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.string   "cpf"
+    t.string   "rg"
+    t.string   "birth_date"
+    t.string   "occupation"
+    t.string   "sex"
+    t.string   "schooling"
+    t.boolean  "relationship_elderly"
+    t.string   "phone"
+    t.string   "cellphone"
+    t.string   "street"
+    t.string   "number"
+    t.string   "complement"
+    t.string   "neighborhood"
+    t.string   "city"
+    t.string   "country"
+    t.string   "zipcode"
+    t.text     "notes"
+    t.boolean  "rg_delivered",         :default => false
+    t.boolean  "cpf_delivered",        :default => false
+    t.boolean  "photo_delivered",      :default => false
+    t.boolean  "cv_delivered",         :default => false
+    t.boolean  "address_delivered",    :default => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
   create_table "teams", :force => true do |t|

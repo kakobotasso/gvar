@@ -26,16 +26,24 @@ Gvar::Application.routes.draw do
   end
 
   controller :turmas do
-    get "/turmas", :action => :index, :as => :teams                   # cursos_path
+    get "/turmas", :action => :index, :as => :teams                   
     get "/turmas/novo", :action => :new, :as => :teams_new
-    post "/turmas", :action => :create, :as => :teams                  # cursos_path
+    post "/turmas", :action => :create, :as => :teams                 
     get "/turmas/:id", :action => :show, :as => :teams_show
     get "/turmas/:id/editar", :action => :edit, :as => :teams_edit
     put "/turmas/:id", :action => :update, :as => :teams_update
     get "/turmas/:id/cancelar", :action => :cancel, :as => :teams_cancel
     get "/turmas/:id/planejamento", :action => :planning, :as => :teams_planning
-    #match "/cursos/:id/", :action => :show, :as => :cursos_detalhe
-    #match "/cursos/:id/edit", :action => :edit, :as => :cursos_editar
+  end
+
+  controller :alunos do
+    get "/alunos", :action => :index, :as => :students                   
+    get "/alunos/novo", :action => :new, :as => :students_new
+    post "/alunos", :action => :create, :as => :students                 
+    get "/alunos/:id", :action => :show, :as => :students_show
+    get "/alunos/:id/editar", :action => :edit, :as => :students_edit
+    put "/alunos/:id", :action => :update, :as => :students_update
+    get "/alunos/:id/cancelar", :action => :cancel, :as => :students_cancel
   end
 
   controller :sessions do

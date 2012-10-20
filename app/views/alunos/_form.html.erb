@@ -1,0 +1,163 @@
+<%= form_for @student, :url => "/alunos" do |s| %>
+
+<% if @student.errors.any? %>
+    <div id="error_explanation">
+      <ul class="error">
+      <% @student.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<ul>
+    <li>
+        <label>
+            <span>Código: </span>
+            <%= @student_code %>
+            <%= hidden_field_tag "students[code]", @student_code %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Nome*: </span><br/>
+            <%= s.text_field :name, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>CPF*: </span><br/>
+            <%= s.text_field :cpf, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>RG*: </span><br/>
+            <%= s.text_field :rg, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Data de Nascimento*: </span><br/>
+            <%= s.text_field :birth_date, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Profissão*: </span><br/>
+            <%= s.text_field :occupation, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Sexo*: </span><br/>
+            <select name="students[sex]" class="select selectMedio">
+                <option></option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+            </select>
+            <%#= s.text_field :sex, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Escolaridade*: </span><br/>
+            <%= s.text_field :schooling, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Relação com Idosos*: </span><br/>
+            <select name="students[relationship_elderly]" class="select selectMedio">
+                <option></option>
+                <option value="true">Sim</option>
+                <option value="false">Não</option>
+            </select>
+            <%#= s.text_field :relationship_elderly, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Telefones: </span><br/>
+            <%= s.text_field :phone, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Celular: </span><br/>
+            <%= s.text_field :cellphone, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Rua*: </span><br/>
+            <%= s.text_field :street, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Nº*: </span><br/>
+            <%= s.text_field :number, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Complemento*: </span><br/>
+            <%= s.text_field :complement, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Bairro*: </span><br/>
+            <%= s.text_field :neighborhood, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Cidade*: </span><br/>
+            <%= s.text_field :city, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Estado*: </span><br/>
+            <%= select_tag 'students[country]', options_for_select(@state, @student.country), :class => 'select selectMedio', :prompt => 'Selecione um estado' %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>CEP*: </span><br/>
+            <%= s.text_field :zipcode, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Observações: </span><br/>
+            <%= s.text_area :notes, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li class="btEnviarForm">
+        <%= s.submit %>
+    </li>
+    
+</ul>
+<% end %>
