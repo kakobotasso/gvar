@@ -6,7 +6,7 @@
 <% content_for :menu do %> <%= render 'menu' %> <% end %>
 <!-- / MENU -->
 
-<h1>Turmas</h1>
+<h1>Alunos</h1>
 
 <div id="guardaPesquisa">
   <%= form_for "/alunos" do |f| %>
@@ -92,7 +92,7 @@
             <td width="16%"><span><%= link_to s.cpf, students_show_path(s.id) %></span></td>
             <td width="16%"><span><%= link_to s.rg, students_show_path(s.id) %></span></td>
             <td width="16%"><span><%= link_to s.sex, students_show_path(s.id) %></span></td>
-            <td width="16%"><span><%= link_to s.relationship_elderly, students_show_path(s.id) %></span></td>
+            <td width="16%"><span><%= link_to s.relacao_idoso, students_show_path(s.id) %></span></td>
         </tr>
       <% end %>
 

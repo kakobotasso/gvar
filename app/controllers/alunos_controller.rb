@@ -1,6 +1,6 @@
 class AlunosController < ApplicationController
 	require_logged_user
-  	require_role_for_curso
+  require_role_for_curso
 
   def index
   	@student = Students.all#.order("created_at desc")
@@ -43,7 +43,7 @@ class AlunosController < ApplicationController
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to teams_show_path(@student), notice: 'As informacoes foram salvas com sucesso.' }
+        format.html { redirect_to students_path, notice: 'As informacoes foram salvas com sucesso.' }
         format.json { render json: @student, status: :created, location: @student }
       else
         format.html { render action: "new" }
@@ -57,7 +57,7 @@ class AlunosController < ApplicationController
 
     respond_to do |format|
       if @Students.update_attributes(params[:team])
-        format.html { redirect_to @student, notice: 'As informacoes foram atualizadas com sucesso!' }
+        format.html { redirect_to students_path, notice: 'As informacoes foram atualizadas com sucesso!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

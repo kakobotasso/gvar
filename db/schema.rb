@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20121020185544) do
     t.string   "occupation"
     t.string   "sex"
     t.string   "schooling"
-    t.boolean  "relationship_elderly"
+    t.integer  "relationship_elderly"
     t.string   "phone"
     t.string   "cellphone"
     t.string   "street"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20121020185544) do
     t.string   "complement"
     t.string   "neighborhood"
     t.string   "city"
-    t.string   "country"
+    t.integer  "country"
     t.string   "zipcode"
     t.text     "notes"
     t.boolean  "rg_delivered",         :default => false
@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(:version => 20121020185544) do
     t.string   "workload"
     t.text     "note"
     t.boolean  "active",       :default => true
-    t.integer  "status",       :default => 0
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
   end

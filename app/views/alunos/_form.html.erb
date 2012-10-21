@@ -78,8 +78,8 @@
             <span>Relação com Idosos*: </span><br/>
             <select name="students[relationship_elderly]" class="select selectMedio">
                 <option></option>
-                <option value="true">Sim</option>
-                <option value="false">Não</option>
+                <option value=1>Sim</option>
+                <option value=0>Não</option>
             </select>
             <%#= s.text_field :relationship_elderly, :class => "inputMedio input" %>
         </label>
@@ -145,6 +145,34 @@
         <label>
             <span>CEP*: </span><br/>
             <%= s.text_field :zipcode, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label><span>Documentos entregues: </span><br/></label>
+        <label>
+            <%= check_box_tag "students[rg_delivered]", true, false, :class => "uniform funcao" %>
+            <span>RG</span>
+        </label>
+        <br/>
+        <label>
+            <%= check_box_tag "students[cpf_delivered]", true, false, :class => "uniform funcao" %>
+            <span>CPF</span>
+        </label>
+        <br/>
+        <label>
+            <%= check_box_tag "students[photo_delivered]", true, false, :class => "uniform funcao" %>
+            <span>Foto</span>
+        </label>
+        <br/>
+        <label>
+            <%= check_box_tag "students[cv_delivered]", true, false, :class => "uniform funcao" %>
+            <span>Curriculum</span>
+        </label>
+        <br/>
+        <label>
+            <%= check_box_tag "students[address_delivered]", true, false, :class => "uniform funcao" %>
+            <span>Comprovante de endereço</span>
         </label>
     </li>
 

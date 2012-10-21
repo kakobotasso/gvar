@@ -4,4 +4,12 @@ class Students < ActiveRecord::Base
   validates_presence_of :birth_date, :city, :code, :country, :cpf, :name, :neighborhood, :number, :occupation, :relationship_elderly, :rg, :schooling, :sex, :street, :zipcode
   validates_uniqueness_of :cpf, :rg
 
+  def relacao_idoso
+  	if relationship_elderly == 0
+  		"Nao"
+  	else
+  		"Sim"
+  	end
+  end
+
 end

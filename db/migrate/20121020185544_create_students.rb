@@ -9,7 +9,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :occupation
       t.string :sex
       t.string :schooling
-      t.boolean :relationship_elderly
+      t.integer :relationship_elderly
       t.string :phone
       t.string :cellphone
       t.string :street
