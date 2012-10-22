@@ -155,7 +155,7 @@ iframe{
 #geralLogin #centralizaLogin #boxLogin{
 	float:left;
 	width:314px;
-	height:234px;	
+	height:234px;
 	background: url('box-login.png') no-repeat 0px 0px;
 	padding:60px 0px 0px 50px;
 }
@@ -279,7 +279,7 @@ margin:0px 10px;
 
 #headerInternas #menuInternas ul{
     float:left;
-    padding:2px 0px 0px 10px; 
+    padding:2px 0px 0px 10px;
 }
 
 #headerInternas #menuInternas ul li{
@@ -596,3 +596,5 @@ margin:0px 10px;
 #contentInternas .doisInputs label.primeiro{
     padding-left:5px;
 }
+tr:hover td { background: #CCC ; cursor:pointer; }
+
