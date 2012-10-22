@@ -13,14 +13,15 @@
     </tr>
 
     <% instalments.each do |i| %>
-      <tr>
+      <tr onclick="location.href ='<%= financeiro_editar_lancamento_path(i.release) %>';">
         <td width="14%"><span><%= i.code %></span></td>
         <td width="14%"><span><%= i.number_instalment %></span></td>
         <td width="14%"><span><%= i.name %></span></td>
         <td width="14%"><span><%= i.expiration_date_to_s %></span></td>
         <td width="14%"><span><%= i.status %></span></td>
-        <td width="14%"><span><%= i.amount %></span></td>
-        <td width="14%"><span><%= link_to "Pagar", "javascript:void(0);", :class => "btVoltarForm" %></span></td>
+        <td width="14%"><span>R$ <%= i.amount.to_s.gsub(".",",") %></span></td>
+        <td width="14%"><span><%= link_to "Pagar", financeiro_pagar_path(i.id), :class => "btVoltarForm" %></span></td>
       </tr>
     <% end %>
   </table>
+</div>

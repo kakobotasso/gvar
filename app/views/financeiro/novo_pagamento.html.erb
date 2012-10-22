@@ -24,14 +24,14 @@
     <li>
         <label>
             <span>Categoria:</span><br/>
-            <%= select_tag :category_id, options_for_select(@categories), :class => 'select selectMedio' %>
+            <%= r.select :category_id, @categories, {}, :class => 'select selectMedio' %>
         </label>
     </li>
 
     <li>
         <label>
             <span>Valor total:</span><br/>
-            <%= r.text_field :total_amount, :class => "inputMedio input", :id => "valorTotal", :value => "R$ " %>
+            <%= r.text_field :total_amount, :class => "inputMedio input", :id => "valorTotal" %>
         </label>
     </li>
 
@@ -132,82 +132,90 @@
 <% end %>
 
 <script type="text/javascript">
-function SomenteNumero(e){
-    var tecla=(window.event)?event.keyCode:e.which;
-    if((tecla>47 && tecla<58)) return true;
-    else{
-      if (tecla==8 || tecla==0) return true;
-  else  return false;
+    function somente_numero(e){
+      var tecla, retorno = false;
+      tecla=(window.event)?event.keyCode:e.which;
+
+      if((tecla > 47 && tecla < 58) || tecla == 8 || tecla == 0) retorno = true;
+
+      return retorno;
     }
-}
-//numberParcelas
 
-  $(function(){
-    var _tr = "";
+    function numeros_com_separador(e){
+      var tecla, retorno = false;
+      tecla=(window.event)?event.keyCode:e.which;
+
+      if((tecla > 47 && tecla < 58) || tecla == 8 || tecla == 0 || tecla == 46 || tecla == 44) retorno = true;
+
+      return retorno;
+    }
+
     function formas_pagamento(id){
-      var formasPagamento = '';
-      formasPagamento += '<select class="select"';
-      formasPagamento += ' id="release_instalments_attributes_'+id+'_payment_id"';
-      formasPagamento += ' name="release[instalments_attributes]['+id+'][payment_id]">';
-      formasPagamento += '  <option value="0">Dinheiro</option>';
-      formasPagamento += '  <option value="1">Cheque</option>';
-      formasPagamento += '  <option value="2">Cheque-pre</option>';
-      formasPagamento += '  <option value="3">Cartão Debito</option>';
-      formasPagamento += '  <option value="4">Cartão Credito</option>';
-      formasPagamento += '</select>';
+        var formasPagamento = '';
+        formasPagamento += '<select class="select"';
+        formasPagamento += ' id="release_instalments_attributes_'+id+'_payment_id"';
+        formasPagamento += ' name="release[instalments_attributes]['+id+'][payment_id]">';
+        formasPagamento += '  <option value="0">Dinheiro</option>';
+        formasPagamento += '  <option value="1">Cheque</option>';
+        formasPagamento += '  <option value="2">Cheque-pre</option>';
+        formasPagamento += '  <option value="3">Cartão Debito</option>';
+        formasPagamento += '  <option value="4">Cartão Credito</option>';
+        formasPagamento += '</select>';
 
-      return formasPagamento;
+        return formasPagamento;
     }
 
     function all_status(id){
-      var  status = '';
-      status += '<select class="select"';
-      status += ' id="release_instalments_attributes_'+id+'_status_id"';
-      status += ' name="release[instalments_attributes]['+id+'][status_id]">';
-      status += '  <option value="0">Pendente</option>';
-      status += '  <option value="1">Quitado</option>';
-      status += '  <option value="2">Cancelado</option>';
-      status += '  <option value="3">Recebido</option>';
-      status += '</select>';
+        var  status = '';
+        status += '<select class="select"';
+        status += ' id="release_instalments_attributes_'+id+'_status_id"';
+        status += ' name="release[instalments_attributes]['+id+'][status_id]">';
+        status += '  <option value="0">Pendente</option>';
+        status += '  <option value="1">Quitado</option>';
+        status += '  <option value="2">Cancelado</option>';
+        status += '  <option value="3">Recebido</option>';
+        status += '</select>';
 
-      return status;
+        return status;
     }
 
-    $("#numberParcelas").keypress(SomenteNumero);
-    //$(".soNumeros").keypress(SomenteNumero);
+    //numberParcelas
+    $(function(){
+      var _tr = "";
+      $("#numberParcelas").keypress(somente_numero);
+      $("#valorTotal").keypress(numeros_com_separador);
 
-    $("#numberParcelas").blur(function(){
-      _tr = ' ';
-      var valor = parseFloat($("#valorTotal").val().replace("R$ ","").replace(",","."));
-      if( $(this).val() != "0" && $(this).val() != "" ){
-        if( $("#valorTotal").val().length < 5 ){
-          alert("Digite um valor válido");
-        }else{
-          var parcelas = parseInt($(this).val());
-          for( var i = 0; i < parcelas; i++ ){
+      $("#numberParcelas").blur(function(){
+          var valor, _tr = "";
 
-              _tr += '<tr class="generated">';
-              _tr += '  <td width="14%"> <span>'+(i+1)+'/'+parcelas+'</span> <input id="release_instalments_attributes_'+i+'_number" name="release[instalments_attributes]['+i+'][number]" type="hidden" value="'+(i+1)+'"> </td>';
+          valor = $("#valorTotal").val();
+          valor = valor + "";             // Transforma em string para usar o replace
+          valor = valor.replace("R$",""); // Quando ainda tinha R$ dentro do input
+          valor = valor.replace(".","");  // Caso a pessoa digite 1.500,00
+          valor = valor.replace(",","."); // Para deixar no formato 1500.00
 
-              _tr += '  <td width="14%"> <span><input class="inputMenor input soNumeros" id="release_instalments_attributes_'+i+'_amount" name="release[instalments_attributes]['+i+'][amount]" size="30" type="text" value="R$ '+(parseFloat(valor/parcelas))+'"></span> </td>';
-
-              _tr += '  <td width="14%"> <span><input class="inputMenor input" id="release_instalments_attributes_'+i+'_expiration_date" name="release[instalments_attributes]['+i+'][expiration_date]" size="30" type="text"></span> </td>';
-
-              _tr += '  <td width="14%"> <span><input class="inputMenor input" id="release_instalments_attributes_'+i+'_paid_at" name="release[instalments_attributes]['+i+'][paid_at]" size="30" type="text"></span> </td>';
-
-              _tr += '  <td width="14%"> <span><input class="inputMenor input soNumeros" id="release_instalments_attributes_'+i+'_amount_paid" name="release[instalments_attributes]['+i+'][amount_paid]" size="30" type="text"></span> </td>';
-
-              _tr += '  <td width="14%"> <span>'+formas_pagamento(i)+'</span> </td>';
-
-              _tr += '  <td width="14%"> <span>'+all_status(i)+'</span> </td>';
-              _tr += '</tr>';
+          if( $(this).val() != "0" && $(this).val() != "" ){
+            if( valor > 0 ){
+                var parcelas = parseInt($(this).val());
+                for( var i = 0; i < parcelas; i++ ){
+                    _tr += '<tr class="generated">';
+                    _tr += '  <td width="14%"> <span>'+(i+1)+'/'+parcelas+'</span> <input id="release_instalments_attributes_'+i+'_number" name="release[instalments_attributes]['+i+'][number]" type="hidden" value="'+(i+1)+'"> </td>';
+                    _tr += '  <td width="14%"> <span>R$ <input class="inputMenor input soNumeros" id="release_instalments_attributes_'+i+'_amount" name="release[instalments_attributes]['+i+'][amount]" size="30" type="text" value="'+parseFloat(Math.round((valor/parcelas )*100)/100).toFixed(2).replace(".",",")+'"></span> </td>';
+                    _tr += '  <td width="14%"> <span><input class="inputMenor input" id="release_instalments_attributes_'+i+'_expiration_date" name="release[instalments_attributes]['+i+'][expiration_date]" size="30" type="text"></span> </td>';
+                    _tr += '  <td width="14%"> <span><input class="inputMenor input" id="release_instalments_attributes_'+i+'_paid_at" name="release[instalments_attributes]['+i+'][paid_at]" size="30" type="text"></span> </td>';
+                    _tr += '  <td width="14%"> <span><input class="inputMenor input soNumeros" id="release_instalments_attributes_'+i+'_amount_paid" name="release[instalments_attributes]['+i+'][amount_paid]" size="30" type="text"></span> </td>';
+                    _tr += '  <td width="14%"> <span>'+formas_pagamento(i)+'</span> </td>';
+                    _tr += '  <td width="14%"> <span>'+all_status(i)+'</span> </td>';
+                    _tr += '</tr>';
+                }
+                $("#guardaParcelasGeradas tr.generated").remove();
+                $("#guardaParcelasGeradas").append(_tr);
+                $("#guardaParcelasGeradas").slideDown(500);
+            }else{
+                alert("Digite um valor válido");
+                $("#valorTotal").focus();
+            }
           }
-          $("#guardaParcelasGeradas tr.generated").remove();
-          $("#guardaParcelasGeradas").append(_tr);
-          $("#guardaParcelasGeradas").slideDown(500);
-        }
-      }
+      });
     });
-
-  });
 </script>
