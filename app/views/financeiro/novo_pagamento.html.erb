@@ -2,6 +2,10 @@
 <% content_for :title do %> Novo pagamento - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
+<!-- MENU -->
+<% content_for :menu do %> <%= render "menu" %> <% end %>
+<!-- / MENU -->
+
 <h1>Novo pagamento</h1>
 
 <%= form_for(@release) do |r| %>
