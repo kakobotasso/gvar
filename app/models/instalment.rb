@@ -24,4 +24,18 @@ class Instalment < ActiveRecord::Base
     expiration_date.strftime('%d/%m/%Y')
   end
 
+  def amount=(value)
+    value = value.gsub('.','')
+    value = value.gsub(',','.')
+
+    write_attribute(:amount, value)
+  end
+
+  def amount_paid=(value)
+    value = value.gsub('.','')
+    value = value.gsub(',','.')
+
+    write_attribute(:amount_paid, value)
+  end
+
 end
