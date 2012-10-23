@@ -64,7 +64,7 @@
       <span><%= i.name %></span>
       <span><%= i.amount %></span>
       <span><%= i.expiration_date_to_s %></span>
-      <%= link_to 'Visualizar', "javascript:void(0);", :class => 'btVoltarForm' %>
+      <%= link_to 'Visualizar', financeiro_editar_lancamento_path(i.release), :class => 'btVoltarForm' %>
     </p>
   <% end %>
 </div>
