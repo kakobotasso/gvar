@@ -136,22 +136,25 @@
 <% end %>
 
 <script type="text/javascript">
+    function valida(e,permitidos){
+        var tecla,
+        permitidos = permitidos || [],
+        permitido = false;
+
+        tecla = (window.event) ? event.keyCode : e.which;
+        permitidos.concat([0,8]); // Sabe-se la deus porque... (né Kako)
+
+        if( (tecla > 47 && tecla < 58) || ( permitidos.indexOf(tecla) =! -1) ) permitido = true;
+
+        return permitido;
+    }
+
     function somente_numero(e){
-      var tecla, retorno = false;
-      tecla=(window.event)?event.keyCode:e.which;
-
-      if((tecla > 47 && tecla < 58) || tecla == 8 || tecla == 0) retorno = true;
-
-      return retorno;
+        return valida(e);
     }
 
     function numeros_com_separador(e){
-      var tecla, retorno = false;
-      tecla=(window.event)?event.keyCode:e.which;
-
-      if((tecla > 47 && tecla < 58) || tecla == 8 || tecla == 0 || tecla == 46 || tecla == 44) retorno = true;
-
-      return retorno;
+        return valida(e,[44,46]);
     }
 
     function formas_pagamento(id){
@@ -184,27 +187,25 @@
     }
 
     //numberParcelas
-    $(function(){
-      var _tr = "";
-      $("#numberParcelas").keypress(somente_numero);
-      $("#valorTotal").keypress(numeros_com_separador);
+    $("#numberParcelas").keypress(somente_numero);
+    $("#valorTotal").keypress(numeros_com_separador);
 
-      $("#numberParcelas").blur(function(){
-          var valor, _tr = "";
+    $("#numberParcelas").blur(function(){
+        var valor,
+        _tr = "",
+        numero_parcelas = $("#numberParcelas").val();
 
-          valor = $("#valorTotal").val();
-          valor = valor + "";             // Transforma em string para usar o replace
-          valor = valor.replace("R$",""); // Quando ainda tinha R$ dentro do input
-          valor = valor.replace(".","");  // Caso a pessoa digite 1.500,00
-          valor = valor.replace(",","."); // Para deixar no formato 1500.00
+        valor = $("#valorTotal").val();
+        valor = valor + "";             // Transforma em string para usar o replace
+        valor = valor.replace(".","");  // Caso a pessoa digite 1.500,00
+        valor = valor.replace(",","."); // Para deixar no formato 1500.00
 
-          if( $(this).val() != "0" && $(this).val() != "" ){
+        if( numero_parcelas > 0 ){
             if( valor > 0 ){
-                var parcelas = parseInt($(this).val());
-                for( var i = 0; i < parcelas; i++ ){
+                for( var i = 0; i < numero_parcelas; i++ ){
                     _tr += '<tr class="generated">';
-                    _tr += '  <td width="14%"> <span>'+(i+1)+'/'+parcelas+'</span> <input id="release_instalments_attributes_'+i+'_number" name="release[instalments_attributes]['+i+'][number]" type="hidden" value="'+(i+1)+'"> </td>';
-                    _tr += '  <td width="14%"> <span>R$ <input class="inputMenor input soNumeros" id="release_instalments_attributes_'+i+'_amount" name="release[instalments_attributes]['+i+'][amount]" size="30" type="text" value="'+parseFloat(Math.round((valor/parcelas )*100)/100).toFixed(2).replace(".",",")+'"></span> </td>';
+                    _tr += '  <td width="14%"> <span>'+(i+1)+'/'+numero_parcelas+'</span> <input id="release_instalments_attributes_'+i+'_number" name="release[instalments_attributes]['+i+'][number]" type="hidden" value="'+(i+1)+'"> </td>';
+                    _tr += '  <td width="14%"> <span>R$ <input class="inputMenor input soNumeros" id="release_instalments_attributes_'+i+'_amount" name="release[instalments_attributes]['+i+'][amount]" size="30" type="text" value="'+parseFloat(Math.round((valor/numero_parcelas)*100)/100).toFixed(2).replace(".",",")+'"></span> </td>';
                     _tr += '  <td width="14%"> <span><input class="inputMenor input" id="release_instalments_attributes_'+i+'_expiration_date" name="release[instalments_attributes]['+i+'][expiration_date]" size="30" type="text"></span> </td>';
                     _tr += '  <td width="14%"> <span><input class="inputMenor input" id="release_instalments_attributes_'+i+'_paid_at" name="release[instalments_attributes]['+i+'][paid_at]" size="30" type="text"></span> </td>';
                     _tr += '  <td width="14%"> <span><input class="inputMenor input soNumeros" id="release_instalments_attributes_'+i+'_amount_paid" name="release[instalments_attributes]['+i+'][amount_paid]" size="30" type="text"></span> </td>';
@@ -219,7 +220,9 @@
                 alert("Digite um valor válido");
                 $("#valorTotal").focus();
             }
-          }
-      });
+        }else{
+            alert("Valor minimo para parcelas: 1");
+            $("#numberParcelas").focus();
+        }
     });
 </script>
