@@ -40,6 +40,20 @@
             <%= select_tag 'team[season]', options_for_select(@season, @team.season), :class => 'select selectMedio', :prompt => 'Selecione um periodo' %>
         </label>
     </li>
+
+    <li>
+        <label>
+            <span>Situação: </span><br/>
+            <%= select_tag 'team[status]', options_for_select(@status, @team.status), :class => 'select selectMedio', :prompt => 'Selecione um status' %>
+        </label>
+    </li>    
+
+    <li>
+        <label>
+            <span>Valor: </span><br/>
+            <span class="floatLeft">R$</span> <%= t.text_field :price, :class => "inputMedio input" %>
+        </label>
+    </li>
     
     <li>
         <label>
@@ -74,4 +88,4 @@
     </li>
     
 </ul>
-<% end %>
+<% end %>   

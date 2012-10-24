@@ -93,12 +93,13 @@ ActiveRecord::Schema.define(:version => 20121020185544) do
     t.integer  "course_id"
     t.integer  "season"
     t.integer  "limit"
+    t.decimal  "price"
     t.integer  "class_length"
     t.string   "workload"
     t.text     "note"
-    t.boolean  "active",       :default => true
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.integer  "status"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|

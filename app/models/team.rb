@@ -1,9 +1,9 @@
 class Team < ActiveRecord::Base
-  attr_accessible :class_length, :code, :course_id, :limit, :name, :note, :season, :workload, :active
+  attr_accessible :class_length, :code, :course_id, :limit, :name, :note, :season, :workload, :status, :price
 
   belongs_to :course
 
-  validates_presence_of :name, :course_id, :season, :limit, :class_length, :workload
+  validates_presence_of :name, :course_id, :season, :limit, :class_length, :workload, :status, :price
 
   def curso
   	Course.find(course_id).name
@@ -16,6 +16,10 @@ class Team < ActiveRecord::Base
   def total_carga_horaria
     num = workload.split(" ")
     "#{num[0].to_i * class_length} #{num[1]}"
+  end
+
+  def correct_status
+    Status::TEAMS.rassoc(status)[0]
   end
 
 end

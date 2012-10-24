@@ -15,12 +15,12 @@ Gvar::Application.routes.draw do
 
   controller :cursos do
     get "/cursos", :action => :index, :as => :courses                   # cursos_path
-    get "/cursos/new", :action => :new, :as => :courses_new
-    post "/cursos", :action => :create, :as => :courses                  # cursos_path
+    get "/cursos/novo", :action => :new, :as => :courses_new
+    post "/cursos/", :action => :create, :as => :courses                  # cursos_path
     get "/cursos/:id", :action => :show, :as => :courses_show
-    get "/cursos/:id/edit", :action => :edit, :as => :courses_edit
-    put "cursos/:id", :action => :update, :as => :courses_update
-    get "cursos/:id/cancel", :action => :cancel, :as => :courses_cancel
+    get "/cursos/:id/editar", :action => :edit, :as => :courses_edit
+    #put "cursos/:id", :action => :update, :as => :courses_update
+    get "cursos/:id/cancelar", :action => :cancel, :as => :courses_cancel
     #match "/cursos/:id/", :action => :show, :as => :cursos_detalhe
     #match "/cursos/:id/edit", :action => :edit, :as => :cursos_editar
   end
@@ -33,6 +33,7 @@ Gvar::Application.routes.draw do
     get "/turmas/:id/editar", :action => :edit, :as => :teams_edit
     put "/turmas/:id", :action => :update, :as => :teams_update
     get "/turmas/:id/cancelar", :action => :cancel, :as => :teams_cancel
+    get "/turmas/:id/concluir", :action => :conclude, :as => :teams_conclude
     get "/turmas/:id/planejamento", :action => :planning, :as => :teams_planning
   end
 

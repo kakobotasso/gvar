@@ -3,9 +3,10 @@ class TurmasController < ApplicationController
   require_role_for_curso
 
   def index
-    @team = Team.where(:active => true).order("created_at desc")
+    @team = Team.where("status != 2").order("created_at desc")
     @courses = Course.where(:active => true)
     @season = Category::Seasons::OPTIONS
+    @status = Status::TEAMS
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,6 +28,7 @@ class TurmasController < ApplicationController
     @courses = Course.where(:active => true)
     @team_code = "T#{Time.now.strftime('%y%m%d%H%M%S')}"
     @season = Category::Seasons::OPTIONS
+    @status = Status::TEAMS
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,6 +40,7 @@ class TurmasController < ApplicationController
     @team = Team.find(params[:id])
     @courses = Course.where(:active => true)
     @season = Category::Seasons::OPTIONS
+    @status = Status::TEAMS
   end
 
   def create
@@ -82,7 +85,22 @@ class TurmasController < ApplicationController
   def cancel
     @team = Team.find(params[:id])
     respond_to do |format|
-      if @team.update_attributes(:active => "false")
+      if @team.update_attributes(:status => "2")
+        format.html { redirect_to teams_path, notice: 'Turma cancelada com sucesso' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+  # CONCLUI A TURMA
+  def conclude
+    @team = Team.find(params[:id])
+    respond_to do |format|
+      if @team.update_attributes(:status => "1")
         format.html { redirect_to teams_path, notice: 'Turma cancelada com sucesso' }
         format.json { head :no_content }
       else

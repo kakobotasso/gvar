@@ -9,9 +9,10 @@
 <h1>Informações da Turma</h1>
 
 <ul>
-	<li><strong><%= @team.name %></strong> <br/> Em andamento - <%= @team.periodo %></li>
+	<li><strong><%= @team.name %></strong> <br/> <%= @team.correct_status %> - <%= @team.periodo %></li>
 	<li><strong>Codigo: </strong> <%= @team.code %> </li>
 	<li><strong>Curso: </strong> <%= @team.curso %> </li>
+	<li><strong>Valor: </strong> R$ <%= @team.price %> </li>
 	<li>
 		<strong>Data início: </strong> 00/00/0000 <br/>
 		<strong>Data termino: </strong> 00/00/0000
@@ -28,13 +29,14 @@
 </ul>
 
 <div id="infoTurmasCursos">
-	<ul>
+	<ul class="tresOpcoes">
 		<li><p><span><%= @team.limit %></span> Vagas</p></li>
 		<li><p><span>0</span> Disponiveis</p></li>
 		<li><p><span>0</span> Alunos</p></li>
-		<li><p><%= link_to "Cancelar turma", teams_cancel_path, :class => "btEnviarForm", data:{ confirm: 'Ao cancelar essa turma, todas as inscrições serão alteradas para "Canceladas"
+		<li><p><%= link_to "Cancelar", teams_cancel_path, :class => "btEnviarForm", data:{ confirm: 'Ao cancelar essa turma, todas as inscrições serão alteradas para "Canceladas"
 	Deseja prosseguir?' } %></p></li>
-		<li><p><%= link_to "Alterar turma", teams_edit_path(@team.id), :class => "btEnviarForm" %></p></li>
+		<li><p><%= link_to "Alterar", teams_edit_path(@team.id), :class => "btEnviarForm" %></p></li>
+		<li><p><%= link_to "Concluir", teams_conclude_path(@team.id), :class => "btEnviarForm" %></p></li>
 	</ul>
 </div>
 
