@@ -30,7 +30,7 @@
     <li>
       <label>
         <span>Valor total:</span><br/>
-        R$ <%= r.text_field :total_amount, :value => number_with_precision(r.object.total_amount, :precision => 2),:class => "inputMedio input", :id => "valorTotal" %>
+        R$ <%= r.text_field :total_amount, :value => number_with_precision(r.object.total_amount), :class => "inputMedio input", :id => "valorTotal" %>
       </label>
     </li>
 
@@ -59,8 +59,8 @@
           <tr>
             <th width="4%"><span>No</span></th>
             <th width="14%"><span>Valor Parcela</span></th>
-            <th width="100px"><span>Data de Vencimento</span></th>
-            <th width="30%"><span>Data de  Pagamento</span></th>
+            <th width="14%"><span>Data de Vencimento</span></th>
+            <th width="14%"><span>Data de  Pagamento</span></th>
             <th width="14%"><span>Valor Pago</span></th>
             <th width="14%"><span>Forma de Pagamento</span></th>
             <th width="14%"><span>Status</span></th>
@@ -73,19 +73,19 @@
                 </td>
 
                 <td width="14%">
-                  <span>R$ <%= i.text_field :amount, :value => number_with_precision(i.object.amount, :precision => 2), :class => 'inputPeq input' %></span>
-                </td>
-
-                <td width="100px">
-                  <span><%= i.date_select :expiration_date, {:order =>[:day, :month, :year]}, {:class => 'select'} %></span>
-                </td>
-
-                <td width="30%">
-                  <span><%= i.date_select :paid_at, {:order =>[:day, :month, :year], :include_blank => true}, { :class => 'select'} %></span>
+                  <span>R$ <%= i.text_field :amount, :value => number_with_precision(i.object.amount), :class => 'inputPeq input' %></span>
                 </td>
 
                 <td width="14%">
-                  <span>R$ <%= i.text_field :amount_paid, :value => number_with_precision(i.object.amount_paid, :precision => 2), :class => 'inputPeq input' %></span>
+                  <span><%= i.date_select :expiration_date, {:order =>[:day, :month, :year]}, {:class => 'select'} %></span>
+                </td>
+
+                <td width="14%">
+                  <span><%= i.date_select :paid_at, {:order =>[:day, :month, :year], :include_blank => true}, {:class => 'select'} %></span>
+                </td>
+
+                <td width="14%">
+                  <span>R$ <%= i.text_field :amount_paid, :value =>  number_with_precision(i.object.amount_paid), :class => "inputPeq input" %></span>
                 </td>
 
                 <td width="14%">

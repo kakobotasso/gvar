@@ -23,7 +23,17 @@
 
       <li class="escondidoPesquisaAvancada">
         <label for="campoCategoria">Categoria</label>
-        <%= select_tag :'filtro[category_id]', options_for_select(@categories), :include_blank => true, :class => 'select selectGde', :id => 'campoCategoria' %>
+        <%= f.select :category_id, @categories, {:include_blank => true}, :class => 'select selectGde', :id => 'campoCategoria' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoCategoria">Status</label>
+        <%= f.select :status_id, @status, {:include_blank => true}, :class => 'select selectGde', :id => 'campoCategoria' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoCategoria">Forma de pagamento</label>
+        <%= f.select :payment_id, @payments, {:include_blank => true}, :class => 'select selectGde', :id => 'campoCategoria' %>
       </li>
 
       <li class="escondidoPesquisaAvancada doisInputs">
@@ -62,7 +72,7 @@
   <% @instalments_recents.each do |i| %>
     <p>
       <span><%= i.name %></span>
-      <span><%= i.amount %></span>
+      <span><%= number_to_currency(i.amount) %></span>
       <span><%= i.expiration_date_to_s %></span>
       <%= link_to 'Visualizar', financeiro_editar_lancamento_path(i.release), :class => 'btVoltarForm' %>
     </p>
