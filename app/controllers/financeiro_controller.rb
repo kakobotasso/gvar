@@ -5,9 +5,11 @@ class FinanceiroController < ApplicationController
   def index
     @list_instalments = InstalmentsFilter.filter(params['filtro'])
     @instalment = InstalmentPresenter.new(@list_instalments)
-
     # Exibe as 4 parcelas mais proximas de vencer
-    @instalments_recents = Instalment.order("expiration_date").limit(4)
+    @instalments_recents = Instalment.pending.order("expiration_date").limit(4)
+
+    @status     = Status::FINANCIAL
+    @payments   = Payment::OPTIONS
     @categories = Category::OPTIONS
   end
 
@@ -60,7 +62,7 @@ class FinanceiroController < ApplicationController
     @release = Release.find(params[:release][:id])
     @release.update_attributes(params[:release])
 
-    redirect_to financeiro_index_path    
+    redirect_to financeiro_index_path
   end
 
   def consultar
