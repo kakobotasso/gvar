@@ -13,4 +13,13 @@ class Course < ActiveRecord::Base
   def periodo
   	Category::Seasons::OPTIONS.rassoc(season)[0]
   end
+
+  def turma_andamento
+  	if teams.where('status = 0').count > 0
+  		"Sim"
+  	else
+  		"Nao"
+  	end
+  end
+
 end

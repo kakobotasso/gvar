@@ -4,8 +4,6 @@ class CursosController < ApplicationController
 
   def index
     @course = Course.where(:active => true).order("created_at desc")
-    @team = Team.where(:active => true).order("created_at desc").limit(5)
-    @season = Category::Seasons::OPTIONS
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +23,7 @@ class CursosController < ApplicationController
   def new
     @course = Course.new
     @course_category = Category::Courses::OPTIONS
-    @course_code = "C#{Time.now.strftime('%y%m%d%H%M%S')}"
+    @course.code = "C#{Time.now.strftime('%y%m%d%H%M%S')}"
 
     respond_to do |format|
       format.html # new.html.erb

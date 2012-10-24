@@ -21,21 +21,21 @@
 
     <li>
         <label>
-            <span>Nome:</span><br/>
+            <span>Nome*:</span><br/>
             <%= c.text_field :name, :class => "inputMedio input" %>
         </label>
     </li>
 
     <li>
         <label>
-            <span>Tipo:</span><br/>
+            <span>Tipo*:</span><br/>
             <%= select_tag 'course[course_type]', options_for_select(@course_category), :class => 'select selectMedio' %>
         </label>
     </li>
 
     <li>
         <label>
-            <span>Descrição:</span><br/>
+            <span>Descrição*:</span><br/>
             <%= c.text_area :description, :class => "inputMedio input" %>
         </label>
     </li>

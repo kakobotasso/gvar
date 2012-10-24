@@ -16,8 +16,8 @@
       </li>
 
       <li class="liPesquisaAvancada">
-        <%= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
-        <%= f.submit 'Pesquisar', :class => 'btEditarForm', :id => 'btRealizarPesquisa' %>
+        <%#= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
+        <%= f.submit 'Pesquisar', :class => 'btEditarForm semPesquisaAvancada', :id => 'btRealizarPesquisa' %>
       </li>
     </ul>
   <% end %>
@@ -27,14 +27,20 @@
 </div>
 
 <div id="guardaAtividadesRecentes">
-  <h2>Próximas turmas</h2>
-  <% @team.each do |t| %>
-    <p>
-      <span><%= t.code %></span>
-      <span><%= t.name %></span>
-      <span><%= t.periodo %></span>
-      <%= link_to 'Visualizar', "javascript:void(0);", :class => 'btVoltarForm' %>
-    </p>
+  <h2>Próximos cursos</h2>
+  <% if @course.size > 0 %>
+    
+    <% @course.each do |c| %>
+      <p>
+        <span><%= c.code %></span>
+        <span><%= c.name %></span>
+        <span><%= c.categoria %></span>
+        <%= link_to 'Abrir', courses_show_path(c), :class => 'btVoltarForm' %>
+      </p>
+    <% end %>
+
+  <% else %>
+    <p><span>Nenhum curso cadastrado</span></p>
   <% end %>
 </div>
 
@@ -51,11 +57,11 @@
       </tr>
 
       <% @course.each do |c| %>
-        <tr border="0">
-            <td width="25%"><span><%= link_to c.code, courses_show_path(c.id) %></span></td>
-            <td width="25%"><span><%= link_to c.name, courses_show_path(c.id) %></span></td>
-            <td width="25%"><span><%= link_to c.categoria, courses_show_path(c.id) %></span></td>
-            <td width="25%"><span> NO </span></td>
+        <tr border="0" onclick="location.href='<%= courses_show_path(c) %>'">
+            <td width="25%"><span><%= c.code %></span></td>
+            <td width="25%"><span><%= c.name %></span></td>
+            <td width="25%"><span><%= c.categoria %></span></td>
+            <td width="25%"><span><%= c.turma_andamento %></span></td>
         </tr>
       <% end %>
 
