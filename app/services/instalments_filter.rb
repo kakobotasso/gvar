@@ -12,7 +12,8 @@ class InstalmentsFilter
     # implementar depois o fixed_payment
     # scope = scope.where(:'releases.fixed_payment' => options['fixed_payment']) unless options['fixed_payment'].blank?
     scope = scope.where(:'releases.category_id' => options['category_id']) unless options['category_id'].blank?
-    scope = scope.where("status_id != 1")
+    scope = scope.where(:status_id => options[:status_id]) unless options[:status_id].blank?
+    scope = scope.where(:payment_id => options[:payment_id]) unless options[:payment_id].blank?
     scope
     else
       [] # Ou então retorna um array vazio para a view dizer que nao encontrou resultados
