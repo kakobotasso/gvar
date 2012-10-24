@@ -136,25 +136,34 @@
 <% end %>
 
 <script type="text/javascript">
-    function valida(e,permitidos){
-        var tecla,
-        permitidos = permitidos || [],
-        permitido = false;
+    function get_tecla(e){
+        var tecla = (window.event) ? event.keyCode : e.which;
+        return tecla;
+    }
 
-        tecla = (window.event) ? event.keyCode : e.which;
-        permitidos.concat([0,8]); // Sabe-se la deus porque... (né Kako)
+    function valida_numerico(tecla,permitidos){
+        var permitidos = permitidos || [],
+            permitido = false,
+            tecla_permitida;
 
-        if( (tecla > 47 && tecla < 58) || ( permitidos.indexOf(tecla) =! -1) ) permitido = true;
+        permitidos = permitidos.concat([0,8]); // Sabe-se la deus porque... (né Kako)
+
+        // indexOf retorna -1 caso não encontre o numero da tecla no array
+        // ao somar 1, a tecla_permitida fica com valor 0 == false
+        // qualquer outro valor ele interpreta como true
+        tecla_permitida = permitidos.indexOf(tecla) + 1;
+
+        if((tecla > 47 && tecla < 58) || tecla_permitida) permitido = true;
 
         return permitido;
     }
 
     function somente_numero(e){
-        return valida(e);
+        return valida_numerico(get_tecla(e));
     }
 
     function numeros_com_separador(e){
-        return valida(e,[44,46]);
+        return valida_numerico(get_tecla(e),[44,46]);
     }
 
     function formas_pagamento(id){
