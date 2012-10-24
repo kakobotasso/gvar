@@ -4,7 +4,7 @@ class Instalment < ActiveRecord::Base
 
   belongs_to :release
 
-  scope :pendents, where(:status_id => 0)
+  scope :pending, where(:status_id => 0)
 
   def status
     Status::FINANCIAL.rassoc(status_id)[0]
@@ -40,7 +40,7 @@ class Instalment < ActiveRecord::Base
     write_attribute(:amount_paid, value)
   end
 
-  def pendente?
+  def pending?
     self.status_id == 0 # 0 => Pendente
   end
 end
