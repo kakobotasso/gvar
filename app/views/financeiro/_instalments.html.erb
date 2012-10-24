@@ -19,7 +19,7 @@
         <td width="14%"><span><%= i.name %></span></td>
         <td width="14%"><span><%= i.expiration_date_to_s %></span></td>
         <td width="14%"><span><%= i.status %></span></td>
-        <td width="14%"><span>R$ <%= number_to_currency(i.amount) %></span></td>
+        <td width="14%"><span><%= number_to_currency(i.amount) %></span></td>
         <td width="14%"><span><%= link_to("Pagar", financeiro_pagar_path(i.id), :class => "btVoltarForm") if i.pending? %></span></td>
       </tr>
     <% end %>
