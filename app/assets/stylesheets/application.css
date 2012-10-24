@@ -644,6 +644,10 @@ margin:0px 10px;
     padding-bottom:0px;
 }
 
+#infoTurmasCursos ul.tresOpcoes li{
+    width:125px;
+}
+
 #infoTurmasCursos ul li p{
     float:left;
     width:100%;
@@ -655,4 +659,13 @@ margin:0px 10px;
 #infoTurmasCursos ul li p span{
     font-weight:bold;
     font-size:18px;
+}
+
+.floatLeft{
+    float:left;
+    padding:5px 5px 0px 0px;
+}
+
+#contentInternas .semPesquisaAvancada, #contentInternas #btEditarForm.semPesquisaAvancada{
+    margin-left:125px;
 }
