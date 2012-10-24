@@ -10,7 +10,9 @@ class InstalmentPresenter
         :locals => { :instalments => @instalments }
       }
     else
-      { :text => "Nenhum resultado encontrado para sua busca." }
+      {
+        :partial => "financeiro/no_results"
+      }
     end
   end
 end
