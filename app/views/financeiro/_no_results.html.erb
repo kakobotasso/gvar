@@ -5,5 +5,7 @@
   </p>
 </div>
 <script type="text/javascript">
-  $("#guardaResultadoPesquisa").slideDown(500);
+  if(location.href.split("?")[1]){
+    $("#guardaResultadoPesquisa").slideDown(500);
+  }
 </script>
