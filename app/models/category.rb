@@ -34,4 +34,12 @@ module Category
       ["Noite"  , 2]
     ]
   end
+
+  module Interested
+    SITUATION = [
+      ["Ativo",   0],
+      ["Inativo", 1],
+      ["Aluno",   2]
+    ]
+  end
 end
