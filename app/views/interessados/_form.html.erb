@@ -1,0 +1,55 @@
+<%= form_for @interested, :url => "/interessados" do |i| %>
+
+<% if @interested.errors.any? %>
+    <div id="error_explanation">
+      <ul class="error">
+      <% @interested.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<ul>
+    <li>
+        <label>
+            <span>Nome: </span><br/>
+            <%= i.text_field :name, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>E-mail: </span><br/>
+            <%= i.text_field :email, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>Telefone: </span><br/>
+            <%= i.text_field :phone, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li class="guardaSelect guardaSelectMedio">
+        <label>
+            <span>Situação: </span><br/>
+            <%= select_tag 'interested[situation]', options_for_select(@situation, @interested.situation), :class => 'select selectMedio', :prompt => "Selecione a situação" %>
+        </label>
+    </li>
+    
+
+    <li>
+        <label>
+            <span>Interesses: </span><br/>
+            <%= i.text_area :interest, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li class="btEnviarForm">
+        <%= i.submit %>
+    </li>
+    
+</ul>
+<% end %>

@@ -19,7 +19,7 @@ Gvar::Application.routes.draw do
     post "/cursos/", :action => :create, :as => :courses                  # cursos_path
     get "/cursos/:id", :action => :show, :as => :courses_show
     get "/cursos/:id/editar", :action => :edit, :as => :courses_edit
-    #put "cursos/:id", :action => :update, :as => :courses_update
+    put "cursos/:id", :action => :update, :as => :courses_update
     get "cursos/:id/cancelar", :action => :cancel, :as => :courses_cancel
     #match "/cursos/:id/", :action => :show, :as => :cursos_detalhe
     #match "/cursos/:id/edit", :action => :edit, :as => :cursos_editar
@@ -45,6 +45,15 @@ Gvar::Application.routes.draw do
     get "/alunos/:id/editar", :action => :edit, :as => :students_edit
     put "/alunos/:id", :action => :update, :as => :students_update
     get "/alunos/:id/cancelar", :action => :cancel, :as => :students_cancel
+  end
+
+  controller :interessados do
+    get "/interessados", :action => :index, :as => :interested                   
+    get "/interessados/novo", :action => :new, :as => :interested_new
+    post "/interessados", :action => :create, :as => :interested                 
+    get "/interessados/:id", :action => :show, :as => :interested_show
+    get "/interessados/:id/editar", :action => :edit, :as => :interested_edit
+    put "/interessados/:id", :action => :update, :as => :interested_update
   end
 
   controller :sessions do

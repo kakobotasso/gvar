@@ -1,0 +1,64 @@
+<!-- TITLE -->
+<% content_for :title do %> <%= @interested.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
+<!-- / TITLE -->
+
+<!-- MENU -->
+<% content_for :menu do %> <%= render 'menu' %> <% end %>
+<!-- / MENU -->
+
+<h1>Interessado</h1>
+
+<ul>
+	<li><strong><%= @interested.name %></strong></li>
+	<li><strong>E-mail:</strong> <%= @interested.email %></li>
+	<li><strong>Telefone:</strong> <%= @interested.phone %></li>
+	<li><strong>Situação:</strong> <%= @interested.real_situation %></li>
+	<li><strong>Interesses:</strong> <%= @interested.interest %></li>
+</ul>
+
+<ul>
+	<li><%= link_to "Editar", interested_path, :class => "btEnviarForm" %></li>
+</ul>
+
+<ul>
+	<li>
+		<p class="historicoContatos">
+			<span>Histórico de Contatos</span>
+			<%= link_to "Novo", interested_path, :class => "btEnviarForm floatRight" %>
+		</p>
+	</li>
+
+</ul>
+
+<ul>
+	<li><%= link_to "Voltar", interested_path, :class => "btEnviarForm" %></li>
+</ul>
+
+<!-- LIGHTBOX -->
+<div id="escurece"></div>
+<div id="guardaLightBox">
+	<form>
+		<ul>
+			<li>
+				<label>
+					<span>Data:</span><br/>
+					<input type="text" name="" />
+				</label>
+			</li>
+
+			<li>
+				<label>
+					<span>Descrição:</span><br/>
+					<textarea cols="1" rows="1" name=""></textarea>
+				</label>
+			</li>
+		</ul>
+	</form>
+</div>
+<!-- / LIGHTBOX -->
+
+<script type="text/javascript">
+	$(function(){
+		alert("asd");
+	});
+</script>
