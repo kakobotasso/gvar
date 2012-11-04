@@ -1,1 +1,13 @@
-OPE - Deploy::
+== Sistema de Gestão GVAR
+
+* Pode ser acessado em link:http://gvar1.webbyapp.com
+
+* <tt> ISSUES </tt> atuais em link:http://github.com/kakobotasso/gvar/issues?sort=updated&state=open
+
+    Participantes:
+    Armando Alves link:https://github.com/ArmandoPiruk
+    Kako Botasso link:https://github.com/kakobotasso
+    Ricardo Duarte link:https://github.com/ricardodcar
+    Mara Regina link:https://github.com/MaraRegina
+    Carlos Oliveira link:https://github.com/carlosfit
+
