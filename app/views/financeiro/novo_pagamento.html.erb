@@ -9,116 +9,58 @@
 <h1>Novo pagamento</h1>
 
 <%= form_for(@release) do |r| %>
-<ul>
+  <ul>
     <li>
-        <label>
-            <span>Codigo: </span>
-            <%= @release_code %>
-            <%= hidden_field_tag "release[code]", @release_code %>
-        </label>
+      <label>
+        <span>Codigo: </span>
+        <%= @release_code %>
+        <%= hidden_field_tag "release[code]", @release_code %>
+      </label>
     </li>
 
     <li>
-        <label>
-            <span>Nome:</span><br/>
-            <%= r.text_field :name, :class => "inputMedio input" %>
-        </label>
+      <label>
+        <span>Nome:</span><br/>
+        <%= r.text_field :name, :class => "inputMedio input" %>
+      </label>
     </li>
 
     <li>
-        <label>
-            <span>Categoria:</span><br/>
-            <%= r.select :category_id, @categories, {}, :class => 'select selectMedio' %>
-        </label>
+      <label>
+        <span>Categoria:</span><br/>
+        <%= r.select :category_id, @categories, {}, :class => 'select selectMedio' %>
+      </label>
     </li>
 
     <li>
-        <label>
-            <span>Valor total:</span><br/>
-            <%= r.text_field :total_amount, :class => "inputMedio input", :id => "valorTotal" %>
-        </label>
+      <label>
+        <span>Valor total:</span><br/>
+        <%= r.text_field :total_amount, :class => "inputMedio input", :id => "valorTotal" %>
+      </label>
     </li>
 
     <li>
-        <label>
-            <span>Numero de parcelas:</span><br/>
-            <%= r.text_field :number_instalments, :class => "inputMedio input", :id => "numberParcelas" %>
-        </label>
+      <label>
+        <span>Numero de parcelas:</span><br/>
+        <%= r.text_field :number_instalments, :class => "inputMedio input", :id => "numberParcelas" %>
+      </label>
     </li>
 
     <li>
-        <label>
-            <%= r.check_box :first_paid %> <span>Primeira paga</span>
-        </label>
+      <label>
+        <%= r.check_box :first_paid %> <span>Primeira paga</span>
+      </label>
     </li>
 
     <li>
-        <label>
-            <%= r.check_box :fixed_payment %> <span>Despesa fixa</span>
-        </label>
+      <label>
+        <%= r.check_box :fixed_payment %> <span>Despesa fixa</span>
+      </label>
     </li>
 
     <li>
       <div id="guardaResultadoPesquisa" class="parcelas">
-      <!--
-  Ver como é gerado esse HTML e alterar na parcela..
-
-  <input id="release_number_instalments" name="release[number_instalments]" size="30" type="text">
-  <input id="release_instalments_attributes_0_amount" name="release[instalments_attributes][0][amount]" size="30" type="text">
-
-  <select id="status_id" name="status_id"><option value="0">Pendente</option>
-
-   Testes para gerar duas parcelas fixas, trocar por ajax + partials -->
-  <% number_instalments = 0 %>
-  <% # (1..number_instalments).each  ...  %>
-  <table cellspadding="0" cellspacing="0" width="100%" id="guardaParcelasGeradas">
-    <tr>
-      <th width="14%"><span>No</span></th>
-      <th width="14%"><span>Valor Parcela</span></th>
-      <th width="14%"><span>Data de Vencimento</span></th>
-      <th width="14%"><span>Data de  Pagamento</span></th>
-      <th width="14%"><span>Valor Pago</span></th>
-      <th width="14%"><span>Forma de Pagamento</span></th>
-      <th width="14%"><span>Status</span></th>
-    </tr>
-
-  <% (1..number_instalments).each do |number_instalment| %>
-    <tr>
-      <%= r.fields_for :instalments do |i| %>
-        <td width="14%">
-          <%= i.hidden_field :number, :value => number_instalment %>
-          <span><%= "#{number_instalment}/#{number_instalment}" %></span>
-        </td>
-
-        <td width="14%">
-          <span><%= i.text_field :amount, :class => "inputPeq input" %></span>
-        </td>
-
-        <td width="14%">
-          <span><%= i.text_field :expiration_date, :class => "inputPeq input" %></span>
-        </td>
-
-        <td width="14%">
-          <span><%= i.text_field :paid_at, :class => "inputPeq input" %></span>
-        </td>
-
-        <td width="14%">
-          <span><%= i.text_field :amount_paid, :class => "inputPeq input" %></span>
-        </td>
-
-        <td width="14%">
-          <span><%= select_tag :payment_id, options_for_select(@payments), :class => 'select' %></span>
-        </td>
-
-        <td width="14%">
-          <span><%= select_tag :status_id, options_for_select(@status), :class => 'select' %></span>
-        </td>
-      <% end %>
-    </tr>
-  <%  end %>
-
-  </table>
-</div>
+      </div>
     </li>
 
     <li>
@@ -129,109 +71,77 @@
     </li>
 
     <li id="btEnviarForm">
-        <%= r.submit 'Salvar Pagamento' %>
-        <%= link_to 'Voltar', financeiro_index_path, :id => "btVoltarForm" %>
+      <%= r.submit 'Salvar Pagamento' %>
+      <%= link_to 'Voltar', financeiro_index_path, :id => "btVoltarForm" %>
     </li>
-</ul>
+  </ul>
 <% end %>
 
 <script type="text/javascript">
-    function get_tecla(e){
-        var tecla = (window.event) ? event.keyCode : e.which;
-        return tecla;
-    }
+function get_tecla(e){
+  var tecla = (window.event) ? event.keyCode : e.which;
+  return tecla;
+}
 
-    function valida_numerico(tecla,permitidos){
-        var permitidos = permitidos || [],
-            permitido = false,
-            tecla_permitida;
+function valida_numerico(tecla,permitidos){
+  var permitidos = permitidos || [],
+      permitido = false,
+      tecla_permitida;
 
-        permitidos = permitidos.concat([0,8]); // Sabe-se la deus porque... (né Kako)
+  permitidos = permitidos.concat([0,8]); // Sabe-se la deus porque... (né Kako)
 
-        // indexOf retorna -1 caso não encontre o numero da tecla no array
-        // ao somar 1, a tecla_permitida fica com valor 0 == false
-        // qualquer outro valor ele interpreta como true
-        tecla_permitida = permitidos.indexOf(tecla) + 1;
+  // indexOf retorna -1 caso não encontre o numero da tecla no array
+  // ao somar 1, a tecla_permitida fica com valor 0 == false
+  // qualquer outro valor ele interpreta como true
+  tecla_permitida = permitidos.indexOf(tecla) + 1;
 
-        if((tecla > 47 && tecla < 58) || tecla_permitida) permitido = true;
+  if((tecla > 47 && tecla < 58) || tecla_permitida) permitido = true;
 
-        return permitido;
-    }
+  return permitido;
+}
 
-    function somente_numero(e){
-        return valida_numerico(get_tecla(e));
-    }
+function somente_numero(e){
+  return valida_numerico(get_tecla(e));
+}
 
-    function numeros_com_separador(e){
-        return valida_numerico(get_tecla(e),[44,46]);
-    }
+function numeros_com_separador(e){
+  return valida_numerico(get_tecla(e),[44,46]);
+}
 
-    function formas_pagamento(id){
-        var formasPagamento = '';
-        formasPagamento += '<select class="select"';
-        formasPagamento += ' id="release_instalments_attributes_'+id+'_payment_id"';
-        formasPagamento += ' name="release[instalments_attributes]['+id+'][payment_id]">';
-        formasPagamento += '  <option value="0">Dinheiro</option>';
-        formasPagamento += '  <option value="1">Cheque</option>';
-        formasPagamento += '  <option value="2">Cheque-pre</option>';
-        formasPagamento += '  <option value="3">Cartão Debito</option>';
-        formasPagamento += '  <option value="4">Cartão Credito</option>';
-        formasPagamento += '</select>';
+//numberParcelas
+$("#numberParcelas").keypress(somente_numero);
+$("#valorTotal").keypress(numeros_com_separador);
 
-        return formasPagamento;
-    }
+$("#numberParcelas").blur(function(){
+    numero_parcelas = $("#numberParcelas").val();
+    valor = $("#valorTotal").val();
+    valor = valor + "";             // Transforma em string para usar o replace
+    valor = valor.replace(".","");  // Caso a pessoa digite 1.500,00
+    valor = valor.replace(",","."); // Para deixar no formato 1500.00
 
-    function all_status(id){
-        var  status = '';
-        status += '<select class="select"';
-        status += ' id="release_instalments_attributes_'+id+'_status_id"';
-        status += ' name="release[instalments_attributes]['+id+'][status_id]">';
-        status += '  <option value="0">Pendente</option>';
-        status += '  <option value="1">Quitado</option>';
-        status += '  <option value="2">Cancelado</option>';
-        status += '  <option value="3">Recebido</option>';
-        status += '</select>';
-
-        return status;
-    }
-
-    //numberParcelas
-    $("#numberParcelas").keypress(somente_numero);
-    $("#valorTotal").keypress(numeros_com_separador);
-
-    $("#numberParcelas").blur(function(){
-        var valor,
-        _tr = "",
-        numero_parcelas = $("#numberParcelas").val();
-
-        valor = $("#valorTotal").val();
-        valor = valor + "";             // Transforma em string para usar o replace
-        valor = valor.replace(".","");  // Caso a pessoa digite 1.500,00
-        valor = valor.replace(",","."); // Para deixar no formato 1500.00
-
-        if( numero_parcelas > 0 ){
-            if( valor > 0 ){
-                for( var i = 0; i < numero_parcelas; i++ ){
-                    _tr += '<tr class="generated">';
-                    _tr += '  <td width="14%"> <span>'+(i+1)+'/'+numero_parcelas+'</span> <input id="release_instalments_attributes_'+i+'_number" name="release[instalments_attributes]['+i+'][number]" type="hidden" value="'+(i+1)+'"> </td>';
-                    _tr += '  <td width="14%"> <span>R$ <input class="inputMenor input soNumeros" id="release_instalments_attributes_'+i+'_amount" name="release[instalments_attributes]['+i+'][amount]" size="30" type="text" value="'+parseFloat(Math.round((valor/numero_parcelas)*100)/100).toFixed(2).replace(".",",")+'"></span> </td>';
-                    _tr += '  <td width="14%"> <span><input class="inputMenor input" id="release_instalments_attributes_'+i+'_expiration_date" name="release[instalments_attributes]['+i+'][expiration_date]" size="30" type="text"></span> </td>';
-                    _tr += '  <td width="14%"> <span><input class="inputMenor input" id="release_instalments_attributes_'+i+'_paid_at" name="release[instalments_attributes]['+i+'][paid_at]" size="30" type="text"></span> </td>';
-                    _tr += '  <td width="14%"> <span><input class="inputMenor input soNumeros" id="release_instalments_attributes_'+i+'_amount_paid" name="release[instalments_attributes]['+i+'][amount_paid]" size="30" type="text"></span> </td>';
-                    _tr += '  <td width="14%"> <span>'+formas_pagamento(i)+'</span> </td>';
-                    _tr += '  <td width="14%"> <span>'+all_status(i)+'</span> </td>';
-                    _tr += '</tr>';
+    if( numero_parcelas > 0 ){
+        if( valor > 0 ){
+            $.ajax({
+                url: "/financeiro/criar-parcelas",
+                type: "GET",
+                data: {
+                    "number_instalment": numero_parcelas,
+                    "total": valor
                 }
-                $("#guardaParcelasGeradas tr.generated").remove();
-                $("#guardaParcelasGeradas").append(_tr);
-                $("#guardaParcelasGeradas").slideDown(500);
-            }else{
-                alert("Digite um valor válido");
-                $("#valorTotal").focus();
-            }
+            }).done(function(data) {
+                $("#guardaResultadoPesquisa").empty();
+                $("#guardaResultadoPesquisa").append(data);
+                result = $("#guardaParcelas").html();
+                $("#guardaResultadoPesquisa").empty();
+                $("#guardaResultadoPesquisa").append(result);
+            });
         }else{
-            alert("Valor minimo para parcelas: 1");
-            $("#numberParcelas").focus();
+            alert("Digite um valor válido");
+            $("#valorTotal").focus();
         }
-    });
+    }else{
+        alert("Valor minimo para parcelas: 1");
+        $("#numberParcelas").focus();
+    }
+});
 </script>

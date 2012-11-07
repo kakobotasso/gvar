@@ -12,6 +12,7 @@ Gvar::Application.routes.draw do
     post "#{URL_FINANCEIRO}/relatorio", :action => :relatorio
     get  "#{URL_FINANCEIRO}/pagar/:id", :action => :pagar, :as => :financeiro_pagar
     post "#{URL_FINANCEIRO}/pagar-parcela", :action => :pagar_parcela, :as => :financeiro_pagar_parcela
+    get "#{URL_FINANCEIRO}/criar-parcelas", :action => :create_instalments, :as => :financeiro_criar_parcelas
     get  "#{URL_FINANCEIRO}/lancamento/:id/editar", :action => :editar_lancamento, :as => :financeiro_editar_lancamento
     put  "#{URL_FINANCEIRO}/update-lancamento", :action => :update_lancamento, :as => :financeiro_update_lancamento
   end

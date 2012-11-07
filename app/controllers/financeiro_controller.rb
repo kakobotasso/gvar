@@ -2,6 +2,8 @@ class FinanceiroController < ApplicationController
   require_logged_user
   require_role_for_pagamento
 
+  layout false, :only => [:create_instalments]
+
   def index
     @list_instalments = InstalmentsFilter.filter(params['filtro'])
     @instalment = InstalmentPresenter.new(@list_instalments)
@@ -69,6 +71,18 @@ class FinanceiroController < ApplicationController
   end
 
   def relatorio
+  end
+
+  def create_instalments
+    @release           = Release.new
+    @release.instalments.build
+    @number_instalment = params[:number_instalment].to_i
+    @total             = params[:total].to_f
+    @amount_instalment = (@total/@number_instalment).round(2)
+    @last_instalment   = (@total - (@amount_instalment * (@number_instalment -1))).round(2)
+
+    @status     = Status::FINANCIAL
+    @payments   = Payment::OPTIONS
   end
 
 end
