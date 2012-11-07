@@ -53,6 +53,8 @@ Gvar::Application.routes.draw do
     post "/interessados", :action => :create, :as => :interested                 
     get "/interessados/:id", :action => :show, :as => :interested_show
     get "/interessados/:id/editar", :action => :edit, :as => :interested_edit
+    get "/interessados/:id/historico", :action => :history, :as => :interested_history
+    put "/interessados/:id/historico/salvar", :action => :save_history, :as => :interested_contact_save
     put "/interessados/:id", :action => :update, :as => :interested_update
   end
 

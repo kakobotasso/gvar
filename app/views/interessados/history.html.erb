@@ -1,0 +1,34 @@
+<!-- TITLE -->
+<% content_for :title do %> Novo histórico interessado - Sistema Grupo Vida, Amor e Riso! <% end %>
+<!-- / TITLE -->
+
+<!-- MENU -->
+<% content_for :menu do %> <%= render 'menu' %> <% end %>
+<!-- / MENU -->
+
+<h1>Novo histórico interessado</h1>
+
+<%= form_for @interested, :url => interested_contact_save_path(@interested) do |w| %>
+<%= w.fields_for :interested_contacts do |i| %>
+<ul>
+    <li>
+        <label>
+            <span>Data: </span><br/>
+            <%= i.text_field :date, :class => "select" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Interesses: </span><br/>
+            <%= i.text_area :description, :class => "inputMedio input" %>
+        </label>
+    </li>
+    <% end %>
+
+    <li class="btEnviarForm">
+        <%= w.submit %>
+    </li>
+    
+</ul>
+<% end %>

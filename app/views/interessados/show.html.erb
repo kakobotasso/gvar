@@ -17,48 +17,26 @@
 </ul>
 
 <ul>
-	<li><%= link_to "Editar", interested_path, :class => "btEnviarForm" %></li>
+	<li><%= link_to "Editar", interested_edit_path, :class => "btEnviarForm" %></li>
 </ul>
 
-<ul>
+<ul id="guardaHistoricoContatos">
 	<li>
 		<p class="historicoContatos">
 			<span>Histórico de Contatos</span>
-			<%= link_to "Novo", interested_path, :class => "btEnviarForm floatRight" %>
+			<%= link_to "Novo", interested_history_path, :class => "btEnviarForm floatRight", :id => "btNovoHistoricoContato" %>
 		</p>
 	</li>
-
+	<% @interested_contact.each do |c| %>
+	<li>
+		<p>
+			<span><%= c.date %></span>
+			<span><%= c.description %></span>
+		</p>
+	</li>
+	<% end %>
 </ul>
 
 <ul>
 	<li><%= link_to "Voltar", interested_path, :class => "btEnviarForm" %></li>
 </ul>
-
-<!-- LIGHTBOX -->
-<div id="escurece"></div>
-<div id="guardaLightBox">
-	<form>
-		<ul>
-			<li>
-				<label>
-					<span>Data:</span><br/>
-					<input type="text" name="" />
-				</label>
-			</li>
-
-			<li>
-				<label>
-					<span>Descrição:</span><br/>
-					<textarea cols="1" rows="1" name=""></textarea>
-				</label>
-			</li>
-		</ul>
-	</form>
-</div>
-<!-- / LIGHTBOX -->
-
-<script type="text/javascript">
-	$(function(){
-		alert("asd");
-	});
-</script>

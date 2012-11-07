@@ -15,6 +15,7 @@ class InteressadosController < ApplicationController
 
   def show
     @interested = Interested.find(params[:id])
+    @interested_contact = @interested.interested_contacts
     @situation = Category::Interested::SITUATION
 
     respond_to do |format|
@@ -36,6 +37,25 @@ class InteressadosController < ApplicationController
   def edit
     @interested = Interested.find(params[:id])
     @situation = Category::Interested::SITUATION
+  end
+
+  def history
+    @interested = Interested.find(params[:id])
+    @interested.interested_contacts.build
+  end
+
+  def save_history
+    @interested = Interested.find(params[:id])
+
+    respond_to do |format|
+      if @interested.update_attributes(params[:interested])
+        format.html { redirect_to interested_show_path, notice: 'As informacoes foram atualizadas com sucesso!' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @interesteds.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def create
