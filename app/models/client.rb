@@ -1,0 +1,2 @@
+class Client < Person
+end
