@@ -9,26 +9,27 @@
 <h1>Novo histórico interessado</h1>
 
 <%= form_for @interested, :url => interested_contact_save_path(@interested) do |w| %>
-<%= w.fields_for :interested_contacts do |i| %>
-<ul>
-    <li>
-        <label>
-            <span>Data: </span><br/>
-            <%= i.text_field :date, :class => "select" %>
-        </label>
-    </li>
+    <%= w.fields_for :interested_contacts do |i| %>
+        <% if i.object.id.nil? %>
+            <ul>
+                <li>
+                    <label>
+                        <span>Data: </span><br/>
+                        <%= i.text_field :date, :class => "select" %>
+                    </label>
+                </li>
 
-    <li>
-        <label>
-            <span>Interesses: </span><br/>
-            <%= i.text_area :description, :class => "inputMedio input" %>
-        </label>
-    </li>
+                <li>
+                    <label>
+                        <span>Interesses: </span><br/>
+                        <%= i.text_area :description, :class => "inputMedio input" %>
+                    </label>
+                </li>
+        <% end %>
     <% end %>
 
-    <li class="btEnviarForm">
-        <%= w.submit %>
-    </li>
-    
-</ul>
+        <li class="btEnviarForm">
+            <%= w.submit %>
+        </li>
+    </ul>
 <% end %>
