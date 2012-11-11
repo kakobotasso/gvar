@@ -7,7 +7,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :rg
       t.string :birth_date
       t.string :occupation
-      t.string :sex
+      t.integer :sex
       t.string :schooling
       t.integer :relationship_elderly
       t.string :phone

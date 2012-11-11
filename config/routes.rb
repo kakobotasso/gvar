@@ -26,7 +26,7 @@ Gvar::Application.routes.draw do
   end
 
   controller :turmas do
-    get "/turmas", :action => :index, :as => :teams                   
+    get "/turmas", :action => :index, :as => :teams
     get "/turmas/novo", :action => :new, :as => :teams_new
     post "/turmas", :action => :create, :as => :teams                 
     get "/turmas/:id", :action => :show, :as => :teams_show
@@ -38,17 +38,17 @@ Gvar::Application.routes.draw do
   end
 
   controller :alunos do
-    get "/alunos", :action => :index, :as => :students                   
+    get "/alunos", :action => :index, :as => :students                  
     get "/alunos/novo", :action => :new, :as => :students_new
-    post "/alunos", :action => :create, :as => :students                 
+    post "/alunos", :action => :create
     get "/alunos/:id", :action => :show, :as => :students_show
     get "/alunos/:id/editar", :action => :edit, :as => :students_edit
-    put "/alunos/:id", :action => :update, :as => :students_update
+    put "/alunos/:id", :action => :update
     get "/alunos/:id/cancelar", :action => :cancel, :as => :students_cancel
   end
 
   controller :interessados do
-    get "/interessados", :action => :index, :as => :interested                   
+    get "/interessados", :action => :index, :as => :interested
     get "/interessados/novo", :action => :new, :as => :interested_new
     post "/interessados", :action => :create, :as => :interested                 
     get "/interessados/:id", :action => :show, :as => :interested_show
@@ -80,64 +80,4 @@ Gvar::Application.routes.draw do
   resources :users
   get  "/alterar-senha",   :controller => :users, :action => :alterar_senha, :as => :alterar_senha
   post "/update-password", :controller => :users, :action => :update_password, :as => :update_password
-
-
-
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
-
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
-
 end

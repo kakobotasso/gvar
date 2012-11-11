@@ -14,8 +14,8 @@
     <li>
         <label>
             <span>Código: </span>
-            <%= @student_code %>
-            <%= hidden_field_tag "students[code]", @student_code %>
+            <%= s.object.code || @student_code %>
+            <%= s.hidden_field :code, :value => @student_code || s.object.code %>
         </label>
     </li>
 
@@ -57,12 +57,7 @@
     <li>
         <label>
             <span>Sexo*: </span><br/>
-            <select name="students[sex]" class="select selectMedio">
-                <option></option>
-                <option value="Masculino">Masculino</option>
-                <option value="Feminino">Feminino</option>
-            </select>
-            <%#= s.text_field :sex, :class => "inputMedio input" %>
+            <%= s.select :sex, @sexo, { :prompt => 'Selecione um sexo' }, :class => 'select selectMedio' %>
         </label>
     </li>
 
@@ -76,12 +71,7 @@
     <li>
         <label>
             <span>Relação com Idosos*: </span><br/>
-            <select name="students[relationship_elderly]" class="select selectMedio">
-                <option></option>
-                <option value=1>Sim</option>
-                <option value=0>Não</option>
-            </select>
-            <%#= s.text_field :relationship_elderly, :class => "inputMedio input" %>
+            <%= s.select :relationship_elderly, @relacao,{ :prompt => ' ' }, :class => 'select selectMedio' %>
         </label>
     </li>
 
@@ -137,7 +127,7 @@
     <li>
         <label>
             <span>Estado*: </span><br/>
-            <%= select_tag 'students[country]', options_for_select(@state, @student.country), :class => 'select selectMedio', :prompt => 'Selecione um estado' %>
+            <%= s.select :country, @state,{ :prompt => 'Selecione um estado' }, :class => 'select selectMedio' %>
         </label>
     </li>
 
@@ -151,27 +141,27 @@
     <li>
         <label><span>Documentos entregues: </span><br/></label>
         <label>
-            <%= check_box_tag "students[rg_delivered]", true, false, :class => "uniform funcao" %>
+            <%= s.check_box :rg_delivered, :class => "uniform funcao" %>
             <span>RG</span>
         </label>
         <br/>
         <label>
-            <%= check_box_tag "students[cpf_delivered]", true, false, :class => "uniform funcao" %>
+            <%= s.check_box :cpf_delivered, :class => "uniform funcao" %>
             <span>CPF</span>
         </label>
         <br/>
         <label>
-            <%= check_box_tag "students[photo_delivered]", true, false, :class => "uniform funcao" %>
+            <%= s.check_box :photo_delivered, :class => "uniform funcao" %>
             <span>Foto</span>
         </label>
         <br/>
         <label>
-            <%= check_box_tag "students[cv_delivered]", true, false, :class => "uniform funcao" %>
+            <%= s.check_box :cv_delivered, :class => "uniform funcao" %>
             <span>Curriculum</span>
         </label>
         <br/>
         <label>
-            <%= check_box_tag "students[address_delivered]", true, false, :class => "uniform funcao" %>
+            <%= s.check_box :address_delivered, :class => "uniform funcao" %>
             <span>Comprovante de endereço</span>
         </label>
     </li>

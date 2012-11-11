@@ -63,7 +63,7 @@
       <p>
         <span><%= s.name %></span>
         <span><%= s.cpf %></span>
-        <%= link_to 'Abrir', students_show_path(s.id), :class => 'btVoltarForm' %>
+        <%= link_to 'Abrir', students_edit_path(s), :class => 'btVoltarForm' %>
       </p>
     <% end %>
   <% else %>

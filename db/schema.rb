@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(:version => 20121104203202) do
     t.string   "rg"
     t.string   "birth_date"
     t.string   "occupation"
-    t.string   "sex"
+    t.integer  "sex"
     t.string   "schooling"
     t.integer  "relationship_elderly"
     t.string   "phone"

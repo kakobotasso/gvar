@@ -25,6 +25,8 @@ class AlunosController < ApplicationController
     @student = Students.new
     @state = Country::STATES
     @student_code = "A#{Time.now.strftime('%y%m%d%H%M%S')}"
+    @sexo = Students::SEXO
+    @relacao = Students::RELACAO
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,11 +37,15 @@ class AlunosController < ApplicationController
   def edit
     @student = Students.find(params[:id])
     @state = Country::STATES
+    @sexo = Students::SEXO
+    @relacao = Students::RELACAO
   end
 
   def create
     @student = Students.new(params[:students])
     @state = Country::STATES
+    @sexo = Students::SEXO
+    @relacao = Students::RELACAO
 
     respond_to do |format|
       if @student.save
@@ -54,9 +60,12 @@ class AlunosController < ApplicationController
 
   def update
     @student = Students.find(params[:id])
+    @state = Country::STATES
+    @sexo = Students::SEXO
+    @relacao = Students::RELACAO
 
     respond_to do |format|
-      if @Students.update_attributes(params[:team])
+      if @student.update_attributes(params[:students])
         format.html { redirect_to students_path, notice: 'As informacoes foram atualizadas com sucesso!' }
         format.json { head :no_content }
       else
