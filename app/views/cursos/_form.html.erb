@@ -1,4 +1,4 @@
-<%= form_for (@course) do |c| %>
+<%= form_for (@course), :url => "/cursos" do |c| %>
 
 <% if @course.errors.any? %>
     <div id="error_explanation">
@@ -14,8 +14,8 @@
     <li>
         <label>
             <span>Código: </span>
-            <%= @course_code %>
-            <%= hidden_field_tag "course[code]", @course_code %>
+            <%= c.object.code || @course_code %>
+            <%= c.hidden_field :code, :value => @course_code || c.object.code %>
         </label>
     </li>
 
@@ -29,7 +29,7 @@
     <li>
         <label>
             <span>Tipo*:</span><br/>
-            <%= select_tag 'course[course_type]', options_for_select(@course_category), :class => 'select selectMedio' %>
+            <%= c.select :course_type, @course_category, { :prompt => "Escolha o tipo do curso" } , :class => 'select selectMedio' %>
         </label>
     </li>
 

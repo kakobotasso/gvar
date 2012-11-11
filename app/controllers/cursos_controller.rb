@@ -33,6 +33,7 @@ class CursosController < ApplicationController
 
   def edit
     @course = Course.find(params[:id])
+    @course_category = Category::Courses::OPTIONS
   end
 
   def create
@@ -52,6 +53,7 @@ class CursosController < ApplicationController
 
   def update
     @course = Course.find(params[:id])
+    @course_category = Category::Courses::OPTIONS
 
     respond_to do |format|
       if @course.update_attributes(params[:room])
