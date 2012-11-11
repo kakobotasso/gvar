@@ -45,6 +45,9 @@ class TurmasController < ApplicationController
 
   def create
     @team = Team.new(params[:team])
+    @courses = Course.where(:active => true)
+    @season = Category::Seasons::OPTIONS
+    @status = Status::TEAMS
 
     respond_to do |format|
       if @team.save
@@ -59,6 +62,9 @@ class TurmasController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
+    @courses = Course.where(:active => true)
+    @season = Category::Seasons::OPTIONS
+    @status = Status::TEAMS
 
     respond_to do |format|
       if @team.update_attributes(params[:team])

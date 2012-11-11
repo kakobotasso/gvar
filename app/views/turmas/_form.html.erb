@@ -14,8 +14,8 @@
     <li>
         <label>
             <span>Código: </span>
-            <%= @team_code %>
-            <%= hidden_field_tag "team[code]", @team_code %>
+            <%= t.object.code || @team_code %>
+            <%= t.hidden_field :code, :value => @team_code || t.object.code %>
         </label>
     </li>
 
@@ -37,14 +37,14 @@
     <li>
         <label>
             <span>Periodo: </span><br/>
-            <%= select_tag 'team[season]', options_for_select(@season, @team.season), :class => 'select selectMedio', :prompt => 'Selecione um periodo' %>
+            <%= t.select :season, @season, { :prompt => 'Selecione um periodo' }, :class => 'select selectMedio' %>
         </label>
     </li>
 
     <li>
         <label>
             <span>Situação: </span><br/>
-            <%= select_tag 'team[status]', options_for_select(@status, @team.status), :class => 'select selectMedio', :prompt => 'Selecione um status' %>
+            <%= t.select :status, @status, { :prompt => 'Selecione um status' }, :class => 'select selectMedio' %>
         </label>
     </li>    
 

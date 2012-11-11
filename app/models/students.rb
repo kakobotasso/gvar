@@ -12,4 +12,14 @@ class Students < ActiveRecord::Base
   	end
   end
 
+  SEXO = [
+    ["Masculino", 0],
+    ["Feminino", 1]
+  ]
+
+  RELACAO = [
+    ["Sim", 0],
+    ["Nao", 1]
+  ]
+
 end
