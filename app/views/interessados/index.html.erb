@@ -11,6 +11,26 @@
 <div id="guardaPesquisa">
   <%= form_for "/interessados" do |f| %>
     <ul>
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoCodigo">Nome:</label>
+        <%= f.text_field :code, :class => "inputGde input", :id => 'campoCodigo' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoCodigo">E-mail:</label>
+        <%= f.text_field :code, :class => "inputGde input", :id => 'campoCodigo' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoCodigo">Situação:</label>
+        <%= f.select :code, :value => @situation, :class => "select selectMedio", :id => 'campoCodigo' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoCodigo">Interesses:</label>
+        <%= f.text_field :code, :class => "inputGde input", :id => 'campoCodigo' %>
+      </li>
+
       <li class="noPaddingHomes hidePA ">
         <%= f.text_field :login, :class => "inputGde input", :id => 'campoBusca' %>
       </li>

@@ -35,10 +35,9 @@
     <li class="guardaSelect guardaSelectMedio">
         <label>
             <span>Situação: </span><br/>
-            <%= select_tag 'interested[situation]', options_for_select(@situation, @interested.situation), :class => 'select selectMedio', :prompt => "Selecione a situação" %>
+            <%= i.select :situation, @situation, { :prompt => "Selecione a situação" }, :class => 'select selectMedio' %>
         </label>
     </li>
-    
 
     <li>
         <label>
