@@ -46,7 +46,7 @@
   <% if @team.size > 0 %>
     <% @team.each do |t|  %>
       <p>
-        <span><%= t.code %></span>
+        <!-- <span><%#= t.code %></span> -->
         <span><%= t.name %></span>
         <span><%= t.periodo %></span>
         <%= link_to 'Abrir', teams_show_path(t.id), :class => 'btVoltarForm' %>
