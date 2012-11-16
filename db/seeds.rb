@@ -31,12 +31,12 @@ code = 1210021000
     r.instalments << Instalment.create! do |i|
       i.number = parcela
       i.expiration_date = Date.today + (parcela * 10)
-      i.amount = temp * 100
+      i.amount = (temp * 100).to_s
       i.status_id = 0
       i.payment_id = 0
     end
   end
-  r.total_amount = r.instalments.collect{|parcela| parcela.amount}.inject(:+)
+  r.total_amount = r.instalments.collect{|parcela| parcela.amount}.inject(:+).to_s
   r.number_instalments = r.instalments.size
   r.save
   code += 1
