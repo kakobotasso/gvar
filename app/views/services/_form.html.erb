@@ -1,0 +1,62 @@
+<%= form_for @service do |f| %>
+  <% if @service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
+
+      <ul>
+        <% @service.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <ul>
+    <li>
+      <label>
+        <span>Nome:</span><br/>
+        <%= f.text_field :name, :class => "inputMedio input", :id => "campoNome"%>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Numero de Dias:</span><br/>
+        <%= f.text_field :number_days, :class => "inputMedio input", :id => "number_days" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Tempo Estimado:</span><br/>
+        <%= f.text_field :estimated_time, :class => "inputMedio input", :id => "estimated_time" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Valor Padrão:</span><br/>
+        <%= f.text_field :default_value, :class => "inputMedio input", :id => "default_value" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Inativo:</span><br/>
+        <%= f.check_box :inactive, :class => "inputMedio input", :id => "inactive" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Descrição:</span><br/>
+        <%= f.text_area :description, :class => "inputMedio input", :id => "description" %>
+      </label>
+    </li>
+
+    <li id="btEnviarForm">
+      <%= f.submit %>
+      <%= link_to 'Voltar', services_path, :id => "btVoltarForm" %>
+    </li>
+  </ul>
+<% end %>
