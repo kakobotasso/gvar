@@ -16,9 +16,10 @@ ActiveRecord::Schema.define(:version => 20121110165031) do
   create_table "addresses", :force => true do |t|
     t.string   "address"
     t.integer  "number"
+    t.integer  "person_id"
     t.string   "complement"
     t.string   "zipcode"
-    t.integer  "country"
+    t.integer  "country_id"
     t.string   "city"
     t.string   "neighborhood"
     t.datetime "created_at",   :null => false
@@ -28,16 +29,6 @@ ActiveRecord::Schema.define(:version => 20121110165031) do
   create_table "clients", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "courses", :force => true do |t|
-    t.string   "code"
-    t.string   "name"
-    t.integer  "course_type"
-    t.text     "description"
-    t.boolean  "active",      :default => true
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
   end
 
   create_table "instalments", :force => true do |t|
@@ -53,23 +44,12 @@ ActiveRecord::Schema.define(:version => 20121110165031) do
     t.datetime "updated_at",      :null => false
   end
 
-  create_table "interesteds", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "phone"
-    t.integer  "situation"
-    t.text     "interest"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "people", :force => true do |t|
     t.string   "name"
     t.string   "cpf"
     t.string   "rg"
     t.text     "observations"
     t.boolean  "active"
-    t.integer  "address_id"
     t.string   "type"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
@@ -116,50 +96,6 @@ ActiveRecord::Schema.define(:version => 20121110165031) do
     t.text     "description"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-  end
-
-  create_table "students", :force => true do |t|
-    t.string   "code"
-    t.string   "name"
-    t.string   "cpf"
-    t.string   "rg"
-    t.string   "birth_date"
-    t.string   "occupation"
-    t.string   "sex"
-    t.string   "schooling"
-    t.integer  "relationship_elderly"
-    t.string   "phone"
-    t.string   "cellphone"
-    t.string   "street"
-    t.string   "number"
-    t.string   "complement"
-    t.string   "neighborhood"
-    t.string   "city"
-    t.integer  "country"
-    t.string   "zipcode"
-    t.text     "notes"
-    t.boolean  "rg_delivered",         :default => false
-    t.boolean  "cpf_delivered",        :default => false
-    t.boolean  "photo_delivered",      :default => false
-    t.boolean  "cv_delivered",         :default => false
-    t.boolean  "address_delivered",    :default => false
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
-  end
-
-  create_table "teams", :force => true do |t|
-    t.string   "code"
-    t.string   "name"
-    t.integer  "course_id"
-    t.integer  "season"
-    t.integer  "limit"
-    t.decimal  "price"
-    t.integer  "class_length"
-    t.string   "workload"
-    t.text     "note"
-    t.integer  "status"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|
