@@ -1,0 +1,25 @@
+<h2>Resultado da pesquisa</h2>
+<table cellspadding="0" cellspacing="0" width="100%">
+  <tr border="0">
+  <th width="20%"><span>Nome</span></th>
+  <th width="20%"><span>CPF</span></th>
+  <th width="20%"><span>RG</span></th>
+  <th width="20%">Estado</th>
+  <th width="20%">Cidade</th>
+  <th width="20%">Ativo</th>
+  <th width="20%"></th>
+  </tr>
+
+  <% providers.each do |provider| %>
+    <tr onclick="location.href = '<%= edit_provider_path(provider) %>'">
+      <td width="20%"><span><%= provider.name %></span></td>
+      <td width="20%"><span><%= provider.cpf %></span></td>
+      <td width="20%"><span><%= provider.rg %></span></td>
+      <td width="20%"><span><%= provider.address.country_id %></span></td>
+      <td width="20%"><span><%= provider.address.city %></span></td>
+      <td width="20%"><span><%= provider.is_active %></span></td>
+      <td width="20%"><span class="centralizaBts"><%= link_to 'Deletar', provider, method: :delete, data: { confirm: 'Deseja realmente exlcuir este providere do sistema?' }, class: "btVoltarExcluirForm" %></span></td>
+    </tr>
+  <% end %>
+</table>
+

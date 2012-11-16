@@ -1,0 +1,109 @@
+<%= form_for @provider do |f| %>
+  <% if @provider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
+
+      <ul>
+        <% @provider.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <ul>
+    <li>
+      <label>
+        <span>Nome:</span><br/>
+        <%= f.text_field :name, :class => "inputMedio input", :id => "campoNome"%>
+      </label>
+    </li>
+
+    <%= f.fields_for :address do |a| %>
+      <li>
+        <label>
+          <span>Endereço:</span><br/>
+          <%= a.text_field :address, :class => "inputMedio input" %>
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <span>Nº:</span><br/>
+          <%= a.text_field :number, :class => "inputMedio input" %>
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <span>Complemento:</span><br/>
+          <%= a.text_field :complement, :class => "inputMedio input" %>
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <span>CEP:</span><br/>
+          <%= a.text_field :zipcode, :class => "inputMedio input" %>
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <span>Estado:</span><br/>
+          <%= a.text_field :country_id, :class => "inputMedio input" %>
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <span>Cidade:</span><br/>
+          <%= a.text_field :city, :class => "inputMedio input" %>
+        </label>
+      </li>
+    <% end %>
+
+    <li>
+      <label>
+        <span>CPF:</span><br/>
+        <%= f.text_field :cpf, :class => "inputMedio input", :id => "campoEmail" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>RG:</span><br/>
+        <%= f.text_field :rg, :class => "inputMedio input", :id => "campoUsuario" %>
+      </label>
+    </li>
+
+    <li>
+      <span>Serviços prestados:</span><br/>
+      <% @services.each do |service| %>
+        <label>
+          <%= check_box_tag "provider[service_ids][]", service.id, @provider.service_ids.include?(service.id) %>
+          <%= service.name %><br/>
+        </label>
+      <% end %>
+    </li>
+
+    <li>
+      <label>
+        <span>Observações:</span><br/>
+        <%= f.text_area :observations, :class => "inputMedio input", :id => "observations" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Ativo:</span><br/>
+        <%= f.check_box :active, :class => "inputMedio input", :id => "active" %>
+      </label>
+    </li>
+
+    <li id="btEnviarForm">
+      <%= f.submit "Salvar providere"%>
+      <%= link_to 'Voltar', providers_path, :id => "btVoltarForm" %>
+    </li>
+  </ul>
+<% end %>
