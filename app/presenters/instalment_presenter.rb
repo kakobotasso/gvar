@@ -11,7 +11,7 @@ class InstalmentPresenter
       }
     else
       {
-        :partial => "financeiro/no_results"
+        :partial => "shared/no_results"
       }
     end
   end
