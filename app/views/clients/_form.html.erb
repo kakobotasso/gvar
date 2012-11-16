@@ -1,0 +1,85 @@
+<%= form_for @client do |f| %>
+  <% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+      <ul>
+        <% @client.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <ul>
+    <li>
+      <label>
+        <span>Nome:</span><br/>
+        <%= f.text_field :name, :class => "inputMedio input", :id => "campoNome"%>
+      </label>
+    </li>
+
+    <%= f.fields_for :address do |a| %>
+      <li>
+        <label>
+          <span>Endereço:</span><br/>
+          <%= a.text_field :address, :class => "inputMedio input" %>
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <span>Nº:</span><br/>
+          <%= a.text_field :number, :class => "inputMedio input" %>
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <span>Complemento:</span><br/>
+          <%= a.text_field :complement, :class => "inputMedio input" %>
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <span>CEP:</span><br/>
+          <%= a.text_field :zipcode, :class => "inputMedio input" %>
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <span>Estado:</span><br/>
+          <%= a.text_field :country_id, :class => "inputMedio input" %>
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <span>Cidade:</span><br/>
+          <%= a.text_field :city, :class => "inputMedio input" %>
+        </label>
+      </li>
+    <% end %>
+
+    <li>
+      <label>
+        <span>CPF:</span><br/>
+        <%= f.text_field :cpf, :class => "inputMedio input", :id => "campoEmail" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>RG:</span><br/>
+        <%= f.text_field :rg, :class => "inputMedio input", :id => "campoUsuario" %>
+      </label>
+    </li>
+
+    <li id="btEnviarForm">
+      <%= f.submit "Salvar cliente"%>
+      <%= link_to 'Voltar', clients_path, :id => "btVoltarForm" %>
+    </li>
+  </ul>
+<% end %>

@@ -1,0 +1,75 @@
+<!-- TITLE -->
+<% content_for :title do %> Clientes - Sistema Grupo Vida, Amor e Riso! <% end %>
+<!-- / TITLE -->
+
+<h1>Clientes</h1>
+
+<div id="guardaPesquisa">
+  <%= form_for :filtro, :url => search_clients_path, :method => "GET" do |f| %>
+    <ul>
+      <li class="noPaddingHomes">
+        <label for="campoNome">Nome</label>
+        <%= f.text_field :rg, :class => "inputGde input", :id => 'name' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoNome">Estado</label>
+        <%= f.text_field :contry_id, :class => "inputPeq input", :id => 'country_id' %>
+        <label for="campoNome">Cidade</label>
+        <%= f.text_field :city, :class => "inputPeq input", :id => 'city' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoNome">CPF</label>
+        <%= f.text_field :cpf, :class => "inputGde input", :id => 'cpf' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoNome">RG</label>
+        <%= f.text_field :rg, :class => "inputGde input", :id => 'rg' %>
+      </li>
+
+      <li class="liPesquisaAvancada">
+        <%= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
+        <%= f.submit 'Pesquisar', :class => 'btEditarForm', :id => 'ajaxBtRealizarPesquisa' %>
+      </li>
+    </ul>
+  <% end %>
+  <script type="text/javascript" charset="utf-8">
+  $("#ajaxBtRealizarPesquisa").click(function(e){
+    e.preventDefault();
+
+    $.ajax({
+      url:  "<%= search_clients_path %>",
+      type: "GET",
+      data: {
+        "filtro" : {
+          "name": $("#name").val(),
+          "country_id": $("#country_id").val(),
+          "city": $("#city").val(),
+          "cpf": $("#cpf").val(),
+          "rg": $("#rg").val()
+        }
+      }
+      }).done(function(data){
+        $("#guardaResultadoPesquisa").html(data);
+        $("#guardaResultadoPesquisa").slideDown(500);
+    });
+  });
+  </script>
+<%= link_to 'Novo Cliente', new_client_path, class: "btEnviarForm" %>
+
+</div>
+
+<div id="guardaAtividadesRecentes">
+  <h2>Últimos clientes</h2>
+  <% @clients.each do |client| %>
+    <p>
+      <span><%= client.name %></span>
+      <%= link_to 'Editar', edit_client_path(client), :class => 'btVoltarForm' %>
+    </p>
+  <% end %>
+</div>
+
+<div id="guardaResultadoPesquisa">
+</div>

@@ -1,0 +1,23 @@
+<h2>Resultado da pesquisa</h2>
+<table cellspadding="0" cellspacing="0" width="100%">
+  <tr border="0">
+  <th width="20%"><span>Nome</span></th>
+  <th width="20%"><span>CPF</span></th>
+  <th width="20%"><span>RG</span></th>
+  <th width="20%">Estado</th>
+  <th width="20%">Cidade</th>
+  <th width="20%"></th>
+  </tr>
+
+  <% clients.each do |client| %>
+    <tr onclick="location.href = '<%= edit_client_path(client) %>'">
+      <td width="20%"><span><%= client.name %></span></td>
+      <td width="20%"><span><%= client.cpf %></span></td>
+      <td width="20%"><span><%= client.rg %></span></td>
+      <td width="20%"><span><%= client.address.country_id %></span></td>
+      <td width="20%"><span><%= client.address.city %></span></td>
+      <td width="20%"><span class="centralizaBts"><%= link_to 'Deletar', client, method: :delete, data: { confirm: 'Deseja realmente exlcuir este cliente do sistema?' }, class: "btVoltarExcluirForm" %></span></td>
+    </tr>
+  <% end %>
+</table>
+
