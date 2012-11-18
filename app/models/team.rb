@@ -2,6 +2,7 @@ class Team < ActiveRecord::Base
   attr_accessible :class_length, :code, :course_id, :limit, :name, :note, :season, :workload, :status, :price
 
   belongs_to :course
+  has_many :meetings
 
   validates_presence_of :name, :course_id, :season, :limit, :class_length, :workload, :status, :price
 

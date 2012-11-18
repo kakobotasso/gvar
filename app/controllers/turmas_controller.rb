@@ -2,6 +2,8 @@ class TurmasController < ApplicationController
   require_logged_user
   require_role_for_curso
 
+  layout false, :only => [:save_activity]
+
   def index
     @team = Team.where("status != 2").order("created_at desc")
     @courses = Course.where(:active => true)
@@ -119,6 +121,22 @@ class TurmasController < ApplicationController
   # PLANEJAMENTO DA TURMA
   def planning
     @team = Team.find(params[:id])
+    @meetings = @team.meetings
+  end
+
+  def save_meeting
+    @meeting = Meeting.new(params[:meeting])
+    @meeting.save
+    redirect_to teams_planning_path @meeting.team_id
   end
   
+  def save_activity
+    @meeting = Meeting.find(params[:atividade][:meeting_id])
+    #@meeting.activities_attributes = params[:atividade]
+    #@meeting = Meeting.find(10)
+    @meeting.activities_attributes = { [0] => params[:atividade] }
+    @meeting.save
+    @meeting = Meeting.find(params[:atividade][:meeting_id]).activities.order("created_at DESC")
+  end
+
 end

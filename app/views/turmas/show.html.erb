@@ -42,6 +42,6 @@
 
 <ul>
 	<li><%= link_to "Lista de presenças", "javascript:void(0);", :class => "btEnviarForm" %></li>
-	<li><%= link_to "Planejamento", "javascript:void(0);", :class => "btEnviarForm" %></li>
+	<li><%= link_to "Planejamento", teams_planning_path(@team), :class => "btEnviarForm" %></li>
 	<li><%= link_to "Voltar", teams_path, :class => "btEnviarForm" %></li>
 </ul>
