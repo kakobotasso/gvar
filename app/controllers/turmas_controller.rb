@@ -2,7 +2,7 @@ class TurmasController < ApplicationController
   require_logged_user
   require_role_for_curso
 
-  layout false, :only => [:save_activity]
+  layout false, :only => [:save_activity, :see_activity]
 
   def index
     @team = Team.where("status != 2").order("created_at desc")
@@ -137,6 +137,11 @@ class TurmasController < ApplicationController
     @meeting.activities_attributes = { [0] => params[:atividade] }
     @meeting.save
     @meeting = Meeting.find(params[:atividade][:meeting_id]).activities.order("created_at DESC")
+  end
+
+  def see_activity
+    @meeting = Meeting.find(params[:atividade][:meeting_id]).activities.order("created_at DESC")
+    render :save_activity
   end
 
 end

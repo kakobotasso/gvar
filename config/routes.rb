@@ -31,6 +31,7 @@ Gvar::Application.routes.draw do
     post "/turmas", :action => :create, :as => :teams
     post "/turmas/encontro", :action => :save_meeting, :as => :save_meeting
     get "/turmas/salva-atividade", :action => :save_activity, :as => :save_activity
+    get "/turmas/ver-atividades", :action => :see_activity, :as => :see_activity
     get "/turmas/:id", :action => :show, :as => :teams_show
     get "/turmas/:id/editar", :action => :edit, :as => :teams_edit
     put "/turmas/:id", :action => :update, :as => :teams_update
