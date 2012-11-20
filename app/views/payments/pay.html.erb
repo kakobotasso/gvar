@@ -1,0 +1,29 @@
+<h1>Baixar</h1>
+<div>
+  <%= form_for "pay_instalment" , :url => financeiro_pagar_parcela_path, :method => 'POST' do |f| %>
+    <%= hidden_field_tag 'pay_instalment[id]', @instalment.id %>
+    <p>
+      Código:
+      <%= @instalment.code %>
+    </p>
+    <p>
+      Parcela:
+      <%= @instalment.number_instalment %>
+    </p>
+    <p>
+      Data:
+      <%= f.date_select :paid_at, {:order =>[:day, :month, :year], :include_blank => true}, :class => 'select' %>
+    </p>
+    <p>
+      Valor Pago:
+      <%= f.text_field :amount_paid %>
+    </p>
+    <p>
+      Recebido em:
+      <%= f.select :payment_id, payments, {}, :class => 'select' %>
+    </p>
+    <p>
+      <%= f.submit "Ok" %>
+    </p>
+  <% end %>
+</div>
