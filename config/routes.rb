@@ -22,8 +22,63 @@ Gvar::Application.routes.draw do
     get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/pagar/:id",             :action => :pay,            :as => :financeiro_pagar
   end
 
-  get "cursos/index"
   get "assessoria/index"
+  get "servicos/index"
+
+  controller :cursos do
+    get "/cursos", :action => :index, :as => :courses                   # cursos_path
+    get "/cursos/novo", :action => :new, :as => :courses_new
+    post "/cursos/", :action => :create, :as => :courses                  # cursos_path
+    get "/cursos/:id", :action => :show, :as => :courses_show
+    get "/cursos/:id/editar", :action => :edit, :as => :courses_edit
+    put "cursos/:id", :action => :update, :as => :courses_update
+    get "cursos/:id/cancelar", :action => :cancel, :as => :courses_cancel
+  end
+
+  controller :turmas do
+    get "/turmas", :action => :index, :as => :teams
+    get "/turmas/novo", :action => :new, :as => :teams_new
+    post "/turmas", :action => :create, :as => :teams
+    post "/turmas/encontro", :action => :save_meeting, :as => :save_meeting
+    get "/turmas/salva-atividade", :action => :save_activity, :as => :save_activity
+    get "/turmas/ver-atividades", :action => :see_activity, :as => :see_activity
+    get "/turmas/:id", :action => :show, :as => :teams_show
+    get "/turmas/:id/editar", :action => :edit, :as => :teams_edit
+    put "/turmas/:id", :action => :update, :as => :teams_update
+    get "/turmas/:id/cancelar", :action => :cancel, :as => :teams_cancel
+    get "/turmas/:id/concluir", :action => :conclude, :as => :teams_conclude
+    get "/turmas/:id/planejamento", :action => :planning, :as => :teams_planning
+  end
+
+  controller :alunos do
+    get "/alunos", :action => :index, :as => :students
+    get "/alunos/novo", :action => :new, :as => :students_new
+    post "/alunos", :action => :create
+    get "/alunos/:id", :action => :show, :as => :students_show
+    get "/alunos/:id/editar", :action => :edit, :as => :students_edit
+    put "/alunos/:id", :action => :update
+    get "/alunos/:id/cancelar", :action => :cancel, :as => :students_cancel
+  end
+
+  controller :interessados do
+    get "/interessados", :action => :index, :as => :interested
+    get "/interessados/novo", :action => :new, :as => :interested_new
+    post "/interessados", :action => :create, :as => :interested
+    get "/interessados/:id", :action => :show, :as => :interested_show
+    get "/interessados/:id/editar", :action => :edit, :as => :interested_edit
+    get "/interessados/:id/historico", :action => :history, :as => :interested_history
+    put "/interessados/:id/historico/salvar", :action => :save_history, :as => :interested_contact_save
+    put "/interessados/:id", :action => :update, :as => :interested_update
+  end
+
+  controller :inscricoes do
+    get "/inscricoes", :action => :index, :as => :registration
+    get "/inscricoes/novo", :action => :new, :as => :registration_new
+    post "/inscricoes", :action => :create
+    get "/inscricoes/:id", :action => :show, :as => :registration_show
+    get "/inscricoes/:id/editar", :action => :edit, :as => :registration_edit
+    put "/inscricoes/:id", :action => :update
+  end
 
   controller :sessions do
     get  "/login", :action => :new, :as => :login

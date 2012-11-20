@@ -18,4 +18,28 @@ module Category
   padroes.each_with_index do |option,indice|
     OPTIONS << [option,indice]
   end
+
+  module Courses
+    OPTIONS = [
+      ["Curso Regular"       , 0],
+      ["Palestra"         , 1],
+      ["Workshop"     , 2]
+    ]
+  end
+
+  module Seasons
+    OPTIONS = [
+      ["Manha"  , 0],
+      ["Tarde"  , 1],
+      ["Noite"  , 2]
+    ]
+  end
+
+  module Interested
+    SITUATION = [
+      ["Ativo",   0],
+      ["Inativo", 1],
+      ["Aluno",   2]
+    ]
+  end
 end

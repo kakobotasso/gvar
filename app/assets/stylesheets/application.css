@@ -459,6 +459,7 @@ margin:0px 10px;
     padding:5px 10px;
 }
 
+#contentInternas ul li.guardaSelect select,
 #contentInternas ul li .select{
     float:left;
     border:1px solid #ccc;
@@ -477,8 +478,13 @@ margin:0px 10px;
 #contentInternas ul li .inputMedio{ width:250px; }
 #contentInternas ul li .inputGde{ width:500px; }
 
+#contentInternas ul li.guardaSelectPeq select,
 #contentInternas ul li .selectPeq{ width:160px; }
+
+#contentInternas ul li.guardaSelectMedio select,
 #contentInternas ul li .selectMedio{ width:260px; }
+
+#contentInternas ul li.guardaSelectGde select,
 #contentInternas ul li .selectGde{ width:510px; }
 
 #contentInternas ul li .textareaPeq{ width:150px; }
@@ -540,6 +546,7 @@ margin:0px 10px;
 
 #contentInternas #guardaAtividadesRecentes p span{
     float:left;
+    padding-top:7px;
     padding-right:10px;
 }
 
@@ -582,6 +589,15 @@ margin:0px 10px;
     padding:3px 15px 4px 15px;
 }
 
+#contentInternas #guardaResultadoPesquisa table span a{
+    text-decoration:none;
+    color:#333;
+}
+
+#contentInternas #guardaResultadoPesquisa table span a:hover{
+    text-decoration:underline;
+}
+
 #contentInternas #guardaResultadoPesquisa table span.centralizaBts{
     padding-left:50px;
 }
@@ -596,5 +612,94 @@ margin:0px 10px;
 #contentInternas .doisInputs label.primeiro{
     padding-left:5px;
 }
+<<<<<<< HEAD
 tr:hover td { background: #CCC ; cursor:pointer; }
 
+=======
+
+#error_explanation{
+    float:left;
+    background: #FF8C69;
+    border:1px solid #8B0000;
+    display:inline;
+    margin:0px 0px 20px 0px;
+}
+
+#error_explanation ul li{
+    padding-bottom:0px;
+}
+
+#infoTurmasCursos{
+    float:left;
+    border:1px solid #00CED1;
+    background:#E0FFFF;
+    display:inline;
+    margin:0px 0px 20px 0px;
+}
+
+#infoTurmasCursos ul{
+    float:left;
+    width:750px;
+    padding:10px 0px;
+}
+
+#infoTurmasCursos ul li{
+    float:left;
+    width:140px;
+    padding-bottom:0px;
+}
+
+#infoTurmasCursos ul.tresOpcoes li{
+    width:125px;
+}
+
+#infoTurmasCursos ul li p{
+    float:left;
+    width:100%;
+    text-align: center;
+    font-size:14px;
+}
+
+
+#infoTurmasCursos ul li p span{
+    font-weight:bold;
+    font-size:18px;
+}
+
+.floatLeft{
+    float:left;
+    padding:5px 5px 0px 0px;
+}
+
+#contentInternas .semPesquisaAvancada, #contentInternas #btEditarForm.semPesquisaAvancada{
+    margin-left:125px;
+}
+
+#contentInternas .wrapperInternas ul li p .floatRight{
+    float:right;
+}
+
+#contentInternas #guardaHistoricoContatos{
+    width:470px;
+    display:inline-block;
+    margin:0px 0px 20px 0px;
+    border-bottom:1px solid #aaa;
+}
+
+#contentInternas #guardaHistoricoContatos li{
+    float:left;
+    width:470px;
+    padding:15px 0px 15px 0px;
+    border-top:1px solid #aaa;
+}
+
+#guardaHistoricoContatos .historicoContatos{
+    float:left;
+    width:450px;
+    padding:10px 10px 10px 10px;
+}
+
+#guardaHistoricoContatos .historicoContatos span{
+    float:left;
+    padding:4px 0px 0px 0px;
+}

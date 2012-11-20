@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(:version => 20121120155656) do
 
+  create_table "activities", :force => true do |t|
+    t.string   "timetable"
+    t.text     "description"
+    t.integer  "meeting_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "addresses", :force => true do |t|
     t.string   "address"
     t.integer  "number"
@@ -31,6 +39,16 @@ ActiveRecord::Schema.define(:version => 20121120155656) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "courses", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.integer  "course_type"
+    t.text     "description"
+    t.boolean  "active",      :default => true
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "instalments", :force => true do |t|
     t.integer  "release_id"
     t.integer  "number"
@@ -42,6 +60,31 @@ ActiveRecord::Schema.define(:version => 20121120155656) do
     t.integer  "payment_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "interested_contacts", :force => true do |t|
+    t.string   "date"
+    t.text     "description"
+    t.integer  "interested_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "interesteds", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "situation"
+    t.text     "interest"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "meetings", :force => true do |t|
+    t.date     "date"
+    t.integer  "team_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "people", :force => true do |t|
@@ -63,6 +106,15 @@ ActiveRecord::Schema.define(:version => 20121120155656) do
   create_table "providers_services", :id => false, :force => true do |t|
     t.integer "provider_id"
     t.integer "service_id"
+  end
+
+  create_table "registrations", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "student_id"
+    t.string   "code"
+    t.integer  "status",     :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "releases", :force => true do |t|
@@ -110,6 +162,50 @@ ActiveRecord::Schema.define(:version => 20121120155656) do
     t.text     "description"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "students", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.string   "cpf"
+    t.string   "rg"
+    t.string   "birth_date"
+    t.string   "occupation"
+    t.integer  "sex"
+    t.string   "schooling"
+    t.integer  "relationship_elderly"
+    t.string   "phone"
+    t.string   "cellphone"
+    t.string   "street"
+    t.string   "number"
+    t.string   "complement"
+    t.string   "neighborhood"
+    t.string   "city"
+    t.integer  "country"
+    t.string   "zipcode"
+    t.text     "notes"
+    t.boolean  "rg_delivered",         :default => false
+    t.boolean  "cpf_delivered",        :default => false
+    t.boolean  "photo_delivered",      :default => false
+    t.boolean  "cv_delivered",         :default => false
+    t.boolean  "address_delivered",    :default => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
+
+  create_table "teams", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.integer  "course_id"
+    t.integer  "season"
+    t.integer  "limit"
+    t.decimal  "price"
+    t.integer  "class_length"
+    t.string   "workload"
+    t.text     "note"
+    t.integer  "status"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|

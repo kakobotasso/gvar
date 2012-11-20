@@ -1,0 +1,181 @@
+<%= form_for @student, :url => "/alunos" do |s| %>
+
+<% if @student.errors.any? %>
+    <div id="error_explanation">
+      <ul class="error">
+      <% @student.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<ul>
+    <li>
+        <label>
+            <span>Código: </span>
+            <%= s.object.code || @student_code %>
+            <%= s.hidden_field :code, :value => @student_code || s.object.code %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Nome*: </span><br/>
+            <%= s.text_field :name, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>CPF*: </span><br/>
+            <%= s.text_field :cpf, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>RG*: </span><br/>
+            <%= s.text_field :rg, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Data de Nascimento*: </span><br/>
+            <%= s.text_field :birth_date, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Profissão*: </span><br/>
+            <%= s.text_field :occupation, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Sexo*: </span><br/>
+            <%= s.select :sex, @sexo, { :prompt => 'Selecione um sexo' }, :class => 'select selectMedio' %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Escolaridade*: </span><br/>
+            <%= s.text_field :schooling, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Relação com Idosos*: </span><br/>
+            <%= s.select :relationship_elderly, @relacao,{ :prompt => ' ' }, :class => 'select selectMedio' %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Telefones: </span><br/>
+            <%= s.text_field :phone, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Celular: </span><br/>
+            <%= s.text_field :cellphone, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Rua*: </span><br/>
+            <%= s.text_field :street, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Nº*: </span><br/>
+            <%= s.text_field :number, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Complemento*: </span><br/>
+            <%= s.text_field :complement, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Bairro*: </span><br/>
+            <%= s.text_field :neighborhood, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Cidade*: </span><br/>
+            <%= s.text_field :city, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Estado*: </span><br/>
+            <%= s.select :country, @state,{ :prompt => 'Selecione um estado' }, :class => 'select selectMedio' %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>CEP*: </span><br/>
+            <%= s.text_field :zipcode, :class => "inputMedio input" %>
+        </label>
+    </li>
+
+    <li>
+        <label><span>Documentos entregues: </span><br/></label>
+        <label>
+            <%= s.check_box :rg_delivered, :class => "uniform funcao" %>
+            <span>RG</span>
+        </label>
+        <br/>
+        <label>
+            <%= s.check_box :cpf_delivered, :class => "uniform funcao" %>
+            <span>CPF</span>
+        </label>
+        <br/>
+        <label>
+            <%= s.check_box :photo_delivered, :class => "uniform funcao" %>
+            <span>Foto</span>
+        </label>
+        <br/>
+        <label>
+            <%= s.check_box :cv_delivered, :class => "uniform funcao" %>
+            <span>Curriculum</span>
+        </label>
+        <br/>
+        <label>
+            <%= s.check_box :address_delivered, :class => "uniform funcao" %>
+            <span>Comprovante de endereço</span>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Observações: </span><br/>
+            <%= s.text_area :notes, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li class="btEnviarForm">
+        <%= s.submit %>
+    </li>
+    
+</ul>
+<% end %>

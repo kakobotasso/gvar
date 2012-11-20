@@ -32,8 +32,9 @@ $(function(){
     /* MARCANDO O MENU CONFORME A URL */
     try{
         url = location.pathname.split('/')[1];
+        
         $("#menuInternas ul li").each(function(){
-            if( url == $(this).find('a').attr('id') ){
+            if( $(this).find('a').hasClass(url) ){
                 $(this).find('a').addClass('marcado');
             }
         });

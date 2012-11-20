@@ -1,0 +1,91 @@
+<!-- TITLE -->
+<% content_for :title do %> Turmas - Sistema Grupo Vida, Amor e Riso! <% end %>
+<!-- / TITLE -->
+
+<!-- MENU -->
+<% content_for :menu do %> <%= render 'menu' %> <% end %>
+<!-- / MENU -->
+
+<h1>Turmas</h1>
+
+<div id="guardaPesquisa">
+  <%= form_for "/cursos" do |f| %>
+    <ul>
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoCodigo">Turma:</label>
+        <%= f.text_field :code, :class => "inputGde input", :id => 'campoCodigo' %>
+      </li>
+      
+      <li class="escondidoPesquisaAvancada">
+        <label for="campoCodigo">Período:</label>
+        <%= select_tag 'team[season]', options_for_select(@season), :class => 'select selectGde', :prompt => 'Selecione um periodo' %>
+      </li>
+
+      <li class="escondidoPesquisaAvancada guardaSelect guardaSelectGde">
+        <label for="campoCodigo">Curso:</label>
+        <%= f.collection_select :course_id, @courses, :id, :name, {:prompt => 'Selecione um curso', :class=>"select selectGde"} %>
+      </li>
+
+      <li class="noPaddingHomes hidePA ">
+        <%= f.text_field :login, :class => "inputGde input", :id => 'campoBusca' %>
+      </li>
+
+      <li class="liPesquisaAvancada">
+        <%= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
+        <%= f.submit 'Pesquisar', :class => 'btEditarForm', :id => 'btRealizarPesquisa' %>
+      </li>
+    </ul>
+  <% end %>
+
+<%= link_to "Nova turma", teams_new_path, class: "btEnviarForm" %>
+
+</div>
+
+<div id="guardaAtividadesRecentes">
+  <h2>Próximas turmas</h2>
+  <% if @team.size > 0 %>
+    <% @team.each do |t|  %>
+      <p>
+        <!-- <span><%#= t.code %></span> -->
+        <span><%= t.name %></span>
+        <span><%= t.periodo %></span>
+        <%= link_to 'Abrir', teams_show_path(t.id), :class => 'btVoltarForm' %>
+      </p>
+    <% end %>
+  <% else %>
+    Nenhuma turma cadastrada
+  <% end %>
+</div>
+
+<div id="guardaResultadoPesquisa">
+  <% if @team.size > 0 %>
+    <h2>Resultado da pesquisa</h2>
+
+    <table cellspadding="0" cellspacing="0" width="100%">
+      <tr border="0">
+        <th width="14%"><span>Código</span></th>
+        <th width="14%"><span>Turma</span></th>
+        <th width="14%"><span>Curso</span></th>
+        <th width="14%"><span>Período</span></th>
+        <th width="14%"><span>Status</span></th>
+        <th width="14%"><span></span></th>
+        <th width="14%"><span></span></th>
+      </tr>
+
+      <% @team.each do |t| %>
+        <tr border="0">
+            <td width="14%"><span><%= link_to t.code, teams_show_path(t) %></span></td>
+            <td width="14%"><span><%= link_to t.name, teams_show_path(t) %></span></td>
+            <td width="14%"><span><%= link_to t.curso, teams_show_path(t) %></span></td>
+            <td width="14%"><span><%= link_to t.periodo, teams_show_path(t) %></span></td>
+            <td width="14%"><span><%= link_to "Em andamento", teams_show_path(t) %></span></td>
+            <td width="14%"><span><%= link_to "Presenças", "javascript:void(0);", :class => 'btVoltarForm' %></span></td>
+            <td width="14%"><span><%= link_to "Planejamento", teams_planning_path(t), :class => 'btVoltarForm' %></span></td>
+        </tr>
+      <% end %>
+
+    </table>
+  <% else %>
+    <h2>Nenhum curso cadastrado até o momento</h2>
+  <% end %>
+</div>

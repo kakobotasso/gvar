@@ -1,0 +1,91 @@
+<%= form_for @team, :url => "/turmas" do |t| %>
+
+<% if @team.errors.any? %>
+    <div id="error_explanation">
+      <ul class="error">
+      <% @team.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<ul>
+    <li>
+        <label>
+            <span>Código: </span>
+            <%= t.object.code || @team_code %>
+            <%= t.hidden_field :code, :value => @team_code || t.object.code %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Nome: </span><br/>
+            <%= t.text_field :name, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li class="guardaSelect guardaSelectMedio">
+        <label>
+            <span>Curso: </span><br/>
+            <%= t.collection_select :course_id, @courses, :id, :name, {:prompt => 'Selecione um curso', :class=>"select selectMedio"} %>
+            <%#= select_tag 'team[course_id]', options_for_select(@courses), :class => 'select selectMedio' %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>Periodo: </span><br/>
+            <%= t.select :season, @season, { :prompt => 'Selecione um periodo' }, :class => 'select selectMedio' %>
+        </label>
+    </li>
+
+    <li>
+        <label>
+            <span>Situação: </span><br/>
+            <%= t.select :status, @status, { :prompt => 'Selecione um status' }, :class => 'select selectMedio' %>
+        </label>
+    </li>    
+
+    <li>
+        <label>
+            <span>Valor: </span><br/>
+            <span class="floatLeft">R$</span> <%= t.text_field :price, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>Limite de inscrições: </span><br/>
+            <%= t.text_field :limit, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>Quantidade de aulas: </span><br/>
+            <%= t.text_field :class_length, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>Carga horaria/aula: </span><br/>
+            <%= t.text_field :workload, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li>
+        <label>
+            <span>Observações: </span><br/>
+            <%= t.text_area :note, :class => "inputMedio input" %>
+        </label>
+    </li>
+    
+    <li class="btEnviarForm">
+        <%= t.submit %>
+    </li>
+    
+</ul>
+<% end %>   

@@ -1,0 +1,13 @@
+<% if @meeting.size > 0 %>
+	<% @meeting.each do |f| %>
+	<tr>
+		<td><%= f.timetable %></td>
+		<td><%= f.description %></td>
+	</tr>
+	<% end %>
+<% else %>
+	<tr>
+		<td> </td>
+		<td>Nenhuma atividade cadastrada</td>
+	</tr>
+<% end %>

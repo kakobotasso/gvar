@@ -18,4 +18,10 @@ module Status
     ["Cancelado",2],
     ["Recebido", 3]
   ]
+
+  TEAMS = [
+    ["Em andamento", 0],
+    ["Concluido", 1],
+    ["Cancelado", 2]
+  ]
 end
