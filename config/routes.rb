@@ -21,8 +21,6 @@ Gvar::Application.routes.draw do
     get "/cursos/:id/editar", :action => :edit, :as => :courses_edit
     put "cursos/:id", :action => :update, :as => :courses_update
     get "cursos/:id/cancelar", :action => :cancel, :as => :courses_cancel
-    #match "/cursos/:id/", :action => :show, :as => :cursos_detalhe
-    #match "/cursos/:id/edit", :action => :edit, :as => :cursos_editar
   end
 
   controller :turmas do
@@ -59,6 +57,15 @@ Gvar::Application.routes.draw do
     get "/interessados/:id/historico", :action => :history, :as => :interested_history
     put "/interessados/:id/historico/salvar", :action => :save_history, :as => :interested_contact_save
     put "/interessados/:id", :action => :update, :as => :interested_update
+  end
+
+  controller :inscricoes do
+    get "/inscricoes", :action => :index, :as => :registration
+    get "/inscricoes/novo", :action => :new, :as => :registration_new
+    post "/inscricoes", :action => :create
+    get "/inscricoes/:id", :action => :show, :as => :registration_show
+    get "/inscricoes/:id/editar", :action => :edit, :as => :registration_edit
+    put "/inscricoes/:id", :action => :update
   end
 
   controller :sessions do

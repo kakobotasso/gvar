@@ -3,6 +3,8 @@ class Team < ActiveRecord::Base
 
   belongs_to :course
   has_many :meetings
+  has_many :registrations
+  has_many :students, :through => :registrations 
 
   validates_presence_of :name, :course_id, :season, :limit, :class_length, :workload, :status, :price
 

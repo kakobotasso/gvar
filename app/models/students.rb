@@ -4,6 +4,9 @@ class Students < ActiveRecord::Base
   validates_presence_of :birth_date, :city, :code, :country, :cpf, :name, :neighborhood, :number, :occupation, :relationship_elderly, :rg, :schooling, :sex, :street, :zipcode
   validates_uniqueness_of :cpf, :rg
 
+  has_many :registrations
+  has_many :teams, :through => :registrations 
+
   def relacao_idoso
   	if relationship_elderly == 0
   		"Nao"
