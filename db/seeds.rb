@@ -41,3 +41,54 @@ code = 1210021000
   r.save
   code += 1
 end
+
+# Servicos
+#
+(1..10).each do |n|
+  Service.create!(
+    :name           => "Service n-#{n}",
+    :number_days    => rand(10),
+    :estimated_time => "#{rand(10)}horas",
+    :default_value  => rand(1000),
+    :inactive       => false,
+    :description    => "Descricao numero #{n}"
+  )
+end
+
+(1..10).each do |n|
+  Provider.create!(
+    :name               => "Prestador n-#{n}",
+    :cpf                => "#{rand(10)}",
+    :rg                 => "#{rand(10)}horas",
+    :observations       => rand(1000),
+    :active             => true,
+    :address_attributes => {
+      :address      => "Rua #{n}",
+      :number       => rand(100),
+      :complement   => "casa",
+      :zipcode      => rand(100_000_000),
+      :country_id   => rand(20),
+      :city         => "Cidade #{n}",
+      :neighborhood => "Bairro #{n}"
+    }
+  )
+end
+
+
+(1..10).each do |n|
+  Client.create!(
+    :name               => "Cliente n-#{n}",
+    :cpf                => "#{rand(100_000_000)}",
+    :rg                 => "#{rand(100_000_000)}",
+    :observations       => "Observacao #{n}",
+    :address_attributes => {
+      :address      => "Rua #{n}",
+      :number       => rand(1000),
+      :complement   => "casa",
+      :zipcode      => rand(100_000_000),
+      :country_id   => rand(20),
+      :city         => "Cidade #{n}",
+      :neighborhood => "Bairro #{n}"
+    }
+  )
+end

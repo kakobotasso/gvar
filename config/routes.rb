@@ -3,11 +3,13 @@ Gvar::Application.routes.draw do
   root :to => "sessions#destroy"
 
   # VARIAVEL QUE ARMAZENA O CAMINHO PARA FUTURAS MUDANÇAS
-  URL_FINANCEIRO  = "/financeiro"
-  URL_SERVICOS    = "/servicos"
-  URL_CLIENTES    = "/clientes"
-  URL_PRESTADORES = "/prestadores"
-  URL_PAGAMENTOS  = "/pagamentos"
+  URL_FINANCEIRO   = "/financeiro"
+  URL_SERVICOS     = "/servicos"
+  URL_CLIENTES     = "/clientes"
+  URL_PRESTADORES  = "/prestadores"
+  URL_PAGAMENTOS   = "/pagamentos"
+  URL_RECEBIMENTOS = "/recebimentos"
+  URL_AGENDA       = "/agenda-de-servicos"
 
   controller :payments do
     get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}",                       :action => :index,          :as => :financeiro_index
@@ -76,6 +78,17 @@ Gvar::Application.routes.draw do
     get    "#{URL_PRESTADORES}/:id",        :action => :show, :as => :provider
     put    "#{URL_PRESTADORES}/:id",        :action => :update
     delete "#{URL_PRESTADORES}/:id",        :action => :destroy
+  end
+
+  controller :schedules do
+    get    "#{URL_AGENDA}",            :action => :index,  :as => :schedules
+    post   "#{URL_AGENDA}",            :action => :create
+    get    "#{URL_AGENDA}/novo",       :action => :new,    :as => :new_schedule
+    get    "#{URL_AGENDA}/buscar",     :action => :search, :as => :search_schedules
+    get    "#{URL_AGENDA}/:id/editar", :action => :edit,   :as => :edit_schedule
+    get    "#{URL_AGENDA}/:id",        :action => :show,   :as => :schedule
+    put    "#{URL_AGENDA}/:id",        :action => :update
+    delete "#{URL_AGENDA}/:id",        :action => :destroy
   end
 
   # The priority is based upon order of creation:
