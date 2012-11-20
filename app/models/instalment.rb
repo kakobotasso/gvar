@@ -4,7 +4,9 @@ class Instalment < ActiveRecord::Base
 
   belongs_to :release
 
-  scope :pending, where(:status_id => 0)
+  scope :pending,  where(:status_id => 0)
+  scope :payments, joins(:release).where(:'releases.type' => :Payment)
+  scope :receipts, joins(:release).where(:'releases.type' => :Receipt)
 
   def status
     Status::FINANCIAL.rassoc(status_id)[0]
