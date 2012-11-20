@@ -2,9 +2,7 @@ class ReceiptsController < ApplicationController
   require_logged_user
   require_role_for_receipt
 
-  helper_method :status
-  helper_method :payments
-  helper_method :categories
+  helper_method :status, :payments, :categories
 
   layout false, :only => [:search,:create_instalments]
 

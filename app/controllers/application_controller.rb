@@ -47,22 +47,22 @@ class ApplicationController < ActionController::Base
     redirect_to_dashboard
   end
 
-  def self.require_role_for_pagamento
-    before_filter :require_role_for_pagamento
+  def self.require_role_for_payment
+    before_filter :require_role_for_payment
   end
 
-  def require_role_for_pagamento
+  def require_role_for_payment
     return if current_user.have_role?(:pagamento)
     return if current_user.have_role?(:admin)
 
     redirect_to_dashboard
   end
 
-  def self.require_role_for_recebimento
+  def self.require_role_for_receipt
     before_filter :require_role_for_recebimento
   end
 
-  def require_role_for_recebimento
+  def require_role_for_receipt
     return if current_user.have_role?(:recebimento)
     return if current_user.have_role?(:admin)
 
