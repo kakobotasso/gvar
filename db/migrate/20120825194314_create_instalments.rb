@@ -9,7 +9,7 @@ class CreateInstalments < ActiveRecord::Migration
       t.decimal  :amount_paid       # Valor pago
       t.integer  :status_id         # Status do pagamento
       t.integer  :payment_id        # Forma de pagamento
-      
+
       t.timestamps
     end
   end
