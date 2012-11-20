@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20121110165031) do
     t.boolean  "first_paid"
     t.boolean  "fixed_payment"
     t.text     "description"
+    t.string   "type"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end

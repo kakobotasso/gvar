@@ -21,7 +21,7 @@ User.create!(
 code = 1210021000
 (1..50).each do |n|
   temp = (rand(10)+1)
-  r = Release.new do |r|
+  r = Payment.new do |r|
     r.code = "P#{code}"
     r.name = "Lancamento #{n}"
     r.category_id = rand(10)
@@ -36,7 +36,7 @@ code = 1210021000
       i.payment_id = 0
     end
   end
-  r.total_amount = r.instalments.collect{|parcela| parcela.amount}.inject(:+).to_s
+  r.total_amount = r.instalments.collect{|parcela| parcela.amount}.inject(:+).to_i.to_s
   r.number_instalments = r.instalments.size
   r.save
   code += 1
