@@ -7,17 +7,17 @@ Gvar::Application.routes.draw do
   URL_SERVICOS    = "/servicos"
   URL_CLIENTES    = "/clientes"
   URL_PRESTADORES = "/prestadores"
+  URL_PAGAMENTOS  = "/pagamentos"
 
-  controller :financeiro do
-    get  "#{URL_FINANCEIRO}", :action => :index, :as => :financeiro_index
-    get  "#{URL_FINANCEIRO}/novo-pagamento", :action => :novo_pagamento, :as => :novo_pagamento
-    get  "#{URL_FINANCEIRO}/relatorio", :action => :consultar
-    post "#{URL_FINANCEIRO}/relatorio", :action => :relatorio
-    get  "#{URL_FINANCEIRO}/pagar/:id", :action => :pagar, :as => :financeiro_pagar
-    post "#{URL_FINANCEIRO}/pagar-parcela", :action => :pagar_parcela, :as => :financeiro_pagar_parcela
-    get  "#{URL_FINANCEIRO}/criar-parcelas", :action => :create_instalments, :as => :financeiro_criar_parcelas
-    get  "#{URL_FINANCEIRO}/lancamento/:id/editar", :action => :editar_lancamento, :as => :financeiro_editar_lancamento
-    put  "#{URL_FINANCEIRO}/update-lancamento", :action => :update_lancamento, :as => :financeiro_update_lancamento
+  controller :payments do
+    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}",                       :action => :index,          :as => :financeiro_index
+    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/novo-pagamento",        :action => :new,            :as => :novo_pagamento
+    post "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/pagar-parcela",         :action => :pay_instalment, :as => :financeiro_pagar_parcela
+    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/criar-parcelas",        :action => :create,         :as => :financeiro_criar_parcelas
+    put  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/update-lancamento",     :action => :update,         :as => :financeiro_update_lancamento
+    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/search",                :action => :search
+    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/lancamento/:id/editar", :action => :edit,           :as => :financeiro_editar_lancamento
+    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/pagar/:id",             :action => :pay,            :as => :financeiro_pagar
   end
 
   get "cursos/index"
