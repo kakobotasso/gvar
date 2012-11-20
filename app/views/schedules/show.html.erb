@@ -1,0 +1,38 @@
+<!-- TITLE -->
+<% content_for :title do %> Sistema Grupo Vida, Amor e Riso! <% end %>
+<!-- / TITLE -->
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @schedule.name %>
+</p>
+
+<p>
+  <b>Numero de Dias:</b>
+  <%= @schedule.number_days %>
+</p>
+
+<p>
+  <b>Tempo Estimado:</b>
+  <%= @schedule.estimated_time %>
+</p>
+
+<p>
+  <b>Valor Padrão:</b>
+  <%= @schedule.default_value %>
+</p>
+
+<p>
+  <b>Ativo:</b>
+  <%= @schedule.active %>
+</p>
+
+<p>
+  <b>Descrição:</b>
+  <%= @schedule.description %>
+</p>
+
+<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
+<%= link_to 'Back', dashboard_path %>

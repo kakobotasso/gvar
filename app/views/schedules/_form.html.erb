@@ -1,0 +1,70 @@
+<%= form_for @schedule do |f| %>
+  <% if @schedule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
+
+      <ul>
+        <% @schedule.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <ul>
+    <li>
+      <label>
+        <span>Código:</span>
+        <%= f.object.code %>
+        <%= f.hidden_field :code, :value => f.object.code %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Serviço:</span><br/>
+        <%= f.select :service_id, services.map {|s| [s.name, s.id] }, {}, :class => "inputMedio input" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Prestador:</span><br/>
+        <%= f.select :provider_id, providers.map {|p| [p.name, p.id] }, {}, :class => "inputMedio input" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Cliente:</span><br/>
+        <%= f.select :service_id, clients.map {|c| [c.name, c.id] }, {}, :class => "inputMedio input" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Tempo Estimado:</span><br/>
+        <%= f.text_field :estimated_time, :class => "inputMedio input" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Numeros de Dias:</span><br/>
+        <%= f.text_field :number_days, :class => "inputMedio input" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Data da Realização:</span><br/>
+        <%= f.date_select :estimated_time, {}, :class => 'select' %>
+      </label>
+    </li>
+
+    <li id="btEnviarForm">
+      <%= f.submit %>
+      <%= link_to 'Voltar', schedules_path, :id => "btVoltarForm" %>
+    </li>
+  </ul>
+<% end %>
