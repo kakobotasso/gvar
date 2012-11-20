@@ -1,10 +1,11 @@
 class ReleaseController < ApplicationController
   # before_filter :require_logged_release && :require_role_for_release
-  
+
   # POST /Releases
   # POST /Releases.json
   def create
     @release = Release.new(params[:release])
+    @release.select_type
 
     respond_to do |format|
       if @release.save
