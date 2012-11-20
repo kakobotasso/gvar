@@ -9,6 +9,10 @@ class Release < ActiveRecord::Base
     Category::OPTIONS.rassoc(category_id)[0]
   end
 
+  def select_type
+    self.type = (code.first == "P") ? :Payment : :Receipt
+  end
+
   def total_amount=(value)
     value = value.gsub('.','')
     value = value.gsub(',','.')
