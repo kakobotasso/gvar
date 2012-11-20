@@ -6,7 +6,7 @@ class InstalmentPresenter
   def partial
     if @instalments.size > 0
       {
-        :partial => "financeiro/instalments",
+        :partial => "shared/instalments",
         :locals => { :instalments => @instalments }
       }
     else
