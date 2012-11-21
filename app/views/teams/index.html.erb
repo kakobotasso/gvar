@@ -14,12 +14,12 @@
       
       <li class="escondidoPesquisaAvancada">
         <label for="campoCodigo">Período:</label>
-        <%= select_tag 'team[season]', options_for_select(@season), :class => 'select selectGde', :prompt => 'Selecione um periodo' %>
+        <%= select_tag 'team[season]', options_for_select(season), :class => 'select selectGde', :prompt => 'Selecione um periodo' %>
       </li>
 
       <li class="escondidoPesquisaAvancada guardaSelect guardaSelectGde">
         <label for="campoCodigo">Curso:</label>
-        <%= f.collection_select :course_id, @courses, :id, :name, {:prompt => 'Selecione um curso', :class=>"select selectGde"} %>
+        <%= f.collection_select :course_id, courses, :id, :name, {:prompt => 'Selecione um curso', :class=>"select selectGde"} %>
       </li>
 
       <li class="noPaddingHomes hidePA ">
@@ -33,7 +33,7 @@
     </ul>
   <% end %>
 
-<%= link_to "Nova turma", teams_new_path, class: "btEnviarForm" %>
+<%= link_to "Nova turma", new_team_path, class: "btEnviarForm" %>
 
 </div>
 
@@ -45,7 +45,7 @@
         <!-- <span><%#= t.code %></span> -->
         <span><%= t.name %></span>
         <span><%= t.periodo %></span>
-        <%= link_to 'Abrir', teams_show_path(t.id), :class => 'btVoltarForm' %>
+        <%= link_to 'Abrir', team_path(t), :class => 'btVoltarForm' %>
       </p>
     <% end %>
   <% else %>
@@ -69,12 +69,12 @@
       </tr>
 
       <% @team.each do |t| %>
-        <tr border="0">
-            <td width="14%"><span><%= link_to t.code, teams_show_path(t) %></span></td>
-            <td width="14%"><span><%= link_to t.name, teams_show_path(t) %></span></td>
-            <td width="14%"><span><%= link_to t.curso, teams_show_path(t) %></span></td>
-            <td width="14%"><span><%= link_to t.periodo, teams_show_path(t) %></span></td>
-            <td width="14%"><span><%= link_to "Em andamento", teams_show_path(t) %></span></td>
+        <tr border="0" onclick="location.href='<%= team_path(t) %>'">
+            <td width="14%"><span><%= t.code %></span></td>
+            <td width="14%"><span><%= t.name %></span></td>
+            <td width="14%"><span><%= t.curso %></span></td>
+            <td width="14%"><span><%= t.periodo %></span></td>
+            <td width="14%"><span><%= t.correct_status %></span></td>
             <td width="14%"><span><%= link_to "Presenças", "javascript:void(0);", :class => 'btVoltarForm' %></span></td>
             <td width="14%"><span><%= link_to "Planejamento", teams_planning_path(t), :class => 'btVoltarForm' %></span></td>
         </tr>

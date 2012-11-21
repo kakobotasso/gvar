@@ -10,6 +10,7 @@ Gvar::Application.routes.draw do
   URL_PAGAMENTOS   = "/pagamentos"
   URL_RECEBIMENTOS = "/recebimentos"
   URL_AGENDA       = "/agenda-de-servicos"
+  URL_TURMAS       = "/turmas"
 
   controller :payments do
     get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}",                       :action => :index,          :as => :financeiro_index
@@ -35,19 +36,21 @@ Gvar::Application.routes.draw do
     get "cursos/:id/cancelar", :action => :cancel, :as => :courses_cancel
   end
 
-  controller :turmas do
-    get "/turmas", :action => :index, :as => :teams
-    get "/turmas/novo", :action => :new, :as => :teams_new
-    post "/turmas", :action => :create, :as => :teams
-    post "/turmas/encontro", :action => :save_meeting, :as => :save_meeting
-    get "/turmas/salva-atividade", :action => :save_activity, :as => :save_activity
-    get "/turmas/ver-atividades", :action => :see_activity, :as => :see_activity
-    get "/turmas/:id", :action => :show, :as => :teams_show
-    get "/turmas/:id/editar", :action => :edit, :as => :teams_edit
-    put "/turmas/:id", :action => :update, :as => :teams_update
-    get "/turmas/:id/cancelar", :action => :cancel, :as => :teams_cancel
-    get "/turmas/:id/concluir", :action => :conclude, :as => :teams_conclude
-    get "/turmas/:id/planejamento", :action => :planning, :as => :teams_planning
+  controller :teams do
+    get    "#{URL_TURMAS}",                  :action => :index, :as => :teams
+    post   "#{URL_TURMAS}",                  :action => :create
+    get    "#{URL_TURMAS}/novo",             :action => :new, :as => :new_team
+    get    "#{URL_TURMAS}/buscar",           :action => :search, :as => :search_teams
+    post   "#{URL_TURMAS}/encontro",         :action => :save_meeting, :as => :save_meeting
+    get    "#{URL_TURMAS}/salva-atividade",  :action => :save_activity, :as => :save_activity
+    get    "#{URL_TURMAS}/ver-atividades",   :action => :see_activity, :as => :see_activity
+    get    "#{URL_TURMAS}/:id/cancelar",     :action => :cancel, :as => :teams_cancel
+    get    "#{URL_TURMAS}/:id/concluir",     :action => :conclude, :as => :teams_conclude
+    get    "#{URL_TURMAS}/:id/planejamento", :action => :planning, :as => :teams_planning
+    get    "#{URL_TURMAS}/:id/editar",       :action => :edit, :as => :edit_team
+    get    "#{URL_TURMAS}/:id",              :action => :show, :as => :team
+    put    "#{URL_TURMAS}/:id",              :action => :update
+    delete "#{URL_TURMAS}/:id",              :action => :destroy
   end
 
   controller :alunos do

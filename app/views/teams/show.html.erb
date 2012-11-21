@@ -31,7 +31,7 @@
 		<li><p><span>0</span> Alunos</p></li>
 		<li><p><%= link_to "Cancelar", teams_cancel_path, :class => "btEnviarForm", data:{ confirm: 'Ao cancelar essa turma, todas as inscrições serão alteradas para "Canceladas"
 	Deseja prosseguir?' } %></p></li>
-		<li><p><%= link_to "Alterar", teams_edit_path(@team.id), :class => "btEnviarForm" %></p></li>
+		<li><p><%= link_to "Alterar", edit_team_path(@team.id), :class => "btEnviarForm" %></p></li>
 		<li><p><%= link_to "Concluir", teams_conclude_path(@team.id), :class => "btEnviarForm" %></p></li>
 	</ul>
 </div>

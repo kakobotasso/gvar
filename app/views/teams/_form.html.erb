@@ -1,4 +1,4 @@
-<%= form_for @team, :url => "/turmas" do |t| %>
+<%= form_for @team do |t| %>
 
 <% if @team.errors.any? %>
     <div id="error_explanation">
@@ -29,22 +29,21 @@
     <li class="guardaSelect guardaSelectMedio">
         <label>
             <span>Curso: </span><br/>
-            <%= t.collection_select :course_id, @courses, :id, :name, {:prompt => 'Selecione um curso', :class=>"select selectMedio"} %>
-            <%#= select_tag 'team[course_id]', options_for_select(@courses), :class => 'select selectMedio' %>
+            <%= t.collection_select :course_id, courses, :id, :name, {:prompt => 'Selecione um curso', :class=>"select selectMedio"} %>
         </label>
     </li>
     
     <li>
         <label>
             <span>Periodo: </span><br/>
-            <%= t.select :season, @season, { :prompt => 'Selecione um periodo' }, :class => 'select selectMedio' %>
+            <%= t.select :season, season, { :prompt => 'Selecione um periodo' }, :class => 'select selectMedio' %>
         </label>
     </li>
 
     <li>
         <label>
             <span>Situação: </span><br/>
-            <%= t.select :status, @status, { :prompt => 'Selecione um status' }, :class => 'select selectMedio' %>
+            <%= t.select :status, status, { :prompt => 'Selecione um status' }, :class => 'select selectMedio' %>
         </label>
     </li>    
 
