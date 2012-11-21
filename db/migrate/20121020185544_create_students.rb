@@ -20,11 +20,11 @@ class CreateStudents < ActiveRecord::Migration
       t.integer :country
       t.string :zipcode
       t.text :notes
-      t.boolean :rg_delivered, :default => :false
-      t.boolean :cpf_delivered, :default => :false
-      t.boolean :photo_delivered, :default => :false
-      t.boolean :cv_delivered, :default => :false
-      t.boolean :address_delivered, :default => :false
+      t.boolean :rg_delivered, :default      => false
+      t.boolean :cpf_delivered, :default     => false
+      t.boolean :photo_delivered, :default   => false
+      t.boolean :cv_delivered, :default      => false
+      t.boolean :address_delivered, :default => false
 
       t.timestamps
     end
