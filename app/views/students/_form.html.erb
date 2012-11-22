@@ -1,9 +1,9 @@
-<%= form_for @student, :url => "/alunos" do |s| %>
+<%= form_for @students do |s| %>
 
-<% if @student.errors.any? %>
+<% if @students.errors.any? %>
     <div id="error_explanation">
       <ul class="error">
-      <% @student.errors.full_messages.each do |msg| %>
+      <% @students.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -14,8 +14,8 @@
     <li>
         <label>
             <span>Código: </span>
-            <%= s.object.code || @student_code %>
-            <%= s.hidden_field :code, :value => @student_code || s.object.code %>
+            <%= s.object.code || @students_code %>
+            <%= s.hidden_field :code, :value => @students_code || s.object.code %>
         </label>
     </li>
 
@@ -105,7 +105,7 @@
 
     <li>
         <label>
-            <span>Complemento*: </span><br/>
+            <span>Complemento: </span><br/>
             <%= s.text_field :complement, :class => "inputMedio input" %>
         </label>
     </li>
@@ -179,3 +179,25 @@
     
 </ul>
 <% end %>
+
+<script type="text/javascript">
+    $(function(){
+        $("#student_cpf").mask("999.999.999-99");
+        $("#student_rg").mask("99.999.999-*");
+        $("#student_zipcode").mask("99999-999");
+        $("#student_birth_date").mask("99/99/9999");
+        $("#student_phone").mask("(99) 9999-9999");
+        $('#student_cellphone').mask("(99) 9999-9999?9").live('focusout', function (event) {
+                var target, phone, element;
+                target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+                phone = target.value.replace(/\D/g, '');
+                element = $(target);
+                element.unmask();
+                if(phone.length > 10) {
+                    element.mask("(99) 99999-999?9");
+                } else {
+                    element.mask("(99) 9999-9999?9");
+                }
+            });
+    });
+</script>

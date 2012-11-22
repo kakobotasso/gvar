@@ -48,18 +48,18 @@
     </ul>
   <% end %>
 
-<%= link_to "Novo aluno", students_new_path, class: "btEnviarForm" %>
+<%= link_to "Novo aluno", new_student_path, class: "btEnviarForm" %>
 
 </div>
 
 <div id="guardaAtividadesRecentes">
   <h2>Últimos alunos cadastrados</h2>
-  <% if @student.size > 0 %>
-    <% @student.each do |s|  %>
+  <% if @students.size > 0 %>
+    <% @students.each do |s|  %>
       <p>
         <span><%= s.name %></span>
         <span><%= s.cpf %></span>
-        <%= link_to 'Abrir', students_edit_path(s), :class => 'btVoltarForm' %>
+        <%= link_to 'Abrir', edit_student_path(s), :class => 'btVoltarForm' %>
       </p>
     <% end %>
   <% else %>
@@ -68,7 +68,7 @@
 </div>
 
 <div id="guardaResultadoPesquisa">
-  <% if @student.size > 0 %>
+  <% if @students.size > 0 %>
     <h2>Resultado da pesquisa</h2>
 
     <table cellspadding="0" cellspacing="0" width="100%">
@@ -81,14 +81,14 @@
         <th width="16%"><span>Relação com Idoso</span></th>
       </tr>
 
-      <% @student.each do |s| %>
-        <tr border="0" onclick="location.href='<% students_show_path(s.id) %>'">
-            <td width="16%"><span><%= link_to s.code, students_show_path(s.id) %></span></td>
-            <td width="16%"><span><%= link_to s.name, students_show_path(s.id) %></span></td>
-            <td width="16%"><span><%= link_to s.cpf, students_show_path(s.id) %></span></td>
-            <td width="16%"><span><%= link_to s.rg, students_show_path(s.id) %></span></td>
-            <td width="16%"><span><%= link_to s.sex, students_show_path(s.id) %></span></td>
-            <td width="16%"><span><%= link_to s.relacao_idoso, students_show_path(s.id) %></span></td>
+      <% @students.each do |s| %>
+        <tr border="0" onclick="location.href='<%= student_path(s) %>'">
+            <td width="16%"><span><%= s.code %></span></td>
+            <td width="16%"><span><%= s.name %></span></td>
+            <td width="16%"><span><%= s.cpf %></span></td>
+            <td width="16%"><span><%= s.rg %></span></td>
+            <td width="16%"><span><%= s.sexo %></span></td>
+            <td width="16%"><span><%= s.relacao_idoso %></span></td>
         </tr>
       <% end %>
 
