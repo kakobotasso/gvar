@@ -3,17 +3,18 @@ Gvar::Application.routes.draw do
   root :to => "sessions#destroy"
 
   # VARIAVEL QUE ARMAZENA O CAMINHO PARA FUTURAS MUDANÇAS
-  URL_FINANCEIRO   = "/financeiro"
-  URL_SERVICOS     = "/servicos"
-  URL_CLIENTES     = "/clientes"
-  URL_PRESTADORES  = "/prestadores"
-  URL_PAGAMENTOS   = "/pagamentos"
-  URL_RECEBIMENTOS = "/recebimentos"
-  URL_AGENDA       = "/agenda-de-servicos"
-  URL_TURMAS       = "/turmas"
-  URL_CURSOS       = "/cursos"
-  URL_ALUNOS       = "/alunos"
-  URL_INTERESSADOS = "/interessados"
+  URL_FINANCEIRO    = "/financeiro"
+  URL_SERVICOS      = "/servicos"
+  URL_CLIENTES      = "/clientes"
+  URL_PRESTADORES   = "/prestadores"
+  URL_PAGAMENTOS    = "/pagamentos"
+  URL_RECEBIMENTOS  = "/recebimentos"
+  URL_AGENDA        = "/agenda-de-servicos"
+  URL_TURMAS        = "/turmas"
+  URL_CURSOS        = "/cursos"
+  URL_ALUNOS        = "/alunos"
+  URL_INTERESSADOS  = "/interessados"
+  URL_INSCRICOES    = "/inscricoes"
 
   controller :payments do
     get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}",                       :action => :index,          :as => :financeiro_index
@@ -83,13 +84,14 @@ Gvar::Application.routes.draw do
     delete "#{URL_INTERESSADOS}/:id",                   :action => :destroy
   end
 
-  controller :inscricoes do
-    get "/inscricoes", :action => :index, :as => :registration
-    get "/inscricoes/novo", :action => :new, :as => :registration_new
-    post "/inscricoes", :action => :create
-    get "/inscricoes/:id", :action => :show, :as => :registration_show
-    get "/inscricoes/:id/editar", :action => :edit, :as => :registration_edit
-    put "/inscricoes/:id", :action => :update
+  controller :registrations do
+    get    "#{URL_INSCRICOES}",                :action => :index, :as => :registrations
+    post   "#{URL_INSCRICOES}",                :action => :create
+    get    "#{URL_INSCRICOES}/novo",           :action => :new, :as => :new_registration
+    get    "#{URL_INSCRICOES}/buscar",         :action => :search, :as => :search_registrations
+    get    "#{URL_INSCRICOES}/:id/editar",     :action => :edit, :as => :edit_registration
+    get    "#{URL_INSCRICOES}/:id",            :action => :show, :as => :registration
+    put    "#{URL_INSCRICOES}/:id",            :action => :update
   end
 
   controller :sessions do

@@ -1,4 +1,4 @@
-class InscricoesController < ApplicationController
+class RegistrationsController < ApplicationController
 	require_logged_user
   require_role_for_curso
 
@@ -38,7 +38,7 @@ class InscricoesController < ApplicationController
 
     respond_to do |format|
       if @registration.save
-        format.html { redirect_to students_path, notice: 'As informacoes foram salvas com sucesso.' }
+        format.html { redirect_to registration_path, notice: 'As informacoes foram salvas com sucesso.' }
         format.json { render json: @registration, status: :created, location: @registration }
       else
         format.html { render action: "new" }
@@ -52,7 +52,7 @@ class InscricoesController < ApplicationController
 
     respond_to do |format|
       if @registration.update_attributes(params[:students])
-        format.html { redirect_to students_path, notice: 'As informacoes foram atualizadas com sucesso!' }
+        format.html { redirect_to registration_path, notice: 'As informacoes foram atualizadas com sucesso!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -66,7 +66,7 @@ class InscricoesController < ApplicationController
     @registrations.destroy
 
     respond_to do |format|
-      format.html { redirect_to teams_url }
+      format.html { redirect_to registration_url }
       format.json { head :no_content }
     end
   end

@@ -1,6 +1,6 @@
-<%= form_for (@course), :url => "/cursos" do |c| %>
+<%= form_for @registration do |c| %>
 
-<% if @course.errors.any? %>
+<% if @registration.errors.any? %>
     <div id="error_explanation">
       <ul class="error">
       <% @course.errors.full_messages.each do |msg| %>
