@@ -53,7 +53,7 @@
       </tr>
 
       <% @course.each do |c| %>
-        <tr border="0" onclick="location.href='<%= courses_show_path(c) %>'">
+        <tr border="0" onclick="location.href='<%= course_path(c) %>'">
             <td width="25%"><span><%= c.code %></span></td>
             <td width="25%"><span><%= c.name %></span></td>
             <td width="25%"><span><%= c.categoria %></span></td>
