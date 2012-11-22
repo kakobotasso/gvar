@@ -1,9 +1,9 @@
-<%= form_for @interested, :url => "/interessados" do |i| %>
+<%= form_for @interesteds do |i| %>
 
-<% if @interested.errors.any? %>
+<% if @interesteds.errors.any? %>
     <div id="error_explanation">
       <ul class="error">
-      <% @interested.errors.full_messages.each do |msg| %>
+      <% @interesteds.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

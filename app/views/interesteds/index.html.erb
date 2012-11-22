@@ -38,18 +38,18 @@
     </ul>
   <% end %>
 
-<%= link_to "Novo interessado", interested_new_path, class: "btEnviarForm" %>
+<%= link_to "Novo interessado", new_interested_path, class: "btEnviarForm" %>
 
 </div>
 
 <div id="guardaAtividadesRecentes">
   <h2>Últimos Interessados</h2>
-  <% if @interested.size > 0 %>
-    <% @interested.each do |i|  %>
+  <% if @interesteds.size > 0 %>
+    <% @interesteds.each do |i|  %>
       <p>
         <span><%= i.name %></span>
         <span><%= i.email %></span>
-        <%= link_to 'Abrir', interested_show_path(i), :class => 'btVoltarForm' %>
+        <%= link_to 'Abrir', interested_path(i), :class => 'btVoltarForm' %>
       </p>
     <% end %>
   <% else %>
@@ -58,7 +58,7 @@
 </div>
 
 <div id="guardaResultadoPesquisa">
-  <% if @interested.size > 0 %>
+  <% if @interesteds.size > 0 %>
     <h2>Resultado da pesquisa</h2>
 
     <table cellspadding="0" cellspacing="0" width="100%">
@@ -69,8 +69,8 @@
         <th width="25%"><span>Situação</span></th>
       </tr>
 
-      <% @interested.each do |i| %>
-        <tr border="0" onclick="location.href='<%= interested_show_path(i) %>'">
+      <% @interesteds.each do |i| %>
+        <tr border="0" onclick="location.href='<%= interested_path(i) %>'">
             <td width="20%"><span><%= i.name %></span></td>
             <td width="20%"><span><%= i.email %></span></td>
             <td width="20%"><span><%= i.phone %></span></td>

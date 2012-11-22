@@ -2,9 +2,9 @@
 <% content_for :title do %> Novo histórico interessado - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
-<h1>Novo histórico interessado</h1>
+<h1>Novo contato - <%= @interesteds.name %></h1>
 
-<%= form_for @interested, :url => interested_contact_save_path(@interested) do |w| %>
+<%= form_for @interesteds, :url => interested_contact_save_path(@interesteds) do |w| %>
     <%= w.fields_for :interested_contacts do |i| %>
         <% if i.object.id.nil? %>
             <ul>
@@ -25,7 +25,7 @@
     <% end %>
 
         <li class="btEnviarForm">
-            <%= w.submit %>
+            <%= w.submit 'Gravar contato' %>
         </li>
     </ul>
 <% end %>

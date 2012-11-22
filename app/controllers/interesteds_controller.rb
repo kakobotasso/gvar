@@ -1,71 +1,71 @@
 # *-* encoding: UTF-8 *-*
-class InteressadosController < ApplicationController
+class InterestedsController < ApplicationController
 	require_logged_user
 	require_role_for_curso
 
   def index
-  	@interested = Interested.all#.order("created_at desc")
+  	@interesteds = Interested.all#.order("created_at desc")
     @situation = Category::Interested::SITUATION
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @interested }
+      format.json { render json: @interesteds }
     end
   end
 
   def show
-    @interested = Interested.find(params[:id])
-    @interested_contact = @interested.interested_contacts
+    @interesteds = Interested.find(params[:id])
+    @interesteds_contact = @interesteds.interested_contacts
     @situation = Category::Interested::SITUATION
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @interested }
+      format.json { render json: @interesteds }
     end
   end
 
   def new
-    @interested = Interested.new
+    @interesteds = Interested.new
     @situation = Category::Interested::SITUATION
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @interested }
+      format.json { render json: @interesteds }
     end
   end
 
   def edit
-    @interested = Interested.find(params[:id])
+    @interesteds = Interested.find(params[:id])
     @situation = Category::Interested::SITUATION
   end
 
   def history
-    @interested = Interested.find(params[:id])
-    @interested.interested_contacts.build
+    @interesteds = Interested.find(params[:id])
+    @interesteds.interested_contacts.build
   end
 
   def save_history
-    @interested = Interested.find(params[:id])
+    @interesteds = Interested.find(params[:id])
 
     respond_to do |format|
-      if @interested.update_attributes(params[:interested])
+      if @interesteds.update_attributes(params[:interested])
         format.html { redirect_to interested_show_path, notice: 'As informacoes foram atualizadas com sucesso!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @interesteds.errors, status: :unprocessable_entity }
+        format.json { render json: @interestedss.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def create
-    @interested = Interested.new(params[:interested])
+    @interesteds = Interested.new(params[:interested])
     @situation = Category::Interested::SITUATION
 
     respond_to do |format|
-      if @interested.save
-        format.html { redirect_to interested_show_path @interested, notice: 'As informações do Interessado foram salvas com sucesso.' }
-        format.json { render json: @interested, status: :created, location: @interested }
+      if @interesteds.save
+        format.html { redirect_to interested_path(@interesteds), notice: 'As informacoes foram atualizadas com sucesso!' }
+        format.json { render json: @interesteds, status: :created, location: @interesteds }
       else
         format.html { render action: "new" }
         format.json { render json: @interesteds.errors, status: :unprocessable_entity }
@@ -74,12 +74,12 @@ class InteressadosController < ApplicationController
   end
 
   def update
-    @interested = Interested.find(params[:id])
+    @interesteds = Interested.find(params[:id])
     @situation = Category::Interested::SITUATION
 
     respond_to do |format|
       if @interesteds.update_attributes(params[:interested])
-        format.html { redirect_to interested_show_path, notice: 'As informacoes foram atualizadas com sucesso!' }
+        format.html { redirect_to interested_path, notice: 'As informacoes foram atualizadas com sucesso!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -89,8 +89,8 @@ class InteressadosController < ApplicationController
   end
 
   def destroy
-    @interested = Interested.find(params[:id])
-    @interesteds.destroy
+    @interesteds = Interested.find(params[:id])
+    @interestedss.destroy
 
     respond_to do |format|
       format.html { redirect_to teams_url }

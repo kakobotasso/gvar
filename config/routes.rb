@@ -12,6 +12,8 @@ Gvar::Application.routes.draw do
   URL_AGENDA       = "/agenda-de-servicos"
   URL_TURMAS       = "/turmas"
   URL_CURSOS       = "/cursos"
+  URL_ALUNOS       = "/alunos"
+  URL_INTERESSADOS = "/interessados"
 
   controller :payments do
     get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}",                       :action => :index,          :as => :financeiro_index
@@ -55,25 +57,30 @@ Gvar::Application.routes.draw do
     delete "#{URL_TURMAS}/:id",              :action => :destroy
   end
 
-  controller :alunos do
-    get "/alunos", :action => :index, :as => :students
-    get "/alunos/novo", :action => :new, :as => :students_new
-    post "/alunos", :action => :create
-    get "/alunos/:id", :action => :show, :as => :students_show
-    get "/alunos/:id/editar", :action => :edit, :as => :students_edit
-    put "/alunos/:id", :action => :update
-    get "/alunos/:id/cancelar", :action => :cancel, :as => :students_cancel
+  controller :students do
+    get    "#{URL_ALUNOS}",                :action => :index, :as => :students
+    post   "#{URL_ALUNOS}",                :action => :create
+    get    "#{URL_ALUNOS}/novo",           :action => :new, :as => :new_student
+    get    "#{URL_ALUNOS}/buscar",         :action => :search, :as => :search_students
+    get    "#{URL_ALUNOS}/:id/editar",     :action => :edit, :as => :edit_student
+    get    "#{URL_ALUNOS}/:id/cancelar",   :action => :cancel, :as => :cancel_course
+    get    "#{URL_ALUNOS}/:id",            :action => :show, :as => :student
+    put    "#{URL_ALUNOS}/:id",            :action => :update
+    delete "#{URL_ALUNOS}/:id",            :action => :destroy
   end
 
-  controller :interessados do
-    get "/interessados", :action => :index, :as => :interested
-    get "/interessados/novo", :action => :new, :as => :interested_new
-    post "/interessados", :action => :create, :as => :interested
-    get "/interessados/:id", :action => :show, :as => :interested_show
-    get "/interessados/:id/editar", :action => :edit, :as => :interested_edit
-    get "/interessados/:id/historico", :action => :history, :as => :interested_history
-    put "/interessados/:id/historico/salvar", :action => :save_history, :as => :interested_contact_save
-    put "/interessados/:id", :action => :update, :as => :interested_update
+  controller :interesteds do 
+    get    "#{URL_INTERESSADOS}",                       :action => :index, :as => :interesteds
+    post   "#{URL_INTERESSADOS}",                       :action => :create
+    get    "#{URL_INTERESSADOS}/novo",                  :action => :new, :as => :new_interested
+    get    "#{URL_INTERESSADOS}/buscar",                :action => :search, :as => :search_students
+    get    "#{URL_INTERESSADOS}/:id",                   :action => :show, :as => :interested
+    get    "#{URL_INTERESSADOS}/:id/historico",         :action => :history, :as => :interested_history
+    put    "#{URL_INTERESSADOS}/:id/historico/salvar",  :action => :save_history, :as => :interested_contact_save
+    get    "#{URL_INTERESSADOS}/:id/editar",            :action => :edit, :as => :edit_interested
+    get    "#{URL_INTERESSADOS}/:id/cancelar",          :action => :cancel, :as => :cancel_course
+    put    "#{URL_INTERESSADOS}/:id",                   :action => :update
+    delete "#{URL_INTERESSADOS}/:id",                   :action => :destroy
   end
 
   controller :inscricoes do
