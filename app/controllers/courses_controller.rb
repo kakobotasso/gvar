@@ -1,4 +1,4 @@
-class CursosController < ApplicationController
+class CoursesController < ApplicationController
   require_logged_user
   require_role_for_curso
 
@@ -56,7 +56,7 @@ class CursosController < ApplicationController
     @course_category = Category::Courses::OPTIONS
 
     respond_to do |format|
-      if @course.update_attributes(params[:room])
+      if @course.update_attributes(params[:course])
         format.html { redirect_to @course, notice: 'As informacoes foram atualizadas com sucesso!' }
         format.json { head :no_content }
       else

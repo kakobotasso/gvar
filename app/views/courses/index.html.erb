@@ -18,7 +18,7 @@
     </ul>
   <% end %>
 
-<%= link_to "Novo curso", courses_new_path, class: "btEnviarForm" %>
+<%= link_to "Novo curso", new_course_path, class: "btEnviarForm" %>
 
 </div>
 
@@ -31,7 +31,7 @@
         <!-- <span><%#= c.code %></span> -->
         <span><%= c.name %></span>
         <span><%= c.categoria %></span>
-        <%= link_to 'Abrir', courses_edit_path(c), :class => 'btVoltarForm' %>
+        <%= link_to 'Abrir', edit_course_path(c), :class => 'btVoltarForm' %>
       </p>
     <% end %>
 

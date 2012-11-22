@@ -11,6 +11,7 @@ Gvar::Application.routes.draw do
   URL_RECEBIMENTOS = "/recebimentos"
   URL_AGENDA       = "/agenda-de-servicos"
   URL_TURMAS       = "/turmas"
+  URL_CURSOS       = "/cursos"
 
   controller :payments do
     get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}",                       :action => :index,          :as => :financeiro_index
@@ -26,14 +27,15 @@ Gvar::Application.routes.draw do
   get "assessoria/index"
   get "servicos/index"
 
-  controller :cursos do
-    get "/cursos", :action => :index, :as => :courses                   # cursos_path
-    get "/cursos/novo", :action => :new, :as => :courses_new
-    post "/cursos/", :action => :create, :as => :courses                  # cursos_path
-    get "/cursos/:id", :action => :show, :as => :courses_show
-    get "/cursos/:id/editar", :action => :edit, :as => :courses_edit
-    put "cursos/:id", :action => :update, :as => :courses_update
-    get "cursos/:id/cancelar", :action => :cancel, :as => :courses_cancel
+  controller :courses do
+    get    "#{URL_CURSOS}",                :action => :index, :as => :courses
+    post   "#{URL_CURSOS}",                :action => :create
+    get    "#{URL_CURSOS}/novo",           :action => :new, :as => :new_course
+    get    "#{URL_CURSOS}/buscar",         :action => :search, :as => :search_courses
+    get    "#{URL_CURSOS}/:id/editar",     :action => :edit, :as => :edit_course
+    get    "#{URL_CURSOS}/:id/cancelar",   :action => :cancel, :as => :cancel_course
+    get    "#{URL_CURSOS}/:id",            :action => :show, :as => :course
+    put    "#{URL_CURSOS}/:id",            :action => :update
   end
 
   controller :teams do
