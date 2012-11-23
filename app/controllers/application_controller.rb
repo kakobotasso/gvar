@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
   end
 
   def self.require_role_for_receipt
-    before_filter :require_role_for_recebimento
+    before_filter :require_role_for_receipt
   end
 
   def require_role_for_receipt
