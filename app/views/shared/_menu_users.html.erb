@@ -1,0 +1,5 @@
+<% if current_user.have_role?(:admin) %>
+    <%= link_to "Controle de Usuários", users_path %> |
+<% end %>
+<%= link_to "Editar perfil", edit_user_path(current_user) %> | 
+<%= link_to "Alterar senha", alterar_senha_path %>
