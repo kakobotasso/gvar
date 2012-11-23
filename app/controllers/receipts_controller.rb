@@ -15,6 +15,8 @@ class ReceiptsController < ApplicationController
     @release = Release.new
     @release.instalments.build
 
+    @object = session[:schedule]
+
     # release_code tera o formato:
     # P120927205100
     # [P|R] + ano + mes + dia + hora + min + seg

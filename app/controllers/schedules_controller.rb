@@ -48,10 +48,11 @@ class SchedulesController < ApplicationController
   # POST /schedules.json
   def create
     @schedule = Schedule.new(params[:schedule])
+    session[:schedule] = @schedule
 
     respond_to do |format|
-      if @schedule.save
-        format.html { redirect_to schedules_path, notice: 'Schedule was successfully created.' }
+      if @schedule.valid?
+        format.html { redirect_to new_receipt_path, notice: 'Schedule was successfully created.' }
         format.json { render json: @schedule, status: :created, location: @schedule }
       else
         format.html { render action: "new" }
