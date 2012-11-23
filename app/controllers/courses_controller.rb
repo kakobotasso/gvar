@@ -42,7 +42,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to courses_show_path(@course), notice: 'As informacoes foram salvas com sucesso.' }
+        format.html { redirect_to course_path(@course), notice: 'As informacoes foram salvas com sucesso.' }
         format.json { render json: @course, status: :created, location: @course }
       else
         format.html { render action: "new" }
