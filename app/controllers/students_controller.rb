@@ -49,7 +49,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @students.save
-        format.html { redirect_to students_path, notice: 'As informacoes foram salvas com sucesso.' }
+        format.html { redirect_to student_path(@students), notice: 'As informacoes foram salvas com sucesso.' }
         format.json { render json: @students, status: :created, location: @students }
       else
         format.html { render action: "new" }
@@ -65,8 +65,8 @@ class StudentsController < ApplicationController
     @relacao = Student::RELACAO
 
     respond_to do |format|
-      if @students.update_attributes(params[:students])
-        format.html { redirect_to students_path, notice: 'As informacoes foram atualizadas com sucesso!' }
+      if @students.update_attributes(params[:student])
+        format.html { redirect_to student_path, notice: 'As informacoes foram atualizadas com sucesso!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

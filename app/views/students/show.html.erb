@@ -1,13 +1,50 @@
 <!-- TITLE -->
-<% content_for :title do %> <%= @student.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
+<% content_for :title do %> <%= @students.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
-<h1>Informações do Aluno</h1>
+<h1>Informações do Aluno <br/> <%= @students.name %> </h1>
+
 
 <ul>
+	<li><p><strong>Código:</strong> <br/> <%= @students.code %></p></li>
+	<li><p><strong>Nome:</strong> <br/> <%= @students.name %></p></li>
+	<li><p><strong>CPF:</strong> <br/> <%= @students.cpf %></p></li>
+	<li><p><strong>RG:</strong> <br/> <%= @students.rg %></p></li>
+	<li><p><strong>Data de nascimento:</strong> <br/> <%= @students.birth_date %></p></li>
+	<li><p><strong>Profissão:</strong> <br/> <%= @students.occupation %></p></li>
+	<li><p><strong>Sexo:</strong> <br/> <%= @students.sexo %></p></li>
+	<li><p><strong>Escolaridade:</strong> <br/> <%= @students.schooling %></p></li>
+	<li><p><strong>Relação com idoso:</strong> <br/> <%= @students.relacao_idoso %></p></li>
 	
+	<% if @students.phone.size > 0 %>
+	<li><p><strong>Telefone:</strong> <br/> <%= @students.phone %></p></li>
+	<% end %>
+
+	<% if @students.cellphone.size > 0 %>
+	<li><p><strong>Celular:</strong> <br/> <%= @students.cellphone %></p></li>
+	<% end %>
+
+	<li><p><strong>Endereço:</strong> <br/> <%= "#{@students.street}, Nº #{@students.number} #{@students.complement}" %></p></li>
+	<li><p><strong>Bairro:</strong> <br/> <%= @students.neighborhood %></p></li>
+	<li><p><strong>Cidade:</strong> <br/> <%= "#{@students.city} - #{@students.estado}" %></p></li>
+	<li><p><strong>CEP:</strong> <br/> <%= @students.zipcode %></p></li>
+	
+	<li>
+		<p>
+			<strong>Documentos Entregues:</strong> <br/> 
+			<%= "RG" if @students.rg_delivered == true %>
+			<%= " / CPF" if @students.cpf_delivered == true %>
+			<%= " / Foto" if @students.photo_delivered == true %>
+			<%= " / CV " if @students.cv_delivered == true %>
+			<%= " / Comprovante de endereço" if @students.address_delivered == true %>
+			<%= "Nenhum" if @students.rg_delivered == false && @students.cpf_delivered == false && @students.photo_delivered == false && @students.cv_delivered == false && @students.address_delivered == false %>
+		</p>
+	</li>
+
+	<li><p><strong>Observações:</strong> <br/> <%= @students.notes %></p></li>
 </ul>
 
 <ul>
+	<li><%= link_to "Editar", edit_student_path, :class => "btEnviarForm" %></li>
 	<li><%= link_to "Voltar", students_path, :class => "btEnviarForm" %></li>
 </ul>

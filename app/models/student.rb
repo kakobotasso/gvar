@@ -23,6 +23,10 @@ class Student < ActiveRecord::Base
   	end
   end
 
+  def estado
+    Country::STATES.rassoc(country)[0]
+  end
+
   SEXO = [
     ["Masculino", 0],
     ["Feminino", 1]
