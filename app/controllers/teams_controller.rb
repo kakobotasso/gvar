@@ -113,7 +113,7 @@ class TeamsController < ApplicationController
   def save_meeting
     @meeting = Meeting.new(params[:meeting])
     @meeting.save
-    redirect_to team_planning_path @meeting.team_id
+    redirect_to teams_planning_path @meeting.team_id
   end
   
   def save_activity

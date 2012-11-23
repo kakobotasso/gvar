@@ -49,7 +49,7 @@ class InterestedsController < ApplicationController
 
     respond_to do |format|
       if @interesteds.update_attributes(params[:interested])
-        format.html { redirect_to interested_show_path, notice: 'As informacoes foram atualizadas com sucesso!' }
+        format.html { redirect_to interested_path, notice: 'As informacoes foram atualizadas com sucesso!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
