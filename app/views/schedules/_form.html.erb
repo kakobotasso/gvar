@@ -26,7 +26,6 @@
         <%= f.select :service_id, services.map {|s| [s.name, s.id] }, {}, :class => "inputMedio input" %>
       </label>
     </li>
-
     <li>
       <label>
         <span>Prestador:</span><br/>
@@ -51,19 +50,19 @@
     <li>
       <label>
         <span>Numeros de Dias:</span><br/>
-        <%= f.text_field :number_days, :class => "inputMedio input" %>
+        <%= f.number_field :number_days, :class => "inputMedio input" %>
       </label>
     </li>
 
     <li>
       <label>
         <span>Data da Realização:</span><br/>
-        <%= f.date_select :estimated_time, {}, :class => 'select' %>
+        <%= f.date_select :date, {}, :class => 'select' %>
       </label>
     </li>
 
     <li id="btEnviarForm">
-      <%= f.submit %>
+      <%= f.submit "Agendar" %>
       <%= link_to 'Voltar', schedules_path, :id => "btVoltarForm" %>
     </li>
   </ul>
