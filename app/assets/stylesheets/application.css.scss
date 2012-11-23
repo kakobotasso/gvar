@@ -11,12 +11,26 @@
  *= require_self
  *= require_tree .
  */
+
+$azulFundo:#4A8CF6;
+$azulBorda:#3079ED;
+$azulPesquisa:#27408B;
+
+@mixin botao($corFundo, $corBorda, $corTexto, $radius){
+    background:$corFundo;
+    border:1px solid $corBorda;
+    cursor:pointer;
+    text-decoration:none;
+    color:$corTexto;
+    border-radius:$radius;
+}
+
 *{
 	border:0px;
 	margin:0px;
 	padding:0px;
 	outline:0;
-        font-family:Arial;
+    font-family:"Calibri", Arial;
 }
 
 body{
@@ -43,88 +57,29 @@ iframe{
 #contentInternas #btEnviarForm input{
     float:left;
     padding:4px 10px;
-    /*background:#24c803;
-    border:1px solid #1a9203;*/
-    text-decoration:none;
-    color:#000;
-    border:1px solid #000;
-    background: #a3a3a3; /* Old browsers */
-    background: -moz-linear-gradient(top, #a3a3a3 0%, #d1d1d1 50%, #a3a3a3 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a3a3a3), color-stop(50%,#d1d1d1), color-stop(100%,#a3a3a3)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3a3a3', endColorstr='#a3a3a3',GradientType=0 ); /* IE6-9 */
+    @include botao($azulFundo, $azulBorda, #fff, 5px);
+    &:hover{
+        @include botao(#fff, $azulBorda, $azulFundo, 5px);
+    }
 }
+
 
 #contentInternas .btVoltarForm,
-#contentInternas #btVoltarForm{
-    float:left;
-    padding:4px 10px;
-    /*background:#ffd801;
-    border:1px solid #b39800;*/
-    display:inline;
-    margin:0px 5px;
-    text-decoration:none;
-    font-size:13px;
-    color:#000;
-    border:1px solid #000;
-    background: #a3a3a3; /* Old browsers */
-    background: -moz-linear-gradient(top, #a3a3a3 0%, #d1d1d1 50%, #a3a3a3 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a3a3a3), color-stop(50%,#d1d1d1), color-stop(100%,#a3a3a3)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3a3a3', endColorstr='#a3a3a3',GradientType=0 ); /* IE6-9 */
-}
-
+#contentInternas #btVoltarForm,
+#contentInternas .btEditarForm,
+#contentInternas #btEditarForm,
 #contentInternas .btVoltarExcluirForm,
 #contentInternas #btVoltarExcluirForm{
     float:left;
     padding:4px 10px;
-    /*background:#f30808;
-    border:1px solid #a50808;*/
     display:inline;
     margin:0px 5px;
     text-decoration:none;
     font-size:13px;
-    /*color:#fff;*/
-    color:#000;
-    border:1px solid #000;
-    background: #a3a3a3; /* Old browsers */
-    background: -moz-linear-gradient(top, #a3a3a3 0%, #d1d1d1 50%, #a3a3a3 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a3a3a3), color-stop(50%,#d1d1d1), color-stop(100%,#a3a3a3)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3a3a3', endColorstr='#a3a3a3',GradientType=0 ); /* IE6-9 */
-}
-
-
-#contentInternas .btEditarForm,
-#contentInternas #btEditarForm{
-    float:left;
-    padding:4px 10px;
-    /*background:#150278;
-    border:1px solid #0e0345;*/
-    display:inline;
-    margin:0px 5px;
-    text-decoration:none;
-    font-size:13px;
-    /*color:#fff;*/
-    color:#000;
-    border:1px solid #000;
-    background: #a3a3a3; /* Old browsers */
-    background: -moz-linear-gradient(top, #a3a3a3 0%, #d1d1d1 50%, #a3a3a3 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a3a3a3), color-stop(50%,#d1d1d1), color-stop(100%,#a3a3a3)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #a3a3a3 0%,#d1d1d1 50%,#a3a3a3 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3a3a3', endColorstr='#a3a3a3',GradientType=0 ); /* IE6-9 */
+    @include botao($azulFundo, $azulBorda, #fff, 5px);
+    &:hover{
+        @include botao(#fff, $azulBorda, $azulFundo, 5px);
+    }
 }
 
 
@@ -419,7 +374,7 @@ margin:0px 10px;
 #headerInternas #guardaMenuCategoria p{
     color:#000;
     text-decoration:none;
-    font-size:16px;
+    font-size:14px;
 }
 
 /*
@@ -570,32 +525,29 @@ margin:0px 10px;
 #contentInternas #guardaResultadoPesquisa table{
     float:left;
     width:100%;
-    border:1px solid #E0EEE0;
+    border:1px solid $azulPesquisa;
 }
 
 #contentInternas #guardaResultadoPesquisa table th{
-    background:#E0EEE0;
+    background:$azulPesquisa;
     padding:5px 0px;
+    color:#fff;
 }
 
 #contentInternas #guardaResultadoPesquisa table tr td{
     text-align:left;
     padding:5px 0px;
-    border-top:1px solid #E0EEE0;
+    border-top:1px solid $azulPesquisa;
 }
 
 #contentInternas #guardaResultadoPesquisa table span{
     float:left;
     padding:3px 15px 4px 15px;
+    font-size:13px;
 }
 
 #contentInternas #guardaResultadoPesquisa table span a{
     text-decoration:none;
-    color:#333;
-}
-
-#contentInternas #guardaResultadoPesquisa table span a:hover{
-    text-decoration:underline;
 }
 
 #contentInternas #guardaResultadoPesquisa table span.centralizaBts{
@@ -613,7 +565,18 @@ margin:0px 10px;
     padding-left:5px;
 }
 
-tr:hover td { background: #CCC ; cursor:pointer; }
+.wrapperInternas #guardaResultadoPesquisa table tr{
+    a{
+        color:#fff;
+        text-decoration:none;
+    }
+    &:hover{
+        td{
+            background:#E7F3F9;
+            cursor:pointer;
+        }
+    }
+}
 
 #error_explanation{
     float:left;
