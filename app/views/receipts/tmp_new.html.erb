@@ -1,0 +1,147 @@
+<!-- TITLE -->
+<% content_for :title do %> Novo pagamento - Sistema Grupo Vida, Amor e Riso! <% end %>
+<!-- / TITLE -->
+
+<!-- MENU -->
+<% content_for :menu do %> <%= render "menu" %> <% end %>
+<!-- / MENU -->
+
+<h1>Novo pagamento</h1>
+
+<%= form_for(@release) do |r| %>
+  <ul>
+    <li>
+      <label>
+        <span>Codigo: </span>
+        <%= @release_code %>
+        <%= hidden_field_tag "release[code]", @release_code %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Nome:</span><br/>
+        <%= r.text_field :name, :class => "inputMedio input" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Categoria:</span><br/>
+        <%= r.select :category_id, categories, {}, :class => 'select selectMedio' %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Valor total:</span><br/>
+        <%= r.text_field :total_amount, :class => "inputMedio input", :id => "valorTotal" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>Numero de parcelas:</span><br/>
+        <%= r.text_field :number_instalments, :class => "inputMedio input", :id => "numberParcelas" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <%= r.check_box :first_paid %> <span>Primeira paga</span>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <%= r.check_box :fixed_payment %> <span>Despesa fixa</span>
+      </label>
+    </li>
+
+    <li>
+      <div id="guardaResultadoPesquisa" class="parcelas">
+      </div>
+    </li>
+
+    <li>
+      <label>
+        <span>Descricao</span><br/>
+        <%= r.text_area :description, :class => 'textarea textareaGde' %><br />
+      </label>
+    </li>
+
+    <li id="btEnviarForm">
+      <%= r.submit 'Salvar Pagamento' %>
+      <%= link_to 'Voltar', financeiro_index_path, :id => "btVoltarForm" %>
+    </li>
+  </ul>
+<% end %>
+
+<script type="text/javascript">
+function get_tecla(e){
+  var tecla = (window.event) ? event.keyCode : e.which;
+  return tecla;
+}
+
+function valida_numerico(tecla,permitidos){
+  var permitidos = permitidos || [],
+      permitido = false,
+      tecla_permitida;
+
+  permitidos = permitidos.concat([0,8]); // Sabe-se la deus porque... (né Kako)
+
+  // indexOf retorna -1 caso não encontre o numero da tecla no array
+  // ao somar 1, a tecla_permitida fica com valor 0 == false
+  // qualquer outro valor ele interpreta como true
+  tecla_permitida = permitidos.indexOf(tecla) + 1;
+
+  if((tecla > 47 && tecla < 58) || tecla_permitida) permitido = true;
+
+  return permitido;
+}
+
+function somente_numero(e){
+  return valida_numerico(get_tecla(e));
+}
+
+function numeros_com_separador(e){
+  return valida_numerico(get_tecla(e),[44,46]);
+}
+
+//numberParcelas
+$("#numberParcelas").keypress(somente_numero);
+$("#valorTotal").keypress(numeros_com_separador);
+
+$("#numberParcelas").blur(function(){
+    numero_parcelas = $("#numberParcelas").val();
+    valor = $("#valorTotal").val();
+    valor = valor + "";             // Transforma em string para usar o replace
+    valor = valor.replace(".","");  // Caso a pessoa digite 1.500,00
+    valor = valor.replace(",","."); // Para deixar no formato 1500.00
+
+    if( numero_parcelas > 0 ){
+        if( valor > 0 ){
+            $.ajax({
+                url: "<%= financeiro_criar_parcelas_path %>",
+                type: "GET",
+                data: {
+                    "number_instalment": numero_parcelas,
+                    "total": valor
+                }
+            }).done(function(data) {
+                $("#guardaResultadoPesquisa").empty();
+                $("#guardaResultadoPesquisa").append(data);
+                result = $("#guardaParcelas").html();
+                $("#guardaResultadoPesquisa").empty();
+                $("#guardaResultadoPesquisa").append(result);
+            });
+        }else{
+            alert("Digite um valor válido");
+            $("#valorTotal").focus();
+        }
+    }else{
+        alert("Valor minimo para parcelas: 1");
+        $("#numberParcelas").focus();
+    }
+});
+</script>

@@ -27,6 +27,16 @@ Gvar::Application.routes.draw do
     get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/pagar/:id",             :action => :pay,            :as => :financeiro_pagar
   end
 
+  controller :receipts do
+    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}",                       :action => :index,          :as => :receipts
+    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/novo-recebimento",      :action => :new,            :as => :new_receipt
+    post "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/pagar-parcela",         :action => :pay_instalment, :as => :financeiro_pagar_parcela
+    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/criar-parcelas",        :action => :create,         :as => :financeiro_criar_parcelas
+    put  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/update-lancamento",     :action => :update,         :as => :financeiro_update_lancamento
+    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/search",                :action => :search
+    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/lancamento/:id/editar", :action => :edit,           :as => :financeiro_editar_lancamento
+    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/pagar/:id",             :action => :pay,            :as => :financeiro_pagar
+  end
   get "assessoria/index"
   get "servicos/index"
 
@@ -70,7 +80,7 @@ Gvar::Application.routes.draw do
     delete "#{URL_ALUNOS}/:id",            :action => :destroy
   end
 
-  controller :interesteds do 
+  controller :interesteds do
     get    "#{URL_INTERESSADOS}",                       :action => :index, :as => :interesteds
     post   "#{URL_INTERESSADOS}",                       :action => :create
     get    "#{URL_INTERESSADOS}/novo",                  :action => :new, :as => :new_interested
