@@ -1,3 +1,4 @@
+# *-* encoding: utf-8 *-*
 Role::ROLES.each do |role|
   Role.create! :name => role
 end
@@ -44,7 +45,12 @@ end
 
 # Servicos
 #
-(1..10).each do |n|
+[
+  "Massagem com pedras",
+  "Terapia para idosos",
+  "Workshop sobre Alzheimer",
+  "Treinamento de primeiros socorros"
+].each do |n|
   Service.create!(
     :name           => "Service n-#{n}",
     :number_days    => rand(10),
@@ -55,40 +61,91 @@ end
   )
 end
 
-(1..10).each do |n|
+[
+  "Lucas Cardoso",
+  "Mateus Galvão",
+  "Pedro Morae",
+  "Guilherme Rspec",
+  "Gustavo Java"
+].each do |n|
   Provider.create!(
-    :name               => "Prestador n-#{n}",
+    :name               => n,
     :cpf                => "#{rand(10)}",
-    :rg                 => "#{rand(10)}horas",
-    :observations       => rand(1000),
+    :rg                 => "#{rand(10)}",
+    :observations       => "Observações para #{n}",
     :active             => true,
     :address_attributes => {
-      :address      => "Rua #{n}",
+      :address      => "Rua Aindatestando",
       :number       => rand(100),
-      :complement   => "casa",
+      :complement   => "casa #{rand(10)}",
       :zipcode      => rand(100_000_000),
       :country_id   => rand(20),
-      :city         => "Cidade #{n}",
-      :neighborhood => "Bairro #{n}"
+      :city         => "Cidade do #{n}",
+      :neighborhood => "Bairro do #{n}"
     }
   )
 end
 
 
-(1..10).each do |n|
+[
+  "Miguel Sampaio",
+  "Davi Souza",
+  "Gabriel Alves",
+  "Arthur Pablo",
+  "Rafael Silva"
+].each do |n|
   Client.create!(
-    :name               => "Cliente n-#{n}",
+    :name               => n,
     :cpf                => "#{rand(100_000_000)}",
     :rg                 => "#{rand(100_000_000)}",
-    :observations       => "Observacao #{n}",
+    :observations       => "Observacao para #{n}",
     :address_attributes => {
-      :address      => "Rua #{n}",
+      :address      => "Rua Paratestar",
       :number       => rand(1000),
-      :complement   => "casa",
+      :complement   => "casa #{rand(10)}",
       :zipcode      => rand(100_000_000),
       :country_id   => rand(20),
-      :city         => "Cidade #{n}",
-      :neighborhood => "Bairro #{n}"
+      :city         => "Cidade do #{n}",
+      :neighborhood => "Bairro do #{n}"
     }
+  )
+end
+
+[
+  "Informatica Para Idosos",
+  "Cuidadores Modulo I",
+  "Cuidadores Modulo II",
+  "Massagem Terapeutica",
+  "Primeiros Socorros"
+].each do |n|
+  Course.create!(
+    :code        => "C12112406#{rand(1000)}",
+    :name        => n,
+    :course_type => rand(3),
+    :description => "Descrição para o curso de #{n}",
+    :active      => true
+  )
+end
+
+[
+  "Dezembro Ter/Qui - Manhã",
+  "Dezembro Sabado - 8 horas",
+  "Dezembro Ter/Qui - Tarde",
+  "Dezembro Seg/Qua/Sex - Noite",
+  "Janeiro Sabado - 8 horas",
+  "Janeiro Ter/Qui - Tarde",
+  "Nobembro Seg/Qua/Sex - Noite",
+].each do |n|
+  Team.create!(
+    :code        => "T12112406#{rand(1000)}",
+    :name        => n,
+    :course_id => rand(5)+1,
+    :season => rand(3),
+    :limit => rand(20),
+    :price => rand(5)*50,
+    :class_length => rand(20),
+    :workload => "rand(8) horas",
+    :status => 0,
+    :note => "Observações para a turma de #{n}"
   )
 end
