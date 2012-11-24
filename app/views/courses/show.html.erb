@@ -11,10 +11,10 @@
 
 <div id="infoTurmasCursos">
 	<ul>
-		<li><p><span>0</span> Turmas</p></li>
-		<li><p><span>0</span> Em Andamento</p></li>
-		<li><p><span>0</span> Concluídas</p></li>
-		<li><p><span>0</span> Canceladas</p></li>
+          <li><p><span><%= @course.teams.size || 0 %> </span> Turmas</p></li>
+          <li><p><span><%= @course.teams.where(:status => 0).size || 0 %></span> Em Andamento</p></li>
+		<li><p><span><%= @course.teams.where(:status => 1).size || 0 %></span> Concluídas</p></li>
+		<li><p><span><%= @course.teams.where(:status => 2).size || 0 %></span> Canceladas</p></li>
 		<!-- <li><p><span>0</span> Interessados</p></li> -->
 	</ul>
 </div>
