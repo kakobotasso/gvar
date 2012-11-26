@@ -130,7 +130,7 @@ class TeamsController < ApplicationController
 
   private
   def courses
-    @courses ||= Course.where(:active => true)
+    @courses ||= Course.where(:active => true).order(:name)
   end
 
   def season
