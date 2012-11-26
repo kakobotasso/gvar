@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   require_role_for_curso
 
   def index
-    @course = Course.where(:active => true).order("created_at desc")
+    @course = Course.where(:active => true).order(:name)
 
     respond_to do |format|
       format.html # index.html.erb
