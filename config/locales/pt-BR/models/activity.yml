@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      activity: Atividade
+	attributes:
+		activity:
+			timetable: Horário
+			description: Descrição
+			meeting_id: ID Encontro

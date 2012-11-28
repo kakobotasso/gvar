@@ -1,0 +1,30 @@
+pt-BR:
+  activerecord:
+    models:
+		student: Aluno
+	attributes:
+		student:
+			code:
+			name:
+			cpf:
+			rg:
+			birth_date:
+			occupation:
+			sex:
+			schooling:
+			relationship_elderly:
+			phone:
+			cellphone:
+			street:
+			number:
+			complement:
+			neighborhood:
+			city:
+			country:
+			zipcode:
+			notes:
+			rg_delivered:
+			cpf_delivered:
+			photo_delivered:
+			cv_delivered:
+			address_delivered:

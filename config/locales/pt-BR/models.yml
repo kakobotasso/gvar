@@ -1,27 +1,10 @@
 pt-BR:
   activerecord:
     models:
-      activity: atividade
-      address: endereço
-      category: categoria
-      client: cliente
-      country: estado
-      course: curso
-      instalment: parcela
-      interested: interessado
-      interested_contact: contato de interessado
-      meeting: encontro
-      payment: pagamento
-      payment_way: forma de pagamento
-      person: pessoa
-      provider: prestador
-      receipt: recebimento
-      registration: inscrição
-      release: lançamento
-      role: regra
-      schedule: agenda
-      service: serviço
-      status: status
-      student: aluno
-      team: turma
-      user: usuário
+      category: Categoria
+      client: Cliente
+      country: Estado
+      payment: Pagamento
+      payment_way: Forma de pagamento
+      receipt: Recebimento
+      status: Status

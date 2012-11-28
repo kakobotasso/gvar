@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+		service: Serviço
+	attributes:
+		service:
+			name: Nome
+			number_days: Número de dias
+			estimated_time: Tempo estimado
+			default_value: Valor Padrão
+			inactive: Inativo
+			description: Descrição

@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+		person: Pessoa
+	attributes:
+		person:
+			name: Nome
+			cpf: CPF
+			rg: RG 
+			observations: Observação 
+			active: Ativo
+			type: Tipo

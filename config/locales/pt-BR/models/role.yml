@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    models:
+		role: Regra
+	attributes:
+		role:
+			name: Nome

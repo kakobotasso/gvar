@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+		registration: Inscrição
+	attributes:
+		registration:
+			team_id: ID Turma
+			student_id: ID Aluno
+			code: Código
+			status: Status
