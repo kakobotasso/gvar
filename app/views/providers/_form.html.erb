@@ -66,14 +66,14 @@
     <li>
       <label>
         <span>CPF:</span><br/>
-        <%= f.text_field :cpf, :class => "inputMedio input", :id => "campoEmail" %>
+        <%= f.text_field :cpf, :class => "inputMedio input" %>
       </label>
     </li>
 
     <li>
       <label>
         <span>RG:</span><br/>
-        <%= f.text_field :rg, :class => "inputMedio input", :id => "campoUsuario" %>
+        <%= f.text_field :rg, :class => "inputMedio input" %>
       </label>
     </li>
 
@@ -107,3 +107,11 @@
     </li>
   </ul>
 <% end %>
+
+<script type="text/javascript">
+    $(function(){
+        $("#provider_cpf").mask("999.999.999-99");
+        $("#provider_rg").mask("99.999.999-*");
+        $("#provider_address_attributes_zipcode").mask("99999-999");
+    });
+</script>
