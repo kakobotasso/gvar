@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121120155656) do
+ActiveRecord::Schema.define(:version => 20121130203829) do
 
   create_table "activities", :force => true do |t|
     t.string   "timetable"
@@ -32,11 +32,6 @@ ActiveRecord::Schema.define(:version => 20121120155656) do
     t.string   "neighborhood"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-  end
-
-  create_table "clients", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "courses", :force => true do |t|
@@ -94,13 +89,27 @@ ActiveRecord::Schema.define(:version => 20121120155656) do
     t.text     "observations"
     t.boolean  "active"
     t.string   "type"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.string   "birth_date"
+    t.string   "occupation"
+    t.integer  "sex"
+    t.string   "schooling"
+    t.integer  "relationship_elderly"
+    t.text     "notes"
+    t.boolean  "rg_delivered",         :default => false
+    t.boolean  "cpf_delivered",        :default => false
+    t.boolean  "photo_delivered",      :default => false
+    t.boolean  "cv_delivered",         :default => false
+    t.boolean  "address_delivered",    :default => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
-  create_table "providers", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "phones", :force => true do |t|
+    t.integer  "type_number"
+    t.string   "number"
+    t.integer  "person_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "providers_services", :id => false, :force => true do |t|
@@ -162,35 +171,6 @@ ActiveRecord::Schema.define(:version => 20121120155656) do
     t.text     "description"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-  end
-
-  create_table "students", :force => true do |t|
-    t.string   "code"
-    t.string   "name"
-    t.string   "cpf"
-    t.string   "rg"
-    t.string   "birth_date"
-    t.string   "occupation"
-    t.integer  "sex"
-    t.string   "schooling"
-    t.integer  "relationship_elderly"
-    t.string   "phone"
-    t.string   "cellphone"
-    t.string   "street"
-    t.string   "number"
-    t.string   "complement"
-    t.string   "neighborhood"
-    t.string   "city"
-    t.integer  "country"
-    t.string   "zipcode"
-    t.text     "notes"
-    t.boolean  "rg_delivered",         :default => false
-    t.boolean  "cpf_delivered",        :default => false
-    t.boolean  "photo_delivered",      :default => false
-    t.boolean  "cv_delivered",         :default => false
-    t.boolean  "address_delivered",    :default => false
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
   end
 
   create_table "teams", :force => true do |t|
