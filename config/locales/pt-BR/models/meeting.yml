@@ -1,9 +1,7 @@
 pt-BR:
   activerecord:
-    models:
-		meeting: Encontro
-	attributes:
-		meeting:
-			date: Data
-			team_id: ID Turma
-		
+		models:
+			meeting: Encontro
+		attributes:
+			meeting:
+				date: Data

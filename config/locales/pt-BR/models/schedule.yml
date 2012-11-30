@@ -1,14 +1,14 @@
 pt-BR:
-  activerecord:
-    models:
-		schedule: Agenda
-	attributes:
-		schedule:
-			code: Código
-			service_id: ID Serviço
-			provider_id: ID Prestador
-			client_id: ID Cliente
-			estimated_time: Tempo estimado
-			number_days: Número de dias
-			date: Data
-			observations: Observações
+	activerecord:
+		models:
+			schedule: Agenda
+		attributes:
+			schedule:
+				code: Código
+				service_id: ID Serviço
+				provider_id: ID Prestador
+				client_id: ID Cliente
+				estimated_time: Tempo estimado
+				number_days: Número de dias
+				date: Data
+				observations: Observações

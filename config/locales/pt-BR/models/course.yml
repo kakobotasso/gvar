@@ -1,11 +1,11 @@
 pt-BR:
-  activerecord:
-    models:
-		course: Curso
-	attributes:
-		course:
-			code: Código
-			name: Nome
-			course_type: Tipo de curso
-			description: Descrição
-			active: Ativo
+	activerecord:
+		models:
+			course: Curso
+		attributes:
+			course:
+				code: Código
+				name: Nome
+				course_type: Tipo de curso
+				description: Descrição
+				active: Ativo

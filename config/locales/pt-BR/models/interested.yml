@@ -1,11 +1,11 @@
 pt-BR:
-  activerecord:
-    models:
-		interested: Interessado
-	attributes:
-		interested:
-			name: Nome
-			email: E-mail
-			phone: Telefone
-			situation: Situação
-			interest: Interesses
+	activerecord:
+		models:
+			interested: Interessado
+		attributes:
+			interested:
+				name: Nome
+				email: E-mail
+				phone: Telefone
+				situation: Situação
+				interest: Interesses

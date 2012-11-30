@@ -1,11 +1,11 @@
 pt-BR:
-  activerecord:
-    models:
-      user: Usuário
-	attributes:
-		user: Usuário
-		login: Login
-		password_hash: Senha
-		password_salt: Senha
-		name: Nome
-		email: E-mail
+	activerecord:
+		models:
+			user: Usuário
+		attributes:
+			user: 
+				login: Login
+				password_hash: Senha
+				password_salt: Senha
+				name: Nome
+				email: E-mail

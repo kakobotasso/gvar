@@ -1,14 +1,14 @@
 pt-BR:
-  activerecord:
-    models:
-		instalment: Parcela
-	attributes:
-		instalment:
-			release_id: ID Pagamento
-			number: Número
-			expiration_date: Data de Vencimento
-			paid_at: Data de  Pagamento
-			amount: Valor Parcela
-			amount_paid: Valor Pago
-			status_id: Status
-			payment_id: Forma de Pagamento
+	activerecord:
+		models:
+			instalment: Parcela
+		attributes:
+			instalment:
+				release_id: ID Pagamento
+				number: Número
+				expiration_date: Data de Vencimento
+				paid_at: Data de  Pagamento
+				amount: Valor Parcela
+				amount_paid: Valor Pago
+				status_id: Status
+				payment_id: Forma de Pagamento
