@@ -1,16 +1,16 @@
 pt-BR:
-	activerecord:
-		models:
-			team: Turma
-		attributes:
-			team:
-				code: Código
-				name: Nome
-				course_id: ID Curso
-				season: Período
-				limit: Limite de inscrições
-				price: Preço
-				class_length: Quantidade de aulas
-				workload: Carga horária
-				note: Observações
-				status: Situação
+  activerecord:
+    models:
+      team: Turma
+    attributes:
+      team:
+        code: CÃ³digo
+        name: Nome
+        course_id: ID Curso
+        season: PerÃ­odo
+        limit: Limite de inscriÃ§Ãµes
+        price: PreÃ§o
+        class_length: Quantidade de aulas
+        workload: Carga horÃ¡ria
+        note: ObservaÃ§Ãµes
+        status: SituaÃ§Ã£o

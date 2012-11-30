@@ -1,9 +1,9 @@
 pt-BR:
-	activerecord:
-		models:
-			activity: Atividade
-		attributes:
-			activity:
-				timetable: Hor·rio
-				description: DescriÁ„o
-				meeting_id: ID Encontro
+  activerecord:
+    models:
+      activity: Atividade
+    attributes:
+      activity:
+        timetable: Hor√°rio
+        description: Descri√ß√£o
+        meeting_id: ID Encontro

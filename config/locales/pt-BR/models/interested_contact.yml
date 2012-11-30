@@ -1,9 +1,9 @@
 pt-BR:
-	activerecord:
-		models:
-			interested_contact: Contato de interessado
-		attributes:
-			interested_contact:
-				date: Data
-				description: Descrição
-				interested_id: Id Interessado
+  activerecord:
+    models:
+      interested_contact: Contato de interessado
+    attributes:
+      interested_contact:
+        date: Data
+        description: DescriÃ§Ã£o
+        interested_id: Id Interessado

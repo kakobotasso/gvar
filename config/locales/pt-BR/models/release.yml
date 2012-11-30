@@ -1,15 +1,15 @@
 pt-BR:
-	activerecord:
-		models:
-			release: Lançamento
-		attributes:
-			release:
-				code: Código
-				name: Nome
-				category_id: ID Categoria
-				total_amount: Valor total 
-				number_instalments: Número de parcelas
-				first_paid: Primeira paga
-				fixed_payment: Pagamento fixo
-				description: Descrição
-				type: Tipo
+  activerecord:
+    models:
+      release: LanÃ§amento
+    attributes:
+      release:
+        code: CÃ³digo
+        name: Nome
+        category_id: ID Categoria
+        total_amount: Valor total
+        number_instalments: NÃºmero de parcelas
+        first_paid: Primeira paga
+        fixed_payment: Pagamento fixo
+        description: DescriÃ§Ã£o
+        type: Tipo

@@ -1,30 +1,30 @@
 pt-BR:
-	activerecord:
-		models:
-			student: Aluno
-		attributes:
-			student:
-				code: Código
-				name: Nome
-				cpf: CPF
-				rg: RG
-				birth_date: Data de nascimento
-				occupation: Profissão
-				sex: Sexo
-				schooling: Escolaridade
-				relationship_elderly: Relação com idoso
-				phone: Telefone
-				cellphone: Celular
-				street: Endereço
-				number: Numero
-				complement: Complemento
-				neighborhood: Bairro
-				city: Cidade
-				country: Estado
-				zipcode: CEP
-				notes: Observações
-				rg_delivered: RG Entregue
-				cpf_delivered: CPF entregue
-				photo_delivered: Foto entregue
-				cv_delivered: Curriculum entregue
-				address_delivered: Comprovante de endereço entregue
+  activerecord:
+    models:
+      student: Aluno
+    attributes:
+      student:
+        code: Código
+        name: Nome
+        cpf: CPF
+        rg: RG
+        birth_date: Data de nascimento
+        occupation: Profissão
+        sex: Sexo
+        schooling: Escolaridade
+        relationship_elderly: Relação com idoso
+        phone: Telefone
+        cellphone: Celular
+        street: Endereço
+        number: Numero
+        complement: Complemento
+        neighborhood: Bairro
+        city: Cidade
+        country: Estado
+        zipcode: CEP
+        notes: Observações
+        rg_delivered: RG Entregue
+        cpf_delivered: CPF entregue
+        photo_delivered: Foto entregue
+        cv_delivered: Curriculum entregue
+        address_delivered: Comprovante de endereço entregue

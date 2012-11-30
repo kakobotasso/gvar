@@ -1,7 +1,7 @@
 pt-BR:
   activerecord:
-		models:
-			meeting: Encontro
-		attributes:
-			meeting:
-				date: Data
+    models:
+      meeting: Encontro
+    attributes:
+      meeting:
+        date: Data

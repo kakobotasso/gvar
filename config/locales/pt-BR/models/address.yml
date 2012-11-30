@@ -1,14 +1,14 @@
 pt-BR:
-	activerecord:
-		models:
-			address: Endereço
-		attributes:
-			address:
-				address: Endereço
-				number: Número
-				person_id: ID Pessoa
-				complement: Complemento
-				zipcode: CEP
-				country_id: Estado
-				city: Cidade
-				neighborhood: Bairro
+  activerecord:
+    models:
+      address: EndereÃ§o
+    attributes:
+      address:
+        address: EndereÃ§o
+        number: NÃºmero
+        person_id: ID Pessoa
+        complement: Complemento
+        zipcode: CEP
+        country_id: Estado
+        city: Cidade
+        neighborhood: Bairro
