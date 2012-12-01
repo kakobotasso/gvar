@@ -23,6 +23,9 @@ class StudentsController < ApplicationController
 
   def new
     @students = Student.new
+    @students.build_address
+    @students.phones.build
+
     @state = Country::STATES
     @students_code = "A#{Time.now.strftime('%y%m%d%H%M%S')}"
     @sexo = Student::SEXO
@@ -36,6 +39,9 @@ class StudentsController < ApplicationController
 
   def edit
     @students = Student.find(params[:id])
+    @students.build_address if @students.address.nil?
+    @students.phones.build if @students.phones.nil?
+
     @state = Country::STATES
     @sexo = Student::SEXO
     @relacao = Student::RELACAO
@@ -84,5 +90,5 @@ class StudentsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
 end

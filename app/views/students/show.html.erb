@@ -6,7 +6,6 @@
 
 
 <ul>
-	<li><p><strong>Código:</strong> <br/> <%= @students.code %></p></li>
 	<li><p><strong>Nome:</strong> <br/> <%= @students.name %></p></li>
 	<li><p><strong>CPF:</strong> <br/> <%= @students.cpf %></p></li>
 	<li><p><strong>RG:</strong> <br/> <%= @students.rg %></p></li>
@@ -15,23 +14,24 @@
 	<li><p><strong>Sexo:</strong> <br/> <%= @students.sexo %></p></li>
 	<li><p><strong>Escolaridade:</strong> <br/> <%= @students.schooling %></p></li>
 	<li><p><strong>Relação com idoso:</strong> <br/> <%= @students.relacao_idoso %></p></li>
-	
-	<% if @students.phone.size > 0 %>
-	<li><p><strong>Telefone:</strong> <br/> <%= @students.phone %></p></li>
+
+	<% @students.phones.each do |p| %>
+          <li>
+            <p>
+              <strong><%= p.type_phone %>:</strong><br/>
+              <%= p.number %>
+            </p>
+          </li>
 	<% end %>
 
-	<% if @students.cellphone.size > 0 %>
-	<li><p><strong>Celular:</strong> <br/> <%= @students.cellphone %></p></li>
-	<% end %>
+	<li><p><strong>Endereço:</strong> <br/> <%= "#{@students.address.address}, Nº #{@students.address.number} #{@students.address.complement}" %></p></li>
+	<li><p><strong>Bairro:</strong> <br/> <%= @students.address.neighborhood %></p></li>
+	<li><p><strong>Cidade:</strong> <br/> <%= "#{@students.address.city} - #{@students.estado}" %></p></li>
+	<li><p><strong>CEP:</strong> <br/> <%= @students.address.zipcode %></p></li>
 
-	<li><p><strong>Endereço:</strong> <br/> <%= "#{@students.street}, Nº #{@students.number} #{@students.complement}" %></p></li>
-	<li><p><strong>Bairro:</strong> <br/> <%= @students.neighborhood %></p></li>
-	<li><p><strong>Cidade:</strong> <br/> <%= "#{@students.city} - #{@students.estado}" %></p></li>
-	<li><p><strong>CEP:</strong> <br/> <%= @students.zipcode %></p></li>
-	
 	<li>
 		<p>
-			<strong>Documentos Entregues:</strong> <br/> 
+			<strong>Documentos Entregues:</strong> <br/>
 			<%= "RG" if @students.rg_delivered == true %>
 			<%= " / CPF" if @students.cpf_delivered == true %>
 			<%= " / Foto" if @students.photo_delivered == true %>

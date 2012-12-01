@@ -13,19 +13,11 @@
 <ul>
     <li>
         <label>
-            <span>Código: </span>
-            <%= s.object.code || @students_code %>
-            <%= s.hidden_field :code, :value => @students_code || s.object.code %>
-        </label>
-    </li>
-
-    <li>
-        <label>
             <span>Nome*: </span><br/>
             <%= s.text_field :name, :class => "inputMedio input" %>
         </label>
     </li>
-    
+
     <li>
         <label>
             <span>CPF*: </span><br/>
@@ -73,70 +65,75 @@
             <span>Relação com Idosos*: </span><br/>
             <%= s.select :relationship_elderly, @relacao,{ :prompt => ' ' }, :class => 'select selectMedio' %>
         </label>
-    </li>
+      </li>
 
-    <li>
-        <label>
-            <span>Telefones: </span><br/>
-            <%= s.text_field :phone, :class => "inputMedio input" %>
-        </label>
-    </li>
+    <%= s.fields_for :phones do |p| %>
+      <li>
+        <%= p.select :type_number, Phone::TYPES, {}, :class => 'select' %>:
+        <%= p.text_field :number, :class => "inputMedio input" %>
+      </li>
+    <% end %>
 
-    <li>
-        <label>
-            <span>Celular: </span><br/>
-            <%= s.text_field :cellphone, :class => "inputMedio input" %>
-        </label>
-    </li>
+    <!-- Precisava usar dois campos para telefones =\ -->
+    <% if @students.new_record? %>
+      <%= s.fields_for :phones do |p| %>
+        <li>
+          <%= p.select :type_number, Phone::TYPES, {}, :class => 'select' %>:
+          <%= p.text_field :number, :class => "inputMedio input" %>
+        </li>
+      <% end %>
+    <% end %>
 
-    <li>
-        <label>
-            <span>Rua*: </span><br/>
-            <%= s.text_field :street, :class => "inputMedio input" %>
-        </label>
-    </li>
+    <%= s.fields_for :address do |a| %>
+      <li>
+          <label>
+              <span>Rua*: </span><br/>
+              <%= a.text_field :address, :class => "inputMedio input" %>
+          </label>
+      </li>
 
-    <li>
-        <label>
-            <span>Nº*: </span><br/>
-            <%= s.text_field :number, :class => "inputMedio input" %>
-        </label>
-    </li>
+      <li>
+          <label>
+              <span>Nº*: </span><br/>
+              <%= a.text_field :number, :class => "inputMedio input" %>
+          </label>
+      </li>
 
-    <li>
-        <label>
-            <span>Complemento: </span><br/>
-            <%= s.text_field :complement, :class => "inputMedio input" %>
-        </label>
-    </li>
+      <li>
+          <label>
+              <span>Complemento: </span><br/>
+              <%= a.text_field :complement, :class => "inputMedio input" %>
+          </label>
+      </li>
 
-    <li>
-        <label>
-            <span>Bairro*: </span><br/>
-            <%= s.text_field :neighborhood, :class => "inputMedio input" %>
-        </label>
-    </li>
+      <li>
+          <label>
+              <span>Bairro*: </span><br/>
+              <%= a.text_field :neighborhood, :class => "inputMedio input" %>
+          </label>
+      </li>
 
-    <li>
-        <label>
-            <span>Cidade*: </span><br/>
-            <%= s.text_field :city, :class => "inputMedio input" %>
-        </label>
-    </li>
+      <li>
+          <label>
+              <span>Cidade*: </span><br/>
+              <%= a.text_field :city, :class => "inputMedio input" %>
+          </label>
+      </li>
 
-    <li>
-        <label>
-            <span>Estado*: </span><br/>
-            <%= s.select :country, @state,{ :prompt => 'Selecione um estado' }, :class => 'select selectMedio' %>
-        </label>
-    </li>
+      <li>
+          <label>
+              <span>Estado*: </span><br/>
+              <%= a.select :country_id, @state,{ :prompt => 'Selecione um estado' }, :class => 'select selectMedio' %>
+          </label>
+      </li>
 
-    <li>
-        <label>
-            <span>CEP*: </span><br/>
-            <%= s.text_field :zipcode, :class => "inputMedio input" %>
-        </label>
-    </li>
+      <li>
+          <label>
+              <span>CEP*: </span><br/>
+              <%= a.text_field :zipcode, :class => "inputMedio input" %>
+          </label>
+      </li>
+    <% end %>
 
     <li>
         <label><span>Documentos entregues: </span><br/></label>
@@ -172,11 +169,11 @@
             <%= s.text_area :notes, :class => "inputMedio input" %>
         </label>
     </li>
-    
+
     <li class="btEnviarForm">
         <%= s.submit %>
     </li>
-    
+
 </ul>
 <% end %>
 

@@ -22,7 +22,7 @@ class Student < Person
   end
 
   def estado
-    Country::STATES.rassoc(country)[0]
+    Country::STATES.rassoc(address.country_id)[0]
   end
 
   SEXO = [

@@ -36,7 +36,7 @@
         <label for="campoCodigo">Relação com Idoso:</label>
         <%= f.text_field :relationship_elderly, :class => "inputGde input", :id => 'campoCodigo' %>
       </li>
-      
+
       <li class="noPaddingHomes hidePA ">
         <%= f.text_field :login, :class => "inputGde input", :id => 'campoBusca' %>
       </li>
@@ -73,7 +73,6 @@
 
     <table cellspadding="0" cellspacing="0" width="100%">
       <tr border="0">
-        <th width="16%"><span>Código</span></th>
         <th width="16%"><span>Nome</span></th>
         <th width="16%"><span>CPF</span></th>
         <th width="16%"><span>RG</span></th>
@@ -83,7 +82,6 @@
 
       <% @students.each do |s| %>
         <tr border="0" onclick="location.href='<%= student_path(s) %>'">
-            <td width="16%"><span><%= s.code %></span></td>
             <td width="16%"><span><%= s.name %></span></td>
             <td width="16%"><span><%= s.cpf %></span></td>
             <td width="16%"><span><%= s.rg %></span></td>
