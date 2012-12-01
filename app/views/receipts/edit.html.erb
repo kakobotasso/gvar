@@ -1,116 +1,117 @@
 <!-- TITLE -->
 <% content_for :title do %> Editar Lançamento - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
+<div class="financeiro">
+  <h1>Editar Lançamento</h1>
 
-<h1>Editar Lançamento</h1>
+  <%= form_for @release, :url => financeiro_update_lancamento_path do |r| %>
+    <ul>
+      <li>
+        <label>
+          <span>Codigo: </span><b><%= @release.code %></b>
+          <%= r.hidden_field :id %>
+        </label>
+      </li>
 
-<%= form_for @release, :url => financeiro_update_lancamento_path do |r| %>
-  <ul>
-    <li>
-      <label>
-        <span>Codigo: </span><b><%= @release.code %></b>
-        <%= r.hidden_field :id %>
-      </label>
-    </li>
+      <li>
+        <label>
+          <span>Nome:</span><br/>
+          <%= r.text_field :name, :class => "inputMedio input" %>
+        </label>
+      </li>
 
-    <li>
-      <label>
-        <span>Nome:</span><br/>
-        <%= r.text_field :name, :class => "inputMedio input" %>
-      </label>
-    </li>
+      <li>
+        <label>
+          <span>Categoria:</span><br/>
+          <%= r.select :category_id, categories, {}, :class => 'select selectMedio' %>
+        </label>
+      </li>
 
-    <li>
-      <label>
-        <span>Categoria:</span><br/>
-        <%= r.select :category_id, categories, {}, :class => 'select selectMedio' %>
-      </label>
-    </li>
+      <li>
+        <label>
+          <span>Valor total:</span><br/>
+          R$ <%= r.text_field :total_amount, :value => number_with_precision(r.object.total_amount), :class => "inputMedio input", :id => "valorTotal" %>
+        </label>
+      </li>
 
-    <li>
-      <label>
-        <span>Valor total:</span><br/>
-        R$ <%= r.text_field :total_amount, :value => number_with_precision(r.object.total_amount), :class => "inputMedio input", :id => "valorTotal" %>
-      </label>
-    </li>
+      <li>
+        <label>
+          <span>Numero de parcelas:</span><br/>
+          <%= r.text_field :number_instalments, :class => "inputMedio input", :id => "numberParcelas", :disabled => true %>
+        </label>
+      </li>
 
-    <li>
-      <label>
-        <span>Numero de parcelas:</span><br/>
-        <%= r.text_field :number_instalments, :class => "inputMedio input", :id => "numberParcelas", :disabled => true %>
-      </label>
-    </li>
+      <li>
+        <label>
+          <%= r.check_box :first_paid %> <span>Primeira paga</span>
+        </label>
+      </li>
 
-    <li>
-      <label>
-        <%= r.check_box :first_paid %> <span>Primeira paga</span>
-      </label>
-    </li>
+      <li>
+        <label>
+          <%= r.check_box :fixed_payment %> <span>Despesa fixa</span>
+        </label>
+      </li>
 
-    <li>
-      <label>
-        <%= r.check_box :fixed_payment %> <span>Despesa fixa</span>
-      </label>
-    </li>
+      <li>
+        <div id="guardaResultadoPesquisa" class="parcelas">
+          <table cellspadding="0" cellspacing="0" width="100%" id="guardaParcelasGeradas">
+            <tr>
+              <th width="4%"><span>No</span></th>
+              <th width="14%"><span>Valor Parcela</span></th>
+              <th width="14%"><span>Data de Vencimento</span></th>
+              <th width="14%"><span>Data de  Pagamento</span></th>
+              <th width="14%"><span>Valor Pago</span></th>
+              <th width="14%"><span>Forma de Pagamento</span></th>
+              <th width="14%"><span>Status</span></th>
+            </tr>
 
-    <li>
-      <div id="guardaResultadoPesquisa" class="parcelas">
-        <table cellspadding="0" cellspacing="0" width="100%" id="guardaParcelasGeradas">
-          <tr>
-            <th width="4%"><span>No</span></th>
-            <th width="14%"><span>Valor Parcela</span></th>
-            <th width="14%"><span>Data de Vencimento</span></th>
-            <th width="14%"><span>Data de  Pagamento</span></th>
-            <th width="14%"><span>Valor Pago</span></th>
-            <th width="14%"><span>Forma de Pagamento</span></th>
-            <th width="14%"><span>Status</span></th>
-          </tr>
+              <%= r.fields_for :instalments do |i| %>
+                <tr>
+                  <td width="4%">
+                    <span><%= i.object.number_instalment %></span>
+                  </td>
 
-            <%= r.fields_for :instalments do |i| %>
-              <tr>
-                <td width="4%">
-                  <span><%= i.object.number_instalment %></span>
-                </td>
+                  <td width="14%">
+                    <span>R$ <%= i.text_field :amount, :value => number_with_precision(i.object.amount), :class => 'inputPeq input' %></span>
+                  </td>
 
-                <td width="14%">
-                  <span>R$ <%= i.text_field :amount, :value => number_with_precision(i.object.amount), :class => 'inputPeq input' %></span>
-                </td>
+                  <td width="14%">
+                    <span><%= i.date_select :expiration_date, {:order =>[:day, :month, :year]}, {:class => 'select'} %></span>
+                  </td>
 
-                <td width="14%">
-                  <span><%= i.date_select :expiration_date, {:order =>[:day, :month, :year]}, {:class => 'select'} %></span>
-                </td>
+                  <td width="14%">
+                    <span><%= i.date_select :paid_at, {:order =>[:day, :month, :year], :include_blank => true}, {:class => 'select'} %></span>
+                  </td>
 
-                <td width="14%">
-                  <span><%= i.date_select :paid_at, {:order =>[:day, :month, :year], :include_blank => true}, {:class => 'select'} %></span>
-                </td>
+                  <td width="14%">
+                    <span>R$ <%= i.text_field :amount_paid, :value =>  number_with_precision(i.object.amount_paid), :class => "inputPeq input" %></span>
+                  </td>
 
-                <td width="14%">
-                  <span>R$ <%= i.text_field :amount_paid, :value =>  number_with_precision(i.object.amount_paid), :class => "inputPeq input" %></span>
-                </td>
+                  <td width="14%">
+                    <span><%= i.select :payment_id, payments, {}, :class => 'select' %></span>
+                  </td>
 
-                <td width="14%">
-                  <span><%= i.select :payment_id, payments, {}, :class => 'select' %></span>
-                </td>
+                  <td width="14%">
+                    <span><%= i.select :status_id, status, {}, :class => 'select' %></span>
+                  </td>
+                </tr>
+              <% end %>
+          </table>
+        </div>
+      </li>
 
-                <td width="14%">
-                  <span><%= i.select :status_id, status, {}, :class => 'select' %></span>
-                </td>
-              </tr>
-            <% end %>
-        </table>
-      </div>
-    </li>
+      <li>
+        <label>
+          <span>Descricao</span><br/>
+          <%= r.text_area :description, :class => 'textarea textareaGde' %><br />
+        </label>
+      </li>
 
-    <li>
-      <label>
-        <span>Descricao</span><br/>
-        <%= r.text_area :description, :class => 'textarea textareaGde' %><br />
-      </label>
-    </li>
-
-    <li id="btEnviarForm">
-      <%= r.submit 'Salvar Pagamento' %>
-      <%= link_to 'Voltar', financeiro_index_path, :id => "btVoltarForm" %>
-    </li>
-  </ul>
-<% end %>
+      <li id="btEnviarForm">
+        <%= r.submit 'Salvar Pagamento' %>
+        <%= link_to 'Voltar', financeiro_index_path, :id => "btVoltarForm" %>
+      </li>
+    </ul>
+  <% end %>
+</div>
