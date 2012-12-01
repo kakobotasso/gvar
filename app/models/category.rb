@@ -42,4 +42,14 @@ module Category
       ["Aluno",   2]
     ]
   end
+
+  DECISION = [
+    ["Sim", 0],
+    ["Não", 1]
+  ]
+
+  SEX = [
+    ["Masculino", 0],
+    ["Feminino",  1]
+  ]
 end

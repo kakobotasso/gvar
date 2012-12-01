@@ -1,9 +1,9 @@
-<%= form_for @students do |s| %>
+<%= form_for @student do |s| %>
 
-<% if @students.errors.any? %>
+<% if @student.errors.any? %>
     <div id="error_explanation">
       <ul class="error">
-      <% @students.errors.full_messages.each do |msg| %>
+      <% @student.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -49,7 +49,7 @@
     <li>
         <label>
             <span>Sexo*: </span><br/>
-            <%= s.select :sex, @sexo, { :prompt => 'Selecione um sexo' }, :class => 'select selectMedio' %>
+            <%= s.select :sex, sex, { :prompt => 'Selecione um sexo' }, :class => 'select selectMedio' %>
         </label>
     </li>
 
@@ -63,13 +63,13 @@
     <li>
         <label>
             <span>Relação com Idosos*: </span><br/>
-            <%= s.select :relationship_elderly, @relacao,{ :prompt => ' ' }, :class => 'select selectMedio' %>
+            <%= s.select :relationship_elderly, decision, { :prompt => ' ' }, :class => 'select selectMedio' %>
         </label>
       </li>
 
     <%= s.fields_for :phones do |p| %>
       <li>
-        <%= p.select :type_number, Phone::TYPES, {}, :class => 'select' %>:
+        <%= p.select :type_number, phone_types, {}, :class => 'select' %>:
         <%= p.text_field :number, :class => "inputMedio input" %>
       </li>
     <% end %>
@@ -113,7 +113,7 @@
       <li>
           <label>
               <span>Estado*: </span><br/>
-              <%= a.select :country_id, @state,{ :prompt => 'Selecione um estado' }, :class => 'select selectMedio' %>
+              <%= a.select :country_id, state, { :prompt => 'Selecione um estado' }, :class => 'select selectMedio' %>
           </label>
       </li>
 

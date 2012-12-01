@@ -2,9 +2,10 @@ class StudentsController < ApplicationController
   require_logged_user
   require_role_for_curso
 
+  helper_method :state, :sex, :decision, :phone_types
+
   def index
     @students = Student.all#.order("created_at desc")
-    @state = Country::STATES
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +14,7 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @students = Student.find(params[:id])
+    @student = Student.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -22,14 +23,10 @@ class StudentsController < ApplicationController
   end
 
   def new
-    @students = Student.new
-    @students.build_address
-    @students.phones.build
-    @students.phones.build # para ter 2 telefones na view
-
-    @state = Country::STATES
-    @sexo = Student::SEXO
-    @relacao = Student::RELACAO
+    @student = Student.new
+    @student.build_address
+    @student.phones.build
+    @student.phones.build # para ter 2 telefones na view
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,44 +35,34 @@ class StudentsController < ApplicationController
   end
 
   def edit
-    @students = Student.find(params[:id])
-    @students.build_address if @students.address.nil?
-
-    @state = Country::STATES
-    @sexo = Student::SEXO
-    @relacao = Student::RELACAO
+    @student = Student.find(params[:id])
+    @student.build_address if @students.address.nil?
   end
 
   def create
-    @students = Student.new(params[:student])
-    @state = Country::STATES
-    @sexo = Student::SEXO
-    @relacao = Student::RELACAO
+    @student = Student.new(params[:student])
 
     respond_to do |format|
-      if @students.save
-        format.html { redirect_to student_path(@students), notice: 'As informacoes foram salvas com sucesso.' }
-        format.json { render json: @students, status: :created, location: @students }
+      if @student.save
+        format.html { redirect_to student_path(@student), notice: 'As informacoes foram salvas com sucesso.' }
+        format.json { render json: @student, status: :created, location: @student }
       else
         format.html { render action: "new" }
-        format.json { render json: @students.errors, status: :unprocessable_entity }
+        format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def update
-    @students = Student.find(params[:id])
-    @state = Country::STATES
-    @sexo = Student::SEXO
-    @relacao = Student::RELACAO
+    @student = Student.find(params[:id])
 
     respond_to do |format|
-      if @students.update_attributes(params[:student])
+      if @student.update_attributes(params[:student])
         format.html { redirect_to student_path, notice: 'As informacoes foram atualizadas com sucesso!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @students.errors, status: :unprocessable_entity }
+        format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -90,4 +77,20 @@ class StudentsController < ApplicationController
     end
   end
 
+  private
+  def state
+    @state ||= Country::STATES
+  end
+
+  def sex
+    @sex ||= Category::SEX
+  end
+
+  def decision
+    @decision ||= Category::DECISION
+  end
+
+  def phone_types
+    @phone_types ||= Phone::TYPES
+  end
 end

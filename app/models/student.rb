@@ -6,33 +6,23 @@ class Student < Person
   has_many :teams, :through => :registrations
 
   def relacao_idoso
-  	if relationship_elderly == 0
-  		"Nao"
-  	else
-  		"Sim"
-  	end
+    if relationship_elderly == 0
+      "Nao"
+    else
+      "Sim"
+    end
   end
 
   def sexo
-  	if sex == 0
-  		"Masculino"
-  	else
-  		"Feminino"
-  	end
+    if sex == 0
+      "Masculino"
+    else
+      "Feminino"
+    end
   end
 
   def estado
     Country::STATES.rassoc(address.country_id)[0]
   end
-
-  SEXO = [
-    ["Masculino", 0],
-    ["Feminino", 1]
-  ]
-
-  RELACAO = [
-    ["Sim", 0],
-    ["Nao", 1]
-  ]
 
 end

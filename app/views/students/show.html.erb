@@ -1,21 +1,21 @@
 <!-- TITLE -->
-<% content_for :title do %> <%= @students.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
+<% content_for :title do %> <%= @student.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
-<h1>Informações do Aluno <br/> <%= @students.name %> </h1>
+<h1>Informações do Aluno <br/> <%= @student.name %> </h1>
 
 
 <ul>
-	<li><p><strong>Nome:</strong> <br/> <%= @students.name %></p></li>
-	<li><p><strong>CPF:</strong> <br/> <%= @students.cpf %></p></li>
-	<li><p><strong>RG:</strong> <br/> <%= @students.rg %></p></li>
-	<li><p><strong>Data de nascimento:</strong> <br/> <%= @students.birth_date %></p></li>
-	<li><p><strong>Profissão:</strong> <br/> <%= @students.occupation %></p></li>
-	<li><p><strong>Sexo:</strong> <br/> <%= @students.sexo %></p></li>
-	<li><p><strong>Escolaridade:</strong> <br/> <%= @students.schooling %></p></li>
-	<li><p><strong>Relação com idoso:</strong> <br/> <%= @students.relacao_idoso %></p></li>
+	<li><p><strong>Nome:</strong> <br/> <%= @student.name %></p></li>
+	<li><p><strong>CPF:</strong> <br/> <%= @student.cpf %></p></li>
+	<li><p><strong>RG:</strong> <br/> <%= @student.rg %></p></li>
+	<li><p><strong>Data de nascimento:</strong> <br/> <%= @student.birth_date %></p></li>
+	<li><p><strong>Profissão:</strong> <br/> <%= @student.occupation %></p></li>
+	<li><p><strong>Sexo:</strong> <br/> <%= @student.sexo %></p></li>
+	<li><p><strong>Escolaridade:</strong> <br/> <%= @student.schooling %></p></li>
+	<li><p><strong>Relação com idoso:</strong> <br/> <%= @student.relacao_idoso %></p></li>
 
-	<% @students.phones.each do |p| %>
+	<% @student.phones.each do |p| %>
           <li>
             <p>
               <strong><%= p.type_phone %>:</strong><br/>
@@ -24,24 +24,24 @@
           </li>
 	<% end %>
 
-	<li><p><strong>Endereço:</strong> <br/> <%= "#{@students.address.address}, Nº #{@students.address.number} #{@students.address.complement}" %></p></li>
-	<li><p><strong>Bairro:</strong> <br/> <%= @students.address.neighborhood %></p></li>
-	<li><p><strong>Cidade:</strong> <br/> <%= "#{@students.address.city} - #{@students.estado}" %></p></li>
-	<li><p><strong>CEP:</strong> <br/> <%= @students.address.zipcode %></p></li>
+	<li><p><strong>Endereço:</strong> <br/> <%= "#{@student.address.address}, Nº #{@student.address.number} #{@student.address.complement}" %></p></li>
+	<li><p><strong>Bairro:</strong> <br/> <%= @student.address.neighborhood %></p></li>
+	<li><p><strong>Cidade:</strong> <br/> <%= "#{@student.address.city} - #{@student.estado}" %></p></li>
+	<li><p><strong>CEP:</strong> <br/> <%= @student.address.zipcode %></p></li>
 
 	<li>
 		<p>
 			<strong>Documentos Entregues:</strong> <br/>
-			<%= "RG" if @students.rg_delivered == true %>
-			<%= " / CPF" if @students.cpf_delivered == true %>
-			<%= " / Foto" if @students.photo_delivered == true %>
-			<%= " / CV " if @students.cv_delivered == true %>
-			<%= " / Comprovante de endereço" if @students.address_delivered == true %>
-			<%= "Nenhum" if @students.rg_delivered == false && @students.cpf_delivered == false && @students.photo_delivered == false && @students.cv_delivered == false && @students.address_delivered == false %>
+			<%= "RG" if @student.rg_delivered == true %>
+			<%= " / CPF" if @student.cpf_delivered == true %>
+			<%= " / Foto" if @student.photo_delivered == true %>
+			<%= " / CV " if @student.cv_delivered == true %>
+			<%= " / Comprovante de endereço" if @student.address_delivered == true %>
+			<%= "Nenhum" if @student.rg_delivered == false && @student.cpf_delivered == false && @student.photo_delivered == false && @student.cv_delivered == false && @student.address_delivered == false %>
 		</p>
 	</li>
 
-	<li><p><strong>Observações:</strong> <br/> <%= @students.notes %></p></li>
+	<li><p><strong>Observações:</strong> <br/> <%= @student.notes %></p></li>
 </ul>
 
 <ul>
