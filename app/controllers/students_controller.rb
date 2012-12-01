@@ -1,10 +1,10 @@
 class StudentsController < ApplicationController
-	require_logged_user
+  require_logged_user
   require_role_for_curso
 
   def index
-  	@students = Student.all#.order("created_at desc")
-  	@state = Country::STATES
+    @students = Student.all#.order("created_at desc")
+    @state = Country::STATES
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,9 +25,9 @@ class StudentsController < ApplicationController
     @students = Student.new
     @students.build_address
     @students.phones.build
+    @students.phones.build # para ter 2 telefones na view
 
     @state = Country::STATES
-    @students_code = "A#{Time.now.strftime('%y%m%d%H%M%S')}"
     @sexo = Student::SEXO
     @relacao = Student::RELACAO
 
@@ -40,7 +40,6 @@ class StudentsController < ApplicationController
   def edit
     @students = Student.find(params[:id])
     @students.build_address if @students.address.nil?
-    @students.phones.build if @students.phones.nil?
 
     @state = Country::STATES
     @sexo = Student::SEXO
@@ -82,8 +81,8 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    @students = Student.find(params[:id])
-    @studentss.destroy
+    @student = Student.find(params[:id])
+    @student.destroy
 
     respond_to do |format|
       format.html { redirect_to teams_url }
