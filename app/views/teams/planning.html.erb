@@ -1,134 +1,135 @@
 <!-- TITLE -->
 <% content_for :title do %> <%= @team.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
+<div class="cursos">
+	<h1><%= @team.name %> - Plano de aulas</h1>
 
-<h1><%= @team.name %> - Plano de aulas</h1>
+	<ul>
+		<li>
+			<a href="javascript:void(0);" id="addEncontro" class="btEnviarForm">Adicionar encontro</a>
+		</li>
+		<li class="hidden encontro">
+			Inserir encontro <br/>
+			<%= form_for "meeting", :url => save_meeting_path do |f| %>
+				<%= f.hidden_field :team_id, :value => @team.id %>
+				<ul>			
+					<li>
+						<label>
+				            <span class="floatLeft">Data: </span>
+				            <%= f.date_select :date, :class => "inputMedio input" %>
+				        </label>
+					</li>
+					<li class="btEnviarForm">
+						<%= f.submit %>
+					</li>
+				</ul>
+			<% end %>
+		</li>
+		<li>
+			<% if @meetings.size > 0 %>
+				<table width="990" border="1" bgcolor="#e7f3f9">
+					<tr>
+						<td valign="top">
+							<table width="200" id="guardaMeetings">
+								<tr>
+									<th>Encontros</th>
+								</tr>
+								<% @meetings.each_with_index do |m, i| %>
+								<tr>
+									<td><a href="javascript:void(0);" id="<%= m.id %>" class="linkEncontro"><%=i+1%>º encontro - <%= m.date %></a></td>
+								</tr>
+								<% end %>
+							</table>
+						</td>
+						<td valign="top">
+							<table width="790" id="sacateta">
+								<tr align="center">
+									<th colspan="2">2º encontro - 15/11/2012</th>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<table id="tabelaResults">
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<a href="javascript:void(0);" style="float:right;" id="salvarHorario" class="btEnviarForm">Salvar</a>
+										<a href="javascript:void(0);" style="float:right;" id="novoHorario" class="btEnviarForm">Novo</a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			<% end %>
+		</li>
+	</ul>
 
-<ul>
-	<li>
-		<a href="javascript:void(0);" id="addEncontro" class="btEnviarForm">Adicionar encontro</a>
-	</li>
-	<li class="hidden encontro">
-		Inserir encontro <br/>
-		<%= form_for "meeting", :url => save_meeting_path do |f| %>
-			<%= f.hidden_field :team_id, :value => @team.id %>
-			<ul>			
-				<li>
-					<label>
-			            <span class="floatLeft">Data: </span>
-			            <%= f.date_select :date, :class => "inputMedio input" %>
-			        </label>
-				</li>
-				<li class="btEnviarForm">
-					<%= f.submit %>
-				</li>
-			</ul>
-		<% end %>
-	</li>
-	<li>
-		<% if @meetings.size > 0 %>
-			<table width="990" border="1" bgcolor="#e7f3f9">
-				<tr>
-					<td valign="top">
-						<table width="200" id="guardaMeetings">
-							<tr>
-								<th>Encontros</th>
-							</tr>
-							<% @meetings.each_with_index do |m, i| %>
-							<tr>
-								<td><a href="javascript:void(0);" id="<%= m.id %>" class="linkEncontro"><%=i+1%>º encontro - <%= m.date %></a></td>
-							</tr>
-							<% end %>
-						</table>
-					</td>
-					<td valign="top">
-						<table width="790" id="sacateta">
-							<tr align="center">
-								<th colspan="2">2º encontro - 15/11/2012</th>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<table id="tabelaResults">
-									</table>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<a href="javascript:void(0);" style="float:right;" id="salvarHorario" class="btEnviarForm">Salvar</a>
-									<a href="javascript:void(0);" style="float:right;" id="novoHorario" class="btEnviarForm">Novo</a>
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-		<% end %>
-	</li>
-</ul>
+	<script type="text/javascript">
+		$(function(){
+			$(".hidden").hide();
 
-<script type="text/javascript">
-	$(function(){
-		$(".hidden").hide();
-
-		$("#addEncontro").click(function(){
-			$(".encontro").show();
-		});
-
-		var _li = "";
-		_li += "<tr valign='top' class='tiraInput'>";
-		_li += "	<td><input type='text' id='campoData' style='border:1px solid #f00;' /></td>";
-		_li += "	<td><textarea cols='60' rows='4' id='campoDesc'  style='border:1px solid #f00;'></textarea></td>";
-		_li += "</tr>";
-
-
-		$("#salvarHorario").hide();
-
-		var meeting;
-
-		$("#guardaMeetings a").click(function(){
-			meeting = $(this).attr('id');
-			$("#sacateta th").text( $(this).html() );
-			$.ajax(
-			{
-				url: '<%= see_activity_path %>',
-				type: "GET",
-				data:{
-					"atividade":{
-						"meeting_id": meeting
-					}
-				}
-			}).done(function(data){
-				$("#tabelaResults").html(data);
+			$("#addEncontro").click(function(){
+				$(".encontro").show();
 			});
-		});
-		$("#guardaMeetings a").eq(0).trigger('click');
 
-		$("#novoHorario").click(function(){
-			$(_li).insertAfter($("#sacateta tr").eq(0));
-			$(this).hide();
-			$("#salvarHorario").show();
-		});
+			var _li = "";
+			_li += "<tr valign='top' class='tiraInput'>";
+			_li += "	<td><input type='text' id='campoData' style='border:1px solid #f00;' /></td>";
+			_li += "	<td><textarea cols='60' rows='4' id='campoDesc'  style='border:1px solid #f00;'></textarea></td>";
+			_li += "</tr>";
 
-		$("#salvarHorario").click(function(){
-			$.ajax(
-			{
-				url: '<%= save_activity_path %>',
-				type: "GET",
-				data:{
-					"atividade":{
-						"meeting_id": meeting,
-						"timetable": $("#campoData").val(),
-						"description": $("#campoDesc").val()
+
+			$("#salvarHorario").hide();
+
+			var meeting;
+
+			$("#guardaMeetings a").click(function(){
+				meeting = $(this).attr('id');
+				$("#sacateta th").text( $(this).html() );
+				$.ajax(
+				{
+					url: '<%= see_activity_path %>',
+					type: "GET",
+					data:{
+						"atividade":{
+							"meeting_id": meeting
+						}
 					}
-				}
-			}).done(function(data){
-				$("#tabelaResults").html(data);
+				}).done(function(data){
+					$("#tabelaResults").html(data);
+				});
 			});
-			$(".tiraInput input, .tiraInput textarea").remove();//attr('disabled','true');
-			$(".tiraInput").removeClass("tiraInput");
-			$("#novoHorario").show();
-			$(this).hide();
-		});
+			$("#guardaMeetings a").eq(0).trigger('click');
 
-	});
-</script>
+			$("#novoHorario").click(function(){
+				$(_li).insertAfter($("#sacateta tr").eq(0));
+				$(this).hide();
+				$("#salvarHorario").show();
+			});
+
+			$("#salvarHorario").click(function(){
+				$.ajax(
+				{
+					url: '<%= save_activity_path %>',
+					type: "GET",
+					data:{
+						"atividade":{
+							"meeting_id": meeting,
+							"timetable": $("#campoData").val(),
+							"description": $("#campoDesc").val()
+						}
+					}
+				}).done(function(data){
+					$("#tabelaResults").html(data);
+				});
+				$(".tiraInput input, .tiraInput textarea").remove();//attr('disabled','true');
+				$(".tiraInput").removeClass("tiraInput");
+				$("#novoHorario").show();
+				$(this).hide();
+			});
+
+		});
+	</script>
+</div>

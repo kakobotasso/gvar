@@ -2,84 +2,86 @@
 <% content_for :title do %> Interessado - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
-<h1>Interessados</h1>
+<div class="cursos">
+  <h1>Interessados</h1>
 
-<div id="guardaPesquisa">
-  <%= form_for "/interessados" do |f| %>
-    <ul>
-      <li class="escondidoPesquisaAvancada">
-        <label for="campoCodigo">Nome:</label>
-        <%= f.text_field :code, :class => "inputGde input", :id => 'campoCodigo' %>
-      </li>
+  <div id="guardaPesquisa">
+    <%= form_for "/interessados" do |f| %>
+      <ul>
+        <li class="escondidoPesquisaAvancada">
+          <label for="campoCodigo">Nome:</label>
+          <%= f.text_field :code, :class => "inputGde input", :id => 'campoCodigo' %>
+        </li>
 
-      <li class="escondidoPesquisaAvancada">
-        <label for="campoCodigo">E-mail:</label>
-        <%= f.text_field :code, :class => "inputGde input", :id => 'campoCodigo' %>
-      </li>
+        <li class="escondidoPesquisaAvancada">
+          <label for="campoCodigo">E-mail:</label>
+          <%= f.text_field :code, :class => "inputGde input", :id => 'campoCodigo' %>
+        </li>
 
-      <li class="escondidoPesquisaAvancada">
-        <label for="campoCodigo">Situação:</label>
-        <%= f.select :code, :value => @situation, :class => "select selectMedio", :id => 'campoCodigo' %>
-      </li>
+        <li class="escondidoPesquisaAvancada">
+          <label for="campoCodigo">Situação:</label>
+          <%= f.select :code, :value => @situation, :class => "select selectMedio", :id => 'campoCodigo' %>
+        </li>
 
-      <li class="escondidoPesquisaAvancada">
-        <label for="campoCodigo">Interesses:</label>
-        <%= f.text_field :code, :class => "inputGde input", :id => 'campoCodigo' %>
-      </li>
+        <li class="escondidoPesquisaAvancada">
+          <label for="campoCodigo">Interesses:</label>
+          <%= f.text_field :code, :class => "inputGde input", :id => 'campoCodigo' %>
+        </li>
 
-      <li class="noPaddingHomes hidePA ">
-        <%= f.text_field :login, :class => "inputGde input", :id => 'campoBusca' %>
-      </li>
+        <li class="noPaddingHomes hidePA ">
+          <%= f.text_field :login, :class => "inputGde input", :id => 'campoBusca' %>
+        </li>
 
-      <li class="liPesquisaAvancada">
-        <%= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
-        <%= f.submit 'Pesquisar', :class => 'btEditarForm', :id => 'btRealizarPesquisa' %>
-      </li>
-    </ul>
-  <% end %>
-
-<%= link_to "Novo interessado", new_interested_path, class: "btEnviarForm" %>
-
-</div>
-
-<div id="guardaAtividadesRecentes">
-  <h2>Últimos Interessados</h2>
-  <% if @interesteds.size > 0 %>
-    <% @interesteds.each do |i|  %>
-      <p>
-        <span><%= i.name %></span>
-        <span><%= i.email %></span>
-        <%= link_to 'Abrir', interested_path(i), :class => 'btVoltarForm' %>
-      </p>
+        <li class="liPesquisaAvancada">
+          <%= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
+          <%= f.submit 'Pesquisar', :class => 'btEditarForm', :id => 'btRealizarPesquisa' %>
+        </li>
+      </ul>
     <% end %>
-  <% else %>
-    Nenhuma turma cadastrada
-  <% end %>
-</div>
 
-<div id="guardaResultadoPesquisa">
-  <% if @interesteds.size > 0 %>
-    <h2>Resultado da pesquisa</h2>
+  <%= link_to "Novo interessado", new_interested_path, class: "btEnviarForm" %>
 
-    <table cellspadding="0" cellspacing="0" width="100%">
-      <tr border="0">
-        <th width="25%"><span>Nome</span></th>
-        <th width="25%"><span>E-mail</span></th>
-        <th width="25%"><span>Telefone</span></th>
-        <th width="25%"><span>Situação</span></th>
-      </tr>
+  </div>
 
-      <% @interesteds.each do |i| %>
-        <tr border="0" onclick="location.href='<%= interested_path(i) %>'">
-            <td width="20%"><span><%= i.name %></span></td>
-            <td width="20%"><span><%= i.email %></span></td>
-            <td width="20%"><span><%= i.phone %></span></td>
-            <td width="20%"><span><%= i.real_situation %></span></td>
-        </tr>
+  <div id="guardaAtividadesRecentes">
+    <h2>Últimos Interessados</h2>
+    <% if @interesteds.size > 0 %>
+      <% @interesteds.each do |i|  %>
+        <p>
+          <span><%= i.name %></span>
+          <span><%= i.email %></span>
+          <%= link_to 'Abrir', interested_path(i), :class => 'btVoltarForm' %>
+        </p>
       <% end %>
+    <% else %>
+      Nenhuma turma cadastrada
+    <% end %>
+  </div>
 
-    </table>
-  <% else %>
-    <h2>Nenhum curso cadastrado até o momento</h2>
-  <% end %>
+  <div id="guardaResultadoPesquisa">
+    <% if @interesteds.size > 0 %>
+      <h2>Resultado da pesquisa</h2>
+
+      <table cellspadding="0" cellspacing="0" width="100%">
+        <tr border="0">
+          <th width="25%"><span>Nome</span></th>
+          <th width="25%"><span>E-mail</span></th>
+          <th width="25%"><span>Telefone</span></th>
+          <th width="25%"><span>Situação</span></th>
+        </tr>
+
+        <% @interesteds.each do |i| %>
+          <tr border="0" onclick="location.href='<%= interested_path(i) %>'">
+              <td width="20%"><span><%= i.name %></span></td>
+              <td width="20%"><span><%= i.email %></span></td>
+              <td width="20%"><span><%= i.phone %></span></td>
+              <td width="20%"><span><%= i.real_situation %></span></td>
+          </tr>
+        <% end %>
+
+      </table>
+    <% else %>
+      <h2>Nenhum curso cadastrado até o momento</h2>
+    <% end %>
+  </div>
 </div>

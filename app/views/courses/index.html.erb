@@ -2,67 +2,69 @@
 <% content_for :title do %> Cursos - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
-<h1>Cursos</h1>
+<div class="cursos">
+  <h1>Cursos</h1>
 
-<div id="guardaPesquisa">
-  <%= form_for "/cursos" do |f| %>
-    <ul>
-      <li class="noPaddingHomes hidePA ">
-        <%= f.text_field :login, :class => "inputGde input", :id => 'campoBusca' %>
-      </li>
+  <div id="guardaPesquisa">
+    <%= form_for "/cursos" do |f| %>
+      <ul>
+        <li class="noPaddingHomes hidePA ">
+          <%= f.text_field :login, :class => "inputGde input", :id => 'campoBusca' %>
+        </li>
 
-      <li class="liPesquisaAvancada">
-        <%#= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
-        <%= f.submit 'Pesquisar', :class => 'btEditarForm semPesquisaAvancada', :id => 'btRealizarPesquisa' %>
-      </li>
-    </ul>
-  <% end %>
-
-<%= link_to "Novo curso", new_course_path, class: "btEnviarForm" %>
-
-</div>
-
-<div id="guardaAtividadesRecentes">
-  <h2>Próximos cursos</h2>
-  <% if @course.size > 0 %>
-    
-    <% @course.each do |c| %>
-      <p>
-        <!-- <span><%#= c.code %></span> -->
-        <span><%= c.name %></span>
-        <span><%= c.categoria %></span>
-        <%= link_to 'Abrir', course_path(c), :class => 'btVoltarForm' %>
-      </p>
+        <li class="liPesquisaAvancada">
+          <%#= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
+          <%= f.submit 'Pesquisar', :class => 'btEditarForm semPesquisaAvancada', :id => 'btRealizarPesquisa' %>
+        </li>
+      </ul>
     <% end %>
 
-  <% else %>
-    <p><span>Nenhum curso cadastrado</span></p>
-  <% end %>
-</div>
+  <%= link_to "Novo curso", new_course_path, class: "btEnviarForm" %>
 
-<div id="guardaResultadoPesquisa">
-  <% if @course.size > 0 %>
-    <h2>Resultado da pesquisa</h2>
+  </div>
 
-    <table cellspadding="0" cellspacing="0" width="100%">
-      <tr border="0">
-        <th width="25%"><span>Código</span></th>
-        <th width="25%"><span>Nome do curso</span></th>
-        <th width="25%"><span>Tipo</span></th>
-        <th width="25%"><span>Turmas em andamento</span></th>
-      </tr>
-
+  <div id="guardaAtividadesRecentes">
+    <h2>Próximos cursos</h2>
+    <% if @course.size > 0 %>
+      
       <% @course.each do |c| %>
-        <tr border="0" onclick="location.href='<%= course_path(c) %>'">
-            <td width="25%"><span><%= c.code %></span></td>
-            <td width="25%"><span><%= c.name %></span></td>
-            <td width="25%"><span><%= c.categoria %></span></td>
-            <td width="25%"><span><%= c.turma_andamento %></span></td>
-        </tr>
+        <p>
+          <!-- <span><%#= c.code %></span> -->
+          <span><%= c.name %></span>
+          <span><%= c.categoria %></span>
+          <%= link_to 'Abrir', course_path(c), :class => 'btVoltarForm' %>
+        </p>
       <% end %>
 
-    </table>
-  <% else %>
-    <h2>Nenhum curso cadastrado até o momento</h2>
-  <% end %>
+    <% else %>
+      <p><span>Nenhum curso cadastrado</span></p>
+    <% end %>
+  </div>
+
+  <div id="guardaResultadoPesquisa">
+    <% if @course.size > 0 %>
+      <h2>Resultado da pesquisa</h2>
+
+      <table cellspadding="0" cellspacing="0" width="100%">
+        <tr border="0">
+          <th width="25%"><span>Código</span></th>
+          <th width="25%"><span>Nome do curso</span></th>
+          <th width="25%"><span>Tipo</span></th>
+          <th width="25%"><span>Turmas em andamento</span></th>
+        </tr>
+
+        <% @course.each do |c| %>
+          <tr border="0" onclick="location.href='<%= course_path(c) %>'">
+              <td width="25%"><span><%= c.code %></span></td>
+              <td width="25%"><span><%= c.name %></span></td>
+              <td width="25%"><span><%= c.categoria %></span></td>
+              <td width="25%"><span><%= c.turma_andamento %></span></td>
+          </tr>
+        <% end %>
+
+      </table>
+    <% else %>
+      <h2>Nenhum curso cadastrado até o momento</h2>
+    <% end %>
+  </div>
 </div>

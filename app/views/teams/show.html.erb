@@ -2,42 +2,44 @@
 <% content_for :title do %> <%= @team.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
-<h1>Informações da Turma</h1>
+<div class="cursos">
+	<h1>Informações da Turma</h1>
 
-<ul>
-	<li><strong><%= @team.name %></strong> <br/> <%= @team.correct_status %> - <%= @team.periodo %></li>
-	<li><strong>Codigo: </strong> <%= @team.code %> </li>
-	<li><strong>Curso: </strong> <%= @team.curso %> </li>
-	<li><strong>Valor: </strong> R$ <%= @team.price %> </li>
-	<li>
-		<strong>Data início: </strong> 00/00/0000 <br/>
-		<strong>Data termino: </strong> 00/00/0000
-	</li>
-	<li>
-		<strong>Carga horária/aula: </strong> <%= @team.workload %> <br/>
-		<strong>Quantidade de aulas: </strong> <%= @team.class_length %> <br/>
-		<strong>Carga horária total: </strong> <%= @team.total_carga_horaria %> <br/>
-	</li>
-	<li>
-		<strong>Observações: </strong> <br/>
-		<%= @team.note %>
-	</li>
-</ul>
+	<ul>
+		<li><strong><%= @team.name %></strong> <br/> <%= @team.correct_status %> - <%= @team.periodo %></li>
+		<li><strong>Codigo: </strong> <%= @team.code %> </li>
+		<li><strong>Curso: </strong> <%= @team.curso %> </li>
+		<li><strong>Valor: </strong> R$ <%= @team.price %> </li>
+		<li>
+			<strong>Data início: </strong> 00/00/0000 <br/>
+			<strong>Data termino: </strong> 00/00/0000
+		</li>
+		<li>
+			<strong>Carga horária/aula: </strong> <%= @team.workload %> <br/>
+			<strong>Quantidade de aulas: </strong> <%= @team.class_length %> <br/>
+			<strong>Carga horária total: </strong> <%= @team.total_carga_horaria %> <br/>
+		</li>
+		<li>
+			<strong>Observações: </strong> <br/>
+			<%= @team.note %>
+		</li>
+	</ul>
 
-<div id="infoTurmasCursos">
-	<ul class="tresOpcoes">
-		<li><p><span><%= @team.limit %></span> Vagas</p></li>
-		<li><p><span>0</span> Disponiveis</p></li>
-		<li><p><span>0</span> Alunos</p></li>
-		<li><p><%= link_to "Cancelar", teams_cancel_path, :class => "btEnviarForm", data:{ confirm: 'Ao cancelar essa turma, todas as inscrições serão alteradas para "Canceladas"
-	Deseja prosseguir?' } %></p></li>
-		<li><p><%= link_to "Alterar", edit_team_path(@team.id), :class => "btEnviarForm" %></p></li>
-		<li><p><%= link_to "Concluir", teams_conclude_path(@team.id), :class => "btEnviarForm" %></p></li>
+	<div id="infoTurmasCursos">
+		<ul class="tresOpcoes">
+			<li><p><span><%= @team.limit %></span> Vagas</p></li>
+			<li><p><span>0</span> Disponiveis</p></li>
+			<li><p><span>0</span> Alunos</p></li>
+			<li><p><%= link_to "Cancelar", teams_cancel_path, :class => "btEnviarForm", data:{ confirm: 'Ao cancelar essa turma, todas as inscrições serão alteradas para "Canceladas"
+		Deseja prosseguir?' } %></p></li>
+			<li><p><%= link_to "Alterar", edit_team_path(@team.id), :class => "btEnviarForm" %></p></li>
+			<li><p><%= link_to "Concluir", teams_conclude_path(@team.id), :class => "btEnviarForm" %></p></li>
+		</ul>
+	</div>
+
+	<ul>
+		<li><%= link_to "Lista de presenças", "javascript:void(0);", :class => "btEnviarForm" %></li>
+		<li><%= link_to "Planejamento", teams_planning_path(@team), :class => "btEnviarForm" %></li>
+		<li><%= link_to "Voltar", teams_path, :class => "btEnviarForm" %></li>
 	</ul>
 </div>
-
-<ul>
-	<li><%= link_to "Lista de presenças", "javascript:void(0);", :class => "btEnviarForm" %></li>
-	<li><%= link_to "Planejamento", teams_planning_path(@team), :class => "btEnviarForm" %></li>
-	<li><%= link_to "Voltar", teams_path, :class => "btEnviarForm" %></li>
-</ul>

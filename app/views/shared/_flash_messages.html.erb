@@ -1,3 +1,24 @@
 <% flash.each do |type, message| %>
-  <p class="<%= type %> message"><%= message %></p>
+  <div id="dialog-message" title="Aviso">
+    <p>
+      <span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 50px 0;"></span>
+      <%= message %>
+    </p>
+    
+  </div>
+  <!--<p class="<%#= type %> message"><%#= message %></p>-->
+
 <% end %>
+
+<script>
+  $(function() {
+    $( "#dialog-message" ).dialog({
+      modal: true,
+      buttons: {
+        OK: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+  });
+</script>

@@ -16,6 +16,23 @@ $azulFundo:#4A8CF6;
 $azulBorda:#3079ED;
 $azulPesquisa:#27408B;
 
+/* CORES MODULOS */
+$home:#aaaaab;
+$homeBorda:#aaaaab;
+
+$cursos:#00689b;
+$cursosBorda:#00689b;
+
+$servicos:#9c0003;
+$servicosBorda:#9c0003;
+
+$assessoria:#ff3b01;
+$assessoriaBorda:#ff3b01;
+
+$financeiro:#007200;
+$financeiroBorda:#007200;
+/* / CORES MODULOS */
+
 @mixin botao($corFundo, $corBorda, $corTexto, $radius){
     background:$corFundo;
     border:1px solid $corBorda;
@@ -81,6 +98,73 @@ iframe{
         @include botao(#fff, $azulBorda, $azulFundo, 5px);
     }
 }
+
+/* MODULOS */
+#contentInternas .assessoria a.btEnviarForm,
+#contentInternas .assessoria .btEnviarForm input,
+#contentInternas .assessoria a#btEnviarForm,
+#contentInternas .assessoria #btEnviarForm input,
+#contentInternas .assessoria .btVoltarForm,
+#contentInternas .assessoria #btVoltarForm,
+#contentInternas .assessoria .btEditarForm,
+#contentInternas .assessoria #btEditarForm,
+#contentInternas .assessoria .btVoltarExcluirForm,
+#contentInternas .assessoria #btVoltarExcluirForm{
+    @include botao($assessoria, $assessoriaBorda, #fff, 5px);
+    &:hover{
+        @include botao(#fff, $assessoriaBorda, $assessoria, 5px);
+    }
+}
+
+#contentInternas .financeiro a.btEnviarForm,
+#contentInternas .financeiro .btEnviarForm input,
+#contentInternas .financeiro a#btEnviarForm,
+#contentInternas .financeiro #btEnviarForm input,
+#contentInternas .financeiro .btVoltarForm,
+#contentInternas .financeiro #btVoltarForm,
+#contentInternas .financeiro .btEditarForm,
+#contentInternas .financeiro #btEditarForm,
+#contentInternas .financeiro .btVoltarExcluirForm,
+#contentInternas .financeiro #btVoltarExcluirForm{
+    @include botao($financeiro, $financeiroBorda, #fff, 5px);
+    &:hover{
+        @include botao(#fff, $financeiroBorda, $financeiro, 5px);
+    }
+}
+
+#contentInternas .cursos a.btEnviarForm,
+#contentInternas .cursos .btEnviarForm input,
+#contentInternas .cursos a#btEnviarForm,
+#contentInternas .cursos #btEnviarForm input,
+#contentInternas .cursos .btVoltarForm,
+#contentInternas .cursos #btVoltarForm,
+#contentInternas .cursos .btEditarForm,
+#contentInternas .cursos #btEditarForm,
+#contentInternas .cursos .btVoltarExcluirForm,
+#contentInternas .cursos #btVoltarExcluirForm{
+    @include botao($cursos, $cursosBorda, #fff, 5px);
+    &:hover{
+        @include botao(#fff, $cursosBorda, $cursos, 5px);
+    }
+}
+
+#contentInternas .servicos a.btEnviarForm,
+#contentInternas .servicos .btEnviarForm input,
+#contentInternas .servicos a#btEnviarForm,
+#contentInternas .servicos #btEnviarForm input,
+#contentInternas .servicos .btVoltarForm,
+#contentInternas .servicos #btVoltarForm,
+#contentInternas .servicos .btEditarForm,
+#contentInternas .servicos #btEditarForm,
+#contentInternas .servicos .btVoltarExcluirForm,
+#contentInternas .servicos #btVoltarExcluirForm{
+    @include botao($servicos, $servicosBorda, #fff, 5px);
+    &:hover{
+        @include botao(#fff, $servicosBorda, $servicos, 5px);
+    }
+}
+/* / MODULOS */
+
 
 
 #dashboard #geralLogin,

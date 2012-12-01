@@ -1,37 +1,38 @@
 <!-- TITLE -->
 <% content_for :title do %> <%= @interesteds.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
+<div class="cursos">
+	<h1>Interessado</h1>
 
-<h1>Interessado</h1>
+	<ul>
+		<li><strong><%= @interesteds.name %></strong></li>
+		<li><strong>E-mail:</strong> <%= @interesteds.email %></li>
+		<li><strong>Telefone:</strong> <%= @interesteds.phone %></li>
+		<li><strong>Situação:</strong> <%= @interesteds.real_situation %></li>
+		<li><strong>Interesses:</strong> <%= @interesteds.interest %></li>
+	</ul>
 
-<ul>
-	<li><strong><%= @interesteds.name %></strong></li>
-	<li><strong>E-mail:</strong> <%= @interesteds.email %></li>
-	<li><strong>Telefone:</strong> <%= @interesteds.phone %></li>
-	<li><strong>Situação:</strong> <%= @interesteds.real_situation %></li>
-	<li><strong>Interesses:</strong> <%= @interesteds.interest %></li>
-</ul>
+	<ul>
+		<li><%= link_to "Editar", edit_interested_path, :class => "btEnviarForm" %></li>
+	</ul>
 
-<ul>
-	<li><%= link_to "Editar", edit_interested_path, :class => "btEnviarForm" %></li>
-</ul>
+	<ul id="guardaHistoricoContatos">
+		<li>
+			<p class="historicoContatos">
+				<span>Histórico de Contatos</span>
+				<%= link_to "Novo", interested_history_path, :class => "btEnviarForm floatRight", :id => "btNovoHistoricoContato" %>
+			</p>
+		</li>
+		<% @interesteds_contact.each do |c| %>
+		<li>
+			<p>
+				<span><%= c.date %></span> - <span><%= c.description %></span>
+			</p>
+		</li>
+		<% end %>
+	</ul>
 
-<ul id="guardaHistoricoContatos">
-	<li>
-		<p class="historicoContatos">
-			<span>Histórico de Contatos</span>
-			<%= link_to "Novo", interested_history_path, :class => "btEnviarForm floatRight", :id => "btNovoHistoricoContato" %>
-		</p>
-	</li>
-	<% @interesteds_contact.each do |c| %>
-	<li>
-		<p>
-			<span><%= c.date %></span> - <span><%= c.description %></span>
-		</p>
-	</li>
-	<% end %>
-</ul>
-
-<ul>
-	<li><%= link_to "Voltar", interesteds_path, :class => "btEnviarForm" %></li>
-</ul>
+	<ul>
+		<li><%= link_to "Voltar", interesteds_path, :class => "btEnviarForm" %></li>
+	</ul>
+</div>

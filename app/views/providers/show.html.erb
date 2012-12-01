@@ -1,24 +1,25 @@
 <!-- TITLE -->
 <% content_for :title do %> Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
+<div class="servicos">
+	<p id="notice"><%= notice %></p>
 
-<p id="notice"><%= notice %></p>
+	<p>
+	  <b>Nome:</b>
+	  <%= @provider.name %>
+	</p>
 
-<p>
-  <b>Nome:</b>
-  <%= @provider.name %>
-</p>
+	<p>
+	  <b>CPF:</b>
+	  <%= @provider.cpf %>
+	</p>
 
-<p>
-  <b>CPF:</b>
-  <%= @provider.cpf %>
-</p>
-
-<p>
-  <b>RG:</b>
-  <%= @provider.rg %>
-</p>
+	<p>
+	  <b>RG:</b>
+	  <%= @provider.rg %>
+	</p>
 
 
-<%= link_to 'Edit', edit_provider_path(@provider) %> |
-<%= link_to 'Back', dashboard_path %>
+	<%= link_to 'Edit', edit_provider_path(@provider) %> |
+	<%= link_to 'Back', dashboard_path %>
+</div>

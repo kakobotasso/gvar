@@ -1,38 +1,39 @@
 <!-- TITLE -->
 <% content_for :title do %> Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
+<div class="servicos">
+  <p id="notice"><%= notice %></p>
 
-<p id="notice"><%= notice %></p>
+  <p>
+    <b>Nome:</b>
+    <%= @service.name %>
+  </p>
 
-<p>
-  <b>Nome:</b>
-  <%= @service.name %>
-</p>
+  <p>
+    <b>Numero de Dias:</b>
+    <%= @service.number_days %>
+  </p>
 
-<p>
-  <b>Numero de Dias:</b>
-  <%= @service.number_days %>
-</p>
+  <p>
+    <b>Tempo Estimado:</b>
+    <%= @service.estimated_time %>
+  </p>
 
-<p>
-  <b>Tempo Estimado:</b>
-  <%= @service.estimated_time %>
-</p>
+  <p>
+    <b>Valor Padrão:</b>
+    <%= @service.default_value %>
+  </p>
 
-<p>
-  <b>Valor Padrão:</b>
-  <%= @service.default_value %>
-</p>
+  <p>
+    <b>Ativo:</b>
+    <%= @service.active %>
+  </p>
 
-<p>
-  <b>Ativo:</b>
-  <%= @service.active %>
-</p>
+  <p>
+    <b>Descrição:</b>
+    <%= @service.description %>
+  </p>
 
-<p>
-  <b>Descrição:</b>
-  <%= @service.description %>
-</p>
-
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', dashboard_path %>
+  <%= link_to 'Edit', edit_service_path(@service) %> |
+  <%= link_to 'Back', dashboard_path %>
+</div>
