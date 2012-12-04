@@ -15,12 +15,7 @@ class ReceiptsController < ApplicationController
     @release = Release.new
     @release.instalments.build
 
-    @object = session[:schedule]
-
-    # release_code tera o formato:
-    # P120927205100
-    # [P|R] + ano + mes + dia + hora + min + seg
-    @release_code = 'Decidir como implementar' # "P#{Time.now.strftime('%y%m%d%H%M%S')}"
+    @object = ReceiptFactory.new_receipt(session[:object])
   end
 
   def pay
@@ -49,10 +44,10 @@ class ReceiptsController < ApplicationController
   end
 
   def update
-    @release = Release.find(params[:payment][:id])
-    @release.update_attributes(params[:release])
+    @release = Release.find(params[:receipt][:id])
+    @release.update_attributes(params[:receipt])
 
-    redirect_to financeiro_index_path
+    redirect_to receipts_path
   end
 
   # Criar Parcelas via Ajax

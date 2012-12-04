@@ -37,8 +37,10 @@ class RegistrationsController < ApplicationController
     @registration = Registration.new(params[:registration])
 
     respond_to do |format|
-      if @registration.save
-        format.html { redirect_to registration_path, notice: 'As informacoes foram salvas com sucesso.' }
+      if @registration.valid?
+        session[:object] = @registration
+
+        format.html { redirect_to registration_path }
         format.json { render json: @registration, status: :created, location: @registration }
       else
         format.html { render action: "new" }
@@ -70,5 +72,5 @@ class RegistrationsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
 end

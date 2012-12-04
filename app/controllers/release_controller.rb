@@ -9,8 +9,11 @@ class ReleaseController < ApplicationController
 
     respond_to do |format|
       if @release.save
-        format.html { redirect_to financeiro_index_path, notice: 'Lancamento cadastrado com sucesso.' }
-        format.json { render json: @release, status: :created, location: @release }
+        @service = session[:object]
+        @service.save
+        @service.update_attributes( { :release_id => @release.id } )
+
+        format.html { redirect_to @service }
       else
         format.html { redirect_to novo_pagamento_path }
         format.json { render json: @release.errors, status: :unprocessable_entity }
@@ -32,6 +35,11 @@ class ReleaseController < ApplicationController
         format.json { render json: @release.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  private
+  def path_of_release(object)
+    eval("#{object.type.to_s.downcase.pluralize}_path")
   end
 
 end
