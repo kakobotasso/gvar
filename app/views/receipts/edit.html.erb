@@ -2,7 +2,7 @@
 <% content_for :title do %> Editar Lançamento - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 <div class="financeiro">
-  <h1>Editar Lançamento</h1>
+  <h1>Editar Recebimento</h1>
 
   <%= form_for @release, :url => financeiro_update_lancamento_path do |r| %>
     <ul>
@@ -17,13 +17,6 @@
         <label>
           <span>Nome:</span><br/>
           <%= r.text_field :name, :class => "inputMedio input" %>
-        </label>
-      </li>
-
-      <li>
-        <label>
-          <span>Categoria:</span><br/>
-          <%= r.select :category_id, categories, {}, :class => 'select selectMedio' %>
         </label>
       </li>
 
@@ -109,7 +102,7 @@
       </li>
 
       <li id="btEnviarForm">
-        <%= r.submit 'Salvar Pagamento' %>
+        <%= r.submit 'Salvar Recebimento' %>
         <%= link_to 'Voltar', financeiro_index_path, :id => "btVoltarForm" %>
       </li>
     </ul>

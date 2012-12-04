@@ -7,7 +7,7 @@
 
   <p>
     <b>Nome:</b>
-    <%= @schedule.name %>
+    <%= @schedule.code %>
   </p>
 
   <p>
@@ -22,19 +22,37 @@
 
   <p>
     <b>Valor Padrão:</b>
-    <%= @schedule.default_value %>
+    <%= number_to_currency @schedule.service.default_value %>
   </p>
 
   <p>
-    <b>Ativo:</b>
-    <%= @schedule.active %>
+    <b>Data do agendamento:</b>
+    <%= date_to_view @schedule.date %>
   </p>
 
   <p>
     <b>Descrição:</b>
-    <%= @schedule.description %>
+    <%= @schedule.service.description %>
   </p>
 
+  <h2>Parcelas</h2>
+  <% @schedule.release.instalments.each do |i| %>
+    <p>
+      <b><%= i.number_instalment %></b>
+    </p>
+    <p>
+      <b>Vencimento:</b>
+      <%= date_to_view i.expiration_date %>
+    </p>
+    <p>
+      <b>Valor:</b>
+      <%= number_to_currency i.amount %>
+    </p>
+    <p>
+      <b>Status:</b>
+      <%= i.status %>
+    </p>
+  <% end %>
   <%= link_to 'Edit', edit_schedule_path(@schedule) %> |
   <%= link_to 'Back', dashboard_path %>
 </div>

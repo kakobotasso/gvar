@@ -36,7 +36,7 @@
     <li>
       <label>
         <span>Cliente:</span><br/>
-        <%= f.select :service_id, clients.map {|c| [c.name, c.id] }, {}, :class => "inputMedio input" %>
+        <%= f.select :client_id, clients.map {|c| [c.name, c.id] }, {}, :class => "inputMedio input" %>
       </label>
     </li>
 
@@ -62,7 +62,7 @@
     </li>
 
     <li id="btEnviarForm">
-      <%= f.submit "Agendar" %>
+      <%= f.submit "Avançar" %>
       <%= link_to 'Voltar', schedules_path, :id => "btVoltarForm" %>
     </li>
   </ul>

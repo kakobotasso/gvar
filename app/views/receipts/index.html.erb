@@ -2,10 +2,11 @@
 <% content_for :title do %> Financeiro - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 <div class="financeiro">
-  <h1>Pagamentos</h1>
+  <h1>Recebimentos</h1>
 
   <div id="guardaPesquisa">
     <%= form_for "filtro",:url => financeiro_index_path, :method => 'GET' do |f| %>
+      <%= f.hidden_field :type, :value => "Receipt" %>
       <ul>
         <li class="escondidoPesquisaAvancada">
           <label for="campoCodigo">Código</label>
@@ -59,12 +60,11 @@
         </li>
       </ul>
     <% end %>
-  <%= link_to "Novo pagamento", novo_pagamento_path, class: "btEnviarForm" %>
 
   </div>
 
   <div id="guardaAtividadesRecentes">
-    <h2>Pagamentos mais próximos</h2>
+    <h2>Recebimentos mais próximos</h2>
     <% @instalments_recents.each do |i| %>
       <p>
         <span><%= i.name %></span>
@@ -81,7 +81,7 @@
     e.preventDefault();
 
     $.ajax({
-      url:  "<%= financeiro_pagamentos_search_path %>",
+      url:  "<%= financeiro_recebimentos_search_path %>",
       type: "GET",
       data: {
         "filtro": {
