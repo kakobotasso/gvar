@@ -5,6 +5,7 @@ class CreateSchedules < ActiveRecord::Migration
       t.integer  :service_id
       t.integer  :provider_id
       t.integer  :client_id
+      t.integer  :release_id
       t.string   :estimated_time
       t.integer  :number_days
       t.datetime :date
