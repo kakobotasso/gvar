@@ -3,26 +3,26 @@
 <!-- / TITLE -->
 
 <div class="cursos">
-	<h1>Informações da Turma</h1>
+	<h1>Turma - <%= @team.name %></h1>
 
-	<ul>
-		<li><strong><%= @team.name %></strong> <br/> <%= @team.correct_status %> - <%= @team.periodo %></li>
-		<li><strong>Codigo: </strong> <%= @team.code %> </li>
-		<li><strong>Curso: </strong> <%= @team.curso %> </li>
-		<li><strong>Valor: </strong> R$ <%= @team.price %> </li>
-		<li>
-			<strong>Data início: </strong> 00/00/0000 <br/>
-			<strong>Data termino: </strong> 00/00/0000
-		</li>
-		<li>
-			<strong>Carga horária/aula: </strong> <%= @team.workload %> <br/>
-			<strong>Quantidade de aulas: </strong> <%= @team.class_length %> <br/>
-			<strong>Carga horária total: </strong> <%= @team.total_carga_horaria %> <br/>
-		</li>
-		<li>
+	<ul class='info'>
+		<li><strong>Codigo: </br></strong> <%= @team.code %> </li>
+		<li><strong>Status/Período:</strong> <br/> <%= @team.correct_status %> - <%= @team.periodo %></li>
+		
+		<li><strong>Curso: <br/></strong> <%= @team.curso %> </li>
+		<li><strong>Valor: <br/></strong> R$ <%= @team.price %> </li>
+		<li><strong>Data início:<br/> </strong> 00/00/0000 </li>
+		<li><strong>Data termino: <br/></strong> 00/00/0000 </li>
+		
+		<li><strong>Carga horária/aula: <br/></strong> <%= @team.workload %> </li>
+		<li><strong>Quantidade de aulas:<br/> </strong> <%= @team.class_length %> </li>
+		<li><strong>Carga horária total:<br/> </strong> <%= @team.total_carga_horaria %> </li>
+		
+		<li class='descricao'>
 			<strong>Observações: </strong> <br/>
 			<%= @team.note %>
 		</li>
+
 	</ul>
 
 	<div id="infoTurmasCursos">

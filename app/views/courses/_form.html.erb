@@ -10,12 +10,14 @@
     </div>
   <% end %>
 
+
 <ul>
-    <li>
+    <li class='codigo'>
         <label>
             <span>Código: </span>
-            <%= c.object.code || @course_code %>
-            <%= c.hidden_field :code, :value => @course_code || c.object.code %>
+            <%= c.hidden_field :code, :value => @course_code || c.object.code %> 			
+			<%= c.text_field :code, :value => @course_code || c.object.code, :class => "inputMedio input",:disabled => true %>
+			
         </label>
     </li>
 
@@ -33,10 +35,10 @@
         </label>
     </li>
 
-    <li>
+    <li class='textAreaDescricao'>
         <label>
             <span>Descrição*:</span><br/>
-            <%= c.text_area :description, :class => "inputMedio input" %>
+            <%= c.text_area :description, :class => "textarea" %>
         </label>
     </li>
 

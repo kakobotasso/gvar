@@ -10,12 +10,13 @@
     </div>
   <% end %>
 
-<ul>
-    <li>
+<ul>	
+	<li class='codigo'>
         <label>
             <span>Código: </span>
-            <%= t.object.code || @team_code %>
-            <%= t.hidden_field :code, :value => @team_code || t.object.code %>
+            <%= t.hidden_field :code, :value => @team_code || t.object.code %> 			
+			<%= t.text_field :code, :value => @team_code || t.object.code, :class => "inputMedio input",:disabled => true %>
+			
         </label>
     </li>
 
@@ -49,8 +50,8 @@
 
     <li>
         <label>
-            <span>Valor: </span><br/>
-            <span class="floatLeft">R$</span> <%= t.text_field :price, :class => "inputMedio input" %>
+            <span>Valor R$: </span><br/>
+			<%= t.text_field :price, :class => "inputMedio input" %>
         </label>
     </li>
     
@@ -75,10 +76,10 @@
         </label>
     </li>
     
-    <li>
+    <li class='textAreaDescricao'>
         <label>
             <span>Observações: </span><br/>
-            <%= t.text_area :note, :class => "inputMedio input" %>
+            <%= t.text_area :note, :class => "textarea" %>
         </label>
     </li>
     

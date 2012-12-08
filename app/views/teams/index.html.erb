@@ -14,12 +14,12 @@
         </li>
         
         <li class="escondidoPesquisaAvancada">
-          <label for="campoCodigo">Período:</label>
+          <label for="campoCodigo">Período:</label><br/>
           <%= select_tag 'team[season]', options_for_select(season), :class => 'select selectGde', :prompt => 'Selecione um periodo' %>
         </li>
 
         <li class="escondidoPesquisaAvancada guardaSelect guardaSelectGde">
-          <label for="campoCodigo">Curso:</label>
+          <label for="campoCodigo">Curso:</label><br/>
           <%= f.collection_select :course_id, courses, :id, :name, {:prompt => 'Selecione um curso', :class=>"select selectGde"} %>
         </li>
 
@@ -44,8 +44,7 @@
       <% @team.each do |t|  %>
         <p>
           <!-- <span><%#= t.code %></span> -->
-          <span><%= t.name %></span>
-          <span><%= t.periodo %></span>
+          <span><%= t.name %> <br/> <small><%= t.periodo %></small></span>
           <%= link_to 'Abrir', team_path(t), :class => 'btVoltarForm' %>
         </p>
       <% end %>

@@ -14,7 +14,7 @@
 
 $azulFundo:#4A8CF6;
 $azulBorda:#3079ED;
-$azulPesquisa:#27408B;
+$azulPesquisa:#ebebeb;
 
 /* CORES MODULOS */
 $home:#aaaaab;
@@ -148,6 +148,22 @@ iframe{
     }
 }
 
+/* ADICIONADO POR MARA */
+#contentInternas .cursos h1,
+#contentInternas .cursos h2{
+	color: $cursos;
+}
+
+#contentInternas .servicos h1,
+#contentInternas .servicos h2{
+	color: $servicos;
+}
+#contentInternas .financeiro h1,
+#contentInternas .financeiro h2{
+	color: $financeiro;
+}
+
+/*************/
 #contentInternas .servicos a.btEnviarForm,
 #contentInternas .servicos .btEnviarForm input,
 #contentInternas .servicos a#btEnviarForm,
@@ -247,17 +263,17 @@ iframe{
 #contentInternas .wrapperInternas #opcoesLogin{
 	float:left;
 	padding:10px 0px 0px 0px;
+	height:300px;
 }
 
 #contentInternas .wrapperInternas #opcoesLogin ul{
     float:left;
-    width:640px;
+    width:670px;
 }
 
 #contentInternas .wrapperInternas #opcoesLogin ul li{
 	float:left;
-        width:150px;
-	padding:0px 5px;
+	padding:0px 3px;
 }
 .warning  {
 	color: red;
@@ -304,7 +320,7 @@ margin:0px 10px;
 
 #headerInternas #logoInternas{
     float:left;
-    padding:15px 0px 0px 25px;
+    padding:15px 0px 0px 0px;
 }
 
 #headerInternas #menuInternas{
@@ -478,18 +494,22 @@ margin:0px 10px;
 #contentInternas h1{
     float:left;
     width:550px;
-    padding:0px 0px 40px 0px;
+    padding:0px 0px 27px 0px;
+	color: #999;
+	font-weight: normal;
+	font-style: italic;
+	margin-top:15px;
 }
 
 #contentInternas ul{
     float:left;
-    width:520px;
+    width:980px;
 }
 
 #contentInternas ul li{
     float:left;
-    width:100%;
-    padding:0px 0px 20px 0px;
+    padding:0px 50px 20px 0px;
+	height:50px;
 }
 
 #contentInternas ul li .input{
@@ -500,16 +520,27 @@ margin:0px 10px;
 
 #contentInternas ul li.guardaSelect select,
 #contentInternas ul li .select{
-    float:left;
+    /*float:left;*/
     border:1px solid #ccc;
     padding:5px 5px;
+	width: 250px;
+	margin-right: 10px; 
 }
 
 #contentInternas ul li .textarea{
     float:left;
     border:1px solid #ccc;
-    height:100px;
+    height:80px;
+	width:895px;
     padding:5px 5px;
+}
+#contentInternas ul .codigo{
+	margin:0px; 
+	padding:0px;
+}
+
+#contentInternas ul .textAreaDescricao{
+	height:100px;
 }
 
 #contentInternas ul li .inputMenor{ width:100px; }
@@ -574,6 +605,8 @@ margin:0px 10px;
     float:left;
     width:340px;
     padding:0px 0px 20px 0px;
+	font-weight: normal;
+	font-style: italic;
 }
 
 #contentInternas #guardaAtividadesRecentes p{
@@ -604,18 +637,22 @@ margin:0px 10px;
 #contentInternas #guardaResultadoPesquisa h2{
     float:left;
     padding:0px 0px 10px 0px;
+	font-weight: normal;
+	/*color: #333;*/
 }
 
 #contentInternas #guardaResultadoPesquisa table{
     float:left;
     width:100%;
     border:1px solid $azulPesquisa;
+	margin-bottom:20px;
 }
 
 #contentInternas #guardaResultadoPesquisa table th{
-    background:$azulPesquisa;
+	background:$azulPesquisa;
+	background:#ebebeb;
     padding:5px 0px;
-    color:#fff;
+    /*color:#fff;*/
 }
 
 #contentInternas #guardaResultadoPesquisa table tr td{
@@ -656,7 +693,7 @@ margin:0px 10px;
     }
     &:hover{
         td{
-            background:#E7F3F9;
+            background:#f2f2f2;
             cursor:pointer;
         }
     }
@@ -674,6 +711,16 @@ margin:0px 10px;
     padding-bottom:0px;
 }
 
+#contentInternas  ul.info li {
+    float:left;
+    width:270px;
+	padding: 0px 50px 20px 0px;
+	height: 50px;
+}
+#contentInternas  ul.info li.descricao {
+    width:780px;
+}
+
 #infoTurmasCursos{
     float:left;
     border:1px solid #00CED1;
@@ -684,7 +731,7 @@ margin:0px 10px;
 
 #infoTurmasCursos ul{
     float:left;
-    width:750px;
+    width:770px;
     padding:10px 0px;
 }
 
@@ -692,10 +739,13 @@ margin:0px 10px;
     float:left;
     width:140px;
     padding-bottom:0px;
+	height:30px;
 }
 
 #infoTurmasCursos ul.tresOpcoes li{
     width:125px;
+	margin:0px;
+	padding:0px;
 }
 
 #infoTurmasCursos ul li p{

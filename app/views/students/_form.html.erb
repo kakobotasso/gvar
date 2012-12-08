@@ -69,9 +69,11 @@
 
     <%= s.fields_for :phones do |p| %>
       <li>
-        <%= p.select :type_number, phone_types, {}, :class => 'select' %>:
-        <%= p.text_field :number, :class => "inputMedio input" %>
-      </li>
+		<label>
+			<%= p.select :type_number, phone_types, {}, :class => 'select' %></br>
+			<%= p.text_field :number, :class => "inputMedio input" %>
+		</label>
+	  </li>
     <% end %>
 
     <%= s.fields_for :address do |a| %>

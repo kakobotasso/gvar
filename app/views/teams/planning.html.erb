@@ -2,14 +2,12 @@
 <% content_for :title do %> <%= @team.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 <div class="cursos">
-	<h1><%= @team.name %> - Plano de aulas</h1>
-
+	<h1>Planejamento - <small><%= @team.name %></small></h1>
 	<ul>
 		<li>
 			<a href="javascript:void(0);" id="addEncontro" class="btEnviarForm">Adicionar encontro</a>
 		</li>
 		<li class="hidden encontro">
-			Inserir encontro <br/>
 			<%= form_for "meeting", :url => save_meeting_path do |f| %>
 				<%= f.hidden_field :team_id, :value => @team.id %>
 				<ul>			
@@ -62,7 +60,33 @@
 						</td>
 					</tr>
 				</table>
+				
+				
 			<% end %>
+			<table width="990" border="1" bgcolor="#e7f3f9">
+					<tr>
+						<td>encontros
+							<table>
+								<tr>
+									<th>Encontros</th>
+								<tr>
+								<tr>
+									<td>DATAS</td>
+								<tr>
+								<tr>
+									<td>DATAS</td>
+								<tr>
+								<tr>
+									<td>DATAS</td>
+								<tr>
+								<tr>
+									<td>DATAS</td>
+								<tr>								
+							</table>
+						</td>
+						<td>exibição dos encontros</td>
+					</tr>
+				</table>
 		</li>
 	</ul>
 
