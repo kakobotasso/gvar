@@ -21,21 +21,21 @@
     <li>
         <label>
             <span>CPF*: </span><br/>
-            <%= s.text_field :cpf, :class => "inputMedio input" %>
+            <%= s.text_field :cpf, :class => "inputMedio input cpf" %>
         </label>
     </li>
 
     <li>
         <label>
             <span>RG*: </span><br/>
-            <%= s.text_field :rg, :class => "inputMedio input" %>
+            <%= s.text_field :rg, :class => "inputMedio input rg" %>
         </label>
     </li>
 
     <li>
         <label>
             <span>Data de Nascimento*: </span><br/>
-            <%= s.text_field :birth_date, :class => "inputMedio input" %>
+            <%= s.text_field :birth_date, :class => "inputMedio input data" %>
         </label>
     </li>
 
@@ -71,7 +71,7 @@
       <li>
 		<label>
 			<%= p.select :type_number, phone_types, {}, :class => 'select' %></br>
-			<%= p.text_field :number, :class => "inputMedio input" %>
+			<%= p.text_field :number, :class => "inputMedio input celular" %>
 		</label>
 	  </li>
     <% end %>
@@ -122,7 +122,7 @@
       <li>
           <label>
               <span>CEP*: </span><br/>
-              <%= a.text_field :zipcode, :class => "inputMedio input" %>
+              <%= a.text_field :zipcode, :class => "inputMedio input cep" %>
           </label>
       </li>
     <% end %>
@@ -168,25 +168,3 @@
 
 </ul>
 <% end %>
-
-<script type="text/javascript">
-    $(function(){
-        $("#student_cpf").mask("999.999.999-99");
-        $("#student_rg").mask("99.999.999-*");
-        $("#student_zipcode").mask("99999-999");
-        $("#student_birth_date").mask("99/99/9999");
-        $("#student_phone").mask("(99) 9999-9999");
-        $('#student_cellphone').mask("(99) 9999-9999?9").live('focusout', function (event) {
-                var target, phone, element;
-                target = (event.currentTarget) ? event.currentTarget : event.srcElement;
-                phone = target.value.replace(/\D/g, '');
-                element = $(target);
-                element.unmask();
-                if(phone.length > 10) {
-                    element.mask("(99) 99999-999?9");
-                } else {
-                    element.mask("(99) 9999-9999?9");
-                }
-            });
-    });
-</script>
