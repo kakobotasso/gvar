@@ -18,7 +18,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @students }
+      format.json { render json: @student }
     end
   end
 
@@ -30,13 +30,13 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @students }
+      format.json { render json: @student }
     end
   end
 
   def edit
     @student = Student.find(params[:id])
-    @student.build_address if @students.address.nil?
+    @student.build_address if @student.address.nil?
   end
 
   def create
