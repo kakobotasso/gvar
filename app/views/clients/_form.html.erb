@@ -25,6 +25,13 @@
 
       <li>
         <label>
+          <span>Bairro:</span><br/>
+          <%= a.text_field :neighborhood, :class => "inputMedio input" %>
+        </label>
+      </li>
+
+      <li>
+        <label>
           <span>Complemento:</span><br/>
           <%= a.text_field :complement, :class => "inputMedio input" %>
         </label>
@@ -40,7 +47,7 @@
       <li>
         <label>
           <span>Estado:</span><br/>
-          <%= a.text_field :country_id, :class => "inputMedio input" %>
+          <%= a.select :country_id, Country::STATES, { :prompt => 'Selecione um estado' }, :class => 'select selectMedio' %>
         </label>
       </li>
 
