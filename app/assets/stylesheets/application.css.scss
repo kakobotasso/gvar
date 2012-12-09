@@ -150,12 +150,54 @@ iframe{
 
 /* ADICIONADO POR MARA */
 
-.cursos table.encontros{
-	background-color:#e7f3f9;
+
+#planejamento table.encontros{
+	border:1px solid $azulPesquisa;
 }
-.cursos table.encontros th{
-	background-color:$cursos;
+
+#planejamento table.encontros td{
+	border:1px solid $azulPesquisa;
 }
+
+#planejamento table.encontros th{
+	border:1px solid $azulPesquisa;
+	background:$azulPesquisa;
+	padding:5px;
+	color:#cursos;
+}
+#planejamento #listEncontros td{
+	border:0px;
+	padding:7px;
+}
+
+#planejamento #listEncontros td{
+    a{
+        text-decoration:none;
+		color:black;
+    }
+    &:hover{
+            background:$azulPesquisa;
+            cursor:pointer;
+        
+    }
+}
+
+#planejamento #listHorarios td{
+	border:0px;
+}
+
+#planejamento #listHorarios #tabelaResults td{
+	border:0px solid $cursos;
+	padding:20px;	
+}
+#planejamento .cinza{
+	background:#ebebeb;
+}
+#planejamento .branca{
+	background:#FFF;
+}
+
+/***********/
 
 #contentInternas .cursos h1,
 #contentInternas .cursos h2{
