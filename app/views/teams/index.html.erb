@@ -44,11 +44,7 @@
       <% @team.each do |t|  %>
         <p>
           <!-- <span><%#= t.code %></span> -->
-<<<<<<< HEAD
           <span><strong><%= t.name %> </strong><br/> <small><%= t.periodo %></small></span>
-=======
-          <span><%= t.name %> <br/> <small><%= t.periodo %></small></span>
->>>>>>> 45c32aa1a51bb20511e35b0b183329b9e43fd7bb
           <%= link_to 'Abrir', team_path(t), :class => 'btVoltarForm' %>
         </p>
       <% end %>
