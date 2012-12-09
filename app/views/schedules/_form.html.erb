@@ -12,20 +12,20 @@
     <li>
       <label>
         <span>Serviço:</span><br/>
-        <%= f.select :service_id, services.map {|s| [s.name, s.id] }, {}, :class => "select selectMedio" %>
+        <%= f.select :service_id, services.map {|s| [s.name, s.id] }, { :prompt => "Escolha um serviço" }, :class => "select selectMedio" %>
       </label>
     </li>
     <li>
       <label>
         <span>Prestador:</span><br/>
-        <%= f.select :provider_id, providers.map {|p| [p.name, p.id] }, {}, :class => "select selectMedio" %>
+        <%= f.select :provider_id, providers.map {|p| [p.name, p.id] }, { :prompt => "Escolha um prestador" }, :class => "select selectMedio" %>
       </label>
     </li>
 
     <li>
       <label>
         <span>Cliente:</span><br/>
-        <%= f.select :client_id, clients.map {|c| [c.name, c.id] }, {}, :class => "select selectMedio" %>
+        <%= f.select :client_id, clients.map {|c| [c.name, c.id] }, { :prompt => "Escolha um cliente" }, :class => "select selectMedio" %>
       </label>
     </li>
 
