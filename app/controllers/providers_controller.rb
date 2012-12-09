@@ -3,6 +3,7 @@ class ProvidersController < ApplicationController
   # GET /providers.json
 
   layout false, :only => [:search]
+  helper_method :state
 
   def index
     @providers = Provider.all
@@ -47,10 +48,11 @@ class ProvidersController < ApplicationController
   # POST /providers.json
   def create
     @provider = Provider.new(params[:provider])
+    @services = Service.all
 
     respond_to do |format|
       if @provider.save
-        format.html { redirect_to providers_path, notice: 'Provider was successfully created.' }
+        format.html { redirect_to providers_path, notice: 'As informacoes foram salvas com sucesso.' }
         format.json { render json: @provider, status: :created, location: @provider }
       else
         format.html { render action: "new" }
@@ -66,7 +68,7 @@ class ProvidersController < ApplicationController
 
     respond_to do |format|
       if @provider.update_attributes(params[:provider])
-        format.html { redirect_to providers_path, notice: 'Provider was successfully updated.' }
+        format.html { redirect_to providers_path, notice: 'As informacoes foram atualizadas com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -90,5 +92,10 @@ class ProvidersController < ApplicationController
   def search
     @providers = ProvidersFilter.filter(params[:filtro])
     @provider_presenter = ProviderPresenter.new(@providers)
+  end
+
+  private
+  def state
+    @state ||= Country::STATES
   end
 end
