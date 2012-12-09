@@ -149,6 +149,14 @@ iframe{
 }
 
 /* ADICIONADO POR MARA */
+
+.cursos table.encontros{
+	background-color:#e7f3f9;
+}
+.cursos table.encontros th{
+	background-color:$cursos;
+}
+
 #contentInternas .cursos h1,
 #contentInternas .cursos h2{
 	color: $cursos;
@@ -577,7 +585,10 @@ margin:0px 10px;
     text-transform: capitalize;
 }
 
-#contentInternas .noPaddingHomes{ padding-bottom:5px; }
+#contentInternas .noPaddingHomes{
+	padding-bottom:5px;
+	height: 30px;
+}
 
 #contentInternas .liPesquisaAvancada{ padding-left:316px; }
 

@@ -2,96 +2,98 @@
 <% content_for :title do %> Alunos - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
-<h1>Alunos</h1>
-
-<div id="guardaPesquisa">
-  <%= form_for "/alunos" do |f| %>
-    <ul>
-      <li class="escondidoPesquisaAvancada">
-        <label for="campoCodigo">Nome:</label>
-        <%= f.text_field :name, :class => "inputGde input", :id => 'campoCodigo' %>
-      </li>
-
-      <li class="escondidoPesquisaAvancada">
-        <label for="campoCodigo">CPF:</label>
-        <%= f.text_field :cpf, :class => "inputGde input", :id => 'campoCodigo' %>
-      </li>
-
-      <li class="escondidoPesquisaAvancada">
-        <label for="campoCodigo">Sexo:</label>
-        <%= f.text_field :sex, :class => "inputGde input", :id => 'campoCodigo' %>
-      </li>
-
-      <li class="escondidoPesquisaAvancada">
-        <label for="campoCodigo">Bairro:</label>
-        <%= f.text_field :neighborhood, :class => "inputGde input", :id => 'campoCodigo' %>
-      </li>
-
-      <li class="escondidoPesquisaAvancada">
-        <label for="campoCodigo">Cidade:</label>
-        <%= f.text_field :city, :class => "inputGde input", :id => 'campoCodigo' %>
-      </li>
-
-      <li class="escondidoPesquisaAvancada">
-        <label for="campoCodigo">Relação com Idoso:</label>
-        <%= f.text_field :relationship_elderly, :class => "inputGde input", :id => 'campoCodigo' %>
-      </li>
-
-      <li class="noPaddingHomes hidePA ">
-        <%= f.text_field :login, :class => "inputGde input", :id => 'campoBusca' %>
-      </li>
-
-      <li class="liPesquisaAvancada">
-        <%= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
-        <%= f.submit 'Pesquisar', :class => 'btEditarForm', :id => 'btRealizarPesquisa' %>
-      </li>
-    </ul>
-  <% end %>
-
-<%= link_to "Novo aluno", new_student_path, class: "btEnviarForm" %>
-
-</div>
-
-<div id="guardaAtividadesRecentes">
-  <h2>Últimos alunos cadastrados</h2>
-  <% if @students.size > 0 %>
-    <% @students.each do |s|  %>
-      <p>
-        <span><%= s.name %></span>
-        <span><%= s.cpf %></span>
-        <%= link_to 'Abrir', student_path(s), :class => 'btVoltarForm' %>
-      </p>
-    <% end %>
-  <% else %>
-    Nenhum aluno cadastrado
-  <% end %>
-</div>
-
-<div id="guardaResultadoPesquisa">
-  <% if @students.size > 0 %>
-    <h2>Resultado da pesquisa</h2>
-
-    <table cellspadding="0" cellspacing="0" width="100%">
-      <tr border="0">
-        <th width="16%"><span>Nome</span></th>
-        <th width="16%"><span>CPF</span></th>
-        <th width="16%"><span>RG</span></th>
-        <th width="16%"><span>Sexo</span></th>
-        <th width="16%"><span>Relação com Idoso</span></th>
-      </tr>
-
-      <% @students.each do |s| %>
-        <tr border="0" onclick="location.href='<%= student_path(s) %>'">
-            <td width="16%"><span><%= s.name %></span></td>
-            <td width="16%"><span><%= s.cpf %></span></td>
-            <td width="16%"><span><%= s.rg %></span></td>
-            <td width="16%"><span><%= s.sexo %></span></td>
-            <td width="16%"><span><%= s.relacao_idoso %></span></td>
-        </tr>
-      <% end %>
-
-    </table>
-  <% else %>
-    <h2>Nenhum aluno cadastrado</h2>
-  <% end %>
+<div class="cursos">
+	<h1>Alunos</h1>
+	
+	<div id="guardaPesquisa">
+	<%= form_for "/alunos" do |f| %>
+		<ul>
+		<li class="escondidoPesquisaAvancada">
+			<label for="campoCodigo">Nome:</label>
+			<%= f.text_field :name, :class => "inputGde input", :id => 'campoCodigo' %>
+		</li>
+	
+		<li class="escondidoPesquisaAvancada">
+			<label for="campoCodigo">CPF:</label>
+			<%= f.text_field :cpf, :class => "inputGde input", :id => 'campoCodigo' %>
+		</li>
+	
+		<li class="escondidoPesquisaAvancada">
+			<label for="campoCodigo">Sexo:</label>
+			<%= f.text_field :sex, :class => "inputGde input", :id => 'campoCodigo' %>
+		</li>
+	
+		<li class="escondidoPesquisaAvancada">
+			<label for="campoCodigo">Bairro:</label>
+			<%= f.text_field :neighborhood, :class => "inputGde input", :id => 'campoCodigo' %>
+		</li>
+	
+		<li class="escondidoPesquisaAvancada">
+			<label for="campoCodigo">Cidade:</label>
+			<%= f.text_field :city, :class => "inputGde input", :id => 'campoCodigo' %>
+		</li>
+	
+		<li class="escondidoPesquisaAvancada">
+			<label for="campoCodigo">Relação com Idoso:</label>
+			<%= f.text_field :relationship_elderly, :class => "inputGde input", :id => 'campoCodigo' %>
+		</li>
+	
+		<li class="noPaddingHomes hidePA ">
+			<%= f.text_field :login, :class => "inputGde input", :id => 'campoBusca' %>
+		</li>
+	
+		<li class="liPesquisaAvancada">
+			<%= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
+			<%= f.submit 'Pesquisar', :class => 'btEditarForm', :id => 'btRealizarPesquisa' %>
+		</li>
+		</ul>
+	<% end %>
+	
+	<%= link_to "Novo aluno", new_student_path, class: "btEnviarForm" %>
+	
+	</div>
+	
+	<div id="guardaAtividadesRecentes">
+	<h2>Últimos alunos cadastrados</h2>
+	<% if @students.size > 0 %>
+		<% @students.each do |s|  %>
+		<p>
+			<span><%= s.name %></span>
+			<span><%= s.cpf %></span>
+			<%= link_to 'Abrir', student_path(s), :class => 'btVoltarForm' %>
+		</p>
+		<% end %>
+	<% else %>
+		Nenhum aluno cadastrado
+	<% end %>
+	</div>
+	
+	<div id="guardaResultadoPesquisa">
+	<% if @students.size > 0 %>
+		<h2>Resultado da pesquisa</h2>
+	
+		<table cellspadding="0" cellspacing="0" width="100%">
+		<tr border="0">
+			<th width="16%"><span>Nome</span></th>
+			<th width="16%"><span>CPF</span></th>
+			<th width="16%"><span>RG</span></th>
+			<th width="16%"><span>Sexo</span></th>
+			<th width="16%"><span>Relação com Idoso</span></th>
+		</tr>
+	
+		<% @students.each do |s| %>
+			<tr border="0" onclick="location.href='<%= student_path(s) %>'">
+				<td width="16%"><span><%= s.name %></span></td>
+				<td width="16%"><span><%= s.cpf %></span></td>
+				<td width="16%"><span><%= s.rg %></span></td>
+				<td width="16%"><span><%= s.sexo %></span></td>
+				<td width="16%"><span><%= s.relacao_idoso %></span></td>
+			</tr>
+		<% end %>
+	
+		</table>
+	<% else %>
+		<h2>Nenhum aluno cadastrado</h2>
+	<% end %>
+	</div>
 </div>
