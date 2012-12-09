@@ -13,35 +13,35 @@
 <ul>
     <li>
         <label>
-            <span>Nome: </span><br/>
+            <span>Nome*: </span><br/>
             <%= i.text_field :name, :class => "inputMedio input" %>
         </label>
     </li>
     
     <li>
         <label>
-            <span>E-mail: </span><br/>
+            <span>E-mail*: </span><br/>
             <%= i.text_field :email, :class => "inputMedio input" %>
         </label>
     </li>
     
     <li>
         <label>
-            <span>Telefone: </span><br/>
+            <span>Telefone*: </span><br/>
             <%= i.text_field :phone, :class => "inputMedio input celular" %>
         </label>
     </li>
     
     <li class="guardaSelect guardaSelectMedio">
         <label>
-            <span>Situação: </span><br/>
+            <span>Situação*: </span><br/>
             <%= i.select :situation, @situation, { :prompt => "Selecione a situação" }, :class => 'select selectMedio' %>
         </label>
     </li>
 
     <li class='textAreaDescricao'>
         <label>
-            <span>Interesses: </span><br/>
+            <span>Interesses*: </span><br/>
             <%= i.text_area :interest, :class => "textarea" %>
         </label>
     </li>

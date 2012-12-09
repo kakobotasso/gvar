@@ -22,56 +22,56 @@
 
     <li>
         <label>
-            <span>Nome: </span><br/>
+            <span>Nome*: </span><br/>
             <%= t.text_field :name, :class => "inputMedio input" %>
         </label>
     </li>
     
     <li class="guardaSelect guardaSelectMedio">
         <label>
-            <span>Curso: </span><br/>
+            <span>Curso*: </span><br/>
             <%= t.collection_select :course_id, courses, :id, :name, {:prompt => 'Selecione um curso', :class=>"select selectMedio"} %>
         </label>
     </li>
     
     <li>
         <label>
-            <span>Periodo: </span><br/>
+            <span>Período*: </span><br/>
             <%= t.select :season, season, { :prompt => 'Selecione um periodo' }, :class => 'select selectMedio' %>
         </label>
     </li>
 
     <li>
         <label>
-            <span>Situação: </span><br/>
+            <span>Situação*: </span><br/>
             <%= t.select :status, status, { :prompt => 'Selecione um status' }, :class => 'select selectMedio' %>
         </label>
     </li>    
 
     <li>
         <label>
-            <span>Valor R$: </span><br/>
+            <span>Valor* (R$): </span><br/>
 			<%= t.text_field :price, :class => "inputMedio input" %>
         </label>
     </li>
     
     <li>
         <label>
-            <span>Limite de inscrições: </span><br/>
+            <span>Limite de inscrições*: </span><br/>
             <%= t.text_field :limit, :class => "inputMedio input" %>
         </label>
     </li>
     
     <li>
         <label>
-            <span>Quantidade de aulas: </span><br/>
+            <span>Quantidade de aulas*: </span><br/>
             <%= t.text_field :class_length, :class => "inputMedio input" %>
         </label>
     </li>
     
     <li>
         <label>
-            <span>Carga horaria/aula: </span><br/>
+            <span>Carga horaria/aula*: </span><br/>
             <%= t.text_field :workload, :class => "inputMedio input" %>
         </label>
     </li>
