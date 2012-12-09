@@ -9,7 +9,7 @@
       <ul>
         
 		<li class="noPaddingHomes hidePA ">
-          <%= f.text_field :name, :class => "inputGde input", :id => 'campoBusca' %>
+          <%= f.text_field :rg, :class => "inputGde input", :id => 'campoBusca' %>
         </li>
 		
 		 <li class="escondidoPesquisaAvancada">
@@ -54,7 +54,7 @@
       <p>
         <span><strong><%= service.name %></strong><br/>
 		<small><%= service.estimated_time %> - 
-        <%= number_to_currency service.default_value %><small></span>
+        <%= number_to_currency service.default_value %></small></span>
         <%= link_to 'Editar', edit_service_path(service), :class => 'btVoltarForm' %>
       </p>
     <% end %>
