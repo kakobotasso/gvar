@@ -7,9 +7,13 @@
   <div id="guardaPesquisa">
     <%= form_for :filtro, :url => search_schedules_path, :method => "GET" do |f| %>
       <ul>
-        <li class="noPaddingHomes">
+        <li class="noPaddingHomes hidePA">
+          <%= f.text_field :nome, :class => "inputGde input", :id => 'name' %>
+        </li>
+		
+		 <li class="escondidoPesquisaAvancada">
           <label for="campoNome">Nome</label>
-          <%= f.text_field :rg, :class => "inputGde input", :id => 'name' %>
+          <%= f.text_field :nome, :class => "inputGde input", :id => 'name' %>
         </li>
 
         <li class="escondidoPesquisaAvancada">
@@ -28,8 +32,8 @@
         </li>
 
         <li class="escondidoPesquisaAvancada">
-          <label for="campoNome">Ativo:</label>
-          <%= f.select :inactive, [["Sim",true],["Não",false]], { :include_blank => true }, :class => "select" %>
+          <label for="campoNome">Ativo:</label><br/>
+          <%= f.select :inactive, [["Sim",true],["Não",false]], { :include_blank => true }, :class => "select selectGde" %>
         </li>
         <li class="liPesquisaAvancada">
           <%= link_to 'Pesquisa avançada', 'javascript:void(0);', :class => 'pesquisaAvancada', :id => 'btPesquisaAvancada' %>
@@ -44,9 +48,9 @@
     <h2>Últimos serviços</h2>
     <% @schedules.each do |schedule| %>
       <p>
-        <span><%= schedule.service.name %></span>
-        <span><%= schedule.estimated_time %></span>
-        <span><%= number_to_currency schedule.service.default_value %></span>
+        <span><strong><%= schedule.service.name %></strong><br/>
+        <%= schedule.estimated_time %> - 
+        <%= number_to_currency schedule.service.default_value %></span>
         <%= link_to 'Editar', edit_schedule_path(schedule), :class => 'btVoltarForm' %>
       </p>
     <% end %>
