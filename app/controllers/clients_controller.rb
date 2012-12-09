@@ -42,7 +42,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to clients_path, notice: 'Os dados do cliente foram salvos com sucesso!' }
+        format.html { redirect_to clients_path, :notice => t("mensagens.msg0039") }
         format.json { render json: @client, status: :created, location: @client }
       else
         format.html { render action: "new" }
@@ -56,7 +56,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.update_attributes(params[:client])
-        format.html { redirect_to clients_path, notice: 'User was successfully updated.' }
+        format.html { redirect_to clients_path, :notice => t("mensagens.msg0039") }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

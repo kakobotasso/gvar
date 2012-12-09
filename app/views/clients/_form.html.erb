@@ -1,16 +1,5 @@
 <%= form_for @client do |f| %>
-  <% if @client.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
-
-      <ul>
-        <% @client.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <%= render "shared/error_messages", :record => @client %>
   <ul>
     <li>
       <label>
@@ -44,7 +33,7 @@
       <li>
         <label>
           <span>CEP:</span><br/>
-          <%= a.text_field :zipcode, :class => "inputMedio input cep" %>
+          <%= a.text_field :zipcode, :class => "inputMedio input" %>
         </label>
       </li>
 
@@ -66,14 +55,14 @@
     <li>
       <label>
         <span>CPF:</span><br/>
-        <%= f.text_field :cpf, :class => "inputMedio input cpf" %>
+        <%= f.text_field :cpf, :class => "inputMedio input" %>
       </label>
     </li>
 
     <li>
       <label>
         <span>RG:</span><br/>
-        <%= f.text_field :rg, :class => "inputMedio input rg" %>
+        <%= f.text_field :rg, :class => "inputMedio input" %>
       </label>
     </li>
 
@@ -83,3 +72,11 @@
     </li>
   </ul>
 <% end %>
+
+<script type="text/javascript">
+    $(function(){
+        $("#client_cpf").mask("999.999.999-99");
+        $("#client_rg").mask("99.999.999-*");
+        $("#client_address_attributes_zipcode").mask("99999-999");
+    });
+</script>
