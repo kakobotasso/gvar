@@ -3,7 +3,7 @@
 <!-- / TITLE -->
 
 <div class="cursos">
-	<h1>Informações do Aluno <br/> <%= @student.name %> </h1>
+	<h1>Aluno - <%= @student.name %> </h1>
 	
 	
 	<ul>
@@ -42,7 +42,10 @@
 			</p>
 		</li>
 	
-		<li><p><strong>Observações:</strong> <br/> <%= @student.notes %></p></li>
+		<li style='width:780px;'>
+			<strong>Observações:</strong> <br/> 
+			<%= @student.notes %>
+		</li>
 	</ul>
 	
 	<ul>

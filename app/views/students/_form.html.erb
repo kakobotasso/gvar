@@ -131,32 +131,32 @@
         <%= s.check_box :rg_delivered, :class => "uniform funcao" %>
         <span>RG</span>
       </label>
-      <br/>
+     
       <label>
         <%= s.check_box :cpf_delivered, :class => "uniform funcao" %>
         <span>CPF</span>
       </label>
-      <br/>
+     
       <label>
         <%= s.check_box :photo_delivered, :class => "uniform funcao" %>
         <span>Foto</span>
       </label>
-      <br/>
+    
       <label>
         <%= s.check_box :cv_delivered, :class => "uniform funcao" %>
         <span>Curriculum</span>
       </label>
-      <br/>
+     
       <label>
         <%= s.check_box :address_delivered, :class => "uniform funcao" %>
         <span>Comprovante de endereço</span>
       </label>
     </li>
 
-    <li>
+    <li class='textAreaDescricao'>
       <label>
         <span>Observações: </span><br/>
-        <%= s.text_area :notes, :class => "inputMedio input" %>
+        <%= s.text_area :notes, :class => "textarea" %>
       </label>
     </li>
 
