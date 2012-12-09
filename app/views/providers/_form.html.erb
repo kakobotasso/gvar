@@ -39,8 +39,8 @@
 
       <li>
         <label>
-          <span>Estado:</span><br/>
-          <%= a.text_field :country_id, :class => "inputMedio input" %>
+          <span>Bairro:</span><br/>
+          <%= a.text_field :neighborhood, :class => "inputMedio input" %>
         </label>
       </li>
 
@@ -48,6 +48,13 @@
         <label>
           <span>Cidade:</span><br/>
           <%= a.text_field :city, :class => "inputMedio input" %>
+        </label>
+      </li>
+
+      <li>
+        <label>
+          <span>Estado:</span><br/>
+          <%= a.select :country_id, state, { :prompt => 'Selecione um estado' }, :class => "inputMedio input" %>
         </label>
       </li>
     <% end %>
@@ -85,13 +92,13 @@
 
     <li>
       <label>
-        <span>Ativo:</span><br/>
-        <%= f.check_box :active, :class => "inputMedio input", :id => "active" %>
+        <span>Ativo:</span>
+        <%= f.check_box :active, :id => "active" %>
       </label>
     </li>
 
     <li id="btEnviarForm">
-      <%= f.submit "Salvar providere"%>
+      <%= f.submit "Salvar prestador"%>
       <%= link_to 'Voltar', providers_path, :id => "btVoltarForm" %>
     </li>
   </ul>
