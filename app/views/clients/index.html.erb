@@ -7,16 +7,23 @@
   <div id="guardaPesquisa">
     <%= form_for :filtro, :url => search_clients_path, :method => "GET" do |f| %>
       <ul>
-        <li class="noPaddingHomes">
+        <li class="noPaddingHomes hidePA">
+          <%= f.text_field :name, :class => "inputGde input", :id => 'name' %>
+        </li>
+		
+		  <li class="escondidoPesquisaAvancada">
           <label for="campoNome">Nome</label>
-          <%= f.text_field :rg, :class => "inputGde input", :id => 'name' %>
+          <%= f.text_field :name, :class => "inputGde input", :id => 'name' %>
         </li>
 
         <li class="escondidoPesquisaAvancada">
           <label for="campoNome">Estado</label>
-          <%= f.text_field :contry_id, :class => "inputPeq input", :id => 'country_id' %>
+          <%= f.text_field :contry_id, :class => "inputGde input", :id => 'country_id' %>
+		</li>
+
+        <li class="escondidoPesquisaAvancada">
           <label for="campoNome">Cidade</label>
-          <%= f.text_field :city, :class => "inputPeq input", :id => 'city' %>
+          <%= f.text_field :city, :class => "inputGde input", :id => 'city' %>
         </li>
 
         <li class="escondidoPesquisaAvancada">
@@ -65,7 +72,8 @@
     <h2>Últimos clientes</h2>
     <% @clients.each do |client| %>
       <p>
-        <span><%= client.name %></span>
+        <span><strong><%= client.name %></strong><br/>
+		<small><%= client.cpf %></small></span>
         <%= link_to 'Editar', edit_client_path(client), :class => 'btVoltarForm' %>
       </p>
     <% end %>
