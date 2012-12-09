@@ -8,16 +8,23 @@
   <div id="guardaPesquisa">
     <%= form_for :filtro, :url => search_providers_path, :method => "GET" do |f| %>
       <ul>
-        <li class="noPaddingHomes">
+        <li class="noPaddingHomes hidePA">
+          <%= f.text_field :name, :class => "inputGde input", :id => 'name' %>
+        </li>
+		
+		<li class="escondidoPesquisaAvancada">
           <label for="campoNome">Nome</label>
-          <%= f.text_field :rg, :class => "inputGde input", :id => 'name' %>
+          <%= f.text_field :name, :class => "inputGde input", :id => 'name' %>
         </li>
 
         <li class="escondidoPesquisaAvancada">
           <label for="campoNome">Estado</label>
-          <%= f.text_field :contry_id, :class => "inputPeq input", :id => 'country_id' %>
-          <label for="campoNome">Cidade</label>
-          <%= f.text_field :city, :class => "inputPeq input", :id => 'city' %>
+          <%= f.text_field :contry_id, :class => "inputGde input", :id => 'country_id' %>
+		</li>
+		
+		<li class="escondidoPesquisaAvancada">
+		  <label for="campoNome">Cidade</label>
+          <%= f.text_field :city, :class => "inputGde input", :id => 'city' %>
         </li>
 
         <li class="escondidoPesquisaAvancada">
@@ -31,13 +38,13 @@
         </li>
 
         <li class="escondidoPesquisaAvancada">
-          <label for="campoNome">Serviço:</label>
-          <%= f.select :service_id, Service.all.collect {|s| [s.name, s.id] }, { :include_blank => true }, :class => "select" %>
+          <label for="campoNome">Serviço:</label><br/>
+          <%= f.select :service_id, Service.all.collect {|s| [s.name, s.id] }, { :include_blank => true }, :class => "select selectGde" %>
         </li>
 
         <li class="escondidoPesquisaAvancada">
-          <label for="campoNome">Ativo:</label>
-          <%= f.select :active, [["Sim",true],["Não",false]], { :include_blank => true }, :class => "select" %>
+          <label for="campoNome">Ativo:</label><br/>
+          <%= f.select :active, [["Sim",true],["Não",false]], { :include_blank => true }, :class => "select selectGde" %>
         </li>
 
         <li class="liPesquisaAvancada">
@@ -53,7 +60,8 @@
     <h2>Últimos prestadores</h2>
     <% @providers.each do |provider| %>
       <p>
-        <span><%= provider.name %></span>
+        <span><strong><%= provider.name %></strong><br/>
+		<small><%= provider.cpf %></small></span>
         <%= link_to 'Editar', edit_provider_path(provider), :class => 'btVoltarForm' %>
       </p>
     <% end %>

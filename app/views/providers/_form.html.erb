@@ -7,6 +7,20 @@
         <%= f.text_field :name, :class => "inputMedio input", :id => "campoNome"%>
       </label>
     </li>
+	
+	<li>
+      <label>
+        <span>CPF:</span><br/>
+        <%= f.text_field :cpf, :class => "inputMedio input cpf" %>
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <span>RG:</span><br/>
+        <%= f.text_field :rg, :class => "inputMedio input rg" %>
+      </label>
+    </li>
 
     <%= f.fields_for :address do |a| %>
       <li>
@@ -59,21 +73,14 @@
       </li>
     <% end %>
 
-    <li>
+	<li style='width:950px; height:100%'>
       <label>
-        <span>CPF:</span><br/>
-        <%= f.text_field :cpf, :class => "inputMedio input cpf" %>
+        <span>Ativo:</span>
+        <%= f.check_box :active, :id => "active" %>
       </label>
     </li>
 
-    <li>
-      <label>
-        <span>RG:</span><br/>
-        <%= f.text_field :rg, :class => "inputMedio input rg" %>
-      </label>
-    </li>
-
-    <li>
+    <li style='width:950px; height:100%'>
       <span>Serviços prestados:</span><br/>
       <% @services.each do |service| %>
         <label>
@@ -83,19 +90,14 @@
       <% end %>
     </li>
 
-    <li>
+    <li class='textAreaDescricao'>
       <label>
         <span>Observações:</span><br/>
-        <%= f.text_area :observations, :class => "inputMedio input", :id => "observations" %>
+        <%= f.text_area :observations, :class => "textarea", :id => "observations" %>
       </label>
     </li>
 
-    <li>
-      <label>
-        <span>Ativo:</span>
-        <%= f.check_box :active, :id => "active" %>
-      </label>
-    </li>
+
 
     <li id="btEnviarForm">
       <%= f.submit "Salvar prestador"%>
