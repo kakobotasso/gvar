@@ -58,8 +58,8 @@
 	<% if @students.size > 0 %>
 		<% @students.each do |s|  %>
 		<p>
-			<span><%= s.name %></span>
-			<span><%= s.cpf %></span>
+			<span><strong><%= s.name %></strong><br/>
+			<small><%= s.cpf %></small></span>
 			<%= link_to 'Abrir', student_path(s), :class => 'btVoltarForm' %>
 		</p>
 		<% end %>
