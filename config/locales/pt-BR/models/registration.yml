@@ -4,7 +4,7 @@ pt-BR:
       registration: Inscrição
     attributes:
       registration:
-        team_id: ID Turma
-        student_id: ID Aluno
+        team_id: Turma
+        student_id: Aluno
         code: Código
         status: Status

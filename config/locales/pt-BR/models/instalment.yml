@@ -4,7 +4,7 @@ pt-BR:
       instalment: Parcela
     attributes:
       instalment:
-        release_id: ID Pagamento
+        release_id: Pagamento
         number: Número
         expiration_date: Data de Vencimento
         paid_at: Data de  Pagamento

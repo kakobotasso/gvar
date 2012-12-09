@@ -5,9 +5,9 @@ pt-BR:
     attributes:
       schedule:
         code: Código
-        service_id: ID Serviço
-        provider_id: ID Prestador
-        client_id: ID Cliente
+        service_id: Serviço
+        provider_id: Prestador
+        client_id: Cliente
         estimated_time: Tempo estimado
         number_days: Número de dias
         date: Data

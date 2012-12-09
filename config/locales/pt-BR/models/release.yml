@@ -6,7 +6,7 @@ pt-BR:
       release:
         code: Código
         name: Nome
-        category_id: ID Categoria
+        category_id: Categoria
         total_amount: Valor total
         number_instalments: Número de parcelas
         first_paid: Primeira paga

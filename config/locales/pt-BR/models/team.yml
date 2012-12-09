@@ -6,7 +6,7 @@ pt-BR:
       team:
         code: Código
         name: Nome
-        course_id: ID Curso
+        course_id: Curso
         season: Período
         limit: Limite de inscrições
         price: Preço
