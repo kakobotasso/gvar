@@ -1,9 +1,15 @@
 <% unless record.errors.empty? %>
-  <dl class="error-messages">
-    <dt><%= t("form.error_messages") %></dt>
+  <div id="error_explanation">
+    <h2>
+      <%= record.errors.count %>
+      <%= (record.errors.count == 1)? "erro proibe":"erros proibem" %>
+       esse <%= t("activerecord.models.#{record.class.to_s.downcase}") %> de ser salvo.
+    </h2>
 
-    <% record.errors.full_messages.each do |message| %>
-      <dd><%= message %></dd>
-    <% end %>
-  </dl>
+    <ul>
+      <% record.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
