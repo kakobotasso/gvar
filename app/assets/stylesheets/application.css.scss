@@ -149,6 +149,18 @@ iframe{
 }
 
 /* ADICIONADO POR MARA */
+<<<<<<< HEAD
+.cursos table.encontros{
+	background-color:#e7f3f9;
+}
+.cursos table.encontros th{
+	background-color:$cursos;
+}
+
+
+
+=======
+>>>>>>> 45c32aa1a51bb20511e35b0b183329b9e43fd7bb
 #contentInternas .cursos h1,
 #contentInternas .cursos h2{
 	color: $cursos;
@@ -577,7 +589,10 @@ margin:0px 10px;
     text-transform: capitalize;
 }
 
-#contentInternas .noPaddingHomes{ padding-bottom:5px; }
+#contentInternas .noPaddingHomes{
+	padding-bottom:5px;
+	height: 30px;
+}
 
 #contentInternas .liPesquisaAvancada{ padding-left:316px; }
 

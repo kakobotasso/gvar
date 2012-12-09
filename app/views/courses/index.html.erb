@@ -30,7 +30,7 @@
       <% @course.each do |c| %>
         <p>
           <!-- <span></span> -->
-          <span><%= c.name %> <br/> <small><%= c.code %> - <%= c.categoria %></small> </span>
+          <span><strong><%= c.name %> </strong><br/> <small><%= c.code %> - <%= c.categoria %></small> </span>
           <%= link_to 'Abrir', course_path(c), :class => 'btVoltarForm' %>
         </p>
       <% end %>

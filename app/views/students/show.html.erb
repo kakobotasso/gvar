@@ -2,49 +2,51 @@
 <% content_for :title do %> <%= @student.name %> - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
-<h1>Informações do Aluno <br/> <%= @student.name %> </h1>
-
-
-<ul>
-	<li><p><strong>Nome:</strong> <br/> <%= @student.name %></p></li>
-	<li><p><strong>CPF:</strong> <br/> <%= @student.cpf %></p></li>
-	<li><p><strong>RG:</strong> <br/> <%= @student.rg %></p></li>
-	<li><p><strong>Data de nascimento:</strong> <br/> <%= @student.birth_date %></p></li>
-	<li><p><strong>Profissão:</strong> <br/> <%= @student.occupation %></p></li>
-	<li><p><strong>Sexo:</strong> <br/> <%= @student.sexo %></p></li>
-	<li><p><strong>Escolaridade:</strong> <br/> <%= @student.schooling %></p></li>
-	<li><p><strong>Relação com idoso:</strong> <br/> <%= @student.relacao_idoso %></p></li>
-
-	<% @student.phones.each do |p| %>
-          <li>
-            <p>
-              <strong><%= p.type_phone %>:</strong><br/>
-              <%= p.number %>
-            </p>
-          </li>
-	<% end %>
-
-	<li><p><strong>Endereço:</strong> <br/> <%= "#{@student.address.address}, Nº #{@student.address.number} #{@student.address.complement}" %></p></li>
-	<li><p><strong>Bairro:</strong> <br/> <%= @student.address.neighborhood %></p></li>
-	<li><p><strong>Cidade:</strong> <br/> <%= "#{@student.address.city} - #{@student.estado}" %></p></li>
-	<li><p><strong>CEP:</strong> <br/> <%= @student.address.zipcode %></p></li>
-
-	<li>
-		<p>
-			<strong>Documentos Entregues:</strong> <br/>
-			<%= "RG" if @student.rg_delivered == true %>
-			<%= " / CPF" if @student.cpf_delivered == true %>
-			<%= " / Foto" if @student.photo_delivered == true %>
-			<%= " / CV " if @student.cv_delivered == true %>
-			<%= " / Comprovante de endereço" if @student.address_delivered == true %>
-			<%= "Nenhum" if @student.rg_delivered == false && @student.cpf_delivered == false && @student.photo_delivered == false && @student.cv_delivered == false && @student.address_delivered == false %>
-		</p>
-	</li>
-
-	<li><p><strong>Observações:</strong> <br/> <%= @student.notes %></p></li>
-</ul>
-
-<ul>
-	<li><%= link_to "Editar", edit_student_path, :class => "btEnviarForm" %></li>
-	<li><%= link_to "Voltar", students_path, :class => "btEnviarForm" %></li>
-</ul>
+<div class="cursos">
+	<h1>Informações do Aluno <br/> <%= @student.name %> </h1>
+	
+	
+	<ul>
+		<li><p><strong>Nome:</strong> <br/> <%= @student.name %></p></li>
+		<li><p><strong>CPF:</strong> <br/> <%= @student.cpf %></p></li>
+		<li><p><strong>RG:</strong> <br/> <%= @student.rg %></p></li>
+		<li><p><strong>Data de nascimento:</strong> <br/> <%= @student.birth_date %></p></li>
+		<li><p><strong>Profissão:</strong> <br/> <%= @student.occupation %></p></li>
+		<li><p><strong>Sexo:</strong> <br/> <%= @student.sexo %></p></li>
+		<li><p><strong>Escolaridade:</strong> <br/> <%= @student.schooling %></p></li>
+		<li><p><strong>Relação com idoso:</strong> <br/> <%= @student.relacao_idoso %></p></li>
+	
+		<% @student.phones.each do |p| %>
+			<li>
+				<p>
+				<strong><%= p.type_phone %>:</strong><br/>
+				<%= p.number %>
+				</p>
+			</li>
+		<% end %>
+	
+		<li><p><strong>Endereço:</strong> <br/> <%= "#{@student.address.address}, Nº #{@student.address.number} #{@student.address.complement}" %></p></li>
+		<li><p><strong>Bairro:</strong> <br/> <%= @student.address.neighborhood %></p></li>
+		<li><p><strong>Cidade:</strong> <br/> <%= "#{@student.address.city} - #{@student.estado}" %></p></li>
+		<li><p><strong>CEP:</strong> <br/> <%= @student.address.zipcode %></p></li>
+	
+		<li>
+			<p>
+				<strong>Documentos Entregues:</strong> <br/>
+				<%= "RG" if @student.rg_delivered == true %>
+				<%= " / CPF" if @student.cpf_delivered == true %>
+				<%= " / Foto" if @student.photo_delivered == true %>
+				<%= " / CV " if @student.cv_delivered == true %>
+				<%= " / Comprovante de endereço" if @student.address_delivered == true %>
+				<%= "Nenhum" if @student.rg_delivered == false && @student.cpf_delivered == false && @student.photo_delivered == false && @student.cv_delivered == false && @student.address_delivered == false %>
+			</p>
+		</li>
+	
+		<li><p><strong>Observações:</strong> <br/> <%= @student.notes %></p></li>
+	</ul>
+	
+	<ul>
+		<li><%= link_to "Editar", edit_student_path, :class => "btEnviarForm" %></li>
+		<li><%= link_to "Voltar", students_path, :class => "btEnviarForm" %></li>
+	</ul>
+</div>
