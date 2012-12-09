@@ -5,11 +5,11 @@
 	<h1>Interessado</h1>
 
 	<ul>
-		<li><strong><%= @interesteds.name %></strong></li>
-		<li><strong>E-mail:</strong> <%= @interesteds.email %></li>
-		<li><strong>Telefone:</strong> <%= @interesteds.phone %></li>
-		<li><strong>Situação:</strong> <%= @interesteds.real_situation %></li>
-		<li><strong>Interesses:</strong> <%= @interesteds.interest %></li>
+		<li><strong>Nome:</strong> <br/><%= @interesteds.name %></li>
+		<li><strong>E-mail:</strong> <br/><%= @interesteds.email %></li>
+		<li><strong>Telefone:</strong> <br/><%= @interesteds.phone %></li>
+		<li><strong>Situação:</strong> <br/><%= @interesteds.real_situation %></li>
+		<li class='descricao'><strong>Interesses:</strong> <br/><%= @interesteds.interest %></li>
 	</ul>
 
 	<ul>
@@ -19,7 +19,7 @@
 	<ul id="guardaHistoricoContatos">
 		<li>
 			<p class="historicoContatos">
-				<span>Histórico de Contatos</span>
+				<span><strong>Histórico de Contatos</strong></span>
 				<%= link_to "Novo", interested_history_path, :class => "btEnviarForm floatRight", :id => "btNovoHistoricoContato" %>
 			</p>
 		</li>

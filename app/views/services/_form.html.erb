@@ -31,15 +31,15 @@
 
     <li>
       <label>
-        <span>Inativo:</span><br/>
-        <%= f.check_box :inactive, :class => "inputMedio input", :id => "inactive" %>
+        <span>Inativo:
+        <%= f.check_box :inactive, :class => "input", :id => "inactive" %></span>
       </label>
     </li>
 
-    <li>
+     <li class='textAreaDescricao'>
       <label>
         <span>Descrição:</span><br/>
-        <%= f.text_area :description, :class => "inputMedio input", :id => "description" %>
+        <%= f.text_area :description, :class => "textarea", :id => "description" %>
       </label>
     </li>
 

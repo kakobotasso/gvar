@@ -2,7 +2,7 @@
 <% content_for :title do %> Novo histórico interessado - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 <div class="cursos">
-    <h1>Novo contato - <%= @interesteds.name %></h1>
+    <h1>Novo contato com <%= @interesteds.name %></h1>
 
     <%= form_for @interesteds, :url => interested_contact_save_path(@interesteds) do |w| %>
         <%= w.fields_for :interested_contacts do |i| %>
@@ -15,10 +15,10 @@
                         </label>
                     </li>
 
-                    <li>
+                    <li class='textAreaDescricao'>
                         <label>
-                            <span>Interesses: </span><br/>
-                            <%= i.text_area :description, :class => "inputMedio input" %>
+                            <span>Descrição: </span><br/>
+                            <%= i.text_area :description, :class => "textarea" %>
                         </label>
                     </li>
             <% end %>

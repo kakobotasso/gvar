@@ -6,7 +6,7 @@
   <h1>Turmas</h1>
 
   <div id="guardaPesquisa">
-    <%= form_for "/cursos" do |f| %>
+    <%= form_for "/turmas" do |f| %>
       <ul>
         <li class="escondidoPesquisaAvancada">
           <label for="campoCodigo">Turma:</label>
@@ -24,7 +24,7 @@
         </li>
 
         <li class="noPaddingHomes hidePA ">
-          <%= f.text_field :login, :class => "inputGde input", :id => 'campoBusca' %>
+          <%= f.text_field :nome, :class => "inputGde input", :id => 'campoBusca' %>
         </li>
 
         <li class="liPesquisaAvancada">

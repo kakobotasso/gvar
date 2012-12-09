@@ -18,8 +18,8 @@
           <%= f.text_field :code, :class => "inputGde input", :id => 'campoCodigo' %>
         </li>
 
-        <li class="escondidoPesquisaAvancada">
-          <label for="campoCodigo">Situação:</label>
+        <li class="escondidoPesquisaAvancada guardaSelect guardaSelectGde">
+          <label for="campoCodigo">Situação:</label><br/>
           <%= f.select :code, :value => @situation, :class => "select selectMedio", :id => 'campoCodigo' %>
         </li>
 
@@ -48,8 +48,8 @@
     <% if @interesteds.size > 0 %>
       <% @interesteds.each do |i|  %>
         <p>
-          <span><%= i.name %></span>
-          <span><%= i.email %></span>
+          <span><strong><%= i.name %></strong><br/>
+          <small><%= i.email %><small></span>
           <%= link_to 'Abrir', interested_path(i), :class => 'btVoltarForm' %>
         </p>
       <% end %>
