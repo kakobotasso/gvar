@@ -6,5 +6,8 @@ class CreateMeetings < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :meetings, :date
+    add_index :meetings, :team_id
+    add_index :meetings, :updated_at
   end
 end

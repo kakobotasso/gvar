@@ -7,5 +7,9 @@ class CreateActivities < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :activities, :timetable
+    add_index :activities, :meeting_id
+    add_index :activities, :updated_at
   end
 end

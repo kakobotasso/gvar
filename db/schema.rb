@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "activities", ["meeting_id"], :name => "index_activities_on_meeting_id"
+  add_index "activities", ["timetable"], :name => "index_activities_on_timetable"
+  add_index "activities", ["updated_at"], :name => "index_activities_on_updated_at"
+
   create_table "addresses", :force => true do |t|
     t.string   "address"
     t.integer  "number"
@@ -34,6 +38,11 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "updated_at",   :null => false
   end
 
+  add_index "addresses", ["address"], :name => "index_addresses_on_address"
+  add_index "addresses", ["country_id"], :name => "index_addresses_on_country_id"
+  add_index "addresses", ["person_id"], :name => "index_addresses_on_person_id"
+  add_index "addresses", ["updated_at"], :name => "index_addresses_on_updated_at"
+
   create_table "courses", :force => true do |t|
     t.string   "code"
     t.string   "name"
@@ -43,6 +52,10 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
+
+  add_index "courses", ["code"], :name => "index_courses_on_code"
+  add_index "courses", ["name"], :name => "index_courses_on_name"
+  add_index "courses", ["updated_at"], :name => "index_courses_on_updated_at"
 
   create_table "instalments", :force => true do |t|
     t.integer  "release_id"
@@ -57,6 +70,10 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "instalments", ["expiration_date"], :name => "index_instalments_on_expiration_date"
+  add_index "instalments", ["release_id"], :name => "index_instalments_on_release_id"
+  add_index "instalments", ["updated_at"], :name => "index_instalments_on_updated_at"
+
   create_table "interested_contacts", :force => true do |t|
     t.string   "date"
     t.text     "description"
@@ -64,6 +81,10 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "interested_contacts", ["date"], :name => "index_interested_contacts_on_date"
+  add_index "interested_contacts", ["interested_id"], :name => "index_interested_contacts_on_interested_id"
+  add_index "interested_contacts", ["updated_at"], :name => "index_interested_contacts_on_updated_at"
 
   create_table "interesteds", :force => true do |t|
     t.string   "name"
@@ -75,12 +96,20 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "interesteds", ["email"], :name => "index_interesteds_on_email"
+  add_index "interesteds", ["name"], :name => "index_interesteds_on_name"
+  add_index "interesteds", ["updated_at"], :name => "index_interesteds_on_updated_at"
+
   create_table "meetings", :force => true do |t|
     t.date     "date"
     t.integer  "team_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "meetings", ["date"], :name => "index_meetings_on_date"
+  add_index "meetings", ["team_id"], :name => "index_meetings_on_team_id"
+  add_index "meetings", ["updated_at"], :name => "index_meetings_on_updated_at"
 
   create_table "people", :force => true do |t|
     t.string   "name"
@@ -104,6 +133,13 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "updated_at",                              :null => false
   end
 
+  add_index "people", ["birth_date"], :name => "index_people_on_birth_date"
+  add_index "people", ["cpf"], :name => "index_people_on_cpf"
+  add_index "people", ["name"], :name => "index_people_on_name"
+  add_index "people", ["rg"], :name => "index_people_on_rg"
+  add_index "people", ["type"], :name => "index_people_on_type"
+  add_index "people", ["updated_at"], :name => "index_people_on_updated_at"
+
   create_table "phones", :force => true do |t|
     t.integer  "type_number"
     t.string   "number"
@@ -111,6 +147,10 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "phones", ["number"], :name => "index_phones_on_number"
+  add_index "phones", ["person_id"], :name => "index_phones_on_person_id"
+  add_index "phones", ["updated_at"], :name => "index_phones_on_updated_at"
 
   create_table "providers_services", :id => false, :force => true do |t|
     t.integer "provider_id"
@@ -127,6 +167,12 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "updated_at",                :null => false
   end
 
+  add_index "registrations", ["code"], :name => "index_registrations_on_code"
+  add_index "registrations", ["release_id"], :name => "index_registrations_on_release_id"
+  add_index "registrations", ["student_id"], :name => "index_registrations_on_student_id"
+  add_index "registrations", ["team_id"], :name => "index_registrations_on_team_id"
+  add_index "registrations", ["updated_at"], :name => "index_registrations_on_updated_at"
+
   create_table "releases", :force => true do |t|
     t.string   "code"
     t.string   "name"
@@ -141,9 +187,15 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "updated_at",         :null => false
   end
 
+  add_index "releases", ["code"], :name => "index_releases_on_code"
+  add_index "releases", ["type"], :name => "index_releases_on_type"
+  add_index "releases", ["updated_at"], :name => "index_releases_on_updated_at"
+
   create_table "roles", :force => true do |t|
     t.string "name"
   end
+
+  add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
@@ -164,6 +216,14 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "updated_at",     :null => false
   end
 
+  add_index "schedules", ["client_id"], :name => "index_schedules_on_client_id"
+  add_index "schedules", ["code"], :name => "index_schedules_on_code"
+  add_index "schedules", ["date"], :name => "index_schedules_on_date"
+  add_index "schedules", ["provider_id"], :name => "index_schedules_on_provider_id"
+  add_index "schedules", ["release_id"], :name => "index_schedules_on_release_id"
+  add_index "schedules", ["service_id"], :name => "index_schedules_on_service_id"
+  add_index "schedules", ["updated_at"], :name => "index_schedules_on_updated_at"
+
   create_table "services", :force => true do |t|
     t.string   "name"
     t.integer  "number_days"
@@ -174,6 +234,9 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
+
+  add_index "services", ["name"], :name => "index_services_on_name"
+  add_index "services", ["updated_at"], :name => "index_services_on_updated_at"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -200,6 +263,11 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "updated_at",   :null => false
   end
 
+  add_index "teams", ["code"], :name => "index_teams_on_code"
+  add_index "teams", ["course_id"], :name => "index_teams_on_course_id"
+  add_index "teams", ["season"], :name => "index_teams_on_season"
+  add_index "teams", ["updated_at"], :name => "index_teams_on_updated_at"
+
   create_table "users", :force => true do |t|
     t.string   "login"
     t.string   "password_hash"
@@ -209,5 +277,9 @@ ActiveRecord::Schema.define(:version => 20121204013149) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["login"], :name => "index_users_on_login"
+  add_index "users", ["updated_at"], :name => "index_users_on_updated_at"
 
 end

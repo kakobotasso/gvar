@@ -7,5 +7,9 @@ class CreateInterestedContacts < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :interested_contacts, :date
+    add_index :interested_contacts, :interested_id
+    add_index :interested_contacts, :updated_at
   end
 end

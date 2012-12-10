@@ -10,5 +10,7 @@ class CreateServices < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :services, :name
+    add_index :services, :updated_at
   end
 end

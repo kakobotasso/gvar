@@ -12,5 +12,10 @@ class CreateAddresses < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :addresses, :person_id
+    add_index :addresses, :address
+    add_index :addresses, :country_id
+    add_index :addresses, :updated_at
   end
 end

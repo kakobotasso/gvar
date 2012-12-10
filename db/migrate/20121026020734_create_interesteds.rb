@@ -9,5 +9,9 @@ class CreateInteresteds < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :interesteds, :name
+    add_index :interesteds, :email
+    add_index :interesteds, :updated_at
   end
 end

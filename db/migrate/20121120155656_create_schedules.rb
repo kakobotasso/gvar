@@ -13,5 +13,13 @@ class CreateSchedules < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :schedules, :code
+    add_index :schedules, :service_id
+    add_index :schedules, :provider_id
+    add_index :schedules, :client_id
+    add_index :schedules, :release_id
+    add_index :schedules, :date
+    add_index :schedules, :updated_at
   end
 end

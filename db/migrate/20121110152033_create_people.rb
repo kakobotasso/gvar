@@ -21,5 +21,11 @@ class CreatePeople < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :people, :name
+    add_index :people, :cpf
+    add_index :people, :rg
+    add_index :people, :type
+    add_index :people, :birth_date
+    add_index :people, :updated_at
   end
 end

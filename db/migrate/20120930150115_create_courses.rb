@@ -9,5 +9,8 @@ class CreateCourses < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :courses, :code
+    add_index :courses, :name
+    add_index :courses, :updated_at
   end
 end

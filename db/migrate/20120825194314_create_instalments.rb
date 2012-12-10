@@ -12,6 +12,10 @@ class CreateInstalments < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :instalments, :release_id
+    add_index :instalments, :expiration_date
+    add_index :instalments, :updated_at
   end
 
   def down

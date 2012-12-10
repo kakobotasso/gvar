@@ -3,6 +3,7 @@ class CreateRoles < ActiveRecord::Migration
     create_table :roles do |t|
       t.string :name
     end
+    add_index :roles, :name
   end
 
   def down

@@ -13,6 +13,10 @@ class CreateReleases < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :releases, :code
+    add_index :releases, :type
+    add_index :releases, :updated_at
   end
 
   def down

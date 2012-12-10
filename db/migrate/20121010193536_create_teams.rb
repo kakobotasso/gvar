@@ -14,5 +14,10 @@ class CreateTeams < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :teams, :code
+    add_index :teams, :course_id
+    add_index :teams, :season
+    add_index :teams, :updated_at
   end
 end
