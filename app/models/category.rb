@@ -25,6 +25,10 @@ module Category
       ["Palestra"         , 1],
       ["Workshop"     , 2]
     ]
+    STATUS = [
+      ["Gerada com sucesso", 0],
+      ["Cancelada", 1]
+    ]
   end
 
   module Seasons

@@ -177,7 +177,7 @@ end
     :limit => rand(20),
     :price => rand(5)*50,
     :class_length => rand(20),
-    :workload => "rand(8) horas",
+    :workload => "#{rand(8)} horas",
     :status => 0,
     :note => "Observações para a turma de #{n}"
   )

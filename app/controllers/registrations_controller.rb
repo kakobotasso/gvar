@@ -14,7 +14,7 @@ class RegistrationsController < ApplicationController
   end
 
   def show
-    @registration = Registration.find(params[:id])
+    @inscricao = Registration.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -22,11 +22,8 @@ class RegistrationsController < ApplicationController
     end
   end
 
-  def new
-  end
-
   def edit
-    @registration = Registration.find(params[:id])
+    @inscricao = Registration.find(params[:id])
   end
 
   def create
@@ -34,9 +31,10 @@ class RegistrationsController < ApplicationController
 
     respond_to do |format|
       if @registration.valid?
+         @registration.code = "I#{Time.now.strftime('%y%m%d%H%M%S')}"
         session[:object] = @registration
 
-        format.html { redirect_to registration_path }
+        format.html { redirect_to new_receipt_path }
         format.json { render json: @registration, status: :created, location: @registration }
       else
         format.html { render action: "new" }
@@ -73,8 +71,15 @@ class RegistrationsController < ApplicationController
     @alunos = Student.where("name LIKE :search or CPF LIKE :search", :search => "%#{params[:filtro][:name_or_cpf]}%" )
   end
 
+  def choose_student
+  end
+
   def choose_team
     @inscricao = Registration.new
     @inscricao.student = Student.find(params[:id])
+  end
+
+  def confirm
+    @inscricao = Registration.new(params[:registration])
   end
 end

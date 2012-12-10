@@ -9,8 +9,8 @@
 	   <li class='codigo'>
         <label>
           <span>Codigo: </span>
-          <%= hidden_field_tag :code, @object.code %>			
-		  <%= r.text_field :code, :value => @object.code || r.object.code, :class => "inputMedio input",:disabled => true %>
+          <%= r.hidden_field :code, :value => @object.code %>
+	  <%= r.text_field :code, :value => @object.code || r.object.code, :class => "inputMedio input",:disabled => true %>
         </label>
       </li>
 
@@ -25,7 +25,7 @@
       <li>
         <label>
           <span>Valor total:</span><br/>
-          <%= r.text_field :total_amount, :class => "inputMedio input", :id => "valorTotal" %>
+          <%= r.text_field :total_amount, :class => "inputMedio input", :id => "valorTotal", :value => @object.value.to_s.gsub(".",",") %>
         </label>
       </li>
 

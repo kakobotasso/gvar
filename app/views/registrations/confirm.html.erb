@@ -1,0 +1,12 @@
+<%= render "registrations/student", :student => @inscricao.student %><br/>
+<%= render "registrations/team", :team => @inscricao.team %><br/>
+
+<%= form_for @inscricao do |i| %>
+  <%= i.hidden_field :student_id, :value => i.object.student_id %>
+  <%= i.hidden_field :team_id,    :value => i.object.team_id %>
+
+    <li class="btEnviarForm">
+      <%= i.submit "Concluir e gerar parcelas" %>
+    </li>
+  </ul>
+<% end %>

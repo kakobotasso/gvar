@@ -18,25 +18,25 @@
       </ul>
     <% end %>
 
-  <%= link_to "Nova inscrição", new_registration_path, class: "btEnviarForm" %>
+  <%= link_to "Nova inscrição", choose_student_path, class: "btEnviarForm" %>
 
   </div>
 
   <div id="guardaAtividadesRecentes">
     <h2>Ultimas inscrições</h2>
     <% if @registration.size > 0 %>
-      
+
       <% @registration.each do |c| %>
         <p>
-          <!-- <span><%#= c.code %></span> -->
-          <span><%#= c.name %></span>
-          <span><%#= c.categoria %></span>
-          <%#= link_to 'Abrir', courses_edit_path(c), :class => 'btVoltarForm' %>
+          <span><%= c.code %></span>
+          <span><%= c.student.name %></span>
+          <span><%= c.team.name %></span>
+          <%= link_to 'Visualizar', registration_path(c), :class => 'btVoltarForm' %>
         </p>
       <% end %>
 
     <% else %>
-      <p><span>Nenhum curso cadastrado</span></p>
+      <p><span>Nenhuma inscrição realizada.</span></p>
     <% end %>
   </div>
 
@@ -47,17 +47,17 @@
       <table cellspadding="0" cellspacing="0" width="100%">
         <tr border="0">
           <th width="25%"><span>Código</span></th>
-          <th width="25%"><span>Nome do curso</span></th>
-          <th width="25%"><span>Tipo</span></th>
-          <th width="25%"><span>Turmas em andamento</span></th>
+          <th width="25%"><span>Turma</span></th>
+          <th width="25%"><span>Aluno</span></th>
+          <th width="25%"><span>Status</span></th>
         </tr>
 
         <% @registration.each do |c| %>
-          <tr border="0">
-              <td width="25%"><span><%#= c.code %></span></td>
-              <td width="25%"><span><%#= c.name %></span></td>
-              <td width="25%"><span><%#= c.categoria %></span></td>
-              <td width="25%"><span><%#= c.turma_andamento %></span></td>
+          <tr border="0" onclick="location.href = '<%= registration_path(c) %>'">
+              <td width="25%"><span><%= c.code %></span></td>
+              <td width="25%"><span><%= c.team.name %></span></td>
+              <td width="25%"><span><%= c.student.name %></span></td>
+              <td width="25%"><span><%= c.status_current %></span></td>
           </tr>
         <% end %>
 

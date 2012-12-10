@@ -1,0 +1,16 @@
+<b>Informações do Aluno</b><hr/>
+Nome: <%= student.name %><br/>
+CPF: <%= student.cpf %><br/>
+RG: <%= student.rg %><br/>
+Data de Nascimento: <%= student.birth_date %><br/>
+Sexo: <%= student.sexo %><br/>
+Relação com Idoso: <%= student.relacao_idoso %><br/>
+<% student.phones.each do |phone| %>
+  <%= "#{phone.type_phone}: #{phone.number}"%><br/>
+<% end %>
+Documentos Entregues:
+RG             <%= image_tag (student.rg_delivered)?      "ok.png":"no.png" %>
+CPF            <%= image_tag (student.cpf_delivered)?     "ok.png":"no.png" %>
+FOTO           <%= image_tag (student.photo_delivered)?   "ok.png":"no.png" %>
+Currículo      <%= image_tag (student.cv_delivered)?      "ok.png":"no.png" %>
+Comp. Endereço <%= image_tag (student.address_delivered)? "ok.png":"no.png" %>

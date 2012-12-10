@@ -11,6 +11,7 @@ class ReceiptFactory
     @struct.name        = object.client.name
     @struct.cpf         = object.client.cpf
     @struct.description = object.observations
+    @struct.value       = object.service.default_value
 
     @struct
   end
@@ -20,6 +21,7 @@ class ReceiptFactory
     @struct.name        = object.student.name
     @struct.cpf         = object.student.cpf
     @struct.description = object.team.note
+    @struct.value       = object.team.price
 
     @struct
   end

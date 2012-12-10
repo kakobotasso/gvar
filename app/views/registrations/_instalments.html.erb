@@ -1,0 +1,18 @@
+<b>Parcelas</b><hr/>
+<table cellspadding="0" cellspacing="0" width="100%">
+  <tr>
+    <th><span>Nº</span></th>
+    <th><span>Valor</span></th>
+    <th><span>Vencimento</span></th>
+    <th><span>Situacao</span></th>
+  </tr>
+
+  <% release.instalments.each do |i| %>
+    <tr>
+      <td><%= i.number %></td>
+      <td><%= number_to_currency i.amount %></td>
+      <td><%= date_to_view i.expiration_date %></td>
+      <td><%= i.status %></td>
+    </tr>
+  <% end %>
+</table>
