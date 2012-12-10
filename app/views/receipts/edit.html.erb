@@ -64,21 +64,19 @@
                 </td>
 
                 <td>
-                  <span><%= i.text_field :amount, :value => number_with_precision(i.object.amount), :class => 'inputPeq input' %>
-				  </span>
+                  <span><%= i.text_field :amount, :value => number_with_precision(i.object.amount), :class => 'inputPeq input' %></span>
                 </td>
 
                 <td>
-                  <span><%= i.text_field :expiration_date, :value => date_to_view(i.object.expiration_date), :class => "inputPeq input data" %></span>
+                  <span><%= i.date_select :expiration_date, {}, {:class => 'select'} %></span>
                 </td>
 
                 <td>
-                  <span>
-				  <%= i.date_select :paid_at, {:include_blank => true}, {:class => 'select'} %></span>
+                  <span><%= i.date_select :paid_at, {:include_blank => true}, {:class => 'select'} %></span>
                 </td>
 
                 <td>
-                  <span><%= i.text_field :amount_paid, :value => number_with_precision(i.object.amount_paid), :class => "inputPeq input" %></span>
+                  <span><%= i.text_field :amount_paid, :class => "inputPeq input" %></span>
                 </td>
 
                 <td>
