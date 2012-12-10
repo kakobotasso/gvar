@@ -2,15 +2,15 @@
 <% content_for :title do %> Editar Lançamento - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 <div class="financeiro">
-  <h1>Editar Lançamento</h1>
+  <h1>Editar Recebimento - <%= @release.code %></h1>
 
   <%= form_for @release, :url => release_path do |r| %>
     <ul>
-     <li class='codigo'>
+      <li class='codigo'>
         <label>
           <span>Codigo: </span>
-          <%= hidden_field_tag "release[code]", @release_code %>
-		  <%= r.text_field :code, :value => @release_code || r.object.code, :class => "inputMedio input",:disabled => true %>
+          <%= r.hidden_field :id, :value => @release.id %>
+          <%= r.text_field :code, :value => @release.code , :class => "inputMedio input",:disabled => true %>
         </label>
       </li>
 
@@ -47,52 +47,52 @@
       <li style='display:table'>
         <div id="guardaResultadoPesquisa" class="parcelas">
           <table cellspadding="0" cellspacing="0" cellpadding='0' width="100%" id="guardaParcelasGeradas">
-			<tr>
-				<th width="3%"><span>No</span></th>
-				<th width="25%"><span>Valor Parcela (R$)</span></th>
-				<th width="20%"><span>Data de Venc.</span></th>
-				<th width="20%"><span>Data de  Pgto</span></th>
-				<th width="20%"><span>Valor Pago (R$)</span></th>
-				<th width="10%"><span>Forma de Pgto</span></th>
-				<th width="15%"><span>Status</span></th>
-			</tr>
+            <tr>
+              <th width="3%"><span>No</span></th>
+              <th width="25%"><span>Valor Parcela (R$)</span></th>
+              <th width="20%"><span>Data de Venc.</span></th>
+              <th width="20%"><span>Data de  Pgto</span></th>
+              <th width="20%"><span>Valor Pago (R$)</span></th>
+              <th width="10%"><span>Forma de Pgto</span></th>
+              <th width="15%"><span>Status</span></th>
+            </tr>
 
-              <%= r.fields_for :instalments do |i| %>
-                <tr>
-                  <td>
-                    <span><%= i.object.number_instalment %></span>
-                  </td>
+            <%= r.fields_for :instalments do |i| %>
+              <tr>
+                <td>
+                  <span><%= i.object.number_instalment %></span>
+                </td>
 
-                  <td>
-                    <span><%= i.text_field :amount, :value => number_with_precision(i.object.amount), :class => 'inputPeq input' %></span>
-                  </td>
+                <td>
+                  <span><%= i.text_field :amount, :value => number_with_precision(i.object.amount), :class => 'inputPeq input' %></span>
+                </td>
 
-                 <td>
-					<span><%= i.text_field :expiration_date, {:class => 'inputPeq input data' } %></span>
-					</td>
+                <td>
+                  <span><%= i.date_select :expiration_date, {}, {:class => 'select'} %></span>
+                </td>
 
-					<td>
-					<span><%= i.text_field :paid_at, {:class => 'inputPeq input data'} %></span>
-					</td>
+                <td>
+                  <span><%= i.date_select :paid_at, {:include_blank => true}, {:class => 'select'} %></span>
+                </td>
 
-					<td>
-					<span><%= i.text_field :amount_paid, :class => "inputPeq input" %></span>
-					</td>
+                <td>
+                  <span><%= i.text_field :amount_paid, :class => "inputPeq input" %></span>
+                </td>
 
-					<td>
-					<span><%= i.select :payment_id, payments, {}, :class => 'select' %></span>
-					</td>
+                <td>
+                  <span><%= i.select :payment_id, payments, {}, :class => 'select' %></span>
+                </td>
 
-					<td>
-					<span><%= i.select :status_id, status, {}, :class => 'select' %></span>
-					</td>
-                </tr>
-              <% end %>
+                <td>
+                  <span><%= i.select :status_id, status, {}, :class => 'select' %></span>
+                </td>
+              </tr>
+            <% end %>
           </table>
         </div>
       </li>
 
-       <li class='textAreaDescricao'>
+      <li class='textAreaDescricao'>
         <label>
           <span>Descricao</span><br/>
           <%= r.text_area :description, :class => 'textarea' %><br />

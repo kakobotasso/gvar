@@ -25,7 +25,7 @@
       <li>
         <label>
           <span>Valor total:</span><br/>
-          <%= r.text_field :total_amount, :class => "inputMedio input", :id => "valorTotal", :value => @object.value.to_s.gsub(".",",") %>
+          <%= r.text_field :total_amount, :class => "inputMedio input", :id => "valorTotal", :value => number_with_precision(@object.value) %>
         </label>
       </li>
 

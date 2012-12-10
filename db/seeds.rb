@@ -128,7 +128,7 @@ end
     :rg           => "#{rand(100_000_000)}",
     :observations => "Observacao para #{s}",
     :sex          => 0,
-    :birth_date   => "Porra Kako, String???",
+    :birth_date   => "21/08/1985",
     :occupation   => "Dev",
     :relationship_elderly => 0,
     :schooling    => "Analfabeto",

@@ -3,7 +3,7 @@
 <!-- / TITLE -->
 
 <div class="financeiro">
-  <h1>Editar Lançamento</h1>
+  <h1>Editar Pagamento - <%= @release.code %></h1>
 
   <%= form_for @release, :url => release_path(@release) do |r| %>
     <ul>
@@ -78,11 +78,11 @@
                   </td>
 
                   <td width="14%">
-                    <span><%= i.date_select :expiration_date, {:order =>[:day, :month, :year]}, {:class => 'select'} %></span>
+                    <span><%= i.date_select :expiration_date, {}, {:class => 'select'} %></span>
                   </td>
 
                   <td width="14%">
-                    <span><%= i.date_select :paid_at, {:order =>[:day, :month, :year], :include_blank => true}, {:class => 'select'} %></span>
+                    <span><%= i.date_select :paid_at, {:include_blank => true}, {:class => 'select'} %></span>
                   </td>
 
                   <td width="14%">
@@ -102,7 +102,7 @@
         </div>
       </li>
 
-      <li>
+      <li class="textAreaDescricao">
         <label>
           <span>Descricao</span><br/>
           <%= r.text_area :description, :class => 'textarea textareaGde' %><br />

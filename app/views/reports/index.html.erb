@@ -2,9 +2,50 @@
 <%= form_for 'report', :url => report_path do |r| %>
   <ul>
     <li>
-      <span>Valor Venda</span>:
-      <%= r.text_field :min_value, :class => "inputMedio input"%> até
-      <%= r.text_field :max_value, :class => "inputMedio input" %>
+      <div class="floatLeft">Lançamentos:</div>
+      <% Status::FINANCIAL.each do |status| %>
+        <div class="floatLeft">
+          <label><%= check_box :release, :status,{}, status.last %> <%= status.first%></label>
+        </div>
+      <% end %>
+    </li>
+    <li>
+      <div class="floatLeft">Tipo de Relatório:</div>
+      <div class="floatLeft">
+        <label><%= radio_button :release, :type, "Payment" %>Pagamentos</label>
+        <label><%= radio_button :release, :type, "Receipt" %>Recebimentos</label>
+        <label><%= radio_button :release, :type, "All" %>Recebimentos X Pagamentos</label>
+      </div>
+    </li>
+    <li>
+      <div class="floatLeft">Valor Venda:</div>
+      <div class="floatLeft"><%= r.text_field :min_value, :class => "inputPeq input"%></div>
+      <div class="floatLeft">até</div>
+      <div class="floatLeft"><%= r.text_field :max_value, :class => "inputPeq input" %></div>
+    </li>
+    <li>
+      <div class="floatLeft">Data da Venda:</div>
+      <div class="floatLeft"><%= r.text_field :min_date_sale, :class => "inputPeq input data"%></div>
+      <div class="floatLeft">até</div>
+      <div class="floatLeft"><%= r.text_field :max_date_sale, :class => "inputPeq input data" %></div>
+    </li>
+    <li>
+      <div class="floatLeft">Data do Vencimento :</div>
+      <div class="floatLeft"><%= r.text_field :min_expiration_date, :class => "inputPeq input data"%></div>
+      <div class="floatLeft">até</div>
+      <div class="floatLeft"><%= r.text_field :max_expiration_date, :class => "inputPeq input data" %></div>
+    </li>
+    <li>
+      <div class="floatLeft">Data do Pagamento:</div>
+      <div class="floatLeft"><%= r.text_field :min_payment_date, :class => "inputPeq input data"%></div>
+      <div class="floatLeft">até</div>
+      <div class="floatLeft"><%= r.text_field :max_payment_date, :class => "inputPeq input data" %></div>
+    </li>
+    <li>
+      <div class="floatLeft">Valor do Pagamento:</div>
+      <div class="floatLeft"><%= r.text_field :min_payment_value, :class => "inputPeq input"%></div>
+      <div class="floatLeft">até</div>
+      <div class="floatLeft"><%= r.text_field :max_payment_value, :class => "inputPeq input" %></div>
     </li>
   </ul>
 <% end %>

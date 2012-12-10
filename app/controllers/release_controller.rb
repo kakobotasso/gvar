@@ -31,8 +31,11 @@ class ReleaseController < ApplicationController
   def update
     @release = Release.find(params[:id])
 
+    @params = params[:payment] || params[:receipt]
+
+    require "pry"; binding.pry
     respond_to do |format|
-      if @release.update_attributes(params[:release])
+      if @release.update_attributes(@params)
         format.html { redirect_to path_of_release(@release), notice: "Lançamento: #{@release.code} foi atualizado com sucesso!" }
         format.json { head :no_content }
       else
