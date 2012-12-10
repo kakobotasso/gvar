@@ -20,7 +20,7 @@ User.create!(
 )
 
 code = 1210021000
-(1..50).each do |n|
+(1..20).each do |n|
   temp = (rand(10)+1)
   r = Payment.new do |r|
     r.code = "P#{code}"
@@ -51,14 +51,14 @@ end
   "Workshop sobre Alzheimer",
   "Treinamento de primeiros socorros",
   "Palestras sobre cuidados com idosos"
-].each do |n|
+].each do |o|
   Service.create!(
-    :name           => n,
+    :name           => o,
     :number_days    => rand(10),
     :estimated_time => "#{rand(10)}horas",
     :default_value  => rand(1000),
     :inactive       => false,
-    :description    => "Descricao numero #{n}"
+    :description    => "Descricao numero #{o}"
   )
 end
 
@@ -69,12 +69,12 @@ end
   "Guilherme Rspec",
   "Gustavo Java",
   "John Doe"
-].each do |n|
+].each do |p|
   Provider.create!(
-    :name               => n,
+    :name               => p,
     :cpf                => "#{rand(10)}",
     :rg                 => "#{rand(10)}",
-    :observations       => "Observações para #{n}",
+    :observations       => "Observações para #{p}",
     :active             => true,
     :address_attributes => {
       :address      => "Rua Aindatestando",
@@ -82,8 +82,8 @@ end
       :complement   => "casa #{rand(10)}",
       :zipcode      => rand(100_000_000),
       :country_id   => rand(20),
-      :city         => "Cidade do #{n}",
-      :neighborhood => "Bairro do #{n}"
+      :city         => "Cidade do #{p}",
+      :neighborhood => "Bairro do #{p}"
     }
   )
 end
@@ -96,20 +96,20 @@ end
   "Arthur Pablo",
   "Rafael Silva",
   "Kako Test"
-].each do |n|
+].each do |c|
   Client.create!(
-    :name               => n,
+    :name               => c,
     :cpf                => "#{rand(100_000_000)}",
     :rg                 => "#{rand(100_000_000)}",
-    :observations       => "Observacao para #{n}",
+    :observations       => "Observacao para #{c}",
     :address_attributes => {
       :address      => "Rua Paratestar",
       :number       => rand(1000),
       :complement   => "casa #{rand(10)}",
       :zipcode      => rand(100_000_000),
       :country_id   => rand(20),
-      :city         => "Cidade do #{n}",
-      :neighborhood => "Bairro do #{n}"
+      :city         => "Cidade do #{c}",
+      :neighborhood => "Bairro do #{c}"
     }
   )
 end
@@ -121,12 +121,12 @@ end
   "Vanci Ibrahin",
   "Isis Simoni",
   "Mary Faliti"
-].each do |n|
+].each do |s|
   Student.create!(
-    :name         => n,
+    :name         => s,
     :cpf          => "#{rand(100_000_000)}",
     :rg           => "#{rand(100_000_000)}",
-    :observations => "Observacao para #{n}",
+    :observations => "Observacao para #{s}",
     :sex          => 0,
     :birth_date   => "Porra Kako, String???",
     :occupation   => "Dev",
@@ -138,8 +138,8 @@ end
       :complement   => "casa #{rand(10)}",
       :zipcode      => rand(100_000_000),
       :country_id   => rand(20),
-      :city         => "Cidade do #{n}",
-      :neighborhood => "Bairro do #{n}"
+      :city         => "Cidade do #{s}",
+      :neighborhood => "Bairro do #{s}"
     }
   )
 end
@@ -150,12 +150,12 @@ end
   "Cuidadores Modulo II",
   "Massagem Terapeutica",
   "Primeiros Socorros"
-].each do |n|
+].each do |u|
   Course.create!(
     :code        => "C12112406#{rand(1000)}",
-    :name        => n,
+    :name        => u,
     :course_type => rand(3),
-    :description => "Descrição para o curso de #{n}",
+    :description => "Descrição para o curso de #{u}",
     :active      => true
   )
 end
@@ -168,10 +168,10 @@ end
   "Janeiro Sabado - 8 horas",
   "Janeiro Ter/Qui - Tarde",
   "Nobembro Seg/Qua/Sex - Noite",
-].each do |n|
+].each do |v|
   Team.create!(
     :code        => "T12112406#{rand(1000)}",
-    :name        => n,
+    :name        => v,
     :course_id => rand(5)+1,
     :season => rand(3),
     :limit => rand(20),
@@ -179,28 +179,19 @@ end
     :class_length => rand(20),
     :workload => "#{rand(8)} horas",
     :status => 0,
-    :note => "Observações para a turma de #{n}"
+    :note => "Observações para a turma de #{v}"
   )
 end
 
-(1..5).each do |n|
-  Registration.create!(
-    :code => "R12120114390#{n}",
-    :team_id => n,
-    :student_id => (n + 10),
-    :status => 0
-  )
-end
-
-(1..5).each do |n|
+(1..5).each do |z|
   Schedule.create!(
-    :code => "S12120114390#{n}",
-    :service_id => n,
-    :provider_id => n,
-    :client_id => (n + 5),
-    :estimated_time => "#{n}horas",
-    :number_days => n,
+    :code => "S12120114390#{z}",
+    :service_id => z,
+    :provider_id => z,
+    :client_id => (z),
+    :estimated_time => "#{z}horas",
+    :number_days => z,
     :date => Date.today,
-    :observations => "qualquer observacao - #{n}"
+    :observations => "qualquer observacao - #{z}"
   )
 end

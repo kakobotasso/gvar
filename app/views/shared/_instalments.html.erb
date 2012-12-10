@@ -12,7 +12,7 @@
   </tr>
 
   <% instalments.each do |i| %>
-    <tr onclick="location.href ='<%= edit_payment_path(i.release) %>';">
+    <tr onclick="location.href ='<%= InstalmentPresenter.edit_path_of_release(i.release) %>';">
       <td width="14%"><span><%= i.code %></span></td>
       <td width="4%"><span><%= i.number_instalment %></span></td>
       <td width="14%"><span><%= i.name %></span></td>
