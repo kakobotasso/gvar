@@ -19,17 +19,17 @@
         </li>
 
         <li class="escondidoPesquisaAvancada">
-          <label for="campoCategoria">Categoria</label>
+          <label for="campoCategoria">Categoria</label><br/>
           <%= f.select :category_id, categories, {:include_blank => true}, :class => 'select selectGde', :id => 'campoCategoria' %>
         </li>
 
         <li class="escondidoPesquisaAvancada">
-          <label for="campoCategoria">Status</label>
+          <label for="campoCategoria">Status</label><br/>
           <%= f.select :status_id, status, {:include_blank => true}, :class => 'select selectGde', :id => 'campoCategoria' %>
         </li>
 
         <li class="escondidoPesquisaAvancada">
-          <label for="campoCategoria">Forma de pagamento</label>
+          <label for="campoCategoria">Forma de pagamento</label><br/>
           <%= f.select :payment_id, payments, {:include_blank => true}, :class => 'select selectGde', :id => 'campoCategoria' %>
         </li>
 
@@ -40,17 +40,16 @@
           <%= f.text_field :amount_max, :class => "inputPeq input", :id => 'campoAte' %>
         </li>
 
-        <li class="escondidoPesquisaAvancada">
+        <li class="escondidoPesquisaAvancada doisInputs">
           <label for="campoParcela">Parcela nº</label>
-          <%= f.text_field :number, :class => "inputGde input", :id => 'campoParcela' %>
-        </li>
-
-        <li class="escondidoPesquisaAvancada">
-          <%= f.check_box :fixed_payment %> <span>Despesa fixa</span>
+		  <%= f.text_field :number, :class => "inputPeq input", :id => 'campoParcela' %>
+		  <label style='margin-left:10px;'>
+			Despesa fixa
+			<%= f.check_box :fixed_payment %> 
+		  </label>
         </li>
 
         <li class="noPaddingHomes hidePA ">
-          <label for="campoBusca">Código</label>
           <%= f.text_field :code_simple, :class => "inputGde input", :id => 'campoBusca' %>
         </li>
 
@@ -67,9 +66,9 @@
     <h2>Recebimentos mais próximos</h2>
     <% @instalments_recents.each do |i| %>
       <p>
-        <span><%= i.name %></span>
-        <span><%= number_to_currency(i.amount) %></span>
-        <span><%= i.expiration_date_to_s %></span>
+        <span><strong><%= i.name %></strong><br/>
+        <small><%= number_to_currency(i.amount) %> - <%= i.expiration_date_to_s %></small>
+		</span>
         <%= link_to 'Visualizar', financeiro_editar_lancamento_path(i.release), :class => 'btVoltarForm' %>
       </p>
     <% end %>
