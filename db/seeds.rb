@@ -72,8 +72,8 @@ end
 ].each do |p|
   Provider.create!(
     :name               => p,
-    :cpf                => "#{rand(10)}",
-    :rg                 => "#{rand(10)}",
+    :cpf          => "#{rand(10)}#{rand(10)}#{rand(10)}.#{rand(10)}#{rand(10)}#{rand(10)}.#{rand(10)}#{rand(10)}#{rand(10)}-#{rand(10)}#{rand(10)}",
+    :rg           => "#{rand(10)}#{rand(10)}.#{rand(10)}#{rand(10)}#{rand(10)}.#{rand(10)}#{rand(10)}#{rand(10)}-#{rand(10)}",
     :observations       => "Observações para #{p}",
     :active             => true,
     :address_attributes => {
@@ -99,8 +99,8 @@ end
 ].each do |c|
   Client.create!(
     :name               => c,
-    :cpf                => "#{rand(100_000_000)}",
-    :rg                 => "#{rand(100_000_000)}",
+    :cpf          => "#{rand(10)}#{rand(10)}#{rand(10)}.#{rand(10)}#{rand(10)}#{rand(10)}.#{rand(10)}#{rand(10)}#{rand(10)}-#{rand(10)}#{rand(10)}",
+    :rg           => "#{rand(10)}#{rand(10)}.#{rand(10)}#{rand(10)}#{rand(10)}.#{rand(10)}#{rand(10)}#{rand(10)}-#{rand(10)}",
     :observations       => "Observacao para #{c}",
     :address_attributes => {
       :address      => "Rua Paratestar",
@@ -124,10 +124,10 @@ end
 ].each do |s|
   Student.create!(
     :name         => s,
-    :cpf          => "#{rand(100_000_000)}",
-    :rg           => "#{rand(100_000_000)}",
+    :cpf          => "#{rand(10)}#{rand(10)}#{rand(10)}.#{rand(10)}#{rand(10)}#{rand(10)}.#{rand(10)}#{rand(10)}#{rand(10)}-#{rand(10)}#{rand(10)}",
+    :rg           => "#{rand(10)}#{rand(10)}.#{rand(10)}#{rand(10)}#{rand(10)}.#{rand(10)}#{rand(10)}#{rand(10)}-#{rand(10)}",
     :observations => "Observacao para #{s}",
-    :sex          => 0,
+    :sex          => rand(2),
     :birth_date   => "21/08/1985",
     :occupation   => "Dev",
     :relationship_elderly => 0,
