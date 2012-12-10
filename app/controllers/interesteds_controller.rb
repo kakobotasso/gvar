@@ -4,7 +4,7 @@ class InterestedsController < ApplicationController
 	require_role_for_curso
 
   def index
-  	@interesteds = Interested.all#.order("created_at desc")
+    @interesteds = Interested.all
     @situation = Category::Interested::SITUATION
 
     respond_to do |format|
@@ -97,5 +97,5 @@ class InterestedsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
 end

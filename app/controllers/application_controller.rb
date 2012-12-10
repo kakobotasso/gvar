@@ -91,7 +91,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_dashboard
-    redirect_to dashboard_path, :notice => "Você não tem acesso a esse modulo."
+    redirect_to dashboard_path, :notice => t("mensagens.msg0016")
   end
 
 end

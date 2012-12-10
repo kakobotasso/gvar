@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ServicesController < ApplicationController
   require_logged_user
   require_role_for_servico
@@ -49,7 +50,7 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.save
-        format.html { redirect_to services_path, notice: 'Service was successfully created.' }
+        format.html { redirect_to services_path, notice: 'Serviço foi criado com sucesso.' }
         format.json { render json: @service, status: :created, location: @service }
       else
         format.html { render action: "new" }
@@ -65,7 +66,7 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       if @service.update_attributes(params[:service])
-        format.html { redirect_to services_path, notice: 'Service was successfully updated.' }
+        format.html { redirect_to services_path, notice: 'Serviço foi atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

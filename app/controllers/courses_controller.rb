@@ -42,7 +42,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to course_path(@course), notice: 'As informacoes foram salvas com sucesso.' }
+        format.html { redirect_to course_path(@course), notice: t("mensagens.msg0007") }
         format.json { render json: @course, status: :created, location: @course }
       else
         format.html { render action: "new" }
@@ -57,7 +57,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
-        format.html { redirect_to @course, notice: 'As informacoes foram atualizadas com sucesso!' }
+        format.html { redirect_to @course, notice: t("mensagens.msg0007") }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -80,7 +80,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     respond_to do |format|
       if @course.update_attributes(:active => "false")
-        format.html { redirect_to courses_path, notice: 'Curso cancelado com sucesso' }
+        format.html { redirect_to courses_path, notice: t("mensagens.msg0009") }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

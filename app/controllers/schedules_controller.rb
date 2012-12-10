@@ -69,7 +69,7 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       if @schedule.update_attributes(params[:schedule])
-        format.html { redirect_to schedules_path, notice: 'Schedule was successfully updated.' }
+        format.html { redirect_to schedules_path, notice: 'Agendamento atualizado com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
