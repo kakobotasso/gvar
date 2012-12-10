@@ -3,5 +3,6 @@ class ReportsController < ApplicationController
   end
 
   def show
+    @report = params[:report]
   end
 end

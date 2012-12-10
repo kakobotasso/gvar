@@ -33,7 +33,7 @@ Gvar::Application.routes.draw do
 
   controller :reports do
     get "#{URL_FINANCEIRO}#{URL_RELATORIOS}",            :action => :index, :as => :reports
-    get "#{URL_FINANCEIRO}#{URL_RELATORIOS}/visualizar", :action => :show, :as => :report
+    post "#{URL_FINANCEIRO}#{URL_RELATORIOS}/visualizar", :action => :show, :as => :report
   end
 
   controller :payments do
