@@ -1,13 +1,13 @@
 class ReportPresenter
-  def initialize(list_instalments)
-    @instalments = list_instalments
+  def initialize(list_reports)
+    @reports = list_reports
   end
 
   def partial
-    if @instalments.size > 0
+    if @reports.size > 0
       {
-        :partial => "shared/instalments",
-        :locals => { :instalments => @instalments }
+        :partial => "reports/reports",
+        :locals => { :reports => @reports }
       }
     else
       {

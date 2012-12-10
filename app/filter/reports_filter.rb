@@ -3,23 +3,20 @@ class ReportsFilter
     # Se existir o filtro monta a query
     if options
     scope = Instalment.joins(:release).order(:created_at)
-    scope = :min_value
-    :max_value
-    :min_date_sale
-    :max_date_sale
-    :min_expiration_date
-    :max_expiration_date
-    :min_payment_date
-    :max_payment_date
-    :min_payment_value
-    :max_payment_value
+    scope = scope.where("releases.type = ?",options[:type]) unless options[:type].blank?
+    scope = scope.where(:status_id => options[:status]) unless options[:status].blank?
+    scope = scope.where("amount >= ?",options[:min_value]) unless options[:min_value].blank?
+    scope = scope.where("amount <= ?",options[:max_value]) unless options[:max_value].blank?
+    scope = scope.where("created_at >= ?",Date.parse(options[:min_date_sale])) unless options[:min_date_sale].blank?
+    scope = scope.where("created_at <= ?",Date.parse(options[:max_date_sale])) unless options[:min_date_sale].blank?
+    scope = scope.where("created_at <= ?",Date.parse(options[:max_date_sale])) unless options[:min_date_sale].blank?
+    scope = scope.where("expiration_date >= ?",Date.parse(options[:min_expiration_date])) unless options[:min_expiration_date].blank?
+    scope = scope.where("expiration_date <= ?",Date.parse(options[:max_expiration_date])) unless options[:max_expiration_date].blank?
+    scope = scope.where("paid_at >= ?",Date.parse(options[:min_payment_date])) unless options[:min_payment_date].blank?
+    scope = scope.where("paid_at <= ?",Date.parse(options[:max_payment_date])) unless options[:max_payment_date].blank?
+    scope = scope.where("amount_paid >= ?", options[:min_payment_value]) unless options[:min_payment_value].blank?
+    scope = scope.where("amount_paid <= ?", options[:max_payment_value]) unless options[:max_payment_value].blank?
 
-    scope = scope.where(:name => options[:name])                         unless options[:name].blank?
-    scope = scope.where(:name => options[:name])                         unless options[:name].blank?
-    scope = scope.where(:'addresses.country_id' => options[:country_id]) unless options[:country_id].blank?
-    scope = scope.where(:'addresses.city' => options[:city])             unless options[:city].blank?
-    scope = scope.where(:cpf => options[:cpf])                           unless options[:cpf].blank?
-    scope = scope.where(:rg => options[:rg])                             unless options[:rg].blank?
     scope
     else
       [] # Ou então retorna um array vazio para a view dizer que nao encontrou resultados

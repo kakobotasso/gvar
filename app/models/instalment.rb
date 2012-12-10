@@ -45,4 +45,8 @@ class Instalment < ActiveRecord::Base
   def pending?
     self.status_id == 0 # 0 => Pendente
   end
+
+  def payment_way
+    PaymentWay::OPTIONS.rassoc(payment_id)[0]
+  end
 end
