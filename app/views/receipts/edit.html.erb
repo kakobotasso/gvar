@@ -4,12 +4,12 @@
 <div class="financeiro">
   <h1>Editar Lançamento</h1>
 
-  <%= form_for @release, :url => financeiro_update_lancamento_path do |r| %>
+  <%= form_for @release, :url => release_path do |r| %>
     <ul>
      <li class='codigo'>
         <label>
           <span>Codigo: </span>
-          <%= hidden_field_tag "release[code]", @release_code %>			
+          <%= hidden_field_tag "release[code]", @release_code %>
 		  <%= r.text_field :code, :value => @release_code || r.object.code, :class => "inputMedio input",:disabled => true %>
         </label>
       </li>
@@ -70,19 +70,19 @@
                  <td>
 					<span><%= i.text_field :expiration_date, {:class => 'inputPeq input data' } %></span>
 					</td>
-		
+
 					<td>
 					<span><%= i.text_field :paid_at, {:class => 'inputPeq input data'} %></span>
 					</td>
-		
+
 					<td>
 					<span><%= i.text_field :amount_paid, :class => "inputPeq input" %></span>
 					</td>
-		
+
 					<td>
 					<span><%= i.select :payment_id, payments, {}, :class => 'select' %></span>
 					</td>
-		
+
 					<td>
 					<span><%= i.select :status_id, status, {}, :class => 'select' %></span>
 					</td>
@@ -101,7 +101,7 @@
 
       <li id="btEnviarForm">
         <%= r.submit 'Salvar Recebimento' %>
-        <%= link_to 'Voltar', financeiro_index_path, :id => "btVoltarForm" %>
+        <%= link_to 'Voltar', receipts_path, :id => "btVoltarForm" %>
       </li>
     </ul>
   <% end %>

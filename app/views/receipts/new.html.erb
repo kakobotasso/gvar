@@ -55,7 +55,7 @@
 
       <li id="btEnviarForm">
         <%= r.submit 'Salvar Recebimento' %>
-        <%= link_to 'Voltar', financeiro_index_path, :id => "btVoltarForm" %>
+        <%= link_to 'Voltar', receipts_path, :id => "btVoltarForm" %>
       </li>
     </ul>
   <% end %>
@@ -105,7 +105,7 @@
       if( numero_parcelas > 0 ){
           if( valor > 0 ){
               $.ajax({
-                  url: "<%= financeiro_criar_parcelas_path %>",
+                  url: "<%= create_instalments_path %>",
                   type: "GET",
                   data: {
                       "number_instalment": numero_parcelas,

@@ -46,7 +46,7 @@ Gvar::Application.routes.draw do
   controller :receipts do
     get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}",                       :action => :index,          :as => :receipts
     get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/novo-recebimento",      :action => :new,            :as => :new_receipt
-    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/search",                :action => :search, :as => :search_receypts
+    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/search",                :action => :search, :as => :search_receipts
     get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/:id/editar",            :action => :edit,           :as => :financeiro_editar_lancamento
   end
 

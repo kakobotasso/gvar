@@ -5,7 +5,7 @@
   <h1>Recebimentos</h1>
 
   <div id="guardaPesquisa">
-    <%= form_for "filtro",:url => financeiro_index_path, :method => 'GET' do |f| %>
+    <%= form_for "filtro",:url => search_receipts_path, :method => 'GET' do |f| %>
       <%= f.hidden_field :type, :value => "Receipt" %>
       <ul>
         <li class="escondidoPesquisaAvancada">
@@ -45,7 +45,7 @@
 		  <%= f.text_field :number, :class => "inputPeq input", :id => 'campoParcela' %>
 		  <label style='margin-left:10px;'>
 			Despesa fixa
-			<%= f.check_box :fixed_payment %> 
+			<%= f.check_box :fixed_payment %>
 		  </label>
         </li>
 
