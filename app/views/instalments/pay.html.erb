@@ -1,37 +1,42 @@
+<div class='financeiro'>
 <h1>Baixar</h1>
-<div>
+
   <%= form_for "pay_instalment" , :url => pay_instalment_path, :method => 'POST' do |f| %>
     <%= hidden_field_tag 'pay_instalment[id]', @instalment.id %>
-    <p>
-      Código:
-      <%= @instalment.code %>
-    </p>
-    <p>
-      Parcela:
-      <%= @instalment.number_instalment %>
-    </p>
-    <p>
-      Data de Vencimento:
-      <%= date_to_view @instalment.expiration_date %>
-    </p>
-    <p>
-      Data:
-      <%= f.date_select :paid_at, {}, {:class => 'select'} %>
-    </p>
-    <p>
-      Valor:
-      <%= number_to_currency @instalment.amount %>
-    </p>
-    <p>
-      Valor Pago:
-      <%= f.text_field :amount_paid %>
-    </p>
-    <p>
-      Recebido em:
-      <%= f.select :payment_id, payments, {}, :class => 'select' %>
-    </p>
-    <p>
-      <%= f.submit "Ok" %>
-    </p>
+	
+	
+  <ul>
+	
+	<li style="width:180px"><strong>Codigo: </br></strong> <%=  @instalment.code %> </li>
+	<li style="width:140px"><strong>Parcela: </br></strong> <%=  @instalment.number_instalment %> </li>
+	<li style="width:180px"><strong>Data de Vencimento: </br></strong> <%=  date_to_view @instalment.expiration_date  %> </li>
+	<li style="width:180px"><strong>Valor: </br></strong> <%=  number_to_currency @instalment.amount %> </li>
+	
+	<li>
+        <label>
+          <span>Data de Pagamento:</span><br/>
+			<%= f.text_field :paid_at, :class => "inputMedio input data" %>
+		</label>
+    </li>
+	
+	<li>
+        <label>
+          <span>Valor Pago:</span><br/>
+			<%= f.text_field :amount_paid, :value => number_with_precision(@instalment.amount_paid), :class => "inputMedio input" %>
+		</label>
+    </li>
+	
+	 <li>
+        <label>
+          <span>Recebido em:</span><br/>
+			<%= f.text_field :payment_id, :class => "inputMedio input data" %>
+		</label>
+    </li>
+	
+	<li id="btEnviarForm"  style="width:950px">
+		<%= f.submit "Ok" %>
+    </li>
+	  
+  </ul>
   <% end %>
 </div>
