@@ -95,12 +95,14 @@ Gvar::Application.routes.draw do
   end
 
   controller :registrations do
-    get    "#{URL_INSCRICOES}",                :action => :index, :as => :registrations
-    post   "#{URL_INSCRICOES}",                :action => :create
-    get    "#{URL_INSCRICOES}/novo",           :action => :new, :as => :new_registration
-    get    "#{URL_INSCRICOES}/buscar",         :action => :search, :as => :search_registrations
-    get    "#{URL_INSCRICOES}/:id/editar",     :action => :edit, :as => :edit_registration
-    get    "#{URL_INSCRICOES}/:id",            :action => :show, :as => :registration
+    get    "#{URL_INSCRICOES}",                    :action => :index,           :as => :registrations
+    post   "#{URL_INSCRICOES}",                    :action => :create
+    get    "#{URL_INSCRICOES}/escolher-aluno",     :action => :new,             :as => :new_registration
+    get    "#{URL_INSCRICOES}/buscar",             :action => :search,          :as => :search_registrations
+    get    "#{URL_INSCRICOES}/buscar-alunos",      :action => :search_students, :as => :search_students
+    get    "#{URL_INSCRICOES}/escolher-turma/:id", :action => :choose_team,     :as => :choose_team
+    get    "#{URL_INSCRICOES}/:id/editar",     :action => :edit,            :as => :edit_registration
+    get    "#{URL_INSCRICOES}/:id",            :action => :show,            :as => :registration
     put    "#{URL_INSCRICOES}/:id",            :action => :update
   end
 

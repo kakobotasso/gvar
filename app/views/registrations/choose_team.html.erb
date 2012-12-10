@@ -1,0 +1,23 @@
+<b>Informações do Aluno</b><hr/>
+Nome: <%= @inscricao.student.name %><br/>
+CPF: <%= @inscricao.student.cpf %><br/>
+RG: <%= @inscricao.student.cpf %><br/>
+Data de Nascimento: <%= @inscricao.student.cpf %><br/>
+Sexo: <%= @inscricao.student.cpf %><br/>
+Relação com Idoso: <%= @inscricao.student.cpf %><br/>
+
+Telefones: <%= @inscricao.student.cpf %><br/>
+Documentos Entregues: <%= @inscricao.student.cpf %><br/>
+
+<b>Informações da Turma</b><hr/>
+<%= form_for @inscricao do |i| %>
+  <ul>
+    <li><span>Turma</span>
+      <%= i.select :team_id, Team.all.map {|t| ["#{t.course.name} - #{t.name}" ,t.id]},{}, {:class => "inputGrande input"} %>
+    </li>
+
+    <li class="btEnviarForm">
+      <%= i.submit "Ok" %>
+    </li>
+  </ul>
+<% end %>

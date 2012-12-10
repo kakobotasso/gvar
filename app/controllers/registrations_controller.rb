@@ -1,6 +1,8 @@
 class RegistrationsController < ApplicationController
-	require_logged_user
+  require_logged_user
   require_role_for_curso
+
+  layout false, :only => [:search_students]
 
   def index
   	@registration = Registration.all#.order("created_at desc")
@@ -21,12 +23,6 @@ class RegistrationsController < ApplicationController
   end
 
   def new
-    @registration = Registration.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @registration }
-    end
   end
 
   def edit
@@ -73,4 +69,12 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def search_students
+    @alunos = Student.where("name LIKE :search or CPF LIKE :search", :search => "%#{params[:filtro][:name_or_cpf]}%" )
+  end
+
+  def choose_team
+    @inscricao = Registration.new
+    @inscricao.student = Student.find(params[:id])
+  end
 end

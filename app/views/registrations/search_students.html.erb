@@ -1,0 +1,13 @@
+<table cellspadding="0" cellspacing="0" width="100%">
+  <tr>
+    <th><span>Nome</span></th>
+    <th><span>CPF</span></th>
+  </tr>
+
+  <% @alunos.each do |aluno| %>
+    <tr onclick="location.href = '<%= choose_team_path(aluno) %>'">
+      <td><%= aluno.name %></td>
+      <td><%= aluno.cpf  %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,17 +1,33 @@
-<%= form_for @registration do |r| %>
-
-<% if @registration.errors.any? %>
-    <div id="error_explanation">
-      <ul class="error">
-      <% @course.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-<ul>
-    <li class="btEnviarForm">
-    	<%= r.submit %>
+<%= form_for 'aluno' do |r| %>
+  <h2>Buscar Aluno</h2>
+  <ul>
+    <li>
+      <%= r.text_field :name_or_cpf, :class => "inputMedio input" %>
     </li>
+
+    <%= link_to "Cadastrar Aluno", new_student_path %>
+    <li class="btEnviarForm">
+      <%= r.submit "Pesquisar", :id => 'ajaxBtRealizarPesquisa' %>
+    </li>
+  </ul>
 <% end %>
+<div id="guardaResultadoPesquisa">
+</div>
+<script type="text/javascript" charset="utf-8">
+  $("#ajaxBtRealizarPesquisa").click(function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      url:  "<%= search_students_path %>",
+      type: "GET",
+      data: {
+        filtro: {
+          name_or_cpf: $("#aluno_name_or_cpf").val()
+        }
+      }
+    }).done(function(data) {
+      $("#guardaResultadoPesquisa").html(data);
+      $("#guardaResultadoPesquisa").slideDown(500);
+    });
+  });
+</script>
