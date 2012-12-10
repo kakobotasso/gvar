@@ -10,7 +10,7 @@
       <li class='codigo'>
         <label>
           <span>Codigo: </span>
-          <%= hidden_field_tag "release[code]", @release_code %>			
+          <%= hidden_field_tag :code, @release_code %>			
 		  <%= r.text_field :code, :value => @release_code || r.object.code, :class => "inputMedio input",:disabled => true %>
         </label>
       </li>
