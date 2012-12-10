@@ -3,21 +3,21 @@
   <ul>
     <li>
       <label>
-        <span>Nome:</span><br/>
+        <span>Nome*:</span><br/>
         <%= f.text_field :name, :class => "inputMedio input", :id => "campoNome"%>
       </label>
     </li>
 	
 	<li>
       <label>
-        <span>CPF:</span><br/>
+        <span>CPF*:</span><br/>
         <%= f.text_field :cpf, :class => "inputMedio input cpf" %>
       </label>
     </li>
 
     <li>
       <label>
-        <span>RG:</span><br/>
+        <span>RG*:</span><br/>
         <%= f.text_field :rg, :class => "inputMedio input rg" %>
       </label>
     </li>
@@ -25,14 +25,14 @@
     <%= f.fields_for :address do |a| %>
       <li>
         <label>
-          <span>Endereço:</span><br/>
+          <span>Endereço*:</span><br/>
           <%= a.text_field :address, :class => "inputMedio input" %>
         </label>
       </li>
 
       <li>
         <label>
-          <span>Nº:</span><br/>
+          <span>Nº*:</span><br/>
           <%= a.text_field :number, :class => "inputMedio input" %>
         </label>
       </li>
@@ -46,28 +46,28 @@
 
       <li>
         <label>
-          <span>CEP:</span><br/>
+          <span>CEP*:</span><br/>
           <%= a.text_field :zipcode, :class => "inputMedio input cep" %>
         </label>
       </li>
 
       <li>
         <label>
-          <span>Bairro:</span><br/>
+          <span>Bairro*:</span><br/>
           <%= a.text_field :neighborhood, :class => "inputMedio input" %>
         </label>
       </li>
 
       <li>
         <label>
-          <span>Cidade:</span><br/>
+          <span>Cidade*:</span><br/>
           <%= a.text_field :city, :class => "inputMedio input" %>
         </label>
       </li>
 
       <li>
         <label>
-          <span>Estado:</span><br/>
+          <span>Estado*:</span><br/>
           <%= a.select :country_id, state, { :prompt => 'Selecione um estado' }, :class => "inputMedio input" %>
         </label>
       </li>
