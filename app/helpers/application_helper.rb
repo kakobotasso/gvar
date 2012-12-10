@@ -11,4 +11,5 @@ module ApplicationHelper
   def date_to_view(date)
     date.strftime("%d/%m/%Y")
   end
+
 end

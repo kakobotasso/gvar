@@ -1,0 +1,10 @@
+<h1>Emitir Relatórios</h1>
+<%= form_for 'report', :url => :report_path do |r| %>
+  <ul>
+    <li>
+      <span>Valor Venda</span>:
+      <%= r.text_field :min_value %> até
+      <%= r.text_field :max_value %>
+    </li>
+  </ul>
+<% end %>

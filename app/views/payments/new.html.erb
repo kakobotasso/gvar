@@ -10,8 +10,8 @@
       <li class='codigo'>
         <label>
           <span>Codigo: </span>
-          <%= hidden_field_tag :code, @release_code %>			
-		  <%= r.text_field :code, :value => @release_code || r.object.code, :class => "inputMedio input",:disabled => true %>
+          <%= r.hidden_field :code, :value => @release_code %>
+	  <%= r.text_field :code, :value => @release_code || r.object.code, :class => "inputMedio input",:disabled => true %>
         </label>
       </li>
 
@@ -66,10 +66,13 @@
 
       <li id="btEnviarForm">
         <%= r.submit 'Salvar Pagamento' %>
-        <%= link_to 'Voltar', financeiro_index_path, :id => "btVoltarForm" %>
+        <%= link_to 'Voltar', payments_path, :id => "btVoltarForm" %>
       </li>
     </ul>
   <% end %>
+
+  <div id="guardaResultadoPesquisa">
+  </div>
 
   <script type="text/javascript">
   function get_tecla(e){
@@ -116,18 +119,15 @@
       if( numero_parcelas > 0 ){
           if( valor > 0 ){
               $.ajax({
-                  url: "<%= financeiro_criar_parcelas_path %>",
+                  url: "<%= create_instalments_path %>",
                   type: "GET",
                   data: {
                       "number_instalment": numero_parcelas,
                       "total": valor
                   }
               }).done(function(data) {
-                  $("#guardaResultadoPesquisa").empty();
-                  $("#guardaResultadoPesquisa").append(data);
-                  result = $("#guardaParcelas").html();
-                  $("#guardaResultadoPesquisa").empty();
-                  $("#guardaResultadoPesquisa").append(result);
+                  $("#guardaResultadoPesquisa").html(data);
+                  $("#guardaResultadoPesquisa").slideDown(500);
               });
           }else{
               alert("Digite um valor válido");

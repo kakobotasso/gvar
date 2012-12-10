@@ -2,6 +2,8 @@ Gvar::Application.routes.draw do
 
   root :to => "sessions#destroy"
 
+  get "assessoria/index"
+
   # VARIAVEL QUE ARMAZENA O CAMINHO PARA FUTURAS MUDANÇAS
   URL_FINANCEIRO    = "/financeiro"
   URL_SERVICOS      = "/servicos"
@@ -15,30 +17,39 @@ Gvar::Application.routes.draw do
   URL_ALUNOS        = "/alunos"
   URL_INTERESSADOS  = "/interessados"
   URL_INSCRICOES    = "/inscricoes"
+  URL_RELATORIOS    = "/relatorios"
+
+  controller :release do
+    post   "/release", :action => :create, :as => :releases
+    put    "/release/:id", :action => :update, :as => :release
+    delete "/release", :action => :destroy
+  end
+
+  controller :instalments do
+    get  "#{URL_FINANCEIRO}/criar-parcelas",    :action => :create, :as => :create_instalments
+    post "#{URL_FINANCEIRO}/pagar-parcela",     :action => :pay_instalment, :as => :pay_instalment
+    get  "#{URL_FINANCEIRO}/parcela/:id/pagar", :action => :pay,    :as => :pay
+  end
+
+  controller :reports do
+    get "#{URL_FINANCEIRO}#{URL_RELATORIOS}",            :action => :index, :as => :reports
+    get "#{URL_FINANCEIRO}#{URL_RELATORIOS}/visualizar", :action => :show, :as => :report
+  end
 
   controller :payments do
-    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}",                       :action => :index,          :as => :financeiro_index
-    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/novo-pagamento",        :action => :new,            :as => :novo_pagamento
-    post "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/pagar-parcela",         :action => :pay_instalment, :as => :financeiro_pagar_parcela
-    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/criar-parcelas",        :action => :create,         :as => :financeiro_criar_parcelas
-    put  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/update-lancamento",     :action => :update,         :as => :financeiro_update_lancamento
-    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/search",                :action => :search
-    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/lancamento/:id/editar", :action => :edit,           :as => :financeiro_editar_lancamento
-    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/pagar/:id",             :action => :pay,            :as => :financeiro_pagar
+    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}",                :action => :index,  :as => :payments
+    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/novo-pagamento", :action => :new,    :as => :new_payment
+    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/search",         :action => :search, :as => :search_payments
+    get  "#{URL_FINANCEIRO}#{URL_PAGAMENTOS}/:id/editar",     :action => :edit,   :as => :edit_payment
   end
 
   controller :receipts do
     get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}",                       :action => :index,          :as => :receipts
     get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/novo-recebimento",      :action => :new,            :as => :new_receipt
-    post "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/pagar-parcela",         :action => :pay_instalment, :as => :financeiro_pagar_parcela
-    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/criar-parcelas",        :action => :create,         :as => :financeiro_criar_parcelas
-    put  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/update-lancamento",     :action => :update,         :as => :financeiro_update_lancamento
-    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/search",                :action => :search
-    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/lancamento/:id/editar", :action => :edit,           :as => :financeiro_editar_lancamento
-    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/pagar/:id",             :action => :pay,            :as => :financeiro_pagar
+    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/search",                :action => :search, :as => :search_receypts
+    get  "#{URL_FINANCEIRO}#{URL_RECEBIMENTOS}/:id/editar",            :action => :edit,           :as => :financeiro_editar_lancamento
   end
-  get "assessoria/index"
-  get "servicos/index"
+
 
   controller :courses do
     get    "#{URL_CURSOS}",                :action => :index, :as => :courses
@@ -119,11 +130,6 @@ Gvar::Application.routes.draw do
     get  "/dashboard", :action => :index, :as => :dashboard
   end
 
-  controller :release do
-    post   "/release", :action => :create, :as => :releases
-    put    "/release", :action => :update
-    delete "/release", :action => :destroy
-  end
 
   resources :users
   get  "/alterar-senha",   :controller => :users, :action => :alterar_senha, :as => :alterar_senha

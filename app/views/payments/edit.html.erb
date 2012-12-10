@@ -5,12 +5,12 @@
 <div class="financeiro">
   <h1>Editar Lançamento</h1>
 
-  <%= form_for @release, :url => financeiro_update_lancamento_path do |r| %>
+  <%= form_for @release, :url => release_path(@release) do |r| %>
     <ul>
       <li>
         <label>
           <span>Codigo: </span><b><%= @release.code %></b>
-          <%= r.hidden_field :id %>
+          <%= r.hidden_field :id, :value => @release.id %>
         </label>
       </li>
 
@@ -111,7 +111,7 @@
 
       <li id="btEnviarForm">
         <%= r.submit 'Salvar Pagamento' %>
-        <%= link_to 'Voltar', financeiro_index_path, :id => "btVoltarForm" %>
+        <%= link_to 'Voltar', payments_path, :id => "btVoltarForm" %>
       </li>
     </ul>
   <% end %>
