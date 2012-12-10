@@ -15,7 +15,7 @@
       </label>
     </li>
 
-    <li>
+    <li style="width:650px; height:140px;">
       <div id="guardaCheckbox">
         <label>Módulos de acesso:</label>
         <% if current_user.have_role? :admin %>
@@ -54,7 +54,7 @@
         <% end %>
         <!-- / Bloco somente para novos cadastros -->
 
-        <li id="btEnviarForm">
+        <li id="btEnviarForm" style="width:650px;">
           <%= f.submit %>
           <%= link_to 'Voltar', users_path, :id => "btVoltarForm" %>
         </li>

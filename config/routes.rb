@@ -85,7 +85,7 @@ Gvar::Application.routes.draw do
     get    "#{URL_ALUNOS}/novo",           :action => :new, :as => :new_student
     get    "#{URL_ALUNOS}/buscar",         :action => :search, :as => :search_students
     get    "#{URL_ALUNOS}/:id/editar",     :action => :edit, :as => :edit_student
-    get    "#{URL_ALUNOS}/:id/cancelar",   :action => :cancel, :as => :cancel_course
+    get    "#{URL_ALUNOS}/:id/cancelar",   :action => :cancel, :as => :cancel_students
     get    "#{URL_ALUNOS}/:id",            :action => :show, :as => :student
     put    "#{URL_ALUNOS}/:id",            :action => :update
     delete "#{URL_ALUNOS}/:id",            :action => :destroy
@@ -100,7 +100,7 @@ Gvar::Application.routes.draw do
     get    "#{URL_INTERESSADOS}/:id/historico",         :action => :history, :as => :interested_history
     put    "#{URL_INTERESSADOS}/:id/historico/salvar",  :action => :save_history, :as => :interested_contact_save
     get    "#{URL_INTERESSADOS}/:id/editar",            :action => :edit, :as => :edit_interested
-    get    "#{URL_INTERESSADOS}/:id/cancelar",          :action => :cancel, :as => :cancel_course
+    get    "#{URL_INTERESSADOS}/:id/cancelar",          :action => :cancel, :as => :cancel_interesteds
     put    "#{URL_INTERESSADOS}/:id",                   :action => :update
     delete "#{URL_INTERESSADOS}/:id",                   :action => :destroy
   end
