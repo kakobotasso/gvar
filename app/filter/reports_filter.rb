@@ -2,7 +2,18 @@ class ReportsFilter
   def self.filter(options)
     # Se existir o filtro monta a query
     if options
-    scope = Release.joins(:address).order(:created_at)
+    scope = Instalment.joins(:release).order(:created_at)
+    scope = :min_value
+    :max_value
+    :min_date_sale
+    :max_date_sale
+    :min_expiration_date
+    :max_expiration_date
+    :min_payment_date
+    :max_payment_date
+    :min_payment_value
+    :max_payment_value
+
     scope = scope.where(:name => options[:name])                         unless options[:name].blank?
     scope = scope.where(:name => options[:name])                         unless options[:name].blank?
     scope = scope.where(:'addresses.country_id' => options[:country_id]) unless options[:country_id].blank?
@@ -15,13 +26,3 @@ class ReportsFilter
     end
   end
 end
-:min_value
-:max_value
-:min_date_sale
-:max_date_sale
-:min_expiration_date
-:max_expiration_date
-:min_payment_date
-:max_payment_date
-:min_payment_value
-:max_payment_value
