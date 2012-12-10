@@ -10,7 +10,7 @@
 		<li class="hidden encontro">
 			<%= form_for "meeting", :url => save_meeting_path do |f| %>
 				<%= f.hidden_field :team_id, :value => @team.id %>
-				<ul>			
+				<ul>
 					<li>
 						<label>
 				            <span class="floatLeft">Data: </span>
@@ -18,7 +18,7 @@
 				        </label>
 					</li>
 					<li class="btEnviarForm">
-						<%= f.submit %>
+						<%= f.submit "Salvar Encontro" %>
 					</li>
 				</ul>
 			<% end %>
@@ -61,8 +61,8 @@
 						</td>
 					</tr>
 				</table>
-				
-			</div>	
+
+			</div>
 			<% end %>
 		</li>
 	</ul>
