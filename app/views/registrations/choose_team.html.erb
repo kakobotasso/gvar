@@ -15,8 +15,8 @@
 	<%= form_for @inscricao, :url => confirm_registration_path do |i| %>
 	<%= i.hidden_field :student_id, :value => i.object.student_id %>
 	<ul>
-		<li>			
-			<%= i.select :team_id, Team.all.map {|t| ["#{t.course.name} - #{t.name}" ,t.id]},{}, {:class => "inputGrande input"} %>	
+		<li>
+			<%= i.select :team_id, Team.joins(:course).order("courses.name").map { |a| ["#{a.course.name} - #{a.name}" , a.id ] },{ :prompt => "Selecione uma turma" }, {:class => "inputGrande input"} %>	
 		</li>
 	
 		<li class="btEnviarForm">
