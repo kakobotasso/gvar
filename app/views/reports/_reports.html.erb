@@ -1,0 +1,58 @@
+<% unless reports.payments.empty? %>
+  <h2>Pagamentos</h2>
+    <table cellspadding="0" cellspacing="0" width="100%" id="guardaParcelasGeradas">
+      <tr>
+        <th width="4%"><span>Código</span></th>
+        <th width="4%"><span>Nome</span></th>
+        <th width="4%"><span>Nº Parcela</span></th>
+        <th width="4%"><span>Valor Parcela</span></th>
+        <th width="4%"><span>Data Vencto.</span></th>
+        <th width="4%"><span>Data Pgto.</span></th>
+        <th width="4%"><span>Valor Pago</span></th>
+        <th width="4%"><span>Forma de Pgto.</span></th>
+        <th width="4%"><span>Status</span></th>
+      </tr>
+  <% reports.payments.each do |r| %>
+      <tr>
+        <td><%= r.release.code %></td>
+        <td><%= r.name %></td>
+        <td><%= r.number_instalment %></td>
+        <td><%= number_to_currency r.amount %></td>
+        <td><%= date_to_view r.expiration_date %></td>
+        <td><%= date_to_view r.paid_at unless r.paid_at.nil? %></td>
+        <td><%= number_to_currency(r.amount_paid) unless r.amount_paid.nil? %></td>
+        <td><%= r.payment_way %></td>
+        <td><%= r.status %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<br/><hr/>
+<% unless reports.receipts.empty? %>
+  <h2>Recebimentos</h2>
+    <table cellspadding="0" cellspacing="0" width="100%" id="guardaParcelasGeradas">
+      <tr>
+        <th width="4%"><span>Código</span></th>
+        <th width="4%"><span>Nome</span></th>
+        <th width="4%"><span>Nº Parcela</span></th>
+        <th width="4%"><span>Valor Parcela</span></th>
+        <th width="4%"><span>Data Vencto.</span></th>
+        <th width="4%"><span>Data Pgto.</span></th>
+        <th width="4%"><span>Valor Pago</span></th>
+        <th width="4%"><span>Forma de Pgto.</span></th>
+        <th width="4%"><span>Status</span></th>
+      </tr>
+  <% reports.receipts.each do |r| %>
+      <tr>
+        <td><%= r.release.code %></td>
+        <td><%= r.name %></td>
+        <td><%= r.number_instalment %></td>
+        <td><%= number_to_currency r.amount %></td>
+        <td><%= date_to_view r.expiration_date %></td>
+        <td><%= date_to_view r.paid_at unless r.paid_at.nil? %></td>
+        <td><%= number_to_currency(r.amount_paid) unless r.amount_paid.nil? %></td>
+        <td><%= r.payment_way %></td>
+        <td><%= r.status %></td>
+      </tr>
+  <% end %>
+<% end %>

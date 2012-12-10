@@ -3,6 +3,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @report = params[:report]
+    @list_reports = ReportsFilter.filter(params[:report])
+    @reports      = ReportPresenter.new(@list_reports)
   end
 end

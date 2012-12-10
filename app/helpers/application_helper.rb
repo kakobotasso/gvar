@@ -3,7 +3,7 @@ module ApplicationHelper
     case self.controller_name.to_sym
     when :courses, :teams, :students, :interesteds, :registrations then render '/shared/menu_courses'
     when :clients, :providers, :services, :schedules then render '/shared/menu_services'
-    when :payments, :receipts then render '/shared/menu_financial'
+    when :payments, :receipts, :reports then render '/shared/menu_financial'
     when :users then render '/shared/menu_users'
     end
   end

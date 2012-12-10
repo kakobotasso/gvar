@@ -97,12 +97,12 @@ class SchedulesController < ApplicationController
 
   private
   def services
-    @services  ||= Service.all
+    @services  ||= Service.order(:name)
   end
   def clients
-    @clients   ||= Client.all
+    @clients   ||= Client.order(:name)
   end
   def providers
-    @providers ||= Provider.all
+    @providers ||= Provider.order(:name)
   end
 end
