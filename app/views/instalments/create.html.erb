@@ -2,43 +2,43 @@
   <div id="guardaParcelas" class="parcelas">
     <table cellspadding="0" cellspacing="0" width="100%" id="guardaParcelasGeradas">
       <tr>
-        <th width="4%"><span>No</span></th>
-        <th width="14%"><span>Valor Parcela</span></th>
-        <th width="14%"><span>Data de Vencimento</span></th>
-        <th width="14%"><span>Data de  Pagamento</span></th>
-        <th width="14%"><span>Valor Pago</span></th>
-        <th width="14%"><span>Forma de Pagamento</span></th>
-        <th width="14%"><span>Status</span></th>
+        <th width="3%"><span>No</span></th>
+        <th width="25%"><span>Valor Parcela (R$)</span></th>
+        <th width="20%"><span>Data de Venc.</span></th>
+        <th width="20%"><span>Data de  Pgto</span></th>
+        <th width="20%"><span>Valor Pago (R$)</span></th>
+        <th width="10%"><span>Forma de Pgto</span></th>
+        <th width="15%"><span>Status</span></th>
       </tr>
       <% (1..@number_instalment).each do |number| %>
         <%= r.fields_for :instalments do |i| %>
           <tr>
-            <td width="4%">
+            <td>
               <span><%= number %></span>
               <%= i.hidden_field :number, :value => number %>
             </td>
 
-            <td width="14%">
-              <span>R$ <%= i.text_field :amount, :value => number_with_precision((number != @number_instalment) ? @amount_instalment : @last_instalment) ,:class => 'inputPeq input' %></span>
+            <td>
+              <span><%= i.text_field :amount, :value => number_with_precision((number != @number_instalment) ? @amount_instalment : @last_instalment) ,:class => 'inputPeq input' %></span>
             </td>
 
-            <td width="14%">
+            <td>
               <span><%= i.date_select :expiration_date, {:order =>[:day, :month, :year], :default => Time.now + (60*60*24*30*number)}, {:class => 'select' } %></span>
             </td>
 
-            <td width="14%">
+            <td>
               <span><%= i.date_select :paid_at, {:order =>[:day, :month, :year], :include_blank => true}, {:class => 'select'} %></span>
             </td>
 
-            <td width="14%">
-              <span>R$ <%= i.text_field :amount_paid, :class => "inputPeq input" %></span>
+            <td>
+              <span><%= i.text_field :amount_paid, :class => "inputPeq input" %></span>
             </td>
 
-            <td width="14%">
+            <td>
               <span><%= i.select :payment_id, payments, {}, :class => 'select' %></span>
             </td>
 
-            <td width="14%">
+            <td>
               <span><%= i.select :status_id, status, {}, :class => 'select' %></span>
             </td>
           </tr>

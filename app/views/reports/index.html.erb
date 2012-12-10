@@ -5,16 +5,16 @@
       <div class="floatLeft">Lançamentos:</div>
       <% Status::FINANCIAL.each do |status| %>
         <div class="floatLeft">
-          <label><%= check_box :release, :status,{}, status.last %> <%= status.first%></label>
+          <label><%= check_box_tag :'report[status][]', status.last %> <%= status.first%></label>
         </div>
       <% end %>
     </li>
     <li>
       <div class="floatLeft">Tipo de Relatório:</div>
       <div class="floatLeft">
-        <label><%= radio_button :release, :type, "Payment" %>Pagamentos</label>
-        <label><%= radio_button :release, :type, "Receipt" %>Recebimentos</label>
-        <label><%= radio_button :release, :type, "All" %>Recebimentos X Pagamentos</label>
+        <label><%= radio_button :report, :type, "Payment" %>Pagamentos</label>
+        <label><%= radio_button :report, :type, "Receipt" %>Recebimentos</label>
+        <label><%= radio_button :report, :type, "All" %>Recebimentos X Pagamentos</label>
       </div>
     </li>
     <li>
@@ -46,6 +46,9 @@
       <div class="floatLeft"><%= r.text_field :min_payment_value, :class => "inputPeq input"%></div>
       <div class="floatLeft">até</div>
       <div class="floatLeft"><%= r.text_field :max_payment_value, :class => "inputPeq input" %></div>
+    </li>
+    <li>
+      <%= r.submit "Emitir" %>
     </li>
   </ul>
 <% end %>
