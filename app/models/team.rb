@@ -4,7 +4,7 @@ class Team < ActiveRecord::Base
   belongs_to :course
   has_many :meetings
   has_many :registrations
-  has_many :students, :through => :registrations 
+  has_many :students, :through => :registrations
 
   validates_presence_of :name, :course_id, :season, :limit, :class_length, :workload, :status, :price
 
@@ -23,6 +23,14 @@ class Team < ActiveRecord::Base
 
   def correct_status
     Status::TEAMS.rassoc(status)[0]
+  end
+
+  def students_registered
+    students.size || 0
+  end
+
+  def vacancies_available
+    limit - students_registered
   end
 
 end

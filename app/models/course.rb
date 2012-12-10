@@ -7,19 +7,31 @@ class Course < ActiveRecord::Base
   has_many :teams
 
   def categoria
-  	Category::Courses::OPTIONS.rassoc(course_type)[0]
+    Category::Courses::OPTIONS.rassoc(course_type)[0]
   end
 
   def periodo
-  	Category::Seasons::OPTIONS.rassoc(season)[0]
+    Category::Seasons::OPTIONS.rassoc(season)[0]
   end
 
   def turma_andamento
-  	if teams.where('status = 0').count > 0
-  		"Sim"
-  	else
-  		"Nao"
-  	end
+    if teams.where('status = 0').count > 0
+      "Sim"
+    else
+      "Nao"
+    end
   end
 
+  def teams_total
+    teams.size || 0
+  end
+  def teams_in_progress
+    teams.where(:status => 0).size || 0
+  end
+  def teams_completed
+    teams.where(:status => 1).size || 0
+  end
+  def teams_canceled
+    teams.where(:status => 2).size || 0
+  end
 end

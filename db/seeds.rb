@@ -167,7 +167,7 @@ end
   "Dezembro Seg/Qua/Sex - Noite",
   "Janeiro Sabado - 8 horas",
   "Janeiro Ter/Qui - Tarde",
-  "Nobembro Seg/Qua/Sex - Noite",
+  "Novembro Seg/Qua/Sex - Noite",
 ].each do |v|
   Team.create!(
     :code        => "T12112406#{rand(1000)}",
