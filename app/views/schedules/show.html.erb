@@ -4,55 +4,47 @@
 
 <div class="servicos">
   <p id="notice"><%= notice %></p>
+  
+  <h1>Serviço Agendado</h1>
+  
+  <ul>
+	<li><strong>Nome: </br></strong> <%=  @schedule.code %> </li>
+	<li><strong>Numero de Dias: </br></strong> <%=  @schedule.number_days %></li>
+	<li><strong>Tempo Estimado: </br></strong> <%=  @schedule.estimated_time %></li>
+	<li><strong>Valor Padrão: </br></strong> <%=  number_to_currency @schedule.service.default_value%></li>
+	<li><strong>Data do agendamento: </br></strong> <%=  date_to_view @schedule.date %></li>
+	<li><strong>Descrição: </br></strong> <%=  @schedule.service.description %></li>
+	<li><strong>Descrição: </br></strong> <%=  @schedule.service.description %></li>
+  </ul>
 
-  <p>
-    <b>Nome:</b>
-    <%= @schedule.code %>
-  </p>
 
-  <p>
-    <b>Numero de Dias:</b>
-    <%= @schedule.number_days %>
-  </p>
+  
+  <div id="guardaResultadoPesquisa" id="guardaParcelas" class="parcelas">
+	  <h2>Parcelas</h2>
+    <table cellspadding="0" cellspacing="0" width="100%" id="guardaParcelasGeradas">
+      <tr>
+        <th width="10%"><span>No</span></th>
+        <th width="30%"><span>Valor Parcela</span></th>
+        <th width="30%"><span>Data de Venc.</span></th>
+        <th width="30%"><span>Status</span></th>
+      </tr>
+  
+	<% @schedule.release.instalments.each do |i| %>
+		<tr>
+			<td><span><%= i.number_instalment %></span></td>
+			<td><span><%= number_to_currency i.amount %></span></td>
+			<td><span><%= date_to_view i.expiration_date %></span></td>			
+			<td><span><%= i.status %></td>
+		</tr>
+  
+		<% end %>
+	 </table>
+	</div>
+	
+	<ul>
+       <li><%= link_to "Editar",  edit_schedule_path(@schedule), :class => "btEnviarForm" %></li>
+       
+       <li><%= link_to "Voltar", dashboard_path, :class => "btEnviarForm" %></li>
+    </ul>
 
-  <p>
-    <b>Tempo Estimado:</b>
-    <%= @schedule.estimated_time %>
-  </p>
-
-  <p>
-    <b>Valor Padrão:</b>
-    <%= number_to_currency @schedule.service.default_value %>
-  </p>
-
-  <p>
-    <b>Data do agendamento:</b>
-    <%= date_to_view @schedule.date %>
-  </p>
-
-  <p>
-    <b>Descrição:</b>
-    <%= @schedule.service.description %>
-  </p>
-
-  <h2>Parcelas</h2>
-  <% @schedule.release.instalments.each do |i| %>
-    <p>
-      <b><%= i.number_instalment %></b>
-    </p>
-    <p>
-      <b>Vencimento:</b>
-      <%= date_to_view i.expiration_date %>
-    </p>
-    <p>
-      <b>Valor:</b>
-      <%= number_to_currency i.amount %>
-    </p>
-    <p>
-      <b>Status:</b>
-      <%= i.status %>
-    </p>
-  <% end %>
-  <%= link_to 'Editar', edit_schedule_path(@schedule) %> |
-  <%= link_to 'Voltar', dashboard_path %>
 </div>
