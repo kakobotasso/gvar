@@ -149,7 +149,28 @@ iframe{
 }
 
 /* ADICIONADO POR MARA */
+#contentInternas li.documentosEntregues{
+	width:950px;
+	height:5px;
+	margin-bottom:20px;
+}
+#contentInternas li.documentosEntregues img{
+	margin-bottom: -5px;
+}
+#contentInternas li.documentosEntregues span{
+	margin-left: 10px;
+}
 
+#contentInternas .inscrSubtitulo{
+	width:950px;
+	float:left;
+	border-bottom:1px solid #999;
+	padding:10px 0px 10px  0px;
+	margin-bottom:10px;
+	font-size:18px;
+	color:$cursos;
+	font-style:italic;
+}
 
 #planejamento table.encontros{
 	border:1px solid $azulPesquisa;

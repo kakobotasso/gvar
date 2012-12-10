@@ -28,9 +28,8 @@
 
       <% @registration.each do |c| %>
         <p>
-          <span><%= c.code %></span>
-          <span><%= c.student.name %></span>
-          <span><%= c.team.name %></span>
+		  <span><strong><%= c.code %> - <%= c.student.name %></strong><br/>
+          <small><%= c.team.name %></small></span>
           <%= link_to 'Visualizar', registration_path(c), :class => 'btVoltarForm' %>
         </p>
       <% end %>

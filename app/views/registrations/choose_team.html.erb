@@ -1,14 +1,27 @@
-<%= render "registrations/student", :student => @inscricao.student %><br/>
-<b>Informações da Turma</b><hr/>
-<%= form_for @inscricao, :url => confirm_registration_path do |i| %>
-  <%= i.hidden_field :student_id, :value => i.object.student_id %>
-  <ul>
-    <li><span>Turma</span>
-      <%= i.select :team_id, Team.all.map {|t| ["#{t.course.name} - #{t.name}" ,t.id]},{}, {:class => "inputGrande input"} %>
-    </li>
+<!-- TITLE -->
+<% content_for :title do %>Nova inscrição - Sistema Grupo Vida, Amor e Riso! <% end %>
+<!-- / TITLE -->
 
-    <li class="btEnviarForm">
-      <%= i.submit "Ok" %>
-    </li>
-  </ul>
-<% end %>
+<div class='cursos'> 
+	<h1>Nova Inscrição</h1>
+
+	<%= render "registrations/student", :student => @inscricao.student %>
+	
+	
+	<div class='inscrSubtitulo'>
+		<span>Selecione a Turma</span>
+	</div>
+	
+	<%= form_for @inscricao, :url => confirm_registration_path do |i| %>
+	<%= i.hidden_field :student_id, :value => i.object.student_id %>
+	<ul>
+		<li>			
+			<%= i.select :team_id, Team.all.map {|t| ["#{t.course.name} - #{t.name}" ,t.id]},{}, {:class => "inputGrande input"} %>	
+		</li>
+	
+		<li class="btEnviarForm">
+		<%= i.submit "Ok" %>
+		</li>
+	</ul>
+	<% end %>
+</div>

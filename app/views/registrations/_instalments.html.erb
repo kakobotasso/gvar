@@ -1,10 +1,13 @@
-<b>Parcelas</b><hr/>
-<table cellspadding="0" cellspacing="0" width="100%">
+<div class='inscrSubtitulo'>
+	<span>Parcelas</span>
+</div>
+<div id='guardaResultadoPesquisa' style='display:block;'>
+<table cellspadding="0" cellspacing="0" cellpadding="0" width="100%">
   <tr>
     <th><span>Nº</span></th>
-    <th><span>Valor</span></th>
+    <th><span>Valor da Parcela</span></th>
     <th><span>Vencimento</span></th>
-    <th><span>Situacao</span></th>
+    <th><span>Situação</span></th>
   </tr>
 
   <% release.instalments.each do |i| %>
@@ -16,3 +19,4 @@
     </tr>
   <% end %>
 </table>
+</div>
