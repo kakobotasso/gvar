@@ -1,23 +1,12 @@
 <%= form_for @course do |c| %>
-
-<% if @course.errors.any? %>
-    <div id="error_explanation">
-      <ul class="error">
-      <% @course.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
+  <%= render "shared/error_messages", :record => @course %>
 <ul>
     <li class='codigo'>
         <label>
             <span>Código: </span>
-            <%= c.hidden_field :code, :value => @course_code || c.object.code %> 			
+            <%= c.hidden_field :code, :value => @course_code || c.object.code %>
 			<%= c.text_field :code, :value => @course_code || c.object.code, :class => "inputMedio input",:disabled => true %>
-			
+
         </label>
     </li>
 

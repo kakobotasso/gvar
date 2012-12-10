@@ -1,15 +1,5 @@
 <%= form_for @student do |s| %>
-
-  <% if @student.errors.any? %>
-    <div id="error_explanation">
-      <ul class="error">
-        <% @student.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <%= render "shared/error_messages", :record => @student %>
   <ul>
     <li>
       <label>
@@ -131,22 +121,22 @@
         <%= s.check_box :rg_delivered, :class => "uniform funcao" %>
         <span>RG</span>
       </label>
-     
+
       <label>
         <%= s.check_box :cpf_delivered, :class => "uniform funcao" %>
         <span>CPF</span>
       </label>
-     
+
       <label>
         <%= s.check_box :photo_delivered, :class => "uniform funcao" %>
         <span>Foto</span>
       </label>
-    
+
       <label>
         <%= s.check_box :cv_delivered, :class => "uniform funcao" %>
         <span>Curriculum</span>
       </label>
-     
+
       <label>
         <%= s.check_box :address_delivered, :class => "uniform funcao" %>
         <span>Comprovante de endereço</span>

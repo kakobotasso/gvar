@@ -1,15 +1,5 @@
 <%= form_for @interesteds do |i| %>
-
-<% if @interesteds.errors.any? %>
-    <div id="error_explanation">
-      <ul class="error">
-      <% @interesteds.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  <%= render "shared/error_messages", :record => @interesteds %>
 <ul>
     <li>
         <label>
@@ -17,21 +7,21 @@
             <%= i.text_field :name, :class => "inputMedio input" %>
         </label>
     </li>
-    
+
     <li>
         <label>
             <span>E-mail*: </span><br/>
             <%= i.text_field :email, :class => "inputMedio input" %>
         </label>
     </li>
-    
+
     <li>
         <label>
             <span>Telefone*: </span><br/>
             <%= i.text_field :phone, :class => "inputMedio input celular" %>
         </label>
     </li>
-    
+
     <li class="guardaSelect guardaSelectMedio">
         <label>
             <span>Situação*: </span><br/>
@@ -45,10 +35,10 @@
             <%= i.text_area :interest, :class => "textarea" %>
         </label>
     </li>
-    
+
     <li class="btEnviarForm">
         <%= i.submit %>
     </li>
-    
+
 </ul>
 <% end %>
