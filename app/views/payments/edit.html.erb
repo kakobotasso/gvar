@@ -1,5 +1,5 @@
 <!-- TITLE -->
-<% content_for :title do %> Editar Lançamento - Sistema Grupo Vida, Amor e Riso! <% end %>
+<% content_for :title do %> Editar Pagamento - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 
 <div class="financeiro">
@@ -7,10 +7,11 @@
 
   <%= form_for @release, :url => release_path(@release) do |r| %>
     <ul>
-      <li>
+      <li class='codigo'>
         <label>
-          <span>Codigo: </span><b><%= @release.code %></b>
+          <span>Codigo: </span>
           <%= r.hidden_field :id, :value => @release.id %>
+          <%= r.text_field :code, :value => @release.code , :class => "inputMedio input",:disabled => true %>
         </label>
       </li>
 
@@ -30,8 +31,8 @@
 
       <li>
         <label>
-          <span>Valor total:</span><br/>
-          R$ <%= r.text_field :total_amount, :value => number_with_precision(r.object.total_amount), :class => "inputMedio input", :id => "valorTotal" %>
+          <span>Valor total (R$):</span><br/>
+          <%= r.text_field :total_amount, :value => number_with_precision(r.object.total_amount), :class => "inputMedio input", :id => "valorTotal" %>
         </label>
       </li>
 
@@ -42,27 +43,24 @@
         </label>
       </li>
 
-      <li>
+       <li style='margin-top:25px'>
         <label>
           <%= r.check_box :first_paid %> <span>Primeira paga</span>
         </label>
-      </li>
-
-      <li>
-        <label>
+        <label style='margin-left:20px'>
           <%= r.check_box :fixed_payment %> <span>Despesa fixa</span>
         </label>
       </li>
 
-      <li>
+       <li style='display:table'>
         <div id="guardaResultadoPesquisa" class="parcelas">
           <table cellspadding="0" cellspacing="0" width="100%" id="guardaParcelasGeradas">
             <tr>
               <th width="4%"><span>No</span></th>
-              <th width="14%"><span>Valor Parcela</span></th>
-              <th width="14%"><span>Data de Vencimento</span></th>
-              <th width="14%"><span>Data de  Pagamento</span></th>
-              <th width="14%"><span>Valor Pago</span></th>
+              <th width="14%"><span>Valor Parc. (R$)</span></th>
+              <th width="14%"><span>Data de Venc.</span></th>
+              <th width="14%"><span>Data de  Pgto</span></th>
+              <th width="14%"><span>Valor Pago (R$)</span></th>
               <th width="14%"><span>Forma de Pagamento</span></th>
               <th width="14%"><span>Status</span></th>
             </tr>
@@ -86,7 +84,7 @@
                   </td>
 
                   <td width="14%">
-                    <span>R$ <%= i.text_field :amount_paid, :value =>  number_with_precision(i.object.amount_paid), :class => "inputPeq input" %></span>
+                    <span><%= i.text_field :amount_paid, :value =>  number_with_precision(i.object.amount_paid), :class => "inputPeq input" %></span>
                   </td>
 
                   <td width="14%">
@@ -105,7 +103,7 @@
       <li class="textAreaDescricao">
         <label>
           <span>Descricao</span><br/>
-          <%= r.text_area :description, :class => 'textarea textareaGde' %><br />
+          <%= r.text_area :description, :class => 'textarea' %><br />
         </label>
       </li>
 
