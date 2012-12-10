@@ -1,15 +1,17 @@
 <%= form_for 'aluno' do |r| %>
-  <h2>Buscar Aluno</h2>
+
   <ul>
     <li>
-      <%= r.text_field :name_or_cpf, :class => "inputMedio input" %>
+		<label>Buscar Aluno</label><br/>
+      <%= r.text_field :name_or_cpf, :class => "inputGde input" %>
     </li>
-
-    <%= link_to "Cadastrar Aluno", new_student_path %>
-    <li class="btEnviarForm">
-      <%= r.submit "Pesquisar", :id => 'ajaxBtRealizarPesquisa' %>
-    </li>
+	
+	 <li style='padding-left:345px;'>
+         <%= link_to "Cadastrar Aluno", new_student_path, :class => 'pesquisaAvancada' %>
+         <%= r.submit "Pesquisar",:class => 'btEditarForm', :id => 'ajaxBtRealizarPesquisa' %>
+     </li>
   </ul>
+    
 <% end %>
 <div id="guardaResultadoPesquisa">
 </div>

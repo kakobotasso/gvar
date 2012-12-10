@@ -1,16 +1,24 @@
-<b>Informações do Aluno</b><hr/>
-Nome: <%= student.name %><br/>
-CPF: <%= student.cpf %><br/>
-RG: <%= student.rg %><br/>
-Data de Nascimento: <%= student.birth_date %><br/>
-Sexo: <%= student.sexo %><br/>
-Relação com Idoso: <%= student.relacao_idoso %><br/>
-<% student.phones.each do |phone| %>
-  <%= "#{phone.type_phone}: #{phone.number}"%><br/>
-<% end %>
-Documentos Entregues:
-RG             <%= image_tag (student.rg_delivered)?      "ok.png":"no.png" %>
-CPF            <%= image_tag (student.cpf_delivered)?     "ok.png":"no.png" %>
-FOTO           <%= image_tag (student.photo_delivered)?   "ok.png":"no.png" %>
-Currículo      <%= image_tag (student.cv_delivered)?      "ok.png":"no.png" %>
-Comp. Endereço <%= image_tag (student.address_delivered)? "ok.png":"no.png" %>
+<div class='inscrSubtitulo'>
+	<span>Informações do Aluno</span>
+</div>
+<ul>
+
+	<li><strong>Nome: </br></strong> <%= student.name %> </li>
+	<li><strong>CPF: </br></strong> <%= student.cpf %> </li>
+	<li><strong>RG: </br></strong> <%= student.rg %> </li>
+	<li><strong>Data de Nascimento: </br></strong> <%= student.birth_date %> </li>
+	<li><strong>Sexo: </br></strong> <%= student.sexo %> </li>
+	<li><strong>Relação com Idoso: </br></strong> <%= student.relacao_idoso %> </li>
+	<% student.phones.each do |phone| %>
+		<li><strong><%= phone.type_phone %></br></strong> <%= phone.number %> </li>
+	<% end %>
+	<li class='documentosEntregues'>
+		<strong>Documentos Entregues: </strong>
+		<span>RG			</span> <%= image_tag (student.rg_delivered)?      "ok.png":"no.png" %>
+		<span>CPF           </span> <%= image_tag (student.cpf_delivered)?     "ok.png":"no.png" %>
+		<span>FOTO          </span> <%= image_tag (student.photo_delivered)?   "ok.png":"no.png" %>
+		<span>Currículo     </span> <%= image_tag (student.cv_delivered)?      "ok.png":"no.png" %>
+		<span>Comp. Endereço</span> <%= image_tag (student.address_delivered)? "ok.png":"no.png" %>
+	</li>
+
+</ul>	
