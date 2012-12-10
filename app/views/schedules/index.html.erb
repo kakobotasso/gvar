@@ -1,5 +1,5 @@
 <!-- TITLE -->
-<% content_for :title do %> Clientes - Sistema Grupo Vida, Amor e Riso! <% end %>
+<% content_for :title do %> Agenda de serviços - Sistema Grupo Vida, Amor e Riso! <% end %>
 <!-- / TITLE -->
 <div class="servicos">
   <h1>Agendar Serviços</h1>
@@ -51,7 +51,7 @@
         <span><strong><%= schedule.service.name %></strong><br/>
         <%= schedule.estimated_time %> - 
         <%= number_to_currency schedule.service.default_value %></span>
-        <%= link_to 'Editar', edit_schedule_path(schedule), :class => 'btVoltarForm' %>
+        <%= link_to 'Ver', schedule_path(schedule), :class => 'btVoltarForm' %>
       </p>
     <% end %>
   </div>
