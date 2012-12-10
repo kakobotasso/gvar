@@ -7,11 +7,11 @@
 
   <%= form_for(@release) do |r| %>
     <ul>
-      <li>
+      <li class='codigo'>
         <label>
           <span>Codigo: </span>
-          <%= @release_code %>
-          <%= hidden_field_tag "release[code]", @release_code %>
+          <%= hidden_field_tag "release[code]", @release_code %>			
+		  <%= r.text_field :code, :value => @release_code || r.object.code, :class => "inputMedio input",:disabled => true %>
         </label>
       </li>
 
@@ -31,7 +31,7 @@
 
       <li>
         <label>
-          <span>Valor total:</span><br/>
+          <span>Valor total (R$):</span><br/>
           <%= r.text_field :total_amount, :class => "inputMedio input", :id => "valorTotal" %>
         </label>
       </li>
@@ -43,27 +43,24 @@
         </label>
       </li>
 
-      <li>
+      <li style='margin-top:25px'>
         <label>
           <%= r.check_box :first_paid %> <span>Primeira paga</span>
         </label>
-      </li>
-
-      <li>
-        <label>
+        <label style='margin-left:20px'>
           <%= r.check_box :fixed_payment %> <span>Despesa fixa</span>
         </label>
       </li>
 
-      <li>
+      <li style='display:table;'>
         <div id="guardaResultadoPesquisa" class="parcelas">
         </div>
       </li>
 
-      <li>
+      <li class='textAreaDescricao'>
         <label>
-          <span>Descricao</span><br/>
-          <%= r.text_area :description, :class => 'textarea textareaGde' %><br />
+          <span>Descricao:</span><br/>
+          <%= r.text_area :description, :class => 'textarea' %><br />
         </label>
       </li>
 

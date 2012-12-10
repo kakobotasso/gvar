@@ -687,6 +687,10 @@ margin:0px 10px;
     display:block;
 }
 
+#contentInternas #guardaResultadoPesquisa.parcelas input{ 	width:75px; }
+
+#contentInternas #guardaResultadoPesquisa.parcelas select{ width:120px; }
+
 #contentInternas #guardaResultadoPesquisa h2{
     float:left;
     padding:0px 0px 10px 0px;
@@ -730,6 +734,7 @@ margin:0px 10px;
 
 #contentInternas .escondidoPesquisaAvancada{ display:none; }
 
+#contentInternas .doisInputs { width:550px}
 #contentInternas .doisInputs label{
     float:left;
     padding:5px 5px 0px 0px;
