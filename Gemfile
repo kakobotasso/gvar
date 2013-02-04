@@ -1,6 +1,6 @@
-source 'https://rubygems.org'
+source :rubygems
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 gem 'jquery-rails'
 gem 'mysql2'
 
@@ -22,4 +22,8 @@ end
 group :development do
   gem "pry", :require => false
   gem "awesome_print", :require => false
+end
+
+group :production do
+  gem "unicorn"
 end
