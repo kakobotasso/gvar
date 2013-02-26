@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 gem 'jquery-rails', '2.1.3'
 gem 'jquery-ui-rails'
 gem 'mysql2'
