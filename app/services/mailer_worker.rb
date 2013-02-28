@@ -1,7 +1,9 @@
 class MailerWorker
   include Qe::Worker
+  include Qe::ActionMailer
+  include Qe::Locale
 
-  def perform
-    ChangePasswordMailer.public_send(options["mail"], options).deliver
+  def mailer
+    ChangePasswordMailer
   end
 end

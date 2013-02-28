@@ -6,7 +6,7 @@ gem 'jquery-ui-rails'
 gem 'mysql2'
 
 gem 'sidekiq'
-gem 'qe', :require => 'qe/sidekiq'
+gem 'qe', :require => 'qe/sidekiq', :git => "git://github.com/fnando/qe"
 
 group :assets do
   gem 'sass-rails'
