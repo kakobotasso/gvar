@@ -119,11 +119,13 @@ Gvar::Application.routes.draw do
   end
 
   controller :sessions do
-    get  "/login", :action => :new, :as => :login
-    post "/login", :action => :create, :as => false
-    get  "/logout", :action => :destroy, :as => :logout
-    post "/new_password", :action => :new_password, :as => :new_password
-    get  "/lembrar-senha", :action => :lembrar_senha, :as => :lembrar_senha
+    get  "/login",           :action => :new,                 :as => :login
+    post "/login",           :action => :create,              :as => false
+    get  "/logout",          :action => :destroy,             :as => :logout
+    post "/new_password",    :action => :new_password,        :as => :new_password
+    get  "/lembrar-senha",   :action => :lembrar_senha,       :as => :lembrar_senha
+    get  "/cadastrar-senha", :action => :create_password,     :as => :create_password
+    post "/atualizar-senha", :action => :create_new_password, :as => :create_new_password
   end
 
   controller :dashboard do

@@ -30,28 +30,36 @@ class SessionsController < ApplicationController
   def new_password
     user = User.find_by_email(params[:email])
     if user
-      # Troca a senha
-      letras        = [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten; # Todas as letras maiusculas e minusculas
-      nova_senha    = (0...4).map{ letras[rand(letras.length)] }.join; # Escolhe 6 letras
-      nova_senha    = "#{nova_senha}#{rand(10)}#{rand(10)}"            # Acrescenta 2 numeros
-      user.password = nova_senha                                       # Define a nova senha do usuario
-      user.save
-
       # Envia por email
-      # ChangePasswordMailer.new_password_mail(user,nova_senha).deliver
+      # ChangePasswordMailer.new_password_mail(user).deliver
 
       MailerWorker.enqueue({
-        :mail     => :new_password_mail,
-        :name     => user.name,
-        :password => nova_senha,
-        :email    => user.email
+        :mail          => :new_password_mail,
+        :name          => user.name,
+        :password_salt => user.password_salt,
+        :email         => user.email
       })
 
       # Redireciona para o login
-      redirect_to login_path, :notice => "Sua nova senha foi enviada para o seu e-mail com sucesso"
+      redirect_to login_path, :notice => "Para concluir sua alteração de senha siga os procedimentos enviados para seu e-mail. (#{params['email']})"
     else
       redirect_to lembrar_senha_path, :notice => "E-mail não cadastrado. Por favor informar um e-mail válido"
     end
   end
 
+  def create_password
+    user = User.find_by_email_and_password_salt(params[:email], params[:ps])
+    unless user
+      redirect_to lembrar_senha_path, :notice => "Link para alterar senha expirou, informe novamente seu email."
+    end
+  end
+
+  def create_new_password
+    user = User.find_by_email(params[:email])
+    if user
+      user.password = params[:password]
+      user.save
+    end
+    redirect_to login_path, :notice => "Senha alterada com sucesso!"
+  end
 end
